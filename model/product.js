@@ -1,16 +1,12 @@
-function Product(name) {
+var Product = function(name) {
 	if (!(this instanceof Product)) return new Product(name);
-
-	this.validator = require("./validator");
 
   // Validation
 	this.validator.check(name, "Name is required").notEmpty();
 
+	// Initialise
 	this.name = name;
-}
-
-Product.prototype.isValid = function() {
-	return this.validator.getErrors().length === 0;
+	this.description = "";
 }
 
 module.exports = Product;

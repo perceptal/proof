@@ -1,10 +1,10 @@
-var Product = require("../../../model/product");
+var Product = require("../../../model")("product");
 
 describe("Product", function() {
 	
 	var product;
 
-	describe("valid data", function() {
+	describe("when created with valid data", function() {
   	
   	before(function() {
 	  	product = new Product("Bag");
@@ -14,12 +14,16 @@ describe("Product", function() {
 	  	product.name.should.equal("Bag");
   	});
 
+  	it("should have empty description", function() {
+	  	product.description.should.equal("");
+  	});
+
   	it("should be valid", function() {
 	  	product.isValid().should.equal(true);
   	});
 	});
 	
-	describe("empty data", function() {
+	describe("when created with empty data", function() {
   	
   	before(function() {
 	  	product = new Product(); 
