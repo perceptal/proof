@@ -6,27 +6,27 @@ function Repository(store, collection) {
 }
 
 Repository.prototype.create = function(o, callback) {
-	store.create(o, callback);
+	this.store.create(o, callback);
 }
 
 Repository.prototype.update = function(o, callback) {
-	store.update(o, callback);
+	this.store.update(o, callback);
 }
 
 Repository.prototype.delete = function(id, callback) {
-	store.delete(id, callback);
+	this.store.delete(id, callback);
 }
 
 Repository.prototype.get = function(id, callback) {
-	store.get(id, callback);
+	this.store.get(id, callback);
 }
 
 Repository.prototype.find = function(query, callback) {
-	store.find(query, callback);
+	this.store.find(query, callback);
 }
 
 Repository.prototype.list = function(callback) {
-	store.list(callback);
+	this.store.list(callback);
 }
 
 module.exports = Repository;

@@ -1,9 +1,11 @@
-function App() {
-	if (!(this instanceof App)) return new App();
+function App(store) {
+	if (!(this instanceof App)) return new App(store);
+
+	this.store = store;
 }
 
 App.prototype.start = function() {
-	console.log("start");
+
 }
 
 module.exports = App;

@@ -1,5 +1,15 @@
+var riak = require("riak-js")
+  , configuration = require("../configuration")
+  ;
+
 function Store() {
-	if (!(this instanceof Repository)) return new Store();
+	if (!(this instanceof Store)) return new Store();
+	
+	this.db = client();
+}
+
+var client = function() {
+	return riak.getClient(configuration("riak"));
 }
 
 Store.prototype.collection = function(name) {

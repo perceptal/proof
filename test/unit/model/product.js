@@ -1,4 +1,4 @@
-var Product = require("../../../model")("product");
+var Product = require("../../../model/product");
 
 describe("Product", function() {
 	

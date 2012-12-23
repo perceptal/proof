@@ -1,5 +1,12 @@
 {
-	"provider": {
-		"store": "riak"
+		"provider": {
+			"store": "riak"
+	}
+	, "riak": {
+			"host": "localhost"
+		, "port": "8098"
+	}
+	, "mongodb": {
+
 	}
 }

@@ -1,13 +1,17 @@
 function Store() {
-	if (!(this instanceof Repository)) return new Store();
+	if (!(this instanceof Store)) return new Store();
+}
+
+Store.prototype.collection = function(name) {
+	this.name = name;
 }
 
 Store.prototype.create = function(o, callback) {
-	callback(null, {});
+	callback(null, o);
 }
 
 Store.prototype.update = function(o, callback) {
-	callback(null, {});
+	callback(null, o);
 }
 
 Store.prototype.delete = function(id, callback) {

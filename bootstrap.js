@@ -1,5 +1,9 @@
-var App = require("./app");
+var App = require("./app")
+  , provider = require("./configuration/provider")
+  ;
 
-var app = App();
+var Store = provider("store")
+	, app = new App(new Store());
 
-app.start();
+app.start();		
+
