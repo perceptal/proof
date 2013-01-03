@@ -4,7 +4,7 @@ var express = require("express")
 	;
 
 var Server = function() {
-	if (!(this instanceof Server)) return new Server();
+	if (!(this instanceof Server)) return new Server(arguments);
 
 	var root = __dirname + "/../";
 
@@ -38,14 +38,26 @@ var Server = function() {
 		    , compile: 	compile
 		  }));
 
-	 		app.use(express.static(root + "client/" + configuration("client")));
+			app.use(express.static(root + "components"));
+	 		app.use(express.static(root + "client/" + configuration("client") + "/app"));
 			app.use(express.static(root + "public"));
 		});
 
 		app.configure("development", function(){
+	 		app.use(express.static("/test", root + "client/" + configuration("client") + "/test"));
+		  app.use(express.errorHandler({
+		    	showStack: true
+		    , dumpExceptions: true
+		  }));
+		  app.use(express.logger({ format: "\u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms" }));
+		});
+
+		app.configure("test", function(){
+	 		app.use(express.static("/test", root + "client/" + configuration("client") + "/test"));
 		});
 
 		app.configure("production", function(){
+		  app.use(express.logger({ format: "\u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms" }));
 		});
 
 		return app;

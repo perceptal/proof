@@ -1,7 +1,6 @@
 var Server = require("./configuration/server")
   , Connection = require("./configuration/connection")
-  , model = require("./initializer/model")
-  , resource = require("./initializer/resource")
+  , initialize = require("./initializer")
   ;
 
 function App() {
@@ -17,8 +16,8 @@ App.prototype.init = function(callback) {
 	this.db.open(function(connection) {
 		connection.once("open", function() {
 
-			that.models = model.init(connection);
-			//resources.init(that.server.app, that.models);
+			that.models = initialize("model", connection);
+			// initialize("resource", that.server.app, that.models);
 
 			callback();
 		});
