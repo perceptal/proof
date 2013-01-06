@@ -4,7 +4,7 @@ var mongoose = require("mongoose")
 
 var Connection = function() {
 
-	if (!(this instanceof Connection)) return new Connection(arguments);
+	if (!(this instanceof Connection)) return new Connection();
 
 	this.config = { 
 			host: configuration("mongodb/host")

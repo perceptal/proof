@@ -1,11 +1,22 @@
-var Proof = new Backbone.Marionette.Application();
+Proof = (function(Backbone, Marionette) {
+	"use strict"
 
-Proof.addRegions({
-  	header : "#main header"
-  , main   : "#body .content"
-  , footer : "footer"
-});
+	var App = new Backbone.Marionette.Application();
 
-Proof.on("initialize:after", function() {
-  Backbone.history.start();
+	App.addRegions({
+	  	header : "#header"
+	  , main   : "#content"
+	  , footer : "#footer"
+	});
+
+	App.on("initialize:after", function() {
+	  if (Backbone.history) Backbone.history.start();
+	});
+
+	return App;
+
+})(Backbone, Backbone.Marionette);
+
+$(function() {
+	Proof.start();
 });

@@ -4,7 +4,7 @@ var Server = require("./configuration/server")
   ;
 
 function App() {
-	if (!(this instanceof App)) return new App(arguments);
+	if (!(this instanceof App)) return new App();
 
 	this.server = new Server();
 	this.db = new Connection();
@@ -17,7 +17,10 @@ App.prototype.init = function(callback) {
 		connection.once("open", function() {
 
 			that.models = initialize("model", connection);
-			// initialize("resource", that.server.app, that.models);
+			that.server.configure(that.models.User);
+
+			initialize("resource", that.server.app, that.models);
+			// initialize("controller", that.server.app, that.models);
 
 			callback();
 		});

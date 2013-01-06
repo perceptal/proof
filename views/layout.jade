@@ -1,0 +1,27 @@
+!!! 5
+html
+  head
+    title Authentication Example
+  body
+    h1 Authentication Example
+  
+    - if (!user)
+      h2 Not Authenticated
+      #register
+        a(href="/register") Register
+      #password-login
+        a(href="/login") Login with Password
+      #twitter-login
+        a(href="/login/twitter") Login with Twitter
+      #facebook-login
+        a(href="/login/facebook") Login with Facebook
+    - else
+      h2 Authenticated
+      #user-id Logged in as  
+        =user.email
+      
+      h3
+        a(href="/logout") Logout
+  
+    #main
+      block content

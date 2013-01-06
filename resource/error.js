@@ -1,26 +1,26 @@
-var log = require("../logger")
-  , restify = require("restify");
+// var log = require("../logger")
+//   , restify = require("restify");
 
-var notFound = function(err, data) {
-	log.error(err);
+// var notFound = function(err, data) {
+// 	log.error(err);
 
-	return new restify.ResourceNotFoundError(data + " not found");
-}
+// 	return new restify.ResourceNotFoundError(data + " not found");
+// }
 
-var invalidContent = function(err, data) {
-	log.error(err);
+// var invalidContent = function(err, data) {
+// 	log.error(err);
 
-	return new restify.InvalidContentError(data);
-}
+// 	return new restify.InvalidContentError(data);
+// }
 
-var internal = function(err, data) {
-	log.error(err);
+// var internal = function(err, data) {
+// 	log.error(err);
 
-	return new restify.InternalError(data);
-}
+// 	return new restify.InternalError(data);
+// }
 
-module.exports = {
-		notFound: notFound
-	, invalidContent: invalidContent
-	, internal: internal
-}
+// module.exports = {
+// 		notFound: notFound
+// 	, invalidContent: invalidContent
+// 	, internal: internal
+// }

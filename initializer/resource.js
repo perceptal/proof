@@ -4,10 +4,10 @@ module.exports.init = function(app, models) {
 
 	// Define resources
 	[
-	    { name: "people", 	model: models.Person }
+	    { name: "people" }
 
 	].map(function(defn) {
-		resource.common(app, defn.name, models, defn.model);
+		resource.define(app, defn.name, models);
 	});
 
 }

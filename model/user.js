@@ -1,9 +1,10 @@
-var mongoose  = require("mongoose")
-	, Schema    = mongoose.Schema;
+var mongoose  			= require("mongoose")
+  , Schema    			= mongoose.Schema
+  ;
 
 var UserSchema = new Schema({
-    name              : { type: String, required: true, index: true }
-  , email             : { type: String, required: true, lowercase: true, index: true }
+  	email             : { type: String, required: true, lowercase: true, index: true }
+  , password					: { type: String, required: true }
 });
 
 module.exports = UserSchema;
