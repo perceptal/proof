@@ -1,5 +1,6 @@
 var Server = require("./configuration/server")
   , Connection = require("./configuration/connection")
+  , configuration = require("./configuration")
   , initialize = require("./initializer")
   ;
 

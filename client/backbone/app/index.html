@@ -78,26 +78,7 @@
 						  </div>
 						</nav>
 
-						<article class="list">
-							<img src="/img/photos/emma.jpg" />
-
-							<div class="info">
-							    <div class="heading">
-							        <strong>Emma Watson</strong>
-							        <span class="info">emmawatson</span>
-							        <span class="info">Hogwarts</span>
-							    </div>
-
-							    <div class="detail">
-							        <span class="email"><a href="mailto:emma@watson.com">emma@watson.com</a></span>
-							        <span class="phone">01896 830894</span>
-							    </div>
-							</div>
-
-							<ul>
-							    <li><a class="select">open&rarr;</a></li>
-							</ul>
-						</article>
+						<div id="list"></div>
 
 	        </div>
 	      
@@ -128,11 +109,12 @@
 		<script src="/vendor/underscore/underscore.js"></script>
 		<script src="/vendor/backbone/backbone.js"></script>
 		<script src="/vendor/backbone.marionette/lib/backbone.marionette.js"></script>
+		<script src="/vendor/handlebars/handlebars-1.0.0-rc.1.js"></script>
 		<script src="lib/marionette.handlebars.js"></script>
 		<script src="app.js"></script>
 		<script src="people/people.models.js"></script>
-		<script src="people/people.controller.js"></script>
 		<script src="people/people.views.js"></script>
+		<script src="people/people.js"></script>
 
   </body>
 </html>

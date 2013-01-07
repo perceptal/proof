@@ -49,16 +49,16 @@ Server.prototype.configure = function(User) {
 	    , compile: 	compile
 	  }));
 
-  	app.use(app.router);
 		app.use("/vendor", express.static(root + "components"));
- 		app.use(express.static(root + "client/" + configuration("client") + "/app"));
 		app.use(express.static(root + "public"));
+ 		app.use(express.static(root + "client/" + configuration("client") + "/app"));
 
 		app.use(function(err, req, res, next){
 		  console.error(err, err.stack);
 		  res.send(500, "Something broke!");
 		});
 
+  	app.use(app.router);
 	});
 
 	app.configure("development", function() {

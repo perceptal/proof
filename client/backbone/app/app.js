@@ -10,7 +10,10 @@ Proof = (function(Backbone, Marionette) {
 	});
 
 	App.on("initialize:after", function() {
-	  if (Backbone.history) Backbone.history.start();
+	  if (Backbone.history) Backbone.history.start({
+	  	  pushState: false
+	  	, root: "/"
+	  });
 	});
 
 	return App;
