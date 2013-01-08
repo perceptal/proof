@@ -18,92 +18,6 @@
 
   <body>
 
-    <header id="footer">
-      <nav class="navbar navbar-inverse navbar-fixed-top primary">
-	      <div class="navbar-inner">
-	        <div class="container">
-	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </a>
-	          <a class="brand" href="#"><span class="logo">Proof</span></a>
-	          <div class="nav-collapse">
-	            <ul class="nav">
-	              <li class="active"><a href="/">Home</a></li>
-	              <li><a href="/people">People</a></li>
-	              <li><a href="/administration">Administration</a></li>
-	              <li><a href="/about">About</a></li>
-	              <li><a href="/support">Support</a></li>
-	            </ul>
-	            
-	          	<ul class="pull-right profile navbar-text">
-	          		<li>Signed in as <a href="/profile">recipher</a></li>
-	            	<li><a href="/switch">switch account</a>
-	            	<li><a href="/signout">sign out</a>
-	            </ul>
-	          
-	          </div>
-	        </div>
-	      </div>
-	    </nav>
-    </header>
-
-    <div id="wrap">
-      <div id="content" class="container">
-	      <div class="row">
-
-	      	<aside class="span3">
-	          <div class="well"></div>
-	        </aside>
-
-	        <div id="main" class="span9">
-						
-						<nav class="navbar people">
-						  <div class="navbar-inner">
-						    <a class="brand" href="#">People</a>
-
-								<form class="navbar-form pull-left">
-								  <input type="text" class="span2 search" id="search" placeholder="search&rarr;"/>
-								</form>
-
-						    <ul class="nav nav-pills">
-						      <li class="active"><a href="#">All People</a></li>
-						      <li><a href="#">Filter</a></li>
-						    </ul>
-
-						    <ul class="nav nav-pills pull-right">
-						      <li><button class="btn btn-success" href="#"><i class="icon-user icon-white"></i> Register</button></li>
-						    </ul>
-						  </div>
-						</nav>
-
-						<div id="list"></div>
-
-	        </div>
-	      
-	      </div>   
-      </div>
-    
-      <div id="push"></div>
-  	</div>
-
-    <footer id="footer">
-    	<div class="container">
-	      <p class="muted credit">
-	      	&copy;
-	      	<a href="http://perceptal.co.uk/">Perceptal Engineering</a>
-	      	2013
-
-		    	<a class="locale fr" href="/language/fr">Français</a>
-		    	<a class="locale de" href="/language/de">Deutsch</a>
-	      	<a class="locale en selected" href="/language/en">English</a>
-	    	</p>
-    	</div>
-    </footer>
-
-    </div>
-    
 		<script src="/vendor/jquery/jquery.js"></script>
 		<script src="/bootstrap/js/bootstrap.js"></script>
 		<script src="/vendor/underscore/underscore.js"></script>
@@ -112,10 +26,12 @@
 		<script src="/vendor/handlebars/handlebars-1.0.0-rc.1.js"></script>
 		<script src="lib/marionette.handlebars.js"></script>
 		<script src="app.js"></script>
+		<script src="app/app.views.js"></script>
 		<script src="people/people.models.js"></script>
 		<script src="people/people.views.js"></script>
 		<script src="people/people.js"></script>
 
   </body>
+
 </html>
 

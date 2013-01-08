@@ -11,7 +11,19 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
       initialize: function() {
       	this.people = new People.Models.People();
-      	this.listView = new People.Views.PersonListView({ collection: this.people });
+
+      	this.sidebarView = new People.Views.SidebarView();
+      	this.selectView = new People.Views.SelectView();
+      	this.listView = new People.Views.ListView({ collection: this.people });
+
+      	this.layout = new People.Views.Layout({ 
+      			sidebar: this.sidebarView
+      		, select: this.selectView 
+      		, list: this.listView
+      	});
+      	this.layout.render();
+
+				App.layout.main.show(this.layout);
       }
 
 		,	index: function() {
@@ -25,12 +37,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 	});
 
 	People.addInitializer(function() {
-		var controller = new People.Controller();
-		
-		new People.Router({
-			controller: controller
-		});
-
+		new People.Router({ controller: new People.Controller() });
 	});
 
 });

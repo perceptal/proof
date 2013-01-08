@@ -7,8 +7,12 @@ Backbone.Marionette.TemplateCache.prototype.load = function() {
 };
 
 Backbone.Marionette.TemplateCache.prototype.loadTemplate = function(templateId) {
-  var id = templateId.replace("#", "").split("/")
-    , url = "/" + id[0] + "/templates/" + id[1] + ".html"
+  var parts = templateId.replace("#", "").split("/");
+
+  var section = _.first(parts)
+    , name = parts.slice(1).join("/");
+
+  var url = "/" + section + "/templates/" + name + ".html"
     , template;
 
 	$.ajax({

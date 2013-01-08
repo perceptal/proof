@@ -16,7 +16,6 @@ var common = function(Schema) {
   });
 
   Schema.methods.toJSON = function(options) {
-
     var opts = _.extend({ virtuals: true, json: true }, options);
 
     var o = this.toObject(opts);

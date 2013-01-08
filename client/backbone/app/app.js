@@ -1,15 +1,9 @@
 Proof = (function(Backbone, Marionette) {
 	"use strict"
 
-	var App = new Backbone.Marionette.Application();
+	var App = new Marionette.Application();
 
-	App.addRegions({
-	  	header : "#header"
-	  , main   : "#content"
-	  , footer : "#footer"
-	});
-
-	App.on("initialize:after", function() {
+	App.on("initialize:after", function() {		
 	  if (Backbone.history) Backbone.history.start({
 	  	  pushState: false
 	  	, root: "/"
