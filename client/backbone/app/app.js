@@ -3,10 +3,10 @@ Proof = (function(Backbone, Marionette) {
 
 	var App = new Marionette.Application();
 
-	App.on("initialize:after", function() {		
+	App.on("initialize:after", function() {
 	  if (Backbone.history) Backbone.history.start({
-	  	  pushState: false
-	  	, root: "/"
+  	  pushState: false
+  	, root: "/"
 	  });
 	});
 

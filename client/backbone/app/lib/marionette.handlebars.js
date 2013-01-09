@@ -16,12 +16,12 @@ Backbone.Marionette.TemplateCache.prototype.loadTemplate = function(templateId) 
     , template;
 
 	$.ajax({
-			url: url
-		, async: false
-		, dataType: "html"
-		, success: function(html) {
-  			template = html;
-  		}
+		url: url
+	, async: false
+	, dataType: "html"
+	, success: function(html) {
+			template = html;
+		}
   });
 
   return template;

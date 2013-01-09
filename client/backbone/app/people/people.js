@@ -2,37 +2,43 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
 	People.Router = Marionette.AppRouter.extend({
 		appRoutes: {
-      	"people"           : "index"
-      , "people/search/:q" : "search"
+    	"people"           	: "index"
+    , "people/search/:q" 	: "search"
+    , "people/new"				: "new"
 		}
 	});
 
 	People.Controller = Marionette.Controller.extend({
 
-      initialize: function() {
-      	this.people = new People.Models.People();
+    initialize: function() {
+    	this.people = new People.Models.People();
+    }
 
-      	this.sidebarView = new People.Views.SidebarView();
-      	this.selectView = new People.Views.SelectView();
-      	this.listView = new People.Views.ListView({ collection: this.people });
+	,	index: function() {
+			this.people.fetch();
 
-      	this.layout = new People.Views.Layout({ 
-      			sidebar: this.sidebarView
-      		, select: this.selectView 
-      		, list: this.listView
-      	});
-      	this.layout.render();
+    	this.sidebarView = new People.Views.SidebarView();
+    	this.selectView = new People.Views.SelectView();
+    	this.listView = new People.Views.ListView({ collection: this.people });
 
-				App.layout.main.show(this.layout);
-      }
+    	this.layout = new People.Views.Layout();
+    	this.layout.attachViews({ 
+  			sidebar: this.sidebarView
+  		, select: this.selectView 
+  		, list: this.listView
+    	});
+    	this.layout.render();
 
-		,	index: function() {
-				this.people.fetch();
-			} 
+			App.layout.main.show(this.layout);
+		} 
 
-		, search: function(q) {
-			  // 
-			} 
+	, search: function(q) {
+		  // 
+		} 
+
+	, "new": function() {
+		
+	}
 
 	});
 

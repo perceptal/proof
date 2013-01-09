@@ -36,6 +36,12 @@ footer a.locale {
 footer a.locale.selected {
   color: #005580;
 }
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  opacity: 0.6;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  filter: alpha(opacity=60);
+}
 input.search {
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -74,18 +80,18 @@ input.search.searching {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-ul.profile {
+ul.authentication {
   padding-top: 10px;
   list-style: none;
 }
-ul.profile li {
+ul.authentication li {
   float: left;
   padding-left: 10px;
 }
-ul.profile li a {
+ul.authentication li a {
   color: #c00;
 }
-ul.profile li a:hover {
+ul.authentication li a:hover {
   color: #fff;
 }
 .image {

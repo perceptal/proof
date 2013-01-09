@@ -1,6 +1,6 @@
 module.exports = function(app, models) {
 
-	var Person = models.Person
+	var Person = models.Person;
 
 	app.get("/api/people", function(req, res, next) {
 		Person.find({}, function(err, people) {
