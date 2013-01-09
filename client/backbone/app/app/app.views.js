@@ -1,6 +1,7 @@
 Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
   Views.ModalRegion = Backbone.Marionette.Region.extend({
+    
     el: "#modal"
  
   , constructor: function() {
@@ -32,7 +33,20 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 	  template: "app/header"
 
   , initialize: function() {
+      var that = this;
+
       this.authentication = new Marionette.Region({ el: "#authentication" });
+
+      App.vent.on("authentication:signedon", function(session) {
+        var session = new App.Authentication.Models.SignOn(session);
+        
+        that.showSignedOn(session);
+        App.session = session;
+      });
+
+      App.vent.on("authentication:signedout", function(session) {
+        that.showSignedOut();
+      });
     }
 
   , showSignedOut: function() {
@@ -82,11 +96,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 		});
     App.layout.render();
 
-    App.layout.header.currentView.showSignedOut();
-
-    App.vent.on("authenticated", function(session) {
-      App.layout.header.currentView.showSignedOn(session);
-    });
+    App.vent.trigger("authentication:signedout");
 	});
 
 });

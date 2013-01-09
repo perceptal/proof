@@ -40,7 +40,7 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 			  , promise = this.model.save();
 
 			promise.done(function(session) {
-				App.vent.trigger("authenticated", session);
+				App.vent.trigger("authentication:signedon", session);
 				that.close();
 			});
 
@@ -57,9 +57,18 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 	Views.SignedOnView = Marionette.ItemView.extend({
 	  template: "authentication/signedon"
   
+	, events: {
+			"click .signout": "signOut"
+	  }
+
   , initialize: function(options) {
-  		this.model = new App.Authentication.Models.SignOn(options.model);
+  		this.model = options.model;
   	}
+
+  , signOut: function() {
+  		App.vent.trigger("authentication:signedout");
+  		return false;
+  	}	
 	});
 
 	Views.SignedOutView = Marionette.ItemView.extend({
