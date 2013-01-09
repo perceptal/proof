@@ -38,10 +38,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       this.authentication = new Marionette.Region({ el: "#authentication" });
 
       App.vent.on("authentication:signedon", function(session) {
-        var session = new App.Authentication.Models.SignOn(session);
-        
         that.showSignedOn(session);
-        App.session = session;
       });
 
       App.vent.on("authentication:signedout", function(session) {
@@ -96,7 +93,19 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 		});
     App.layout.render();
 
+    // Move this
     App.vent.trigger("authentication:signedout");
+      
+    App.vent.on("authentication:signedon", function(session) {
+      App.session = session;
+    });
+
+    App.vent.on("authentication:signedout", function(session) {
+      App.session = null;
+
+      // Navigate to home
+      // Re-render navigation
+    });
 	});
 
 });

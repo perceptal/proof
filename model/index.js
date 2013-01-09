@@ -15,13 +15,19 @@ var common = function(Schema) {
     return this._id;
   });
 
-  Schema.methods.toJSON = function(options) {
+	Schema.methods.toJSON = function(options) {
     var opts = _.extend({ virtuals: true, json: true }, options);
 
     var o = this.toObject(opts);
 
     delete o._id;
     delete o.__v;
+ 
+	  if (opts.hide) {
+	    opts.hide.split(" ").forEach(function(prop) {
+	      delete o[prop];
+	    });
+	  }
 
     return o;
   };

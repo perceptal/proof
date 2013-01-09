@@ -39,18 +39,23 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 			var that = this
 			  , promise = this.model.save();
 
-			promise.done(function(session) {
-				App.vent.trigger("authentication:signedon", session);
+			promise.done(function(data) {
+				App.vent.trigger("authentication:signedon", new App.Authentication.Models.SignOn(data));
 				that.close();
 			});
 
-			promise.fail(function() {	// TODO Deal with app error
-				that.alert("You have entered invalid credentials.");
+			promise.fail(function(response) {	// TODO Deal with app error
+				if (response.status === 404) {
+					that.alert("You have entered invalid credentials.");
+				} else if (response.status === 500) {
+					that.alert("Application error, please try again.");
+				}
+				that.setFocus();
 			});
 		}
 
 	, alert: function(message) {
-			this.ui.alert.text(message).fadeIn();
+			this.ui.alert.text(message).hide().fadeIn();
 		}
 	});
 
@@ -66,6 +71,8 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
   	}
 
   , signOut: function() {
+  	  var promise = this.model.destroy();
+  	  
   		App.vent.trigger("authentication:signedout");
   		return false;
   	}	
