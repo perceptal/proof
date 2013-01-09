@@ -3,9 +3,10 @@ module.exports = function(app, models) {
 	var User = models.User;
 
 	app.post("/api/session", function(req, res, next) {
-		console.log(req.body);
-
-		return res.send(200);
+		User.findOne({}, function(err, user) {
+			if (err) return res.send(500);
+			return res.send(200, user);
+		});
 	});
 
 	app.del("/api/session/:id", function(req, res, next) {

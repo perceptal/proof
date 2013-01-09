@@ -35,8 +35,12 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       this.authentication = new Marionette.Region({ el: "#authentication" });
     }
 
-  , showAuthentication: function() {
+  , showSignedOut: function() {
       this.authentication.show(new App.Authentication.Views.SignedOutView());
+    }
+
+  , showSignedOn: function(session) {
+      this.authentication.show(new App.Authentication.Views.SignedOnView({ model: session }));
     }
 	});
 
@@ -78,7 +82,11 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 		});
     App.layout.render();
 
-    App.layout.header.currentView.showAuthentication();
+    App.layout.header.currentView.showSignedOut();
+
+    App.vent.on("authenticated", function(session) {
+      App.layout.header.currentView.showSignedOn(session);
+    });
 	});
 
 });

@@ -36,20 +36,30 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 		}
 
 	, signOn: function(e) {
-			this.model.save();
-			this.alert("You have entered invalid credentials")
-			// this.close();
+			var that = this
+			  , promise = this.model.save();
+
+			promise.done(function(session) {
+				App.vent.trigger("authenticated", session);
+				that.close();
+			});
+
+			promise.fail(function() {	// TODO Deal with app error
+				that.alert("You have entered invalid credentials.");
+			});
 		}
 
 	, alert: function(message) {
-			this.ui.alert.text(message);
-			this.ui.alert.fadeIn();
+			this.ui.alert.text(message).fadeIn();
 		}
 	});
 
 	Views.SignedOnView = Marionette.ItemView.extend({
 	  template: "authentication/signedon"
   
+  , initialize: function(options) {
+  		this.model = new App.Authentication.Models.SignOn(options.model);
+  	}
 	});
 
 	Views.SignedOutView = Marionette.ItemView.extend({
