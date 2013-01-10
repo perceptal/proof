@@ -1,12 +1,16 @@
+var passport = require("passport");
+
 module.exports = function(app, models) {
 
 	var Person = models.Person;
 
-	app.get("/api/people", function(req, res, next) {
-		Person.find({}, function(err, people) {
-			if (err) return next(err);
-			return res.send(200, people);
-		});
+	app.get("/api/people", 
+		passport.authenticate("basic", { session: false }), 
+		function(req, res, next) {
+			Person.find({}, function(err, people) {
+				if (err) return next(err);
+				return res.send(200, people);
+			});
 	});
 
 	app.get("/api/people/:id", function(req, res, next) {

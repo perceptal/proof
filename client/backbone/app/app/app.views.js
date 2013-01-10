@@ -29,6 +29,14 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
   });
 
+  Views.MessageView = Marionette.ItemView.extend({
+    template: "app/message"
+
+  , initialize: function(options) {
+      this.model = options.model;
+    }
+  });
+
 	Views.HeaderView = Marionette.ItemView.extend({
 	  template: "app/header"
 
@@ -67,10 +75,11 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   ,	el: "body"
 
   , regions: {
-  		header: "#header"
-  	, main  : "#content"
-  	, footer: "#footer"
-    , modal : Views.ModalRegion
+  		header  : "#header"
+  	, main    : "#content"
+  	, footer  : "#footer"
+    , message : "#message"
+    , modal   : Views.ModalRegion
 	}
 
   , attachViews: function(views) {
@@ -91,21 +100,8 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       header: new Views.HeaderView()
     , footer: new Views.FooterView()
 		});
+    
     App.layout.render();
-
-    // Move this
-    App.vent.trigger("authentication:signedout");
-      
-    App.vent.on("authentication:signedon", function(session) {
-      App.session = session;
-    });
-
-    App.vent.on("authentication:signedout", function(session) {
-      App.session = null;
-
-      // Navigate to home
-      // Re-render navigation
-    });
 	});
 
 });

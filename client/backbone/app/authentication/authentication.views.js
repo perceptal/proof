@@ -1,6 +1,5 @@
 Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-
 	Views.SignOnView = Marionette.ItemView.extend({
 	  template: "authentication/signon"
   
@@ -40,11 +39,11 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 			  , promise = this.model.save();
 
 			promise.done(function(data) {
-				App.vent.trigger("authentication:signedon", new App.Authentication.Models.SignOn(data));
+				App.vent.trigger("authentication:signedon", new App.Authentication.Models.User(data));
 				that.close();
 			});
 
-			promise.fail(function(response) {	// TODO Deal with app error
+			promise.fail(function(response) {	
 				if (response.status === 404) {
 					that.alert("You have entered invalid credentials.");
 				} else if (response.status === 500) {
@@ -72,7 +71,7 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 
   , signOut: function() {
   	  var promise = this.model.destroy();
-  	  
+
   		App.vent.trigger("authentication:signedout");
   		return false;
   	}	

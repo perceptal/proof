@@ -1,7 +1,12 @@
 Proof.module("Authentication.Models", function(Models, App, Backbone, Marionette, $, _) {
 
 	Models.SignOn = Backbone.Model.extend({
-		urlRoot: "/api/session"
+		defaults: {
+			email: "anonymous"
+		,	sessionId: "-"
+		}
+
+	,	urlRoot: "/api/sessions"
 
 	,	authenticationToken: function() {
 			var username = this.get("email")
@@ -9,6 +14,14 @@ Proof.module("Authentication.Models", function(Models, App, Backbone, Marionette
 
 			return window.btoa([ username, password ].join(":"));
 		}
+	});
+
+	Models.User = Backbone.Model.extend({
+		urlRoot: "/api/users"
+	});
+
+	Models.Users = Backbone.Collection.extend({
+		url: "/api/users"
 	});
 
 });

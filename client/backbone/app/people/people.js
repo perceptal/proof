@@ -15,7 +15,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
     }
 
 	,	index: function() {
-			this.people.fetch();
+			var promise = this.people.fetch();
 
     	this.sidebarView = new People.Views.SidebarView();
     	this.selectView = new People.Views.SelectView();
@@ -37,7 +37,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 		} 
 
 	, "new": function() {
-		
+
 	}
 
 	});

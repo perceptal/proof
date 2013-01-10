@@ -50,6 +50,7 @@ Server.prototype.configure = function(User) {
 	  }));
 
 		app.use("/vendor", express.static(root + "components"));
+		app.use("/locale", express.static(root + "locale"));
 		app.use(express.static(root + "public"));
  		app.use(express.static(root + "client/" + configuration("client") + "/app"));
 

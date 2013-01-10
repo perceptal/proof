@@ -4,7 +4,7 @@ module.exports = function(app, models) {
 
 	var User = models.User;
 
-	app.post("/api/session", function(req, res, next) {
+	app.post("/api/sessions", function(req, res, next) {
 		User.findOne({ email: req.body.username, password: req.body.password }, function(err, user) {
 			if (err) return res.send(500);
 			if (user == null) return res.send(404);
@@ -18,7 +18,7 @@ module.exports = function(app, models) {
 		});
 	});
 
-	app.del("/api/session/:id", function(req, res, next) {
+	app.del("/api/sessions/:id", function(req, res, next) {
 		User.findOne({ _id: req.params.id }, function(err, user) {
 			if (err) return res.send(500);
 			if (user == null) return res.send(404);
