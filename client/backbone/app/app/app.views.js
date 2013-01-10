@@ -37,8 +37,8 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
   });
 
-	Views.HeaderView = Marionette.ItemView.extend({
-	  template: "app/header"
+  Views.HeaderView = Marionette.ItemView.extend({
+    template: "app/header"
 
   , initialize: function() {
       var that = this;
@@ -61,9 +61,9 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   , showSignedOn: function(session) {
       this.authentication.show(new App.Authentication.Views.SignedOnView({ model: session }));
     }
-	});
+  });
 
-	Views.FooterView = Marionette.View.extend({
+  Views.FooterView = Marionette.View.extend({
     template: "app/footer"
 
   , className: "container"
@@ -97,41 +97,41 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
       return false;
     }
-	});
+  });
 
-	Views.Layout = Marionette.Layout.extend({
-  	template: "app/layout"
+  Views.Layout = Marionette.Layout.extend({
+    template: "app/layout"
 
-  ,	el: "body"
+  , el: "body"
 
   , regions: {
-  		header  : "#header"
-  	, main    : "#content"
-  	, footer  : "#footer"
+      header  : "#header"
+    , main    : "#content"
+    , footer  : "#footer"
     , message : "#message"
     , modal   : Views.ModalRegion
-	}
+  }
 
   , attachViews: function(views) {
-  		if (views.header != null) this.headerView = views.header;
-  		if (views.footer != null) this.footerView = views.footer;
-  	}
+      if (views.header != null) this.headerView = views.header;
+      if (views.footer != null) this.footerView = views.footer;
+    }
 
   , onRender: function() {
-  		this.header.show(this.headerView);
-  		this.footer.show(this.footerView);
-  	}
-	});
+      this.header.show(this.headerView);
+      this.footer.show(this.footerView);
+    }
+  });
 
-	Views.addInitializer(function() {
-		App.layout = new Views.Layout();
+  Views.addInitializer(function() {
+    App.layout = new Views.Layout();
 
-		App.layout.attachViews({
+    App.layout.attachViews({
       header: new Views.HeaderView()
     , footer: new Views.FooterView()
-		});
+    });
 
     App.layout.render();
-	});
+  });
 
 });
