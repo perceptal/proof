@@ -39,7 +39,7 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 			  , promise = this.model.save();
 
 			promise.done(function(data) {
-				App.vent.trigger("authentication:signedon", new App.Authentication.Models.User(data));
+				App.vent.trigger("authentication:signedon", new App.Authentication.Models.SignOn(data));
 				that.close();
 			});
 
@@ -70,9 +70,8 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
   	}
 
   , signOut: function() {
-  	  var promise = this.model.destroy();
-
   		App.vent.trigger("authentication:signedout");
+
   		return false;
   	}	
 	});

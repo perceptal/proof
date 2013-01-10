@@ -9,13 +9,19 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	, signOn: function(session) {
       this.session = session;
 
+      // Save cookie
+
       // Now load user from session
 
 		}
 
 	,	signOut: function() {
+  	  if (this.session) this.session.destroy();
+
 			this.session = new App.Authentication.Models.SignOn();
 			this.currentUser = new App.Authentication.Models.User();
+
+			// Clear cookie
 
       // Navigate to home
       
@@ -29,6 +35,11 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	, changeLocale: function(locale) {
 			// Set locale
+			this.locale = locale;
+			
+			// Set i18n locale
+
+			// Change url?
 
 			this.reload();
 		}
@@ -49,7 +60,12 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     	App.showMessage("Verboten!");
     });
 
+    App.vent.on("locale:changed", function(locale) {
+    	App.changeLocale(locale);
+    });
+
     App.vent.trigger("authentication:signedout");
+    App.vent.trigger("locale:changed", "en");
 	});
 
 });

@@ -63,10 +63,40 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 	});
 
-	Views.FooterView = Marionette.ItemView.extend({
+	Views.FooterView = Marionette.View.extend({
     template: "app/footer"
 
   , className: "container"
+
+  , events: {
+      "click .locale": "changeLocale"
+    }
+
+  , initialize: function(options) {
+      var that = this;
+      Handlebars.registerHelper("isSelected", function(locale) {
+        return that.locale === locale ? "selected" : "";
+      });
+
+      options = options || {};
+      this.locale = options.locale;
+      
+      App.vent.on("locale:changed", function(locale) {
+        that.locale = locale;
+        that.render();
+      });
+   }
+
+  , render: function() {
+      var html = Marionette.Renderer.render(this.template, this);
+      this.$el.html(html);
+    }
+
+  , changeLocale: function(e) {
+      App.vent.trigger("locale:changed", $(e.target).data("locale"));
+
+      return false;
+    }
 	});
 
 	Views.Layout = Marionette.Layout.extend({
@@ -100,7 +130,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       header: new Views.HeaderView()
     , footer: new Views.FooterView()
 		});
-    
+
     App.layout.render();
 	});
 
