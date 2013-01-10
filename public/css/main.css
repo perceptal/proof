@@ -34,7 +34,8 @@ footer a.locale {
   padding: 1px 0px 0 10px;
 }
 footer a.locale.selected {
-  color: #005580;
+  color: #900;
+  text-decoration: underline;
 }
 .modal-backdrop,
 .modal-backdrop.fade.in {

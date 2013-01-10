@@ -30,7 +30,10 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 	  }
 
   , onKeypress: function(e) {
-      if (e.keyCode === 13) this.signOn();
+      if (e.keyCode === 13) {
+        this.onChange(e);
+        this.signOn();
+      }
     }
 
 	, onChange: function(e) {

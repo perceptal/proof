@@ -1,8 +1,6 @@
 Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
-  var PROOF_AUTH_COOKIE = "proof_auth"
-    , PROOF_LOCALE_COOKIE = "proof_locale"
-    , DEFAULT_LOCALE = "en";
+  var PROOF_AUTH_COOKIE = "proof_auth";
 
 	_.extend(App.constructor.prototype, {
 
@@ -72,12 +70,9 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 		}
 
 	, changeLocale: function(locale) {
-			// Set locale
 			this.locale = locale;
 			
-      $.cookie(PROOF_LOCALE_COOKIE, locale);
-
-			// Set i18n locale
+      i18n.setLng(locale);
 
 			// Change url?
 
@@ -105,7 +100,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     });
 
     App.determineAuthenticationStatus();
-    App.vent.trigger("locale:changed", $.cookie(PROOF_LOCALE_COOKIE) || DEFAULT_LOCALE);
+    App.vent.trigger("locale:changed", i18n.lng());
 	});
 
 });

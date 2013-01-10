@@ -38,7 +38,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
 	, "new": function() {
 
-	}
+	 }
 
 	});
 

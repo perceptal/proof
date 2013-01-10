@@ -1,4 +1,4 @@
-Proof = (function(Backbone, Marionette) {
+Proof = (function(Backbone, Marionette, i18n) {
 	"use strict"
 
 	var App = new Marionette.Application();
@@ -15,5 +15,5 @@ Proof = (function(Backbone, Marionette) {
 })(Backbone, Backbone.Marionette);
 
 $(function() {
-	Proof.start();
+  Proof.start();    
 });

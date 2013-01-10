@@ -67,6 +67,9 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function(options) {
       var that = this;
+
+      console.log(i18n.t("main.home"));
+
       Handlebars.registerHelper("isSelected", function(locale) {
         return that.locale === locale ? "selected" : "";
       });
