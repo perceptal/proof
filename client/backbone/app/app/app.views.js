@@ -41,17 +41,10 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     template: "app/header"
 
   , initialize: function() {
-      var that = this;
-
       this.authentication = new Marionette.Region({ el: "#authentication" });
 
-      App.vent.on("authentication:signedon", function(session) {
-        that.showSignedOn(session);
-      });
-
-      App.vent.on("authentication:signedout", function(session) {
-        that.showSignedOut();
-      });
+      App.vent.on("currentuser:loaded", this.showSignedOn, this);
+      App.vent.on("authentication:signedout", this.showSignedOut, this);
     }
 
   , showSignedOut: function() {

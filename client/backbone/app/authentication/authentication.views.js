@@ -10,9 +10,11 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
   	}
 
   , events: {
-  	  "click button#signon"  : "signOn"
-  	, "change input#username": "onChange"
-  	, "change input#password": "onChange"
+  	  "click button#signon"    : "signOn"
+    , "keypress input#username": "onKeypress"
+    , "keypress input#password": "onKeypress"
+  	, "change input#username"  : "onChange"
+  	, "change input#password"  : "onChange"
   	}
 
   , initialize: function(options) {
@@ -26,6 +28,10 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
   , setFocus: function(e) {
 	  	this.ui.username.focus();
 	  }
+
+  , onKeypress: function(e) {
+      if (e.keyCode === 13) this.signOn();
+    }
 
 	, onChange: function(e) {
 		  var prop = e.target.id

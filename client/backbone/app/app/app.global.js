@@ -11,13 +11,21 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 		}
 
 	, signOn: function(session) {
+      var id = session.get("id");
+
       this.session = session;
 
       // Save auth cookie
-      $.cookie(PROOF_AUTH_COOKIE, session.get("id"));
+      $.cookie(PROOF_AUTH_COOKIE, id);
 
       // Now load user from session
- 
+      this.currentUser = new App.Authentication.Models.User({ id: id });
+      var promise = this.currentUser.fetch();
+
+      promise.done($.proxy(function() {
+        App.vent.trigger("currentuser:loaded", this.currentUser);
+      }, this));
+
       this.reload();
 		}
 
@@ -31,7 +39,6 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
           , promise = session.fetch();
 
         promise.done(function() {
-          App.vent.trigger("authentication:signedon", session);
           that.signOn(session);
         });
 
