@@ -7,18 +7,19 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	  signOn: function(session) {
       var id = session.get("id");
 
-      this.session = session;
+      Global.session = session;
 
       // Save auth cookie
       $.cookie(PROOF_AUTH_COOKIE, id);
 
       // Now load user from session
-      this.currentUser = new App.Authentication.Models.User({ id: id });
-      var promise = this.currentUser.fetch();
-
-      promise.done($.proxy(function() {
-        App.vent.trigger("authentication:signedon", this.session, this.currentUser);
-      }, this));
+      Global.currentUser = new App.Authentication.Models.User({ id: id });
+      
+      Global.currentUser.fetch()
+        .done(function() {
+          App.vent.trigger("authentication:signedon", Global.session, Global.currentUser);
+          App.vent.trigger("section:changed", Global.section);
+        });
 		}
 
   , determineAuthenticationStatus: function() {
@@ -46,8 +47,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	,	signOut: function() {
       if (this.session) this.session.destroy();
 
-      this.session = new App.Authentication.Models.SignOn();
-      this.currentUser = new App.Authentication.Models.User();
+      Global.session = new App.Authentication.Models.SignOn();
+      Global.currentUser = new App.Authentication.Models.User();
 
       // Clear auth cookie
       $.removeCookie(PROOF_AUTH_COOKIE);
@@ -55,7 +56,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       // Navigate to home      
       App.Home.router.navigate("/", true);
 
-      App.vent.trigger("authentication:signedout", this.session, this.currentUser);
+      App.vent.trigger("authentication:signedout", Global.session, Global.currentUser);
+      App.vent.trigger("section:changed", Global.section);
 		}
 
 	, showMessage: function(text) {
@@ -65,19 +67,23 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       App.layout.message.show(message);
 		}
 
-	, changeLocale: function(locale) {
-			this.locale = locale;
-			
+  , changeLocale: function(locale) {
       i18n.setLng(locale);
 
-      App.vent.trigger("locale:changed");      
-		}
+      App.vent.trigger("locale:changed", Global.session, Global.currentUser);  
+      App.vent.trigger("section:changed", Global.section);  
+    }
+
+  , changeSection: function(section) {
+      Global.section = section;   
+    }
 
 	});
 
 	// Initialize global events
 	Global.addInitializer(function() {
-      
+    
+    App.vent.on("section:changed", App.changeSection);
     App.vent.on("authentication:signon", App.signOn);
     App.vent.on("authentication:signout", App.signOut);
     App.vent.on("locale:change", App.changeLocale);

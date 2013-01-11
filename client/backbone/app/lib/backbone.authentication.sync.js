@@ -2,9 +2,9 @@ Backbone.originalSync = Backbone.sync;
 Backbone.sync = function(method, model, opts) {
 	var options = opts;
 	
-	if (Proof && Proof.session) {
+	if (Proof && Proof.Global.session) {
 	  options = _.extend({ 
-	  	headers: { "Authorization": "Basic " + Proof.session.authenticationToken() }
+	  	headers: { "Authorization": "Basic " + Proof.Global.session.authenticationToken() }
 	  }, opts);
   }
 	

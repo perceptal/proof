@@ -55,33 +55,30 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       items: "ul.nav li"
     }
 
-  , initialize: function(options) {
-      this.section = options.section;
-      this.user = options.user;
-
-      App.vent.on("section:changed", this.render, this);
-      App.vent.trigger("section:changed", options.section);
+  , initialize: function() {
+      App.vent.on("section:changed", this.select, this);
     }
 
-  , render: function(section) {
+  , render: function() {
       this.$el.html(Marionette.Renderer.render(this.template, this));
 
       this.bindUIElements();
+    }
+
+  , select: function(section) {
+      if (_.isUndefined(section)) return;
 
       this.ui.items
         .removeClass("active")
-        .filter("." + section || this.section)
+        .filter("." + section)
           .addClass("active");
     }
-
   });
 
   Views.HeaderView = Marionette.View.extend({
     template: "app/header"
 
   , initialize: function(options) {
-      this.section = options.section;
-
       this.authentication = new Marionette.Region({ el: "#authentication" });
       this.navigation = new Marionette.Region({ el: "#navigation" });
 
@@ -96,7 +93,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , reload: function(session, user) {
       session = session || App.session;
-      
+
       if (session && session.isAuthenticated())
         this.showSignedOn(session);
       else
@@ -105,7 +102,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , showNavigation: function(user) {
-      this.navigation.show(new Views.NavigationView({ section: this.section, user: user }));
+      this.navigation.show(new Views.NavigationView());
     }
 
   , showSignedOut: function() {
@@ -181,7 +178,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     App.layout = new Views.Layout();
 
     App.layout.attachViews({
-      header: new Views.HeaderView({ section: "home" })
+      header: new Views.HeaderView()
     , footer: new Views.FooterView()
     });
 
