@@ -4,18 +4,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	_.extend(App, {
 
-		reload: function() {
-      var header = new App.Views.HeaderView();
-
-      this.layout.header.show(header);
-      
-      if (App.session && App.session.isAuthenticated())
-        header.showSignedOn(App.session);
-      else
-        header.showSignedOut();
-		}
-
-	, signOn: function(session) {
+	  signOn: function(session) {
       var id = session.get("id");
 
       this.session = session;
@@ -28,10 +17,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       var promise = this.currentUser.fetch();
 
       promise.done($.proxy(function() {
-        App.vent.trigger("currentuser:loaded", this.currentUser);
+        App.vent.trigger("authentication:signedon", this.currentUser);
       }, this));
-
-      this.reload();
 		}
 
   , determineAuthenticationStatus: function() {
@@ -52,8 +39,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       } else signOut();
 
       function signOut() {
-        App.vent.trigger("authentication:signedout");
-        that.signOut();        
+        App.vent.trigger("authentication:signout");
       }
   }
 
@@ -66,12 +52,14 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       // Clear auth cookie
       $.removeCookie(PROOF_AUTH_COOKIE);
 
-      // Navigate to home
-      
-      this.reload();
+      // Navigate to home      
+
+      App.vent.trigger("authentication:signedout");
 		}
 
 	, showMessage: function(text) {
+      // TODO Change this to store model and bind changes to view
+
      	var message = new App.Views.MessageView({ model: new App.Models.Message({ text: text }) }); 
       App.layout.message.show(message);
 		}
@@ -81,20 +69,18 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 			
       i18n.setLng(locale);
 
-			// Change url?
-
-			this.reload();
+      App.vent.trigger("locale:changed");
 		}
 	});
 
 	// Initialize global events
 	Global.addInitializer(function() {
       
-    App.vent.on("authentication:signedon", function(session) {
+    App.vent.on("authentication:signon", function(session) {
     	App.signOn(session);
     });
 
-    App.vent.on("authentication:signedout", function(session) {
+    App.vent.on("authentication:signout", function(session) {
       App.signOut();
     });
 
@@ -102,13 +88,13 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     	App.showMessage("Verboten!");
     });
 
-    App.vent.on("locale:changed", function(locale) {
+    App.vent.on("locale:change", function(locale) {
     	App.changeLocale(locale);
     });
 
     App.determineAuthenticationStatus();
 
-    App.vent.trigger("locale:changed", i18n.lng());
+    App.vent.trigger("locale:change", i18n.lng());
 	});
 
 });

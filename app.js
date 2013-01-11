@@ -36,4 +36,7 @@ App.prototype.start = function() {
 	});
 }
 
-module.exports = App;
+// Start her up
+var app = new App();
+
+app.start();

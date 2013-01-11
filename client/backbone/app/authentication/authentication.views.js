@@ -10,11 +10,11 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
   	}
 
   , events: {
-  	  "click button#signon"    : "signOn"
-    , "keypress input#username": "onKeypress"
-    , "keypress input#password": "onKeypress"
-  	, "change input#username"  : "onChange"
-  	, "change input#password"  : "onChange"
+  	  "click    button#signon"  : "signOn"
+    , "keypress input#username" : "onKeypress"
+    , "keypress input#password" : "onKeypress"
+  	, "change   input#username" : "onChange"
+  	, "change   input#password" : "onChange"
   	}
 
   , initialize: function(options) {
@@ -48,7 +48,7 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
 			  , promise = this.model.save();
 
 			promise.done(function(data) {
-				App.vent.trigger("authentication:signedon", new App.Authentication.Models.SignOn(data));
+				App.vent.trigger("authentication:signon", new App.Authentication.Models.SignOn(data));
 				that.close();
 			});
 
@@ -79,7 +79,7 @@ Proof.module("Authentication.Views", function(Views, App, Backbone, Marionette, 
   	}
 
   , signOut: function() {
-  		App.vent.trigger("authentication:signedout");
+  		App.vent.trigger("authentication:signout");
 
   		return false;
   	}	

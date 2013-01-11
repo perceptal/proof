@@ -10,11 +10,17 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
 	People.Controller = Marionette.Controller.extend({
 
-    initialize: function() {
+    select: function() {
+      App.vent.trigger("section:changed", "people");
+    }
+
+  , initialize: function() {
     	this.people = new People.Models.People();
     }
 
 	,	index: function() {
+      this.select();
+
 			var promise = this.people.fetch();
 
     	this.sidebarView = new People.Views.SidebarView();

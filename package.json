@@ -1,6 +1,6 @@
 {
   "name": "proof",
-  "description": "Proof of Concept for DCI",
+  "description": "Proof of Concept",
   "version": "0.1.0",
   "homepage": "http://www.perceptal.co.uk/",
   "author": {
@@ -17,7 +17,7 @@
   },
   "scripts": {
       "test": "make test"
-    , "start": "node bootstrap.js"
+    , "start": "node app.js"
   },
   "dependencies": {
       "underscore":         "~1.3.3"
@@ -42,5 +42,5 @@
     , "should":             "~1.2.1"
     , "sinon":              "~1.5.2"
   },
-  "keywords": [ "proof", "dci" ]
+  "keywords": [ "proof" ]
 }

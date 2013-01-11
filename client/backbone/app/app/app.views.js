@@ -32,19 +32,77 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.MessageView = Marionette.ItemView.extend({
     template: "app/message"
 
+  , ui: {
+      alert: "div.alert"
+    }
+
   , initialize: function(options) {
       this.model = options.model;
+      
+      App.vent.on("section:changed", this.dismiss, this);
     }
+
+  , dismiss: function() {
+      this.ui.alert.alert("close");
+    }
+
   });
 
-  Views.HeaderView = Marionette.ItemView.extend({
+  Views.NavigationView = Marionette.View.extend({
+    template: "app/navigation"
+
+  , ui: {
+      items: "ul.nav li"
+    }
+
+  , initialize: function(options) {
+      this.section = options.section;
+
+      App.vent.on("section:changed", this.render, this);
+      App.vent.trigger("section:changed", options.section);
+    }
+
+  , render: function(section) {
+      this.$el.html(Marionette.Renderer.render(this.template, this));
+
+      this.bindUIElements();
+
+      this.ui.items
+        .removeClass("active")
+        .filter("." + section || this.section)
+          .addClass("active");
+    }
+
+  });
+
+  Views.HeaderView = Marionette.View.extend({
     template: "app/header"
 
-  , initialize: function() {
-      this.authentication = new Marionette.Region({ el: "#authentication" });
+  , initialize: function(options) {
+      this.section = options.section;
 
-      App.vent.on("currentuser:loaded", this.showSignedOn, this);
-      App.vent.on("authentication:signedout", this.showSignedOut, this);
+      this.authentication = new Marionette.Region({ el: "#authentication" });
+      this.navigation = new Marionette.Region({ el: "#navigation" });
+
+      App.vent.on("authentication:signedon", this.reload, this);
+      App.vent.on("authentication:signedout", this.reload, this);
+      App.vent.on("locale:changed", this.reload, this);
+    }
+
+  , render: function() {
+      this.$el.html(Marionette.Renderer.render(this.template, this));
+    }
+
+  , reload: function() {
+      if (App.session && App.session.isAuthenticated())
+        this.showSignedOn(App.session);
+      else
+        this.showSignedOut();
+      this.showNavigation();
+    }
+
+  , showNavigation: function() {
+      this.navigation.show(new Views.NavigationView({ section: this.section }));
     }
 
   , showSignedOut: function() {
@@ -69,25 +127,24 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       var that = this;
 
       Handlebars.registerHelper("isSelected", function(locale) {
-        return that.locale === locale ? "selected" : "";
+        return (that.locale || "").indexOf(locale) ? "" : "selected";
       });
 
       options = options || {};
       this.locale = options.locale;
       
-      App.vent.on("locale:changed", function(locale) {
+      App.vent.on("locale:change", function(locale) {
         that.locale = locale;
         that.render();
       });
    }
 
   , render: function() {
-      var html = Marionette.Renderer.render(this.template, this);
-      this.$el.html(html);
+      this.$el.html(Marionette.Renderer.render(this.template, this));
     }
 
   , changeLocale: function(e) {
-      App.vent.trigger("locale:changed", $(e.target).data("locale"));
+      App.vent.trigger("locale:change", $(e.target).data("locale"));
 
       return false;
     }
@@ -121,7 +178,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     App.layout = new Views.Layout();
 
     App.layout.attachViews({
-      header: new Views.HeaderView()
+      header: new Views.HeaderView({ section: "home" })
     , footer: new Views.FooterView()
     });
 
