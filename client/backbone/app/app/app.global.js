@@ -2,10 +2,17 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
   var PROOF_AUTH_COOKIE = "proof_auth";
 
-	_.extend(App.constructor.prototype, {
+	_.extend(App, {
 
 		reload: function() {
-			// ?
+      var header = new App.Views.HeaderView();
+
+      this.layout.header.show(header);
+      
+      if (App.session && App.session.isAuthenticated())
+        header.showSignedOn(App.session);
+      else
+        header.showSignedOut();
 		}
 
 	, signOn: function(session) {
@@ -100,6 +107,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     });
 
     App.determineAuthenticationStatus();
+
     App.vent.trigger("locale:changed", i18n.lng());
 	});
 

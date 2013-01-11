@@ -119,15 +119,19 @@ item()
   div.no-photo
     padding-left 0
     
-  img
-    border-radius(6px)
-    border-color transparent
-    position absolute
-    top 8px
-    left 8px
-    height 50px
-    width 50px
+  .thumbnail
+    float left
+    margin 8px
+    overflow hidden
+    position relative
+    height 42px
+    width 42px
   
+    img
+      position absolute
+      top 0
+      left 0
+    
   div.heading
     margin-bottom 5px
   

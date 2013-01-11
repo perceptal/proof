@@ -16,10 +16,10 @@ module.exports.configure = function(User) {
 	passport.use(new BasicStrategy(function(email, sessionId, done) {
     process.nextTick(function () { 
       User.findOne({ email: email }, function(err, user) {
-  			
+
         if (err) { return done(err); }
-        if (!user) { return done(null, false, { message: "Unknown user " + email, status: 403 }); }
-        if (user.sessionId !== sessionId) { return done(null, false, { message: "Invalid token", status: 403 }); } // Localise
+        if (!user) { return done(null, false, { status: 403 }); }
+        if (user.sessionId !== sessionId) { return done(null, false, { status: 403 }); } 
         
         return done(null, user);
       });

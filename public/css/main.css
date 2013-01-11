@@ -139,15 +139,18 @@ article.item div.info {
 article.item div.no-photo {
   padding-left: 0;
 }
-article.item img {
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  border-color: transparent;
+article.item .thumbnail {
+  float: left;
+  margin: 8px;
+  overflow: hidden;
+  position: relative;
+  height: 42px;
+  width: 42px;
+}
+article.item .thumbnail img {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  height: 50px;
-  width: 50px;
+  top: 0;
+  left: 0;
 }
 article.item div.heading {
   margin-bottom: 5px;
@@ -215,15 +218,18 @@ article.list div.info {
 article.list div.no-photo {
   padding-left: 0;
 }
-article.list img {
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  border-color: transparent;
+article.list .thumbnail {
+  float: left;
+  margin: 8px;
+  overflow: hidden;
+  position: relative;
+  height: 42px;
+  width: 42px;
+}
+article.list .thumbnail img {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  height: 50px;
-  width: 50px;
+  top: 0;
+  left: 0;
 }
 article.list div.heading {
   margin-bottom: 5px;

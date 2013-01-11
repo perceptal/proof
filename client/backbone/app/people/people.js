@@ -37,13 +37,13 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 		} 
 
 	, "new": function() {
-
+      this.index();
 	 }
 
 	});
 
 	People.addInitializer(function() {
-		new People.Router({ controller: new People.Controller() });
+		People.router = new People.Router({ controller: new People.Controller() });
 	});
 
 });

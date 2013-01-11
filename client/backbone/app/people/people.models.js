@@ -1,12 +1,7 @@
 Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _) {
 
 	People.Person = Backbone.Model.extend({
-		defaults: {
-				firstName: "John"
-			, lastName: "Doe"
-		}
-
-	, urlRoot: "/api/people"
+		urlRoot: "/api/people"
 	});
 
 	People.People = Backbone.Collection.extend({

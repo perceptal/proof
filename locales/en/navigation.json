@@ -1,6 +1,17 @@
 { 
   "main" : { 
-    "home": "Home"
+    "title": "Proof"
+  , "home": "Home"
   , "people": "People" 
+  , "administration": "Administration"
+  , "about": "About"
+  , "support": "Support"
+  }
+, "authentication": {
+    "signon": "sign on"
+  , "signout": "sign out"
+  , "register": "register"
+  , "switch": "switch account"
+  , "signedon": "Signed on as"
   }
 }

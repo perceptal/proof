@@ -1,6 +1,17 @@
 { 
   "main" : { 
-    "home": "Zuhause"
+    "title": "Beweis"
+  , "home": "Zuhause"
   , "people": "Menschen" 
+  , "administration": "Verwaltung"
+  , "about": "Um"
+  , "support": "Unterstützen"
+  }
+, "authentication": {
+    "signon": "anmelden"
+  , "signout": "sich austragen"
+  , "register": "registrieren"
+  , "switch": "konto wechseln"
+  , "signedon": "Unterzeichnet am als"
   }
 }

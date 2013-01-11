@@ -1,6 +1,17 @@
 { 
   "main" : { 
-    "home": "Maison"
+    "title": "Preuve"
+  , "home": "Maison"
   , "people": "Personnes" 
+  , "administration": "Gestion"
+  , "about": "Au Sujet De"
+  , "support": "Soutenir"
+  }
+, "authentication": {
+    "signon": "signer le"
+  , "signout": "déconnecter"
+  , "register": "enregistrer"
+  , "switch": "commuter compte"
+  , "signedon": "Signé en tant que"
   }
 }
