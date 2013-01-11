@@ -17,7 +17,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       var promise = this.currentUser.fetch();
 
       promise.done($.proxy(function() {
-        App.vent.trigger("authentication:signedon", this.currentUser);
+        App.vent.trigger("authentication:signedon", this.session, this.currentUser);
       }, this));
 		}
 
@@ -53,8 +53,9 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       $.removeCookie(PROOF_AUTH_COOKIE);
 
       // Navigate to home      
+      App.Home.router.navigate("/", true);
 
-      App.vent.trigger("authentication:signedout");
+      App.vent.trigger("authentication:signedout", this.session, this.currentUser);
 		}
 
 	, showMessage: function(text) {
@@ -69,27 +70,20 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 			
       i18n.setLng(locale);
 
-      App.vent.trigger("locale:changed");
+      App.vent.trigger("locale:changed");      
 		}
+
 	});
 
 	// Initialize global events
 	Global.addInitializer(function() {
       
-    App.vent.on("authentication:signon", function(session) {
-    	App.signOn(session);
-    });
-
-    App.vent.on("authentication:signout", function(session) {
-      App.signOut();
-    });
+    App.vent.on("authentication:signon", App.signOn);
+    App.vent.on("authentication:signout", App.signOut);
+    App.vent.on("locale:change", App.changeLocale);
 
     App.vent.on("authorization:failed", function() {
     	App.showMessage("Verboten!");
-    });
-
-    App.vent.on("locale:change", function(locale) {
-    	App.changeLocale(locale);
     });
 
     App.determineAuthenticationStatus();

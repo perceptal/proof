@@ -57,6 +57,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function(options) {
       this.section = options.section;
+      this.user = options.user;
 
       App.vent.on("section:changed", this.render, this);
       App.vent.trigger("section:changed", options.section);
@@ -93,16 +94,18 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       this.$el.html(Marionette.Renderer.render(this.template, this));
     }
 
-  , reload: function() {
-      if (App.session && App.session.isAuthenticated())
-        this.showSignedOn(App.session);
+  , reload: function(session, user) {
+      session = session || App.session;
+      
+      if (session && session.isAuthenticated())
+        this.showSignedOn(session);
       else
         this.showSignedOut();
-      this.showNavigation();
+      this.showNavigation(user);
     }
 
-  , showNavigation: function() {
-      this.navigation.show(new Views.NavigationView({ section: this.section }));
+  , showNavigation: function(user) {
+      this.navigation.show(new Views.NavigationView({ section: this.section, user: user }));
     }
 
   , showSignedOut: function() {
