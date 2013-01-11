@@ -5,7 +5,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	_.extend(App, {
 
     refresh: function() {
-      Backbone.history.loadUrl(Backbone.history.fragment);
+      if (Backbone.history && Backbone.history.fragment)
+        Backbone.history.loadUrl(Backbone.history.fragment);
     }
 
   ,	signOn: function(session) {
@@ -87,16 +88,16 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	// Initialize global events
 	Global.addInitializer(function() {
     
-    App.vent.on("section:changed", App.changeSection);
-    App.vent.on("authentication:signon", App.signOn);
-    App.vent.on("authentication:signout", App.signOut);
-    App.vent.on("authentication:signedon", App.refresh);
-    App.vent.on("locale:change", App.changeLocale);
-    App.vent.on("locale:changed", App.refresh);
+    App.vent.on("section:changed", App.changeSection, this);
+    App.vent.on("authentication:signon", App.signOn, this);
+    App.vent.on("authentication:signout", App.signOut, this);
+    App.vent.on("authentication:signedon", App.refresh, this);
+    App.vent.on("locale:change", App.changeLocale, this);
+    App.vent.on("locale:changed", App.refresh, this);
 
     App.vent.on("authorization:failed", function() {
     	App.showMessage("Verboten!");
-    });
+    }, this);
 
     App.determineAuthenticationStatus();
 
