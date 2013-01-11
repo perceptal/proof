@@ -4,7 +4,11 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	_.extend(App, {
 
-	  signOn: function(session) {
+    refresh: function() {
+      Backbone.history.loadUrl(Backbone.history.fragment);
+    }
+
+  ,	signOn: function(session) {
       var id = session.get("id");
 
       Global.session = session;
@@ -86,7 +90,9 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     App.vent.on("section:changed", App.changeSection);
     App.vent.on("authentication:signon", App.signOn);
     App.vent.on("authentication:signout", App.signOut);
+    App.vent.on("authentication:signedon", App.refresh);
     App.vent.on("locale:change", App.changeLocale);
+    App.vent.on("locale:changed", App.refresh);
 
     App.vent.on("authorization:failed", function() {
     	App.showMessage("Verboten!");

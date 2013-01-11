@@ -14,8 +14,14 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       App.vent.trigger("section:changed", "people");
     }
 
+  , reset: function() {
+      this.people = new People.Models.People();    
+   }
+
   , initialize: function() {
-    	this.people = new People.Models.People();
+      this.reset();
+
+      App.vent.on("authentication:signedout", this.reset, this);
     }
 
 	,	index: function() {
