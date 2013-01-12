@@ -1,0 +1,7 @@
+[
+    { "name": "group" 
+        , "roles": [ "role-1", "role-2" ] 
+        , "people": [ { "name": "john", "roles": [ "role-1" ] },  ] 
+        , "accounts": [ { "name": "marty", "network": "facebook" } ] 
+    }
+]

@@ -27,7 +27,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 	});
 
 	Views.Layout = Marionette.Layout.extend({
-		template: "people/layout"
+		template: "app/layout/list"
 
 	, regions: {
 		    "sidebar": 		"#sidebar"

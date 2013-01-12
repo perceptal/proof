@@ -5,11 +5,15 @@ module.exports.init = function(connection) {
 	var models = {};
 
 	[
-			{ name: "User",		path: "user" }
-		,	{ name: "Person",	path: "person" }
+			{ name: "Claim" }
+    , { name: "Account" }
+    , { name: "Group" }
+    , { name: "Person" }
+    , { name: "Role" }
+    , { name: "User" }
 
 	].map(function(defn) {
-		models[defn.name] = model(defn.path, connection);
+		models[defn.name] = model(defn.path || defn.name.toLowerCase(), connection);
 	});
 
 	return models;

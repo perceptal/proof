@@ -6,7 +6,7 @@ Proof.module("Home.Views", function(Views, App, Backbone, Marionette, $, _) {
   });
 
   Views.Layout = Marionette.Layout.extend({
-    template: "home/layout"
+    template: "app/layout/sidebar"
 
   , regions: {
         "sidebar":    "#sidebar"

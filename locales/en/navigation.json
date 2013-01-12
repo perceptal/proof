@@ -17,12 +17,14 @@
   , "signout": "Sign Out"
   , "register": "Register"
   , "switch": "Switch Account"
-  , "signedon": "Signed on as"
+  , "signed_on": "Signed on as"
+  , "signing_on": "Signing On"
   , "enter_credentials": "Please enter your security credentials below"
   , "email": "Email Address"
   , "username": "Username"
   , "password": "Password"
   , "user_or_email": "$t(security.email) or $t(security.username)"
+  , "profile": "Profile"
   }
 , "people": {
     "people": "$t(main.people)"

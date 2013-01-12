@@ -16,6 +16,7 @@ var Seed = function(name, reset) {
 
 var fixture = function(model, name) {
 	return require("../test/fixture/" + model + "/" + name);
+	// return require("../test/fixture/seed/" + name);
 }
 
 var clear = function(reset, models, callback) {

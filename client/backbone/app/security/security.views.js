@@ -1,5 +1,27 @@
 Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) {
 
+  Views.SidebarView = Marionette.ItemView.extend({
+    template: "security/profile/sidebar"
+
+  });
+
+  Views.Layout = Marionette.Layout.extend({
+    template: "app/layout/sidebar"
+
+  , regions: {
+        "sidebar":    "#sidebar"
+    }
+
+  , attachViews: function(views) {
+      if (views.sidebar != null) this.sidebarView = views.sidebar;
+    }
+
+  , onRender: function() {
+      this.sidebar.show(this.sidebarView);
+    }
+
+  });
+
 	Views.RegisterView = Marionette.ItemView.extend({
 	  template: "security/register"
   
@@ -10,7 +32,7 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
   	}
 
   , events: {
-  	  "click    button#register"  : "register"
+  	  "click    button#register": "register"
     , "keypress input#username" : "onKeypress"
     , "keypress input#password" : "onKeypress"
   	, "change   input#username" : "onChange"

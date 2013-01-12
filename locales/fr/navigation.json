@@ -17,12 +17,14 @@
   , "signout": "Déconnecter"
   , "register": "Enregistrer"
   , "switch": "Commuter Compte"
-  , "signedon": "Signé en tant que"
+  , "signed_on": "Signé en tant que"
+  , "signing_on": "Signature Sur"
   , "enter_credentials": "S'il vous plaît entrer vos informations d'identification"
   , "email": "Adresse E-mail"
   , "username": "Nom d'Utilisateur"
   , "password": "Mot de Passe"
   , "user_or_email": "$t(security.email) ou $t(security.username)"
+  , "profile": "Profil"
   }
 , "people": {
     "people": "$t(main.people)"

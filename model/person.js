@@ -6,6 +6,9 @@ var PersonSchema = new Schema({
   , lastName             	: { type: String, required: true }
   , title             		: { type: String }
   , gender             		: { type: String }
+  , group                 : { type: Schema.ObjectId, ref: "group" }
+  , user                  : { type: Schema.ObjectId, ref: "user" }
+  , roles                 : [ { type: Schema.ObjectId, ref: "role" } ]
 });
 
 PersonSchema.statics.search = function(query) {

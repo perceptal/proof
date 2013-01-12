@@ -17,12 +17,14 @@
   , "signout": "Sich Austragen"
   , "register": "Registrieren"
   , "switch": "Konto Wechseln"
-  , "signedon": "Unterzeichnet am als"
+  , "signed_on": "Unterzeichnet am als"
+  , "signing_on": "Unterzeichnung auf"
   , "enter_credentials": "Bitte geben sie ihre anmeldeinformationen unten"
   , "email": "E-mail Adresse"
   , "username": "Benutzername"
   , "password": "Kennwort"
   , "user_or_email": "$t(security.email) oder $t(security.username)"
+  , "profile": "Profil"
   }
 , "people": {
     "people": "$t(main.people)"
