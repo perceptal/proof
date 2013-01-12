@@ -1,0 +1,34 @@
+{ 
+  "general": {
+    "filter": "Filtrer"
+  , "search": "Rechercher"
+  , "cancel": "Annuler"
+  }
+, "main" : { 
+    "title": "Preuve"
+  , "home": "Maison"
+  , "people": "Personnes" 
+  , "administration": "Gestion"
+  , "about": "Au Sujet De"
+  , "support": "Soutenir"
+  }
+, "security": {
+    "signon": "Signer Le"
+  , "signout": "Déconnecter"
+  , "register": "Enregistrer"
+  , "switch": "Commuter Compte"
+  , "signedon": "Signé en tant que"
+  , "enter_credentials": "S'il vous plaît entrer vos informations d'identification"
+  , "email": "Adresse E-mail"
+  , "username": "Nom d'Utilisateur"
+  , "password": "Mot de Passe"
+  , "user_or_email": "$t(security.email) ou $t(security.username)"
+  }
+, "people": {
+    "people": "$t(main.people)"
+  , "all": "All $t(main.people)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "register": "$t(security.register)"
+  }
+}

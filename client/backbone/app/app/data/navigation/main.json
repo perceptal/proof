@@ -1,0 +1,7 @@
+[
+  { "id": "home",           "route": "" }
+, { "id": "people",         "route": "people" }
+, { "id": "administration", "route": "administration" }
+, { "id": "about",          "route": "about" }
+, { "id": "support",        "route": "support" }
+]

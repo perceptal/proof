@@ -1,9 +1,7 @@
-function App() {
-	if (!(this instanceof App)) return new App();
-}
+var Environment = require("./environment")
+  ;
 
-App.prototype.start = function() {
-	console.log("start");
-}
+// Start her up
+var environment = new Environment();
 
-module.exports = App;
+environment.start();

@@ -1,0 +1,34 @@
+{ 
+  "general": {
+    "filter": "Schleusen"
+  , "search": "Suche"
+  , "cancel": "Kündigen"
+  }
+, "main" : { 
+    "title": "Beweis"
+  , "home": "Zuhause"
+  , "people": "Menschen" 
+  , "administration": "Verwaltung"
+  , "about": "Um"
+  , "support": "Unterstützen"
+  }
+, "security": {
+    "signon": "Anmelden"
+  , "signout": "Sich Austragen"
+  , "register": "Registrieren"
+  , "switch": "Konto Wechseln"
+  , "signedon": "Unterzeichnet am als"
+  , "enter_credentials": "Bitte geben sie ihre anmeldeinformationen unten"
+  , "email": "E-mail Adresse"
+  , "username": "Benutzername"
+  , "password": "Kennwort"
+  , "user_or_email": "$t(security.email) oder $t(security.username)"
+  }
+, "people": {
+    "people": "$t(main.people)"
+  , "all": "Alle $t(main.people)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "register": "$t(security.register)"
+  }
+}
