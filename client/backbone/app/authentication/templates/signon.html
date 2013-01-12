@@ -1,17 +1,17 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h3><small><i class="icon-lock"></i></small>&nbsp;Sign On <small>Please enter your security credentials below &rarr;</small></h3>
+  <h3><small><i class="icon-lock"></i></small>&nbsp;{{ t "authentication.signon" }} <small>{{ t "authentication.enter_credentials" }} &rarr;</small></h3>
 </div>
 
 <div class="modal-body">
 	<form>
 	  <fieldset>
 			<span class="input-append">
-	    	<input type="text" placeholder="Username or email address" name="username" id="username">
+	    	<input type="text" placeholder="{{ t "user.user_or_email" }}" name="username" id="username" class="span3">
   			<span class="add-on"><i class="icon-user"></i></span>
 			</span>
 			<span class="input-append" style="margin-left: 10px">
-    		<input type="password" placeholder="Password" name="password" id="password">
+    		<input type="password" placeholder="{{ t "user.password" }}" name="password" id="password" class="span2">
   			<span class="add-on"><i class="icon-lock"></i></span>
 			</span>
 	  </fieldset>	
@@ -26,6 +26,6 @@
 </div>
 
 <div class="modal-footer" style="text-align: left">
-  <button class="btn btn-success" id="signon"><i class="icon-lock icon-white"></i>&nbsp;&nbsp;Sign On &rarr;</button>
-  <button class="btn btn-link" data-dismiss="modal" aria-hidden="true">cancel</button>
+  <button class="btn btn-success" id="signon"><i class="icon-lock icon-white"></i>&nbsp;&nbsp;{{ t "authentication.signon" }} &rarr;</button>
+  <button class="btn btn-link" data-dismiss="modal" aria-hidden="true">{{ t "general.cancel" "lower" }}</button>
 </div>

@@ -1,5 +1,10 @@
 { 
-  "main" : { 
+  "general": {
+    "filter": "Filter"
+  , "search": "Search"
+  , "cancel": "Cancel"
+  }
+, "main" : { 
     "title": "Proof"
   , "home": "Home"
   , "people": "People" 
@@ -8,10 +13,24 @@
   , "support": "Support"
   }
 , "authentication": {
-    "signon": "sign on"
-  , "signout": "sign out"
-  , "register": "register"
-  , "switch": "switch account"
+    "signon": "Sign On"
+  , "signout": "Sign Out"
+  , "register": "Register"
+  , "switch": "Switch Account"
   , "signedon": "Signed on as"
+  , "enter_credentials": "Please enter your security credentials below"
+  }
+, "user": {
+    "email": "Email Address"
+  , "username": "Username"
+  , "password": "Password"
+  , "user_or_email": "$t(user.email) or $t(user.username)"
+  }
+, "people": {
+    "people": "$t(main.people)"
+  , "all": "All $t(main.people)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "register": "$t(authentication.register)"
   }
 }

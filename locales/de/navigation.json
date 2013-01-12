@@ -1,5 +1,10 @@
 { 
-  "main" : { 
+  "general": {
+    "filter": "Schleusen"
+  , "search": "Suche"
+  , "cancel": "Kündigen"
+  }
+, "main" : { 
     "title": "Beweis"
   , "home": "Zuhause"
   , "people": "Menschen" 
@@ -8,10 +13,24 @@
   , "support": "Unterstützen"
   }
 , "authentication": {
-    "signon": "anmelden"
-  , "signout": "sich austragen"
-  , "register": "registrieren"
-  , "switch": "konto wechseln"
+    "signon": "Anmelden"
+  , "signout": "Sich Austragen"
+  , "register": "Registrieren"
+  , "switch": "Konto Wechseln"
   , "signedon": "Unterzeichnet am als"
+  , "enter_credentials": "Bitte geben sie ihre anmeldeinformationen unten"
+  }
+, "user": {
+    "email": "E-mail Adresse"
+  , "username": "Benutzername"
+  , "password": "Kennwort"
+  , "user_or_email": "$t(user.email) oder $t(user.username)"
+  }
+, "people": {
+    "people": "$t(main.people)"
+  , "all": "Alle $t(main.people)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "register": "$t(authentication.register)"
   }
 }

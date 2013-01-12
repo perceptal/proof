@@ -11,8 +11,20 @@ $(function() {
   , getAsync: false
   });
 
-  Handlebars.registerHelper("t", function(key) {
-    return new Handlebars.SafeString(i18n.t(key));
+  i18n.addPostProcessor("titleize", function(value, key, options) {
+    return value.titleize();
+  });
+
+  i18n.addPostProcessor("lower", function(value, key, options) {
+    return value.toLowerCase();
+  });
+
+  i18n.addPostProcessor("upper", function(value, key, options) {
+    return value.toUpperCase();
+  });
+
+  Handlebars.registerHelper("t", function(key, post) {
+    return new Handlebars.SafeString(i18n.t(key, post ? { postProcess: post } : {}));
   });
 
 });

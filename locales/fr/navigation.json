@@ -1,5 +1,10 @@
 { 
-  "main" : { 
+  "general": {
+    "filter": "Filtrer"
+  , "search": "Rechercher"
+  , "cancel": "Annuler"
+  }
+, "main" : { 
     "title": "Preuve"
   , "home": "Maison"
   , "people": "Personnes" 
@@ -8,10 +13,24 @@
   , "support": "Soutenir"
   }
 , "authentication": {
-    "signon": "signer le"
-  , "signout": "déconnecter"
-  , "register": "enregistrer"
-  , "switch": "commuter compte"
+    "signon": "Signer Le"
+  , "signout": "Déconnecter"
+  , "register": "Enregistrer"
+  , "switch": "Commuter Compte"
   , "signedon": "Signé en tant que"
+  , "enter_credentials": "S'il vous plaît entrer vos informations d'identification"
+  }
+, "user": {
+    "email": "Adresse E-mail"
+  , "username": "Nom d'Utilisateur"
+  , "password": "Mot de Passe"
+  , "user_or_email": "$t(user.email) ou $t(user.username)"
+  }
+, "people": {
+    "people": "$t(main.people)"
+  , "all": "All $t(main.people)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "register": "$t(authentication.register)"
   }
 }

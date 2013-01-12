@@ -1,18 +1,18 @@
 <nav class="navbar people">
   <div class="navbar-inner">
-    <a class="brand" href="#">People</a>
+    <a class="brand" href="#">{{ t "people.people" }}</a>
 
 		<form class="navbar-form pull-left">
-		  <input type="text" class="span2 search" id="search" placeholder="search&rarr;"/>
+		  <input type="text" class="span2 search" id="search" placeholder="{{ t "people.search" }}&rarr;"/>
 		</form>
 
     <ul class="nav nav-pills">
-      <li class="active"><a href="#">All People</a></li>
-      <li><a href="#">Filter</a></li>
+      <li class="active"><a href="#">{{ t "people.all" }}</a></li>
+      <li><a href="#">{{ t "people.filter" }}</a></li>
     </ul>
 
     <ul class="nav nav-pills pull-right">
-      <li><button class="btn btn-success" href="#"><i class="icon-user icon-white"></i> Register</button></li>
+      <li><button class="btn btn-success" href="#"><i class="icon-user icon-white"></i> {{ t "people.register" "titleize" }}</button></li>
     </ul>
   </div>
 </nav>
