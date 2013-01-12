@@ -12,25 +12,23 @@
   , "about": "Um"
   , "support": "Unterstützen"
   }
-, "authentication": {
+, "security": {
     "signon": "Anmelden"
   , "signout": "Sich Austragen"
   , "register": "Registrieren"
   , "switch": "Konto Wechseln"
   , "signedon": "Unterzeichnet am als"
   , "enter_credentials": "Bitte geben sie ihre anmeldeinformationen unten"
-  }
-, "user": {
-    "email": "E-mail Adresse"
+  , "email": "E-mail Adresse"
   , "username": "Benutzername"
   , "password": "Kennwort"
-  , "user_or_email": "$t(user.email) oder $t(user.username)"
+  , "user_or_email": "$t(security.email) oder $t(security.username)"
   }
 , "people": {
     "people": "$t(main.people)"
   , "all": "Alle $t(main.people)"
   , "filter": "$t(general.filter)"
   , "search": "$t(general.search)"
-  , "register": "$t(authentication.register)"
+  , "register": "$t(security.register)"
   }
 }

@@ -11,8 +11,8 @@ describe("User", function() {
     helper.start(done);
   });
 
-  after(function() {
-
+  after(function(done) {
+    helper.stop(done);
   });
 
   describe("when created with valid data", function() {

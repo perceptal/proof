@@ -23,6 +23,10 @@ Helper.prototype.start = function(callback) {
   });
 }
 
+Helper.prototype.stop = function(callback) {
+  this.environment.stop(callback);
+}
+
 Helper.prototype.fixture = function(model, name) {
   return require("./fixture/" + model + "/" + name);
 }

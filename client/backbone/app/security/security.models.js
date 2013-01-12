@@ -1,4 +1,4 @@
-Proof.module("Authentication.Models", function(Models, App, Backbone, Marionette, $, _) {
+Proof.module("Security.Models", function(Models, App, Backbone, Marionette, $, _) {
 
   var ANONYMOUS = "anonymous"
     , NO_SESSION = "-";

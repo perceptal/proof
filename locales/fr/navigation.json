@@ -12,25 +12,23 @@
   , "about": "Au Sujet De"
   , "support": "Soutenir"
   }
-, "authentication": {
+, "security": {
     "signon": "Signer Le"
   , "signout": "Déconnecter"
   , "register": "Enregistrer"
   , "switch": "Commuter Compte"
   , "signedon": "Signé en tant que"
   , "enter_credentials": "S'il vous plaît entrer vos informations d'identification"
-  }
-, "user": {
-    "email": "Adresse E-mail"
+  , "email": "Adresse E-mail"
   , "username": "Nom d'Utilisateur"
   , "password": "Mot de Passe"
-  , "user_or_email": "$t(user.email) ou $t(user.username)"
+  , "user_or_email": "$t(security.email) ou $t(security.username)"
   }
 , "people": {
     "people": "$t(main.people)"
   , "all": "All $t(main.people)"
   , "filter": "$t(general.filter)"
   , "search": "$t(general.search)"
-  , "register": "$t(authentication.register)"
+  , "register": "$t(security.register)"
   }
 }

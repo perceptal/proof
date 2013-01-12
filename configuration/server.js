@@ -1,4 +1,6 @@
-var express = require("express")
+var http = require("http")
+  , https = require("https")
+  , express = require("express")
   , stylus = require("stylus")
   , passport = require("passport")
   , flash = require("connect-flash")
@@ -96,7 +98,14 @@ Server.prototype.configure = function(User) {
 }
 
 Server.prototype.start = function(callback) {
-  this.app.listen(configuration("port"), callback);
+  this.httpServer = http.createServer(this.app);
+  // this.io = require("socket.io").listen(this.httpServer);
+  this.httpServer.listen(configuration("port"), callback);
+  // this.httpsServer = https.createServer(options, app).listen(443);
+}
+
+Server.prototype.stop = function(callback) {
+  callback();
 }
 
 module.exports = Server;

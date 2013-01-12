@@ -35,4 +35,8 @@ Environment.prototype.start = function(callback) {
   });
 }
 
+Environment.prototype.stop = function(callback) {
+  this.server.stop(callback);
+}
+
 module.exports = Environment;

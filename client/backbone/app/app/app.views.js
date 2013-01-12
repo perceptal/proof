@@ -79,11 +79,11 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     template: "app/header"
 
   , initialize: function(options) {
-      this.authentication = new Marionette.Region({ el: "#authentication" });
+      this.security = new Marionette.Region({ el: "#security" });
       this.navigation = new Marionette.Region({ el: "#navigation" });
 
-      App.vent.on("authentication:signedon", this.reload, this);
-      App.vent.on("authentication:signedout", this.reload, this);
+      App.vent.on("security:signedon", this.reload, this);
+      App.vent.on("security:signedout", this.reload, this);
       App.vent.on("locale:changed", this.reload, this);
     }
 
@@ -106,11 +106,11 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , showSignedOut: function() {
-      this.authentication.show(new App.Authentication.Views.SignedOutView());
+      this.security.show(new App.Security.Views.SignedOutView());
     }
 
   , showSignedOn: function(session) {
-      this.authentication.show(new App.Authentication.Views.SignedOnView({ model: session }));
+      this.security.show(new App.Security.Views.SignedOnView({ model: session }));
     }
   });
 

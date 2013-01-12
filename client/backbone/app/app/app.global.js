@@ -18,11 +18,11 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       $.cookie(PROOF_AUTH_COOKIE, id);
 
       // Now load user from session
-      Global.currentUser = new App.Authentication.Models.User({ id: id });
+      Global.currentUser = new App.Security.Models.User({ id: id });
       
       Global.currentUser.fetch()
         .done(function() {
-          App.vent.trigger("authentication:signedon", Global.session, Global.currentUser);
+          App.vent.trigger("security:signedon", Global.session, Global.currentUser);
           App.vent.trigger("section:changed", Global.section);
         });
 		}
@@ -33,7 +33,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       var authCookie = $.cookie(PROOF_AUTH_COOKIE);
       
       if (authCookie != null) {
-        var session = new App.Authentication.Models.SignOn({ id: authCookie })
+        var session = new App.Security.Models.SignOn({ id: authCookie })
           , promise = session.fetch();
 
         promise.done(function() {
@@ -45,15 +45,15 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       } else signOut();
 
       function signOut() {
-        App.vent.trigger("authentication:signout");
+        App.vent.trigger("security:signout");
       }
   }
 
 	,	signOut: function() {
       if (this.session) this.session.destroy();
 
-      Global.session = new App.Authentication.Models.SignOn();
-      Global.currentUser = new App.Authentication.Models.User();
+      Global.session = new App.Security.Models.SignOn();
+      Global.currentUser = new App.Security.Models.User();
 
       // Clear auth cookie
       $.removeCookie(PROOF_AUTH_COOKIE);
@@ -61,7 +61,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       // Navigate to home      
       App.Home.router.navigate("/", true);
 
-      App.vent.trigger("authentication:signedout", Global.session, Global.currentUser);
+      App.vent.trigger("security:signedout", Global.session, Global.currentUser);
       App.vent.trigger("section:changed", Global.section);
 		}
 
@@ -89,13 +89,13 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	Global.addInitializer(function() {
     
     App.vent.on("section:changed", App.changeSection, this);
-    App.vent.on("authentication:signon", App.signOn, this);
-    App.vent.on("authentication:signout", App.signOut, this);
-    App.vent.on("authentication:signedon", App.refresh, this);
+    App.vent.on("security:signon", App.signOn, this);
+    App.vent.on("security:signout", App.signOut, this);
+    App.vent.on("security:signedon", App.refresh, this);
     App.vent.on("locale:change", App.changeLocale, this);
     App.vent.on("locale:changed", App.refresh, this);
 
-    App.vent.on("authorization:failed", function() {
+    App.vent.on("security:unauthorised", function() {
     	App.showMessage("Verboten!");
     }, this);
 

@@ -16,12 +16,11 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
   , reset: function() {
       this.people = new People.Models.People();    
+      App.vent.on("security:signedout", this.reset, this);
    }
 
   , initialize: function() {
       this.reset();
-
-      App.vent.on("authentication:signedout", this.reset, this);
     }
 
 	,	index: function() {

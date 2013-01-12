@@ -81,18 +81,18 @@ input.search.searching {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-ul.authentication {
+ul.security {
   padding-top: 10px;
   list-style: none;
 }
-ul.authentication li {
+ul.security li {
   float: left;
   padding-left: 10px;
 }
-ul.authentication li a {
+ul.security li a {
   color: #c00;
 }
-ul.authentication li a:hover {
+ul.security li a:hover {
   color: #fff;
 }
 .image {
