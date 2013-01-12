@@ -1,8 +1,7 @@
-var async = require("async")
+var _ = require("underscore")
+  , async = require("async")
   , initialize = require("../initializer")
   , Connection = require("../configuration/connection");
-
-var NAMES = [ "Person", "User" ];
 
 var Seed = function(name, reset) {
 
@@ -21,7 +20,7 @@ var fixture = function(model, name) {
 
 var clear = function(reset, models, callback) {
 	if (reset) {
-		async.forEach(NAMES, function(name, cb) {
+		async.forEach(_.keys(models), function(name, cb) {
 			var Model = models[name];
 			Model.find({}).remove(cb);
 		}, callback);
@@ -40,7 +39,7 @@ Seed.prototype.run = function() {
 
 			clear(that.reset, models, function() {
 
-				async.forEach(NAMES, function(name, cb) {
+				async.forEach(_.keys(models), function(name, cb) {
 					var Model = models[name];
 					var data = fixture(Model.modelName, that.set);
 
