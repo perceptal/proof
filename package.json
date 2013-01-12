@@ -27,6 +27,7 @@
     , "nib":								"~0.9.0"
     , "connect-flash":			"~0.1.0"
     , "mongoose":						"~3.5.3"
+    , "socket.io":          "~0.9.13"
     , "passport":      			"~0.1.15"
     , "passport-http":  		"~0.2.1"
     , "redis":              "~0.7.3"
@@ -34,6 +35,7 @@
     , "async":              "~0.1.22"
     , "config":							"~0.4.18"
     , "node-uuid":					"~1.4.0"
+    , "bcrypt":             "~0.7.3"
     , "i18next":            "~1.5.15"
   },
   "devDependencies": {

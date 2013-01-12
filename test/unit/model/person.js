@@ -1,6 +1,6 @@
-var Product = require("../../../model/product");
+var Person = require("../../../model/person");
 
-describe("Product", function() {
+describe("Person", function() {
 	
 	var product;
 

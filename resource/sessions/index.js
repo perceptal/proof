@@ -8,20 +8,26 @@ module.exports = function(app, models) {
 		User.findOne({ _id: req.params.id }, function(err, user) {
 			if (err) return res.send(500);
 			if (user == null) return res.send(404);
-			return res.send(200, user.toJSON({ hide: "password salt" }));
+
+			return res.send(200, user.toJSON({ hide: "password" }));
 		});
 	});
 
 	app.post("/api/sessions", function(req, res, next) {
-		User.findOne({ email: req.body.username, password: req.body.password }, function(err, user) {
+		User.findOne({ email: req.body.username }, function(err, user) {
 			if (err) return res.send(500);
 			if (user == null) return res.send(404);
 
-			user.sessionId = uuid.v4();
-
-			user.save(function(err, user) {
+			user.authenticate(req.body.password, function(err, success) {
 				if (err) return res.send(500);
-				return res.send(200, user.toJSON({ hide: "password salt" }));
+				if (!success) return res.send(403);
+
+				user.sessionId = uuid.v4();
+
+				user.save(function(err, user) {
+					if (err) return res.send(500);
+					return res.send(200, user.toJSON({ hide: "password" }));
+				});
 			});
 		});
 	});

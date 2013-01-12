@@ -3,7 +3,7 @@ Proof.module("Home", function(Home, App, Backbone, Marionette, $, _) {
   Home.Router = Marionette.AppRouter.extend({
     appRoutes: {
       ""              : "index"
-    , "/"             : "index"
+    , "home"          : "index"
     }
   });
 

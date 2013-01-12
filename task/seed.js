@@ -2,7 +2,7 @@ var async = require("async")
   , initialize = require("../initializer")
   , Connection = require("../configuration/connection");
 
-var NAMES = [ "Person" ];
+var NAMES = [ "Person", "User" ];
 
 var Seed = function(name, reset) {
 
@@ -45,6 +45,7 @@ Seed.prototype.run = function() {
 
 					async.forEach(data, function(item, innerCb) {
 						var model = new Model(item);
+
 						model.save(innerCb);
 					}, cb);
 				}, that.db.close);

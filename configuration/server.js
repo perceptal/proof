@@ -83,21 +83,20 @@ Server.prototype.configure = function(User) {
     app.use(express.logger({ format: "\u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms" }));
   });
 
-  app.configure("test", function(){
+  app.configure("test", function() { 
     app.use("/test", express.static(root + "client/" + configuration("client") + "/test"));
+    app.use(express.logger({ format: "\u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms" }));
   });
 
-  app.configure("production", function(){
+  app.configure("production", function() {
     app.use(express.logger({ format: "\u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms" }));
   });
 
   this.app = app;
 }
 
-Server.prototype.start = function() {
-  this.app.listen(configuration("port"));
-
-  return this.app;
+Server.prototype.start = function(callback) {
+  this.app.listen(configuration("port"), callback);
 }
 
 module.exports = Server;
