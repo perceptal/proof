@@ -1,5 +1,8 @@
 [
-    { "fixture": "profile/bttf", "model": "profile", "link": "tag", "property": "tags" }
-  , { "fixture": "profile/bttf", "model": "profile", "link": "set", "property": "sets" }
-  , { "fixture": "profile/bttf", "model": "profile", "link": "account", "property": "accounts" }
+    { "fixture": "group", "model": "Group", "link": "Role", "property": "roles" }
+  , { "fixture": "group", "model": "Group", "link": "Person", "property": "people", "bidirectional": true }
+  , { "fixture": "role", "model": "Role", "link": "Claim", "property": "claims" }
+  , { "fixture": "user", "model": "User", "link": "Account", "property": "accounts", "bidirectional": true }
+  , { "fixture": "user", "model": "User", "link": "Claim", "property": "claims" }
+  , { "fixture": "user", "model": "User", "link": "Person", "property": "people", "bidirectional": true }
 ]

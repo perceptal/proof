@@ -1,7 +1,8 @@
 [
-    { "name": "group" 
+    { "name": "group", "code": "380800"
         , "roles": [ "role-1", "role-2" ] 
-        , "people": [ { "name": "john", "roles": [ "role-1" ] },  ] 
-        , "accounts": [ { "name": "marty", "network": "facebook" } ] 
+        , "people": [
+          { "name": "johnnyhall", "firstName": "Johnny", "lastName": "Hall", "gender": "male", "title": "Mr" }
+        ]
     }
 ]

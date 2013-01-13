@@ -2,11 +2,16 @@ var _ = require("underscore")
   , async = require("async")
   , Environment = require("../environment");
 
-var Helper = function() {
+var Helper = function(shouldReset) {
   this.environment = new Environment();
+
+  this.shouldReset = shouldReset || true;
 }
 
 Helper.prototype.resetDatabase = function(callback) {
+
+  if (!this.shouldReset) return callback();
+
   var models = this.environment.models;
 
   async.forEach(_.keys(models), function(name, cb) {
@@ -16,12 +21,18 @@ Helper.prototype.resetDatabase = function(callback) {
   }, callback);
 }
 
-Helper.prototype.start = function(callback) {
-  var that = this;
+Helper.prototype.init = function(callback) {
+ var init = this.environment.init.bind(this.environment)
+   , withReset = this.resetDatabase.bind(this, callback);
 
-  this.environment.start(function() {
-    that.resetDatabase(callback);
-  });
+  init(withReset);
+}
+
+Helper.prototype.start = function(callback) {
+  var start = this.environment.start.bind(this.environment)
+    , withReset = this.resetDatabase.bind(this, callback);
+
+  start(withReset);
 }
 
 Helper.prototype.stop = function(callback) {
@@ -30,25 +41,46 @@ Helper.prototype.stop = function(callback) {
 
 Helper.prototype.seed = function(seed, callback) {
 
-  var that = this
-    , data = this.fixture("seed", seed);
+  var that = this, data = this.fixture("seed", seed);
 
-  var link = function(file, model, link, prop, callback) {
+  var link = function(item, callback) {
 
-    var data = this.fixture(file)
-      , Model = this.environment.models[model];
-      , Link = this.environment.models[link];
+    var file = item.fixture
+      , model = item.model
+      , link = item.link
+      , prop = item.property
+      , bidirectional = item.bidirectional;
+
+    var build = function(item, options) {
+      var o = {};
+      _.each(_.keys(item), function(key) {
+        if (!_.isArray(item[key])) o[key] = item[key];
+      });
+
+      // Link back
+      if (options && options.bidirectional) o[model.toLowerCase()] = options.model;
+
+      return o;
+    }
+
+    var data = that.fixture("seed", [ seed, file ].join("/"))
+      , Model = that.environment.models[model]
+      , Link = that.environment.models[link];
 
     _.each(data, function(item) {
 
-      Model.findOneAndUpdate({ name: item.name }, { name: item.name }, { upsert: true }, function(err, m) {
-        _.each(item[prop], function(p) {  
-          var thing = _.isObject(p) ? p : { name: p }
+      Model.findOneAndUpdate({ name: item.name }, build(item), { upsert: true }, function(err, m) {
+        
+        m.markModified("password"); // HACK to force save middleware on user
 
-          Link.findOneAndUpdate(thing, thing, { upsert: true }, function(err, l) {
+        _.each(item[prop], function(p) {
+          var thing = _.isObject(p) ? p : { name: p }
+          
+          Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m }), { upsert: true }, function(err, l) {
             m[prop].push(l);
+
             if (_.last(item[prop]) === p) {
-              m.save(function(err) {
+              m.save(function(err, m) {
                 if (_.last(data) === item) callback();
               });
             }
@@ -58,8 +90,8 @@ Helper.prototype.seed = function(seed, callback) {
     });
   }
 
-  async.forEach(data, function(item, cb) {
-    link(item.fixture, item.model, item.link, item.property, cb);
+  async.forEachSeries(data, function(item, cb) {
+    link(_.defaults(item, { bidirectional: false }), cb);
   }, callback);
 
 }
@@ -68,4 +100,4 @@ Helper.prototype.fixture = function(model, name) {
   return require("./fixture/" + model + "/" + name);
 }
 
-module.exports = new Helper();
+module.exports = Helper;

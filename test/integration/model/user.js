@@ -1,5 +1,5 @@
 var should = require("should")
-  , helper = require("../../helper")
+  , helper = new (require("../../helper"))()
   , environment = helper.environment
   ;
 

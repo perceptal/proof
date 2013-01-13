@@ -4,7 +4,7 @@ var mongoose = require("mongoose")
   ;
 
 var UserSchema = new Schema({
-    email             : { type: String, required: true, lowercase: true, unique: true, index: true }
+    name              : { type: String, required: true, lowercase: true, unique: true, index: true }
   , password          : { type: String, required: true }
   , sessionId         : { type: String }
   , people            : [ { type: Schema.ObjectId, ref: "profile" } ]
