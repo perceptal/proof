@@ -4,7 +4,8 @@ module.exports.init = function(app, models) {
 
 	// Define resources
 	[
-	    { name: "people" }
+      { name: "people" }
+    // , { name: "people/photos" }
     , { name: "sessions" }
     , { name: "sessions/config" }
 	  , { name: "users" }

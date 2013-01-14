@@ -1,5 +1,3 @@
-var uuid = require("node-uuid");
-
 module.exports = function(app, models) {
 
 	var User = models.User;
@@ -22,9 +20,7 @@ module.exports = function(app, models) {
 				if (err) return res.send(500);
 				if (!success) return res.send(403);
 
-				user.sessionId = uuid.v4();
-
-				user.save(function(err, user) {
+				user.session(function(err, user) {
 					if (err) return res.send(500);
 					return res.send(200, user.toJSON({ hide: "password" }));
 				});

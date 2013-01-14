@@ -1,50 +1,51 @@
 var _ = require("underscore")
+  , fs = require("fs")
   , async = require("async")
   , mongoose  = require("mongoose")
   , Schema    = mongoose.Schema
-  , Uploader  = require("./service/photo/uploader")
-  , Processor = require("./service/photo/processor") 
+  , Uploader  = require("../service/photo/uploader")
+  , Processor = require("../service/photo/processor") 
   , config = require("../service/photo/config")
   ;
 
 var PhotoSchema = new Schema({
     name              : { type: String, required: true, lowercase: true, index: true }
   , caption           : { type: String }
-  , isDefault         : { type: Boolean }
+  , isDefault         : { type: Boolean, default: false }
   , size              : { type: String, enum: _.pluck(config, "name") }
-  , filename          : { type: String }
   , contentType       : { type: String, enum: [ "image/jpeg", "image/png" ] }
-  , length            : { type: Number }
   , person            : { type: Schema.ObjectId, ref: "person" }
 });
 
 PhotoSchema.pre("save", function(next) {
 
-  // var processor = new Processor({ path: this.name })
-  //   , data = _.defaults(_.find(config, function(item) { return item.name === this.size; }), { width: 0, height: 0 });
+  var photo = this
+    , path = this.name
+    , processor = new Processor({ path: photo.name });
   
-  // // Get stream
-  // var stream = processor.stream(function(stream) {
+  processor.square(this.size, function(err, result) {
+    if (err) next(err);
 
-  // });
+    processor.format(function(err, type) {
+      if (err) next(err);
 
-  // // Resize to width and height
-  // processor.resize(data.width, data.height, function(stream) {
+      photo.contentType = "image/" + type.toLowerCase();
 
-  // });
+      var uploader = new Uploader({ path: result.path });
 
-  // // Crop to width and height
-  // processor.crop(data.width, data.height, function(stream) {
+      uploader.put(function(err) {
+        if (err) next(err);
 
-  // });
+        photo.name = result.name;
 
-  // // Upload to S3
-  // var uploader = new Uploader({ stream: stream });
-
-  // uploader.put()
-
-  next();
-
+        fs.unlink(result.path, next);
+      });
+    });
+  });
 });
+
+PhotoSchema.methods.download = function(callback) {
+  new Uploader({ path: this.name }).get(callback);      // TODO Cache
+};
 
 module.exports = PhotoSchema;

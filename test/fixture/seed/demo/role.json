@@ -1,0 +1,36 @@
+[
+  { "name": "system"
+  , "claims": [ 
+      { "name": "person:create", "thing": "person", "right": "create" } 
+    , { "name": "person:read", "thing": "person", "right": "read" } 
+    , { "name": "person:update", "thing": "person", "right": "update" } 
+    , { "name": "person:delete", "thing": "person", "right": "delete" } 
+    ] 
+  }
+, { "name": "administrator"
+  , "claims": [ 
+      { "name": "person:create", "thing": "person", "right": "create" } 
+    , { "name": "person:read", "thing": "person", "right": "read" } 
+    , { "name": "person:update", "thing": "person", "right": "update" } 
+    , { "name": "person:delete", "thing": "person", "right": "delete" } 
+    ] 
+  }
+, { "name": "manager"
+  , "claims": [ 
+      { "name": "person:create", "thing": "person", "right": "create" } 
+    , { "name": "person:read", "thing": "person", "right": "read" } 
+    , { "name": "person:update", "thing": "person", "right": "update" } 
+    ] 
+  }
+, { "name": "staff"
+  , "claims": [ 
+      { "name": "person:read", "thing": "person", "right": "read" } 
+    , { "name": "person:update", "thing": "person", "right": "update" } 
+    ] 
+  }
+, { "name": "customer"
+  , "claims": [ 
+      { "name": "person:read", "thing": "person", "right": "read" } 
+    ] 
+  }
+]

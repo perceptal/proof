@@ -1,0 +1,22 @@
+[
+  { "name": "johnny", "password": "secret"
+  , "people": [ "johnny" ]
+  }
+, { "name": "system", "password": "secret"
+  , "people": [ "system" ]
+  }
+, { "name": "brad", "password": "secret"
+  , "people": [ "brad" ]
+  , "accounts": [ 
+      { "name": "bradpitt", "network": "facebook", "networkId": "123456" } 
+    , { "name": "bradpitt", "network": "twitter", "networkId": "123456" } 
+    ] 
+  }
+, { "name": "angelina", "password": "secret"
+  , "people": [ "angelina" ]
+  , "accounts": [ 
+      { "name": "angelinajolie", "network": "facebook", "networkId": "654321" } 
+    , { "name": "angelinajolie", "network": "twitter", "networkId": "654321" } 
+    ] 
+  }
+]

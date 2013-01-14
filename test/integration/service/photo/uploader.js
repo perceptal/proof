@@ -3,7 +3,7 @@ var _ = require("underscore")
   , path = require("path")
   , should = require("should")
   , Uploader = require("../../../../service/photo/uploader")
-  , source = "test/fixture/photo"
+  , source = "test/fixture/photo/image"
   ;
 
 var test = function(photo) {

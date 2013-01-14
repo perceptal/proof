@@ -3,7 +3,7 @@ var _ = require("underscore")
   , path = require("path")
   , config = require("../../../../service/photo/config")
   , Processor = require("../../../../service/photo/processor")
-  , source = "test/fixture/photo"
+  , source = "test/fixture/photo/image"
   ;
 
 var cleanup = function(path, callback) {

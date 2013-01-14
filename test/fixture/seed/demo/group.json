@@ -1,0 +1,16 @@
+[
+  { "name": "system", "code": "380800", "isParent": true, "level": 1
+  , "roles": [ "system" ] 
+  , "people": [
+      { "name": "sys", "firstName": "System", "lastName": "Administrator" }
+    , { "name": "johnny", "firstName": "Johnny", "lastName": "Hall", "gender": "male", "title": "Mr" }
+    ]
+  }
+, { "name": "demo", "code": "999999", "isParent": true, "level": 2
+  , "roles": [ "administrator", "manager", "staff", "customer" ] 
+  , "people": [
+      { "name": "angelina", "firstName": "Angelina", "lastName": "Jolie", "gender": "female", "title": "Mrs" }
+    , { "name": "brad", "firstName": "Brad", "lastName": "Pitt", "gender": "male", "title": "Mr" }
+    ]
+  }
+]

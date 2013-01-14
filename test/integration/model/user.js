@@ -8,7 +8,7 @@ describe("User", function() {
   var user, data;
 
   before(function(done) {
-    helper.start(done);
+    helper.init(done);
   });
 
   after(function(done) {
@@ -23,7 +23,7 @@ describe("User", function() {
     });
 
     it("should have email address", function() {
-      user.email === data.email;
+      user.name.should.equal(data.name);
     });
 
     it("should have generated id", function() {
@@ -31,7 +31,7 @@ describe("User", function() {
     });
 
     it("should have cleartext password", function() {
-      user.password === data.password;
+      user.password.should.equal(data.password);
     });
 
     it("should not authenticate", function(done) {
@@ -47,7 +47,7 @@ describe("User", function() {
       });
 
       it("should have hashed password", function(done) {
-        user.password !== data.password;
+        user.password.should.not.equal(data.password);
         done();
       });
 

@@ -34,7 +34,7 @@ Processor.prototype.square = function(dimension, callback) {
 
     var h = size.height
       , w = size.width
-      , temp = buildPath(that.directory, that.name, "tmp", that.extension)
+      , temp = buildPath(that.directory, that.name, [ "tmp", config.name ].join("."), that.extension)
       , sink = buildPath(that.directory, that.name, config.name, that.extension);
 
     crop(that.path, temp, (h > w) ? w : h, function(err) {
@@ -59,6 +59,10 @@ Processor.prototype.setPath = function(pathname) {
 
 Processor.prototype.size = function(callback) {
   im(this.path).size(callback);
+}
+
+Processor.prototype.format = function(callback) {
+  im(this.path).format(callback);
 }
 
 module.exports = Processor;

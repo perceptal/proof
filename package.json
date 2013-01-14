@@ -11,7 +11,7 @@
       "type": "git"
     , "url": "git@github.com/perceptal:proof.git"
   }
-, "main": "./bootstrap.js",
+, "main": "./app.js",
   "engines": {
       "node": "~0.8.5"
   }
@@ -29,7 +29,7 @@
     , "mongoose":						"~3.5.3"
     , "socket.io":          "~0.9.13"
     , "passport":      			"~0.1.15"
-    , "passport-http":  		"~0.2.1"
+    , "passport-http":  		"git://github.com/perceptal/passport-http.git#master"
     , "redis":              "~0.7.3"
     , "validator":					"~0.4.19"
     , "async":              "~0.1.22"
@@ -46,6 +46,7 @@
     , "mocha":              "~1.7.4"
     , "should":             "~1.2.1"
     , "sinon":              "~1.5.2"
+    , "supertest":          "~0.5.1"
   }
 , "keywords": [ "proof" ]
 }

@@ -14,6 +14,25 @@ var Uploader = function(options) {
   this.client = knox.createClient(config);
 }
 
+Uploader.prototype.get = function(callback) {
+  var data = "";
+
+  this.client.get(this.name)
+    .on("response", function(response) {
+      response.setEncoding("binary");
+
+      if (response.statusCode !== 200) return callback(new Error("Not found"));
+
+      response.on("data", function(chunk) {
+        data += chunk;
+      });
+ 
+      response.on("end", function() {
+        return callback(null, new Buffer(data));
+      });
+  }).end();
+}
+
 Uploader.prototype.put = function(callback) {
   var uploader = s3.fromKnox(this.client).upload(this.path, this.name);
 

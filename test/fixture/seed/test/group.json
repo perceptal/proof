@@ -1,0 +1,9 @@
+[
+  { "name": "test", "code": "123456"
+    , "roles": [ "manager", "administrator" ] 
+    , "people": [
+        { "name": "john", "firstName": "John", "lastName": "Doe", "gender": "male", "title": "Mr" }
+      , { "name": "jane", "firstName": "Jane", "lastName": "Doe", "gender": "female", "title": "Miss" }
+    ]
+  }
+]

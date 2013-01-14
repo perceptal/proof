@@ -39,6 +39,15 @@ Helper.prototype.stop = function(callback) {
   this.environment.stop(callback);
 }
 
+Helper.prototype.authorise = function(name, callback) {
+  this.environment.models.User.findOne({ name: name}, function(err, user) {
+    user.session(function(err, user) {
+      if (err) return callback(err);
+      callback(null, user.token);
+    });
+  });
+}
+
 Helper.prototype.seed = function(seed, callback) {
 
   var that = this, data = this.fixture("seed", seed);
@@ -63,29 +72,40 @@ Helper.prototype.seed = function(seed, callback) {
       return o;
     }
 
+    var save = function(model, data, item, callback) {
+      model.save(function(err, m) {
+        if (_.last(data) === item) callback();
+      });      
+    }
+
     var data = that.fixture("seed", [ seed, file ].join("/"))
       , Model = that.environment.models[model]
       , Link = that.environment.models[link];
 
+    // TODO convert this mess to use async
     _.each(data, function(item) {
 
       Model.findOneAndUpdate({ name: item.name }, build(item), { upsert: true }, function(err, m) {
         
-        m.markModified("password"); // HACK to force save middleware on user
+        if (model === "User") m.markModified("password"); // HACK to force save middleware on user
 
-        _.each(item[prop], function(p) {
-          var thing = _.isObject(p) ? p : { name: p }
-          
-          Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m }), { upsert: true }, function(err, l) {
-            m[prop].push(l);
+        if (item[prop] == null) {
+          save(m, data, item, callback);
+        } else {
+          _.each(item[prop], function(p) {
+            var thing = _.isObject(p) ? p : { name: p }
+            
+            Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m }), { upsert: true }, function(err, l) {
+              m[prop].push(l);
 
-            if (_.last(item[prop]) === p) {
-              m.save(function(err, m) {
-                if (_.last(data) === item) callback();
+              l.save(function(err, l) {   // Not necessary but HACK to force middleware save on photo  
+                if (_.last(item[prop]) === p) {
+                  save(m, data, item, callback);
+                }
               });
-            }
+            });
           });
-        });
+        }
       });
     });
   }

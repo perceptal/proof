@@ -1,8 +1,0 @@
-[
-    { "name": "role-1"
-        , "claims": [ 
-            { "name": "person:read", "thing": "person", "right": "read" } 
-          , { "name": "person:create", "thing": "person", "right": "create" } 
-          ] 
-    }
-]

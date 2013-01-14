@@ -1,9 +1,0 @@
-[
-    { "fixture": "group", "model": "Group", "link": "Role", "property": "roles" }
-  , { "fixture": "group", "model": "Group", "link": "Person", "property": "people", "bidirectional": true }
-  , { "fixture": "people", "model": "Person", "link": "Photo", "property": "photos", "bidirectional": true }
-  , { "fixture": "role", "model": "Role", "link": "Claim", "property": "claims" }
-  , { "fixture": "user", "model": "User", "link": "Account", "property": "accounts", "bidirectional": true }
-  , { "fixture": "user", "model": "User", "link": "Claim", "property": "claims" }
-  , { "fixture": "user", "model": "User", "link": "Person", "property": "people", "bidirectional": true }
-]
