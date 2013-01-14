@@ -41,8 +41,9 @@ Processor.prototype.square = function(dimension, callback) {
       if (err) callback(err);
 
       resize(temp, sink, config.width, config.width, function(err) {
-        require("fs").unlinkSync(temp);
-        callback(err, { path: sink, name: path.basename(sink) });
+        require("fs").unlink(temp, function() {
+          callback(err, { path: sink, name: path.basename(sink) });
+        });
       });
     })
   });

@@ -1,22 +1,42 @@
 [
-  { "name": "johnny", "password": "secret"
-  , "people": [ "johnny" ]
+  { "name": "johnny", "password": "secret", "people": [ "johnny" ]
   }
-, { "name": "system", "password": "secret"
-  , "people": [ "system" ]
+, { "name": "system", "password": "secret", "people": [ "system" ]
   }
-, { "name": "brad", "password": "secret"
-  , "people": [ "brad" ]
-  , "accounts": [ 
-      { "name": "bradpitt", "network": "facebook", "networkId": "123456" } 
-    , { "name": "bradpitt", "network": "twitter", "networkId": "123456" } 
-    ] 
+, { "name": "brad", "password": "secret", "people": [ "brad" ]
   }
-, { "name": "angelina", "password": "secret"
-  , "people": [ "angelina" ]
-  , "accounts": [ 
-      { "name": "angelinajolie", "network": "facebook", "networkId": "654321" } 
-    , { "name": "angelinajolie", "network": "twitter", "networkId": "654321" } 
-    ] 
+, { "name": "angelina", "password": "secret", "people": [ "angelina" ]
+  }
+, { "name": "bill", "password": "secret", "people": [ "bill" ]
+  }
+, { "name": "clint", "password": "secret", "people": [ "clint" ]
+  }
+, { "name": "emma", "password": "secret", "people": [ "emma" ]
+  }
+, { "name": "rachel", "password": "secret", "people": [ "rachel" ]
+  }
+, { "name": "matt", "password": "secret", "people": [ "matt" ]
+  }
+, { "name": "tom", "password": "secret", "people": [ "tom" ]
+  }
+, { "name": "julia", "password": "secret", "people": [ "julia" ]
+  }
+, { "name": "cate", "password": "secret", "people": [ "cate" ]
+  }
+, { "name": "jeff", "password": "secret", "people": [ "jeff" ]
+  }
+, { "name": "will", "password": "secret", "people": [ "will" ]
+  }
+, { "name": "leonardo", "password": "secret", "people": [ "leonardo" ]
+  }
+, { "name": "kate", "password": "secret", "people": [ "kate" ]
+  }
+, { "name": "scarlett", "password": "secret", "people": [ "scarlett" ]
+  }
+, { "name": "gwyneth", "password": "secret", "people": [ "gwyneth" ]
+  }
+, { "name": "george", "password": "secret", "people": [ "george" ]
+  }
+, { "name": "robert", "password": "secret", "people": [ "robert" ]
   }
 ]
