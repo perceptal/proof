@@ -5,7 +5,8 @@ module.exports.init = function(app, models) {
 	// Define resources
 	[
 	    { name: "people" }
-	  , { name: "sessions" }
+    , { name: "sessions" }
+    , { name: "sessions/config" }
 	  , { name: "users" }
 
 	].map(function(defn) {

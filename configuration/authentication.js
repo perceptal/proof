@@ -15,8 +15,8 @@ module.exports.configure = function(User) {
 
 	passport.use(new BasicStrategy(function(name, sessionId, done) {
     process.nextTick(function () { 
-      User.findOne({ name: email }, function(err, user) {
-
+      User.findOne({ name: name }, function(err, user) {
+        
         if (err) { return done(err); }
         if (!user) { return done(null, false, { status: 403 }); }
         if (user.sessionId !== sessionId) { return done(null, false, { status: 403 }); } 

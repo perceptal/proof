@@ -14,7 +14,7 @@ module.exports = function(app, models) {
 	});
 
 	app.post("/api/sessions", function(req, res, next) {
-		User.findOne({ name: req.body.username }, function(err, user) {
+		User.findOne({ name: req.body.username }, function(err, user) {console.log(err, user)
 			if (err) return res.send(500);
 			if (user == null) return res.send(404);
 

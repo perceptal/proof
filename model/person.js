@@ -12,6 +12,7 @@ var PersonSchema = new Schema({
   , group                 : { type: Schema.ObjectId, ref: "group" }
   , user                  : { type: Schema.ObjectId, ref: "user" }
   , roles                 : [ { type: Schema.ObjectId, ref: "role" } ]
+  , photos                : [ { type: Schema.ObjectId, ref: "photo" } ]
 });
 
 PersonSchema.statics.search = function(query) {

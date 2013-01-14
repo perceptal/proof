@@ -6,9 +6,9 @@
   }
   , "mongodb": {
       "host": "localhost"
-    , "database": "proof_test"
+    , "database": "proof_production"
   }
   , "s3": {
-      "bucket": "test.proof.perceptal.co.uk"
+      "bucket": "production.proof.perceptal.co.uk"
   }
 }

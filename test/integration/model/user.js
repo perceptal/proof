@@ -18,7 +18,7 @@ describe("User", function() {
   describe("when created with valid data", function() {
     
     before(function() {
-      data = data = helper.fixture("user", "valid");
+      data = helper.fixture("user", "valid");
       user = new environment.models.User(data);
     });
 

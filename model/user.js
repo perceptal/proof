@@ -7,7 +7,7 @@ var UserSchema = new Schema({
     name              : { type: String, required: true, lowercase: true, unique: true, index: true }
   , password          : { type: String, required: true }
   , sessionId         : { type: String }
-  , people            : [ { type: Schema.ObjectId, ref: "profile" } ]
+  , people            : [ { type: Schema.ObjectId, ref: "person" } ]
   , accounts          : [ { type: Schema.ObjectId, ref: "account" } ]
   , claims            : [ { type: Schema.ObjectId, ref: "claim" } ]
 });
