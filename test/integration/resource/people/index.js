@@ -18,40 +18,37 @@ describe("/people", function() {
     helper.stop(done);
   });
 
-  describe("without authorisation", function() {
+  describe("GET", function() {
 
-    it("should return 401", function() {
-      request(environment.server.app)
-        .get("/api/people")
-        .expect(401)
-        .end(function(err, res) {
-          if (err) throw err;
-        });
-    });
-  });
+    describe("without authorisation", function() {
 
-  describe("with authorisation", function() {
-
-    var token;
-
-    before(function(done) {
-      helper.authorise("john", function(err, t) {
-        token = t;
-        done();
-      })
+      it("should return 403", function(done) {
+        request(environment.server.app)
+          .get("/api/people")
+          .expect(401, done);
+      });
     });
 
-    it("should return json", function() {
-      request(environment.server.app)
-        .get("/api/people")
-        .set("authorization", token)
-        .expect("Content-Type", /json/)
-        .expect("Content-Length", "20")
-        .expect(200)
-        .end(function(err, res) {
-          if (err) throw err;
-        });
+    describe("with authorisation", function() {
+
+      var token;
+
+      before(function(done) {
+        helper.authorise("john", function(err, t) {
+          token = t;
+          done();
+        })
+      });
+
+      it("should return 200", function(done) {
+        request(environment.server.app)
+          .get("/api/people")
+          .set("authorization", token)
+          .expect("Content-Type", /json/)
+          .expect(200, done);
+      });
     });
+
   });
 
 });
