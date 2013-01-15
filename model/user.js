@@ -1,6 +1,6 @@
-var mongoose = require("mongoose")
+var _ = require("underscore")
+  , mongoose = require("mongoose")
   , bcrypt   = require("bcrypt")
-  , uuid = require("node-uuid")
   , Schema   = mongoose.Schema
   ;
 
@@ -11,6 +11,18 @@ var UserSchema = new Schema({
   , people            : [ { type: Schema.ObjectId, ref: "person" } ]
   , accounts          : [ { type: Schema.ObjectId, ref: "account" } ]
 });
+
+function generate(len) {
+  var set = "abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ"
+    , length = set.length
+    , uniq = "";
+
+  for (var i = 0; i < len; i++) {
+    uniq += set[Math.floor(Math.random() * length)];
+  }
+  
+  return uniq;
+}
 
 UserSchema.pre("save", function(next) {
   var user = this;
@@ -30,6 +42,21 @@ UserSchema.pre("save", function(next) {
   });
 });
 
+var find = function(query, find, callback) {
+  find(query)
+    .populate("people")
+    .populate("accounts")
+    .exec(callback);
+}
+
+UserSchema.statics.findOneAndPopulate = function(query, callback) {
+  find(query, this.findOne.bind(this), callback);
+}
+
+UserSchema.statics.findAndPopulate = function(query, callback) {
+  find(query, this.find.bind(this), callback);
+}
+
 UserSchema.methods.authenticate = function(password, callback) {
   bcrypt.compare(password || "", this.password, function(err, matches) {
     if (err) return callback(err);
@@ -37,10 +64,13 @@ UserSchema.methods.authenticate = function(password, callback) {
   });
 }
 
-UserSchema.methods.session = function(callback) {
+UserSchema.methods.session = function(code, callback) {
   var user = this;
-  user.sessionId = uuid.v4();
 
+  if (!_.contains(_.pluck(user.people, "code"), code)) return callback();
+
+  user.sessionId = [ code, generate(16) ].join("|");
+  
   user.save(function(err, user) {
     if (err) return callback(err);
     return callback(null, user);

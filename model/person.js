@@ -9,6 +9,7 @@ var PersonSchema = new Schema({
   , gender             		: { type: String, enum: [ "male", "female" ] }
   , dob                   : { type: Date }
   , securityKey           : { min: { type: Number }, max: { type: Number }} 
+  , code                  : { type: String }
   , group                 : { type: Schema.ObjectId, ref: "group" }
   , user                  : { type: Schema.ObjectId, ref: "user" }
   , roles                 : [ { type: Schema.ObjectId, ref: "role" } ]
@@ -19,6 +20,7 @@ var find = function(query, find, callback) {
   find(query)
     .populate("group")
     .populate("user")
+    .populate("roles")
     .exec(callback);
 }
 

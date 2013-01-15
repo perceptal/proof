@@ -25,7 +25,7 @@ describe("/people", function() {
       it("should return 403", function(done) {
         request(environment.server.app)
           .get("/api/people")
-          .expect(401, done);
+          .expect(403, done);
       });
     });
 
@@ -34,7 +34,7 @@ describe("/people", function() {
       var token;
 
       before(function(done) {
-        helper.authorise("john", function(err, t) {
+        helper.authorize("john", "123456", function(err, t) {
           token = t;
           done();
         });

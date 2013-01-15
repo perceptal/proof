@@ -25,7 +25,7 @@ describe("/people", function() {
       var token;
 
       before(function(done) {
-        helper.authorise("john", function(err, t) {
+        helper.authorize("john", "123456", function(err, t) {
           token = t;
           done();
         });

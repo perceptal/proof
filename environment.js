@@ -17,7 +17,7 @@ Environment.prototype.init = function(callback) {
     connection.once("open", function() {
 
       that.models = initialize("model", connection);
-      that.server.configure(that.models.User);
+      that.server.configure(that.models);
 
       initialize("resource", that.server.app, that.models);
 

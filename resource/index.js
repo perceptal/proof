@@ -1,3 +1,3 @@
-module.exports.define = function(app, resource, models) {
-  require("./" + resource)(app, models);
+module.exports.define = function(app, resource, models, authenticate, authorize) {
+  require("./" + resource)(app, models, authenticate, authorize);
 }

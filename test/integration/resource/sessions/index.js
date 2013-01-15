@@ -25,7 +25,7 @@ describe("/sessions", function() {
       it("should return 200", function(done) {
         request(environment.server.app)
           .post("/api/sessions")
-          .send({ username: "john", password: "secret" })
+          .send({ name: "john", password: "secret", code: "123456" })
           .expect("Content-Type", /json/)
           .expect(200, done);
       });
@@ -36,7 +36,7 @@ describe("/sessions", function() {
       it("should return 404", function(done) {
         request(environment.server.app)
           .post("/api/sessions")
-          .send({ username: "johnny", password: "secret" })
+          .send({ name: "johnny", password: "secret", code: "123456" })
           .expect(404, done);
       });
     });
@@ -55,7 +55,7 @@ describe("/sessions", function() {
       it("should return 403", function(done) {
         request(environment.server.app)
           .post("/api/sessions")
-          .send({ username: "john" })
+          .send({ name: "john", code: "123456" })
           .expect(403, done);
       });
     });
@@ -65,8 +65,28 @@ describe("/sessions", function() {
       it("should return 403", function(done) {
         request(environment.server.app)
           .post("/api/sessions")
-          .send({ username: "john", password: "password" })
+          .send({ name: "john", password: "password", code: "123456" })
           .expect(403, done);
+      });
+    });
+
+    describe("invalid code", function() {
+
+      it("should return 404", function(done) {
+        request(environment.server.app)
+          .post("/api/sessions")
+          .send({ name: "john", password: "secret", code: "999999" })
+          .expect(404, done);
+      });
+    });
+
+    describe("null code", function() {
+
+      it("should return 404", function(done) {
+        request(environment.server.app)
+          .post("/api/sessions")
+          .send({ name: "john", password: "secret" })
+          .expect(404, done);
       });
     });
 

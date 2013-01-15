@@ -6,14 +6,21 @@
 <div class="modal-body">
 	<form>
 	  <fieldset>
-			<span class="input-append">
-	    	<input type="text" placeholder="{{ t "security.user_or_email" }}" name="username" id="username" class="span3">
-  			<span class="add-on"><i class="icon-user"></i></span>
-			</span>
-			<span class="input-append" style="margin-left: 10px">
-    		<input type="password" placeholder="{{ t "security.password" }}" name="password" id="password" class="span2">
-  			<span class="add-on"><i class="icon-lock"></i></span>
-			</span>
+      <label for="code">{{ t "security.organisation_code" }}</label>
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-globe"></i></span>
+        <input type="text" name="code" id="code" class="span2">
+      </div>
+      <label for="name">{{ t "security.user_or_email" }}</label>
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-user"></i></span>
+        <input type="text" name="name" id="name" class="span4">
+      </div>
+      <label for="password">{{ t "security.password" }}</label>
+			<div class="input-prepend">
+        <span class="add-on"><i class="icon-lock"></i></span>
+    		<input type="password" name="password" id="password" class="span4">
+			</div>
 	  </fieldset>	
 	</form>
 

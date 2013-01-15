@@ -1,14 +1,12 @@
-var passport = require("passport")
-  , Uploader = require("../../service/photo/uploader")
-  ;
+var Uploader = require("../../service/photo/uploader");
 
-module.exports = function(app, models) {
+module.exports = function(app, models, authenticate, authorize) {
 
   var Person = models.Person
     , Photo = models.Photo;
 
   app.get("/api/people/:person/photos"
-  , passport.authenticate("basic", { session: false })
+  // , authenticate.basic()
   , function(req, res, next) {
       Person.find({}, function(err, people) {
         if (err) return next(err);
@@ -17,7 +15,7 @@ module.exports = function(app, models) {
   });
 
   app.get("/api/people/:person/photos/:size"
-  // , passport.authenticate("basic", { session: false })
+  // , authenticate.basic()
   , function(req, res, next) {
 
       Photo.findDefault(req.params.person, req.params.size, function(err, photo) {

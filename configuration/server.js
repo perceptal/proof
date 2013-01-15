@@ -2,18 +2,15 @@ var http = require("http")
   , https = require("https")
   , express = require("express")
   , stylus = require("stylus")
-  , passport = require("passport")
-  , flash = require("connect-flash")
   , i18n = require("i18next")
   , configuration = require("./")
-  , authentication = require("./authentication")
   ;
 
 var Server = function() {
   if (!(this instanceof Server)) return new Server();
 };
 
-Server.prototype.configure = function(User) {
+Server.prototype.configure = function(models) {
 
   var compile = function(str, path) {
     return stylus(str)
@@ -32,8 +29,6 @@ Server.prototype.configure = function(User) {
   , cookieName: "locale"
   });
   
-  authentication.configure(User);
-
   app.configure(function() {
     app.set("title", "Proof");
     app.set("views", root + "/views");
@@ -45,9 +40,6 @@ Server.prototype.configure = function(User) {
     app.use(express.cookieParser());
     app.use(express.methodOverride());
     app.use(express.session({ secret: "esoognom", cookie: { maxAge: 60000 }}));
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.use(flash());
     app.use(i18n.handle);
 
     app.use(stylus.middleware({
@@ -63,9 +55,9 @@ Server.prototype.configure = function(User) {
     app.use(express.static(root + "public"));
     app.use(express.static(root + "client/" + configuration("client") + "/app"));
 
-    app.use(function(err, req, res, next){
-      console.error(err, err.stack);
-      res.send(500, "Something broke!");
+    app.use(function(err, req, res, next) {
+      console.error(err, err.status, err.stack);
+      res.send(err.status || 500, err.message);
     });
 
     app.use(app.router);

@@ -25,6 +25,7 @@
   , "password": "Password"
   , "user_or_email": "$t(security.email) or $t(security.username)"
   , "profile": "Profile"
+  , "organisation_code": "Organisation Code"
   }
 , "people": {
     "people": "$t(main.people)"

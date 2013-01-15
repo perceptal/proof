@@ -39,9 +39,9 @@ Helper.prototype.stop = function(callback) {
   this.environment.stop(callback);
 }
 
-Helper.prototype.authorise = function(name, callback) {
-  this.environment.models.User.findOne({ name: name}, function(err, user) {
-    user.session(function(err, user) {
+Helper.prototype.authorize = function(name, code, callback) {
+  this.environment.models.User.findOneAndPopulate({ name: name}, function(err, user) {
+    user.session(code, function(err, user) {
       if (err) return callback(err);
       callback(null, user.token);
     });

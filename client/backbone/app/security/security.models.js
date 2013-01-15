@@ -1,7 +1,7 @@
 Proof.module("Security.Models", function(Models, App, Backbone, Marionette, $, _) {
 
   var ANONYMOUS = "anonymous"
-    , NO_SESSION = "-";
+    , NO_SESSION = "|";
 
 	Models.SignOn = Backbone.Model.extend({
 		defaults: {
@@ -12,10 +12,10 @@ Proof.module("Security.Models", function(Models, App, Backbone, Marionette, $, _
 	,	urlRoot: "/api/sessions"
 
 	,	authenticationToken: function() {
-			var username = this.get("name")
-			  , password = this.get("sessionId");
+			var name = this.get("name")
+			  , session = this.get("sessionId");
 
-			return window.btoa([ username, password ].join(":"));
+			return window.btoa([ name, session ].join(":"));
 		}
 
   , isAuthenticated: function() {
