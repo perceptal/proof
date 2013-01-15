@@ -12,7 +12,7 @@ var cleanup = function(path, callback) {
 
 var test = function(photo, dimension) {
 
-  describe("#" + photo + " (" + dimension.name + ")", function() {
+  describe("when processing #" + photo + " (" + dimension.name + ")", function() {
 
     var that = this
       , original = path.join(source, photo)

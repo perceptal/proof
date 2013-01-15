@@ -2,7 +2,7 @@ var fs = require("fs")
   , path = require("path")
   , s3 = require("s3")
   , knox = require("knox")
-  , config = require("../../configuration")("s3");
+  , configuration = require("../../configuration");
 
 var Uploader = function(options) {
   if (!(this instanceof Uploader)) return new Uploader(options);
@@ -11,7 +11,11 @@ var Uploader = function(options) {
   this.directory = path.dirname(options.path);
   this.extension = path.extname(options.path);
   this.name = path.basename(options.path);
-  this.client = knox.createClient(config);
+  this.client = knox.createClient({
+    key: configuration("S3:KEY")
+  , secret: configuration("S3:SECRET")
+  , bucket: configuration("S3:BUCKET")
+  });
 }
 
 Uploader.prototype.get = function(callback) {
@@ -28,7 +32,7 @@ Uploader.prototype.get = function(callback) {
       });
  
       response.on("end", function() {
-        return callback(null, new Buffer(data));
+        return callback(null, data);
       });
   }).end();
 }

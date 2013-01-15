@@ -8,7 +8,7 @@
       "host": "localhost"
     , "database": "proof_test"
   }
-  , "s3": {
-      "bucket": "test.proof.perceptal.co.uk"
+  , "S3": {
+      "BUCKET": "test.proof.perceptal.co.uk"
   }
 }

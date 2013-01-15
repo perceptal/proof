@@ -7,8 +7,8 @@ var Connection = function() {
 	if (!(this instanceof Connection)) return new Connection();
 
 	this.config = { 
-			host: configuration("mongodb/host")
-		, database: configuration("mongodb/database")
+			host: configuration("mongodb:host")
+		, database: configuration("mongodb:database")
 		, port: 27017 
 	};
 }

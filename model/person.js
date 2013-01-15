@@ -15,9 +15,19 @@ var PersonSchema = new Schema({
   , photos                : [ { type: Schema.ObjectId, ref: "photo" } ]
 });
 
-PersonSchema.statics.search = function(query) {
-	var search = new RegExp(query, "i");
-  return this.or( [ { "firstName": search }, { "lastName": search } ]);
+var find = function(query, find, callback) {
+  find(query)
+    .populate("group")
+    .populate("user")
+    .exec(callback);
+}
+
+PersonSchema.statics.findOneAndPopulate = function(query, callback) {
+  find(query, this.findOne.bind(this), callback);
+}
+
+PersonSchema.statics.findAndPopulate = function(query, callback) {
+  find(query, this.find.bind(this), callback);
 }
 
 module.exports = PersonSchema;

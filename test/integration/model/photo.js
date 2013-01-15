@@ -48,7 +48,7 @@ describe("Photo", function() {
 
         before(function(done) {
           photo.download(function(err, data) {
-            image = data;
+            image = new Buffer(data);
             done();
           });
         });

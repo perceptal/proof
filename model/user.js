@@ -31,7 +31,7 @@ UserSchema.pre("save", function(next) {
 });
 
 UserSchema.methods.authenticate = function(password, callback) {
-  bcrypt.compare(password, this.password, function(err, matches) {
+  bcrypt.compare(password || "", this.password, function(err, matches) {
     if (err) return callback(err);
     callback(null, matches);
   });

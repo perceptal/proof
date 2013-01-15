@@ -4,28 +4,23 @@ module.exports = function(app, models) {
 
 	var Person = models.Person;
 
-	app.get("/api/people", 
-		passport.authenticate("basic", { session: false }), 
-		function(req, res, next) {
-			Person.find({}, function(err, people) {
+	app.get("/api/people"
+  , passport.authenticate("basic", { session: false })
+  , function(req, res, next) {
+			Person.findAndPopulate({}, function(err, people) {
 				if (err) return next(err);
 				return res.send(200, people);
 			});
 	});
 
-	app.get("/api/people/:id", function(req, res, next) {
-		Person.findOne({ _id: req.params.id }, function(err, person) {			
-			if (person == null) return res.send(404);
-			if (err) return next(err);
-			return res.send(200, person);
-		});
-	});
-
-	app.get("/api/people/search", function(req, res, next) {
-		Person.search(req.params.q, function(err, people) {			
-			if (err) return next(err);
-			return res.send(200, people);
-		});
+	app.get("/api/people/:id"
+	, passport.authenticate("basic", { session: false })
+	, function(req, res, next) {
+			Person.findOneAndPopulate({ _id: req.params.id }, function(err, person) {			
+				if (person == null) return res.send(404);
+				if (err) return next(err);
+				return res.send(200, person);
+			});
 	});
 
 	app.post("/api/people", function(req, res, next) {

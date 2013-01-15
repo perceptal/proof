@@ -139,15 +139,19 @@ article.item div.info {
 article.item div.no-photo {
   padding-left: 0;
 }
-article.item .thumbnail {
+article.item .photo {
   float: left;
+  border: none;
   margin: 8px;
   overflow: hidden;
   position: relative;
-  height: 42px;
-  width: 42px;
+  height: 50px;
+  width: 50px;
 }
-article.item .thumbnail img {
+article.item .photo img {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -218,15 +222,19 @@ article.list div.info {
 article.list div.no-photo {
   padding-left: 0;
 }
-article.list .thumbnail {
+article.list .photo {
   float: left;
+  border: none;
   margin: 8px;
   overflow: hidden;
   position: relative;
-  height: 42px;
-  width: 42px;
+  height: 50px;
+  width: 50px;
 }
-article.list .thumbnail img {
+article.list .photo img {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
   position: absolute;
   top: 0;
   left: 0;

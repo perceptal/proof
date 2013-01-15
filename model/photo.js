@@ -38,7 +38,9 @@ PhotoSchema.pre("save", function(next) {
 
         photo.name = result.name;
 
-        fs.unlink(result.path, next);
+        fs.unlink(result.path, function(err) {
+          next();
+        });
       });
     });
   });
@@ -46,6 +48,10 @@ PhotoSchema.pre("save", function(next) {
 
 PhotoSchema.methods.download = function(callback) {
   new Uploader({ path: this.name }).get(callback);      // TODO Cache
+};
+
+PhotoSchema.statics.findDefault = function(person, size, callback) {
+  this.findOne({ person: person, isDefault: true, size: size }).exec(callback);
 };
 
 module.exports = PhotoSchema;

@@ -8,8 +8,8 @@
 			"host": "localhost"
 		, "database": "proof_development"
 	}
-	, "s3": {
-		  "bucket": "development.proof.perceptal.co.uk"
+	, "S3": {
+		  "BUCKET": "development.proof.perceptal.co.uk"
 	}
 }
 

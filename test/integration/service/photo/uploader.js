@@ -12,7 +12,7 @@ var test = function(photo) {
     this.sut.delete(done);
   }
 
-  describe("#" + photo, function() {
+  describe("when uploading #" + photo, function() {
     this.timeout(10000);
 
     var that = this

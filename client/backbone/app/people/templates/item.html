@@ -1,11 +1,11 @@
 <article class="list">
-	<div class="thumbnail"><img src="/img/photos/emma.jpg" /></div>
+	<div class="photo"><img src="/api/people/{{ id }}/photos/thumbnail" data-fallback="/img/noprofile.png" /></div>
 
 	<div class="info">
 	    <div class="heading">
 	        <strong>{{ firstName }} {{ lastName }}</strong>
-	        <span class="info">emmawatson</span>
-	        <span class="info">Hogwarts</span>
+	        <span class="info">{{ user.name }}</span>
+	        <span class="info">{{ group.name }}</span>
 	    </div>
 
 	    <div class="detail">

@@ -52,8 +52,8 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
         that.close();
       });
 
-      promise.fail(function(response) { 
-        if (response.status === 404) {
+      promise.fail(function(response) { console.log(response)
+        if (response.status === 404 || response.status === 403) {
           that.alert("You have entered invalid credentials.");
         } else if (response.status === 500) {
           that.alert("Application error, please try again.");

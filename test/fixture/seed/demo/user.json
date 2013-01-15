@@ -1,7 +1,7 @@
 [
   { "name": "johnny", "password": "secret", "people": [ "johnny" ]
   }
-, { "name": "system", "password": "secret", "people": [ "system" ]
+, { "name": "sys", "password": "secret", "people": [ "sys" ]
   }
 , { "name": "brad", "password": "secret", "people": [ "brad" ]
   }
@@ -38,5 +38,9 @@
 , { "name": "george", "password": "secret", "people": [ "george" ]
   }
 , { "name": "robert", "password": "secret", "people": [ "robert" ]
+  }
+, { "name": "claire", "password": "secret", "people": [ "claire" ]
+  }
+, { "name": "natalie", "password": "secret", "people": [ "natalie" ]
   }
 ]

@@ -41,6 +41,25 @@ describe("/sessions", function() {
       });
     });
 
+    describe("null user", function() {
+
+      it("should return 403", function(done) {
+        request(environment.server.app)
+          .post("/api/sessions")
+          .expect(404, done);
+      });
+    });
+
+    describe("null password", function() {
+
+      it("should return 403", function(done) {
+        request(environment.server.app)
+          .post("/api/sessions")
+          .send({ username: "john" })
+          .expect(403, done);
+      });
+    });
+
     describe("invalid password", function() {
 
       it("should return 403", function(done) {
