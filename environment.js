@@ -1,6 +1,5 @@
 var Server = require("./configuration/server")
   , Connection = require("./configuration/connection")
-  , configuration = require("./configuration")
   , initialize = require("./initializer")
   ;
 
@@ -18,7 +17,7 @@ Environment.prototype.init = function(callback) {
     connection.once("open", function() {
 
       that.models = initialize("model", connection);
-      that.server.configure(that.models.User);
+      that.server.configure(that.models);
 
       initialize("resource", that.server.app, that.models);
 
@@ -36,7 +35,10 @@ Environment.prototype.start = function(callback) {
 }
 
 Environment.prototype.stop = function(callback) {
-  this.server.stop(callback);
+  var that = this;
+  this.db.close(function() {
+    that.server.stop(callback);
+  });
 }
 
 module.exports = Environment;

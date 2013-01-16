@@ -24,6 +24,10 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   		this.collection.on("all", this.render, this);
   	}
 
+  , onRender: function() {
+      this.$(".photo img").fallback();
+    }
+
 	});
 
 	Views.Layout = Marionette.Layout.extend({

@@ -4,17 +4,16 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
     template: "security/signon"
   
   , ui: {
-      "username": "input#username"
+      "code"    : "input#code"
+    , "name"    : "input#name"
     , "password": "input#password"
     , "alert"   : ".alert"
     }
 
   , events: {
       "click    button#signon"  : "signOn"
-    , "keypress input#username" : "onKeypress"
-    , "keypress input#password" : "onKeypress"
-    , "change   input#username" : "onChange"
-    , "change   input#password" : "onChange"
+    , "keypress input"          : "onKeypress"
+    , "change   input"          : "onChange"
     }
 
   , initialize: function(options) {
@@ -26,7 +25,7 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
     }
 
   , setFocus: function(e) {
-      this.ui.username.focus();
+      this.ui.code.focus();
     }
 
   , onKeypress: function(e) {
@@ -52,8 +51,8 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
         that.close();
       });
 
-      promise.fail(function(response) { 
-        if (response.status === 404) {
+      promise.fail(function(response) { console.log(response)
+        if (response.status === 404 || response.status === 403) {
           that.alert("You have entered invalid credentials.");
         } else if (response.status === 500) {
           that.alert("Application error, please try again.");

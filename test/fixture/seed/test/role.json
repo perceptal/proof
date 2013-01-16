@@ -1,0 +1,22 @@
+[
+  { "name": "manager"
+    , "claims": [ 
+        { "name": "person:read", "thing": "person", "right": "read" } 
+      , { "name": "person:update", "thing": "person", "right": "update" } 
+      , { "name": "person:create", "thing": "person", "right": "create" } 
+      ] 
+  }
+, { "name": "customer"
+    , "claims": [ 
+        { "name": "person:read", "thing": "person", "right": "read" } 
+      ] 
+  }
+, { "name": "administrator"
+    , "claims": [ 
+        { "name": "person:read", "thing": "person", "right": "read" } 
+      , { "name": "person:create", "thing": "person", "right": "create" } 
+      , { "name": "person:update", "thing": "person", "right": "update" } 
+      , { "name": "person:delete", "thing": "person", "right": "delete" } 
+      ] 
+  }
+]

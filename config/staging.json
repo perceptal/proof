@@ -1,0 +1,14 @@
+{
+    "hostname": "localhost"
+  , "port": 3000
+  , "provider": {
+      "cache": "null"
+  }
+  , "mongodb": {
+      "host": "localhost"
+    , "database": "proof_staging"
+  }
+  , "S3": {
+      "BUCKET": "staging.proof.perceptal.co.uk"
+  }
+}

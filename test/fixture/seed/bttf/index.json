@@ -1,5 +1,0 @@
-[
-    { "fixture": "profile/bttf", "model": "profile", "link": "tag", "property": "tags" }
-  , { "fixture": "profile/bttf", "model": "profile", "link": "set", "property": "sets" }
-  , { "fixture": "profile/bttf", "model": "profile", "link": "account", "property": "accounts" }
-]

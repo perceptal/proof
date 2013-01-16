@@ -17,7 +17,7 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _) 
 
   , defaultErrorHandler: function(model, error) {
 	    if (error.status === 403) {
-	    	App.vent.trigger("authorization:failed", this);
+	    	App.vent.trigger("security:unauthorised", this);
 	    }
     }
 	});

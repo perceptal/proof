@@ -1,0 +1,182 @@
+[
+  { "name": "angelina", "code": "999999"
+  , "roles": [ "administrator" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/angelina.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/angelina.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/angelina.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/angelina.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "bill", "code": "999999"
+  , "roles": [ "administrator" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/bill.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/bill.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/bill.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/bill.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "brad", "code": "999999"
+  , "roles": [ "administrator" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/brad.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/brad.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/brad.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/brad.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "claire", "code": "999999"
+  , "roles": [ "administrator" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/claire.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/claire.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/claire.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/claire.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "natalie", "code": "999999"
+  , "roles": [ "administrator" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/natalie.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/natalie.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/natalie.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/natalie.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "kate", "code": "999999"
+  , "roles": [ "manager" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/kate.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/kate.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/kate.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/kate.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "will", "code": "999999"
+  , "roles": [ "manager" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/will.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/will.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/will.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/will.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "scarlett", "code": "999999"
+  , "roles": [ "manager" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/scarlett.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/scarlett.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/scarlett.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/scarlett.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "gwyneth", "code": "999999"
+  , "roles": [ "manager" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/gwyneth.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/gwyneth.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/gwyneth.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/gwyneth.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "matt", "code": "999999"
+  , "roles": [ "manager" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/matt.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/matt.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/matt.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/matt.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "jeff", "code": "999999"
+  , "roles": [ "manager" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/jeff.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/jeff.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/jeff.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/jeff.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "leonardo", "code": "999999"
+  , "roles": [ "staff" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/leo.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/leo.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/leo.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/leo.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "clint", "code": "999999"
+  , "roles": [ "staff" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/clint.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/clint.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/clint.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/clint.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "cate", "code": "999999"
+  , "roles": [ "staff" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/cate.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/cate.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/cate.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/cate.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "george", "code": "999999"
+  , "roles": [ "staff" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/george.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/george.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/george.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/george.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "tom", "code": "999999"
+  , "roles": [ "customer" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/tom.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/tom.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/tom.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/tom.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "julia", "code": "999999"
+  , "roles": [ "customer" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/julia.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/julia.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/julia.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/julia.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "rachel", "code": "999999"
+  , "roles": [ "customer" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/rachel.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/rachel.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/rachel.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/rachel.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "emma", "code": "999999"
+  , "roles": [ "customer" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/emma.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/emma.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/emma.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/emma.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+, { "name": "robert", "code": "999999"
+  , "roles": [ "customer" ]
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/robert.jpg", "size": "thumbnail", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/robert.jpg", "size": "small", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/robert.jpg", "size": "medium", "isDefault": true }
+    , { "name": "test/fixture/seed/demo/photo/robert.jpg", "size": "large", "isDefault": true }
+    ]
+  }
+]

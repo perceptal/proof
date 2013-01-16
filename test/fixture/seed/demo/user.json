@@ -1,0 +1,46 @@
+[
+  { "name": "johnny", "password": "secret", "people": [ "johnny" ]
+  }
+, { "name": "sys", "password": "secret", "people": [ "sys" ]
+  }
+, { "name": "brad", "password": "secret", "people": [ "brad" ]
+  }
+, { "name": "angelina", "password": "secret", "people": [ "angelina" ]
+  }
+, { "name": "bill", "password": "secret", "people": [ "bill" ]
+  }
+, { "name": "clint", "password": "secret", "people": [ "clint" ]
+  }
+, { "name": "emma", "password": "secret", "people": [ "emma" ]
+  }
+, { "name": "rachel", "password": "secret", "people": [ "rachel" ]
+  }
+, { "name": "matt", "password": "secret", "people": [ "matt" ]
+  }
+, { "name": "tom", "password": "secret", "people": [ "tom" ]
+  }
+, { "name": "julia", "password": "secret", "people": [ "julia" ]
+  }
+, { "name": "cate", "password": "secret", "people": [ "cate" ]
+  }
+, { "name": "jeff", "password": "secret", "people": [ "jeff" ]
+  }
+, { "name": "will", "password": "secret", "people": [ "will" ]
+  }
+, { "name": "leonardo", "password": "secret", "people": [ "leonardo" ]
+  }
+, { "name": "kate", "password": "secret", "people": [ "kate" ]
+  }
+, { "name": "scarlett", "password": "secret", "people": [ "scarlett" ]
+  }
+, { "name": "gwyneth", "password": "secret", "people": [ "gwyneth" ]
+  }
+, { "name": "george", "password": "secret", "people": [ "george" ]
+  }
+, { "name": "robert", "password": "secret", "people": [ "robert" ]
+  }
+, { "name": "claire", "password": "secret", "people": [ "claire" ]
+  }
+, { "name": "natalie", "password": "secret", "people": [ "natalie" ]
+  }
+]

@@ -11,6 +11,7 @@ module.exports.init = function(connection) {
     , { name: "Person" }
     , { name: "Role" }
     , { name: "User" }
+    , { name: "Photo" }
 
 	].map(function(defn) {
 		models[defn.name] = model(defn.path || defn.name.toLowerCase(), connection);
