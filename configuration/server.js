@@ -91,7 +91,7 @@ Server.prototype.configure = function(models) {
 Server.prototype.start = function(callback) {
   this.httpServer = http.createServer(this.app);
   // this.io = require("socket.io").listen(this.httpServer);
-  this.httpServer.listen(configuration("port"), callback);console.log("PORT", configuration("port"))
+  this.httpServer.listen(configuration("port"), callback);
   // this.httpsServer = https.createServer(options, app).listen(443);
 }
 
