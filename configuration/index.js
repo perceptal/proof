@@ -1,5 +1,5 @@
 require("./configure")();
 
 module.exports = function(key) {
-  return require("nconf").get(key);
+  return require("nconf").get(key.toUpperCase());
 };

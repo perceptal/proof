@@ -1,12 +1,8 @@
 {
-    "hostname": "localhost"
-  , "port": 3000
-  , "provider": {
-      "cache": "null"
-  }
-  , "mongodb": {
-      "host": "localhost"
-    , "database": "proof_staging"
+    "HOSTNAME": "proof.herokuapp.com"
+  , "PORT": 29135
+  , "PROVIDER": {
+      "CACHE": "null"
   }
   , "S3": {
       "BUCKET": "staging.proof.perceptal.co.uk"

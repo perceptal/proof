@@ -1,12 +1,12 @@
 {
-    "hostname": "localhost"
-	,	"port": 3000
-	, "provider": {
-		  "cache": "null"
+    "HOSTNAME": "localhost"
+	,	"PORT": 3000
+	, "PROVIDER": {
+		  "CACHE": "null"
 	}
-	, "mongodb": {
-			"host": "localhost"
-		, "database": "proof_development"
+	, "MONGODB": {
+			"HOST": "localhost"
+		, "DATABASE": "proof_development"
 	}
 	, "S3": {
 		  "BUCKET": "development.proof.perceptal.co.uk"
