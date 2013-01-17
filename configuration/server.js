@@ -39,7 +39,6 @@ Server.prototype.configure = function(models) {
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    app.use(express.session({ secret: "esoognom", cookie: { maxAge: 60000 }}));
     app.use(i18n.handle);
 
     app.use(stylus.middleware({
@@ -92,7 +91,7 @@ Server.prototype.configure = function(models) {
 Server.prototype.start = function(callback) {
   this.httpServer = http.createServer(this.app);
   // this.io = require("socket.io").listen(this.httpServer);
-  this.httpServer.listen(configuration("port"), callback);
+  this.httpServer.listen(configuration("port"), callback);console.log("PORT", configuration("port"))
   // this.httpsServer = https.createServer(options, app).listen(443);
 }
 
