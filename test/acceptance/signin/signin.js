@@ -16,18 +16,19 @@ describe("Signin", function() {
   });
 
   describe("visit", function() {
+    var browser = null;
+
     before(function(done) {
-      this.browser = new Browser({ site: helper.baseUrl });
-      this.browser.visit("/")
-        .then(done, done);
+      browser = new Browser({ site: helper.baseUrl });
+      browser.visit("/").then(done, done);
     });
 
     it("should load the page", function() {
-      this.browser.location.pathname.should.equal("/");
+      browser.location.pathname.should.equal("/");
     });
 
     it("should return status 200", function() {
-      console.log(this.browser.html("html"));
+      browser.statusCode.should.equal(200);
     });
   });
 });

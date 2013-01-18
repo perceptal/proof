@@ -15,5 +15,7 @@ Proof = (function(Backbone, Marionette, i18n) {
 })(Backbone, Backbone.Marionette);
 
 $(function() {
-  Proof.start();   
+  window.setTimeout(function() {
+    Proof.start();
+  }, 0);   
 });

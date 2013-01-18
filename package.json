@@ -47,7 +47,10 @@
     "supertest": "~0.5.1",
     "chai": "~1.4.2",
     "front-tests": "git://github.com/Backbonist/front-tests.git#master",
-    "zombie": "~1.4.1"
+    "zombie": "~1.4.1",
+    "spooky": "~0.1.2",
+    "grunt-contrib-handlebars": "~0.3.3",
+    "grunt-contrib-clean": "~0.4.0a"
   },
   "keywords": [
     "proof",
