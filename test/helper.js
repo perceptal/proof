@@ -1,11 +1,14 @@
 var _ = require("underscore")
   , async = require("async")
-  , Environment = require("../environment");
+  , configuration = require("../configuration")
+  , Environment = require("../environment")
+  ;
 
 var Helper = function(shouldReset) {
   this.environment = new Environment();
 
   this.shouldReset = shouldReset || true;
+  this.baseUrl = "http://" + configuration("hostname") + ":" + configuration("port");
 }
 
 Helper.prototype.resetDatabase = function(callback) {
@@ -31,6 +34,8 @@ Helper.prototype.init = function(callback) {
 Helper.prototype.start = function(callback) {
   var start = this.environment.start.bind(this.environment)
     , withReset = this.resetDatabase.bind(this, callback);
+
+  // this.baseUrl = this.environment.app;
 
   start(withReset);
 }

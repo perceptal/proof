@@ -46,7 +46,8 @@
     "sinon": "~1.5.2",
     "supertest": "~0.5.1",
     "chai": "~1.4.2",
-    "front-tests": "git://github.com/Backbonist/front-tests.git#master"
+    "front-tests": "git://github.com/Backbonist/front-tests.git#master",
+    "zombie": "~1.4.1"
   },
   "keywords": [
     "proof",

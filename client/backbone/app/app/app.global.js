@@ -87,7 +87,6 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	// Initialize global events
 	Global.addInitializer(function() {
-    
     App.vent.on("section:changed", App.changeSection, this);
     App.vent.on("security:signon", App.signOn, this);
     App.vent.on("security:signout", App.signOut, this);
