@@ -5,7 +5,6 @@ var should = require("should")
   ;
 
 describe("Photo", function() {
-  
   this.timeout(10000);
 
   var photo, data;

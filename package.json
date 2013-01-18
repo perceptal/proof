@@ -16,7 +16,7 @@
     "node": "0.8.x",
     "npm": "1.1.x"
   },
-    "scripts": {
+  "scripts": {
     "test": "make test",
     "start": "node app.js"
   },
@@ -45,7 +45,8 @@
     "should": "~1.2.1",
     "sinon": "~1.5.2",
     "supertest": "~0.5.1",
-    "cucumber": "~0.3.0"
+    "chai": "~1.4.2",
+    "front-tests": "git://github.com/Backbonist/front-tests.git#master"
   },
   "keywords": [
     "proof",
