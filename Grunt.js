@@ -1,13 +1,23 @@
 module.exports = function(grunt) {
 
-	grunt.loadNpmTasks("grunt-contrib-handlebars");
+	var root = "client/backbone/app/"
+		, templates = [ root + "**/templates/*.html", root + "**/templates/**/*.html" ]
+		, compiled = root + "templates/handlebars.js";
+		;
+
 	grunt.loadNpmTasks("grunt-contrib-clean");
-	
+	grunt.loadNpmTasks("grunt-contrib-handlebars");
+
 	grunt.initConfig({
 
     pkg: "<json:package.json>"
     
-	, clean: [ "client/backbone/app/templates/handlebars.js" ]
+	, clean: [ compiled ]
+
+  , watch: {
+      files: templates
+    , tasks: "handlebars"
+    }
 
   , handlebars: {
       compile: {
@@ -16,7 +26,7 @@ module.exports = function(grunt) {
         , wrapped: true
 	    	, processName: function(filename) {
 	    			return filename
-	    				.replace("client/backbone/app", "")
+	    				.replace(root, "")
 	    				.replace("templates/", "")
 	    				.replace(".html", "")
 	    				.substring(1);
@@ -33,15 +43,11 @@ module.exports = function(grunt) {
   				}
         }
       , files: {
-          "client/backbone/app/templates/handlebars.js": [
-          	"client/backbone/app/**/templates/*.html"
-          , "client/backbone/app/**/templates/**/*.html"
-          ]
+          "client/backbone/app/templates/handlebars.js": templates
         }
       }
     }
   });
 
-  grunt.registerTask("default", [ "handlebars" ]);
-
+  grunt.registerTask("default", [ "handlebars", "watch" ]);
 };

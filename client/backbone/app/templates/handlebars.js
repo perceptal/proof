@@ -1,6 +1,6 @@
 this["Templates"] = this["Templates"] || {};
 
-this["Templates"]["app/footer"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/footer"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -17,14 +17,14 @@ this["Templates"]["app/footer"] = Handlebars.template(function (Handlebars,depth
   buffer += escapeExpression(stack1) + "\" href=\"/language/en\" data-locale=\"en\">English</a>\n</p>\n";
   return buffer;});
 
-this["Templates"]["app/header"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/header"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
   return "<nav class=\"navbar navbar-inverse navbar-fixed-top primary\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      \n      <div id=\"navigation\"></div>\n\n      <div id=\"security\" class=\"pull-right navbar-text\"></div>\n\n    </div>\n  </div>\n</nav>\n";});
 
-this["Templates"]["app/message"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/message"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
@@ -40,7 +40,7 @@ this["Templates"]["app/message"] = Handlebars.template(function (Handlebars,dept
   buffer += escapeExpression(stack1) + "\n</div>\n";
   return buffer;});
 
-this["Templates"]["app/navigation"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/navigation"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -66,7 +66,7 @@ this["Templates"]["app/navigation"] = Handlebars.template(function (Handlebars,d
   buffer += escapeExpression(stack1) + "</a></li>\n</ul>\n";
   return buffer;});
 
-this["Templates"]["home/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ome/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -77,7 +77,7 @@ this["Templates"]["home/sidebar"] = Handlebars.template(function (Handlebars,dep
   buffer += escapeExpression(stack1) + "</strong>\n</div>\n";
   return buffer;});
 
-this["Templates"]["people/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["eople/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
@@ -105,7 +105,7 @@ this["Templates"]["people/item"] = Handlebars.template(function (Handlebars,dept
   buffer += escapeExpression(stack1) + "</span>\n	    </div>\n\n	    <div class=\"detail\">\n	        <span class=\"email\"><a href=\"mailto:emma@watson.com\">emma@watson.com</a></span>\n	        <span class=\"phone\">01896 830894</span>\n	    </div>\n	</div>\n\n	<ul>\n	    <li><a class=\"select\">open&rarr;</a></li>\n	</ul>\n</article>";
   return buffer;});
 
-this["Templates"]["people/select"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["eople/select"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -128,7 +128,7 @@ this["Templates"]["people/select"] = Handlebars.template(function (Handlebars,de
   buffer += escapeExpression(stack1) + "</button></li>\n    </ul>\n  </div>\n</nav>\n\n";
   return buffer;});
 
-this["Templates"]["people/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["eople/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -139,14 +139,14 @@ this["Templates"]["people/sidebar"] = Handlebars.template(function (Handlebars,d
   buffer += escapeExpression(stack1) + "</strong>\n</div>\n";
   return buffer;});
 
-this["Templates"]["security/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ecurity/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
   return "<div class=\"row\">\n\n  <aside class=\"span3\" id=\"sidebar\">\n  </aside>\n\n  <div class=\"span9\">  \n\n      <div id=\"select\">\n      </div>\n\n    <div id=\"list\">\n    </div>\n\n</div>";});
 
-this["Templates"]["security/register"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ecurity/register"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -172,7 +172,7 @@ this["Templates"]["security/register"] = Handlebars.template(function (Handlebar
   buffer += escapeExpression(stack1) + "</button>\n</div>\n";
   return buffer;});
 
-this["Templates"]["security/signedon"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ecurity/signedon"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
 
@@ -193,7 +193,7 @@ this["Templates"]["security/signedon"] = Handlebars.template(function (Handlebar
   buffer += escapeExpression(stack1) + "</a>\n</ul>\n";
   return buffer;});
 
-this["Templates"]["security/signedout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ecurity/signedout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -207,7 +207,7 @@ this["Templates"]["security/signedout"] = Handlebars.template(function (Handleba
   buffer += escapeExpression(stack1) + "</a>\n</ul>\n";
   return buffer;});
 
-this["Templates"]["security/signon"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ecurity/signon"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
@@ -239,35 +239,35 @@ this["Templates"]["security/signon"] = Handlebars.template(function (Handlebars,
   buffer += escapeExpression(stack1) + "</button>\n</div>\n";
   return buffer;});
 
-this["Templates"]["app/common/paging"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/common/paging"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
-  return "<div>Blah</div>";});
+  return "<div>Paging2</div>";});
 
-this["Templates"]["app/layout/list"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/layout/list"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
   return "<div class=\"row\">\n\n  <aside class=\"span3\" id=\"sidebar\"></aside>\n\n  <div class=\"span9\">  \n    <div id=\"select\"></div>\n    <div id=\"list\"></div>\n  </div>\n\n</div>";});
 
-this["Templates"]["app/layout/main"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/layout/main"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
   return "<header id=\"header\">\n</header>\n\n<div id=\"wrap\">\n  <div class=\"container top\">\n    <div id=\"message\"></div>\n    <div id=\"content\"></div>\n  </div>\n\n  <div id=\"push\"></div>\n</div>\n\n<div id=\"modal\" class=\"modal hide fade\"></div>\n\n<footer id=\"footer\"></footer>";});
 
-this["Templates"]["app/layout/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["pp/layout/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
   return "<div class=\"row\">\n\n  <aside class=\"span3\" id=\"sidebar\"></aside>\n\n  <div class=\"span9\">\n    <div id=\"content\"></div>\n  </div>  \n\n</div>";});
 
-this["Templates"]["security/profile/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["ecurity/profile/sidebar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
