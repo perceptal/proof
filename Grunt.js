@@ -28,8 +28,7 @@ module.exports = function(grunt) {
 	    			return filename
 	    				.replace(root, "")
 	    				.replace("templates/", "")
-	    				.replace(".html", "")
-	    				.substring(1);
+	    				.replace(".html", "");
 	  			}
 				, processPartialName: function(filename) { // input:  templates/_header.hbs
 						// filename = filename

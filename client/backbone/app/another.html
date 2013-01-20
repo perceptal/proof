@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Proof | Backbone</title>
+    <meta name="description" content="Proof of Concept">
+    <meta name="author" content="Perceptal Engineering">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+  
+    <style type="text/css">
+    *{
+    padding:           0;
+    margin:            0;
+}
+
+html, body{
+    height:            100%;
+}
+
+#layout{
+    min-height:        100%;
+    height:            100%;
+    background:        #111;
+    height:            auto;
+    overflow:          hidden;
+    background-color: #262b30;
+}
+
+#content{
+    padding:           0 200px 0 300px;
+}
+
+.navbar-inverse .navbar-inner { background-color: #262b30; background-image: none; border: none; padding: 0; font-size: 13px; }
+.navbar-fixed-top .navbar-inner { box-shadow: none; }
+.navbar { margin-bottom: 0; }
+
+#push {
+    height:            60px;
+    clear:             both;
+}
+
+.nav{background-color: #262b30;
+    width:             65px;
+    float:             left;
+    padding-bottom:    32000px;
+    margin-bottom:    -32000px;
+}
+
+.left{border-top-left-radius: 5px;
+    width:             235px;
+    float:             left;
+    background:        #292929;
+    padding-bottom:    32000px;
+    margin-bottom:    -32000px;
+}
+
+.right{
+    width:             200px;
+    float:             right;
+    background:        #292929;
+    padding-bottom:    32000px;
+    margin-bottom:    -32000px;
+}
+
+
+footer{
+    height:            60px;
+    background:        #222;
+    margin-top:       -60px;
+    z-index:           100;
+    position:          relative;
+}
+
+      ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0;}
+      .major { margin: 0; padding: 0; white-space: nowrap;}
+      nav ul li { }
+      .major ul li a { text-decoration: none; font-size: 30px; color: rgba(255,255,255,0.5); text-align: center;
+line-height: 1.5em;display: block;}
+      .major ul li a:hover { text-decoration: none; color: #fff; }
+      .major a.here { color: #fff; background-image: -webkit-linear-gradient(#48525b,#32383f); box-shadow: #202428 0 1px 0,#5e6b78 0 1px 0 inset; text-shadow: rgba(0,0,0,0.7) 0 1px 2px; }
+
+p{
+    color:             #999;
+    padding:           20px;
+    font-size:         11px;
+}
+    </style>
+  </head>
+
+  <body>
+
+    <div id="layout">
+
+      <header>
+        <nav class="navbar navbar-inverse primary">
+          <div class="navbar-inner">
+            <div class="container-fluid">
+              <a class="brand" href="#"><span class="logo">Proof</span></a>
+              
+              <ul class="pull-right security navbar-text">
+                <li>Signed in as <a href="/profile">recipher</a></li>
+                <li><a href="/switch">switch account</a>
+                <li><a href="/signout">sign out</a>
+              </ul>
+              
+            </div>
+          </div>
+        </nav>      
+      </header>
+
+      <div class="nav">
+        <nav class="major">
+          <ul>
+            <li><a href="#" rel="tooltip" title="Home" data-placement="right"><i class="icon-globe icon-white"></i>&nbsp;</a></li>
+            <li><a class="here" href="#" rel="tooltip" title="People" data-placement="right"><i class="icon-user icon-white">&nbsp;</i></a></li>
+            <li><a href="#" rel="tooltip" title="Administration" data-placement="right"><i class="icon-cog icon-white"></i>&nbsp;</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="left">
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div class="right">
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      </div>
+      <div id="content">
+      
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+      
+      </div>        
+      <div id="push"></div>
+    </div>
+    <footer>
+      <div>
+        <p class="muted credit">
+          &copy;
+          <a href="http://perceptal.co.uk/">Perceptal Engineering</a>
+          2013
+
+          <a class="locale fr" href="/language/fr">Français</a>
+          <a class="locale de" href="/language/de">Deutsch</a>
+          <a class="locale en selected" href="/language/en">English</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+
+  </body>
+</html>
+

@@ -13,6 +13,20 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 	Views.ItemView = Marionette.ItemView.extend({
 	  template: "people/item"
 
+  , events: {
+      "click article": "onSelect"
+    }
+
+  , initialize: function() {
+      // this.model.on("change", this.render, this);
+      // this.model.on("destroy", this.remove, this);
+    }
+
+  , onSelect: function(e) {
+      var id = $(e.currentTarget).data("id");
+      App.Person.router.navigate("people/" + id, true);
+    }
+
 	});
 
 	Views.ListView = Marionette.CollectionView.extend({

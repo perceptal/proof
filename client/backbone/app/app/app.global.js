@@ -67,7 +67,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	, showMessage: function(text) {
       // TODO Change this to store model and bind changes to view
-
+      
      	var message = new App.Views.MessageView({ model: new App.Models.Message({ text: text }) }); 
       App.layout.message.show(message);
 		}

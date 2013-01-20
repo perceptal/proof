@@ -35,8 +35,6 @@ Helper.prototype.start = function(callback) {
   var start = this.environment.start.bind(this.environment)
     , withReset = this.resetDatabase.bind(this, callback);
 
-  // this.baseUrl = this.environment.app;
-
   start(withReset);
 }
 

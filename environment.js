@@ -37,6 +37,7 @@ Environment.prototype.start = function(callback) {
 Environment.prototype.stop = function(callback) {
   var that = this;
   this.db.close(function() {
+    that.db = new Connection();
     that.server.stop(callback);
   });
 }

@@ -50,7 +50,7 @@ Authenticate.prototype.basic = function(callback) {
       , session = credentials.slice(index + 1);
 
     callback(name, session, function(err, person) {
-      if (err) return next(error(500));
+      if (err) return next(err);
       if (!person) return next(error(403));
 
       req.person = person;

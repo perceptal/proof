@@ -5,7 +5,7 @@ UNITS = $(TESTS)unit/
 INTEGRATIONS = $(TESTS)integration/
 ACCEPTANCE = $(TESTS)acceptance/
 
-test: unit integration client acceptance
+test: unit integration client acceptance cuke
 
 unit: 
 	@NODE_ENV=test ./node_modules/.bin/mocha $(UNITS) \
@@ -22,4 +22,8 @@ browser:
 acceptance: 
 	@NODE_ENV=test ./node_modules/.bin/mocha $(ACCEPTANCE) \
 
-.PHONY: test unit integration client browser acceptance
+cuke:
+	@NODE_ENV=test ./node_modules/.bin/cucumber.js test/features \
+		-r test/features/steps -f pretty
+
+.PHONY: test unit integration client browser acceptance cuke

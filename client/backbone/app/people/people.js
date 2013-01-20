@@ -17,6 +17,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , reset: function() {
       this.people = new People.Models.People();    
       App.vent.on("security:signedout", this.reset, this);
+      App.vent.on("security:unauthorised", this.reset, this);
    }
 
   , initialize: function() {

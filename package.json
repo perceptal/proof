@@ -48,9 +48,9 @@
     "chai": "~1.4.2",
     "front-tests": "git://github.com/Backbonist/front-tests.git#master",
     "zombie": "~1.4.1",
-    "spooky": "~0.1.2",
     "grunt-contrib-handlebars": "~0.3.3",
-    "grunt-contrib-clean": "~0.4.0a"
+    "grunt-contrib-clean": "~0.4.0a",
+    "cucumber": "git://github.com/cucumber/cucumber-js.git#colors"
   },
   "keywords": [
     "proof",
