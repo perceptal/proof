@@ -1,0 +1,322 @@
+*
+  box-sizing border-box
+
+input
+  box-sizing content-box
+
+html,
+body
+  height 100%
+
+body
+  position relative 
+  min-height 100%
+  background-color #333
+  color #000
+  margin 0 
+  padding-bottom 0
+
+.navbar
+  margin-bottom 0
+  border none
+  
+.navbar-inverse 
+  .navbar-inner
+    background-color #333 !important
+    background-image none
+    border none 
+    padding 0
+    font-size 13px
+    box-shadow none
+
+    .container-fluid
+      padding-right 0
+
+  .brand
+    color #fff !important
+    font-weight bold
+
+.navbar 
+  .navbar-inner
+    font-size 13px
+    box-shadow none
+    
+    li.active
+      a
+        box-shadow none !important
+    li
+      a:hover
+        color #c00
+
+.logo
+  background transparent url("img/logo.png") no-repeat 0 0
+  padding-left 28px
+
+.nav
+  a
+    span.mute
+      color #999
+
+ul.security
+  padding-top 10px
+  list-style none
+
+  li
+    float left
+    padding-left 10px
+
+    a
+      color #c00
+    a:hover
+      color #c00
+      text-decoration none
+
+.main 
+  padding-left 65px
+  position relative 
+  box-sizing border-box 
+
+ul, ol
+  list-style none 
+  list-style-image none
+  margin 0 
+  padding 0
+
+nav.primary
+  width 65px 
+  position absolute 
+  margin 0 
+  padding 0 
+  top 9px 
+  left 0 
+
+  ul 
+    li 
+      a
+        text-decoration none
+        font-size 30px
+        color rgba(255,255,255,0.5)
+        text-align center
+        line-height 1.5em
+        display block
+        opacity(0.5)
+        color #fff
+
+      a:hover
+        opacity(0.8)
+
+      a.active, a:hover.active
+        color #fff
+        background #000
+        opacity(1.0)
+
+.bg
+  background #f5f6f6
+  border-top-left-radius 5px
+  z-index 0
+  bottom 0 
+  left 64px
+  position absolute
+  top 39px 
+  right 0
+  border-top 1px solid #000
+  border-left 1px solid #000
+
+.pages > header::after
+  content "" 
+  display table 
+  clear both
+
+.content
+  position relative
+  box-sizing border-box 
+  z-index 1
+
+  .pages
+    border-top-left-radius 5px
+    background-color #ccc
+    position relative
+
+    header
+      padding-left 15px 
+      padding-right 15px
+      z-index 1
+      background-image -webkit-linear-gradient(#f5f6f6, #ddd)
+      padding-top 0.45em
+      padding-bottom 0
+      font-size 1.6em
+      line-height 1.45em
+      border-bottom #ccc 1px solid 
+      border-top-left-radius 5px 
+    
+      h1
+        display inline-block
+        text-shadow rgba(255,255,255,0.8) 0 1px
+        float left
+        font-size 20px
+        margin 5px 1em 13px 0
+        line-height 1.45em 
+
+      input.search
+        border-radius(4px)
+        opacity(0.7)
+        box-shadow(0.9)
+        outline none
+        border 1px solid #ccc
+        background #fff url("img/magnifier.png") no-repeat 8px center
+        font-weight normal
+        font-size 15px
+        padding 4px 10px 4px 30px
+        margin 4px 10px 4px 0
+
+      input.search:focus, input.search:hover
+        opacity(1)
+        color #006
+
+      input.search.searching
+        background #fff url("img/loading.gif") no-repeat 8px center
+
+      ul
+        padding-left 20px
+        position relative
+        left 0
+        display block
+        float left
+
+        li  
+          display inline 
+          margin 0 
+          padding 0 0 0 10px 
+    
+          a  
+            border 1px solid transparent 
+            font-size 14px 
+            color #333 
+            padding 6px 8px 5px 8px 
+            text-decoration none 
+          a:hover  
+            color #900 
+        
+        li.active 
+          a, a:hover  
+            color #333 
+            border 1px solid #ccc 
+            border-radius 3px 
+            background-color #fff 
+
+
+    .page  
+      position relative !important 
+    
+      .sidebar  
+        width 300px 
+        display block 
+        background #edefef 
+        border-right 1px solid #dadede 
+        position absolute 
+        top 0 
+        bottom 0 
+        left 0 
+        color #8b9095 
+        font-size 14px 
+
+        li  
+          position relative 
+          clear both 
+          background #edefef 
+          
+          a
+            font-size 15px
+            display block
+            position relative
+            padding 8px 12px 8px 12px
+            line-height 1.6em
+            text-decoration none
+            -webkit-box-shadow #f2f4f4 0 0 0 1px inset
+            -moz-box-shadow #f2f4f4 0 0 0 1px inset
+            box-shadow #f2f4f4 0 0 0 1px inset
+            border-bottom 1px solid #d7dbdb 
+            color #666
+
+            i
+              display none 
+              float right 
+              font-size 12px 
+              padding-top 2px 
+
+          a:hover
+            background #fff 
+            color #900 
+
+            i
+              display inline 
+              color #900 
+
+        li.active
+          a
+            background #fff 
+
+            i
+              display inline 
+
+      section  
+        margin-left 300px 
+        margin-right 260px
+        background #f5f6f6 
+        padding 0
+    
+        .inner
+          padding 15px
+
+        aside 
+          border-top 0
+          border-right 0
+          margin 0
+          width 260px
+          position absolute
+          top 0
+          bottom 0
+          right 0
+          overflow hidden
+          background #edefef
+          border-left 1px solid #dadede 
+          padding 0 15px
+
+ul.action
+  a
+    padding-right 0 !important
+    color #900 !important
+  a:hover
+    color #c00 !important
+
+form.box
+  legend
+    border-top-radius(4px)
+    font-size 20px
+    padding 0 10px
+    line-height 30px
+
+  label
+    padding-left 6px
+
+  label.checkbox
+    padding-left 20px
+
+  .inner-form
+    padding 0 10px 0 10px
+
+  .buttons
+    padding-top 15px
+
+.image
+  box-sizing(border-box)
+  border-radius(8px)
+  border 1px solid #dadede
+  background #fff
+  padding 4px
+  margin 10px 0 10px 0         
+  
+  img
+    box-sizing(border-box)
+    border-radius(6px)
+    border 1px solid #eee

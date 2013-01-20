@@ -11,174 +11,158 @@
     <![endif]-->
 
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="/bootstrap/css/font-awesome.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
+    <link href="/bootstrap/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/redesign.css" rel="stylesheet">
     
-    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-
-	  <style type="text/css">
-	  	* { box-sizing: border-box; }
-	  	body { background-color: #262b30; color: #424242; margin: 0; padding-bottom: 0; position: relative; min-height: 100%; }
-	  	.navbar-inverse .navbar-inner { background-color: #262b30; background-image: none; border: none; padding: 0; font-size: 13px; }
-	  	.navbar-fixed-top .navbar-inner { box-shadow: none; }
-	  	.navbar { margin-bottom: 0; }
-	  	.main { padding-left: 65px; position: relative; box-sizing: border-box; }
-	  	nav.major { width: 65px; position: absolute; top: 9px; left: 0; margin: 0; padding: 0; white-space: nowrap;}
-			nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0;}
-			nav ul li { }
-			nav.major ul li a { text-decoration: none; font-size: 30px; color: rgba(255,255,255,0.5); text-align: center;
-line-height: 1.5em; -webkit-user-select: none;display: block;}
-			nav.major ul li a:hover { text-decoration: none; color: #eee; }
-			.content { position: relative; box-sizing: border-box; z-index: 1;}
-			.pages { border-top-left-radius: 5px; background-color: #ccc; position: relative; }
-			.bg { background: #f5f6f6; border-top-left-radius: 5px; box-shadow: rgba(0,0,0,0.6) -1px 1px 24px; z-index: 0; bottom: 0; left: 65px; position: absolute; top: 60px; right: 0;}
-			nav.major a.here, nav.major a:hover.here { color: #fff; background-image: -webkit-linear-gradient(#48525b,#32383f); box-shadow: #202428 0 1px 0,#5e6b78 0 1px 0 inset; text-shadow: rgba(0,0,0,0.7) 0 1px 2px; }
-			.pages header { padding-left: 15px; padding-right: 15px; z-index: 1;
-background-image: -webkit-linear-gradient(#f5f6f6, #ddd);
-padding-top: 0.45em;
-padding-bottom: 0;
-font-size: 1.6em;
-line-height: 1.45em;
-border-bottom: #ccc 1px solid; border-top-left-radius: 5px; }
-			
-			.pages header h1 { display: inline-block;text-shadow: rgba(255,255,255,0.8) 0 1px;
-float: left;
-font-size: 20px;
-margin: 5px 1em 13px 0;
-line-height: 1.45em; }
-			.pages > header::after { content: ""; display: table; clear: both; }
-			.page { position: relative !important; }
-			.sidebar { width: 300px; display: block; background: #edefef; border-right: 1px solid #dadede; position: absolute; top: 0; bottom: 0; left: 0; color: #8b9095; font-size: 14px; }
-			.sidebar li { position: relative; clear: both; background: #edefef; }
-			.sidebar li a:hover { background: #fff; color: #900; }
-			.sidebar li a { font-size: 15px;
-display: block;
-position: relative;
-padding: .4em .8em .4em .8em;
-line-height: 1.6em;
-text-decoration: none;
--webkit-box-shadow: #f2f4f4 0 0 0 1px inset;
--moz-box-shadow: #f2f4f4 0 0 0 1px inset;
-box-shadow: #f2f4f4 0 0 0 1px inset;
-border-bottom: 1px solid #d7dbdb; color: #666;
-}
-		.sidebar li a i { display: none; float: right; font-size: 12px; padding-top: 2px; }
-		.sidebar li a:hover i { display: inline; color: #900; }
-			.page section { margin-left: 300px; background: #f5f6f6; padding: 15px;}
-			aside {
-border-top: 0;
-border-right: 0;
--webkit-box-shadow: rgba(0,0,0,0.03) 2px 2px 8px inset;
--moz-box-shadow: rgba(0,0,0,0.03) 2px 2px 8px inset;
-box-shadow: rgba(0,0,0,0.03) 2px 2px 8px inset;
-margin: 0;
-width: 260px;
-position: absolute;
-top: 0;
-bottom: 0;
-right: 0;overflow: hidden;
-background: #edefef;
-border-left: 1px solid #dadede; padding: 0 15px;}
-		.pages header ul {list-style: none; list-style-image: none; margin: 0; padding: 0; padding-left: 20px;position: relative;
-left: 0;
-display: block;
-float: left;
-}
-		.pages header ul li { display: inline; margin: 0; padding: 0 0 0 10px; }
-		.pages header ul li a { border: 1px solid transparent; font-size: 14px; color: #333; padding: 6px 8px 5px 8px; text-decoration: none }
-		.pages header ul li a:hover { color: #900; }
-		.pages header ul li.active a, .pages header ul li.active a:hover { color: #333; border: 1px solid #ccc; border-radius: 3px; background-color: #fff }
-
-	  </style>
-
   </head>
 
   <body>
 
-  	<header>
-		  <nav class="navbar navbar-inverse primary">
-		    <div class="navbar-inner">
-		      <div class="container-fluid">
-		        <a class="brand" href="#"><span class="logo">Proof</span></a>
-	          
-	        	<ul class="pull-right security navbar-text">
-	        		<li>Signed in as <a href="/profile">recipher</a></li>
-	          	<li><a href="/switch">switch account</a>
-	          	<li><a href="/signout">sign out</a>
-	          </ul>
-		        
-		      </div>
-		    </div>
-		  </nav>  		
-  	</header>
+    <header>
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a class="brand" href="#"><span class="logo">Proof</span></a>
 
-  	<div class="main">
-  		<nav class="major">
-  			<ul>
-  				<li><a href="#" rel="tooltip" title="Home" data-placement="right"><i class="icon-globe icon-white"></i></a></li>
-  				<li><a class="here" href="#" rel="tooltip" title="People" data-placement="right"><i class="icon-user icon-white"></i></a></li>
-  				<li><a href="#" rel="tooltip" title="Administration" data-placement="right"><i class="icon-cog icon-white"></i></a></li>
-  			</ul>
-  		</nav>
+            <ul class="nav">
+              <li class="active"><a href="/profile"><span class="mute">signed in as</span> johnny</a></li>
+              <li><a href="/switch">switch account</a>
+              <li><a href="/signout">sign out</a>
+            </ul>
+            
+            <ul class="pull-right nav">
+              <li><a href="/en">english</a></li>
+              <li><a href="/fr">french</a></li>
+              <li class="active"><a href="/de">german</a></li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>      
+    </header>
 
-  		<div class="content">
-  			<div class="pages">
-  				<header class="navbar people">
-  					<h1>People</h1>
-						<form class="navbar-form pull-left">
-						  <input type="text" class="span3 search" id="search" placeholder="search&rarr;"/>
-						</form>
+    <div class="main">
+      <nav class="primary">
+        <ul>
+          <li><a href="#" rel="tooltip" title="Home" data-placement="right"><i class="icon-globe icon-white"></i></a></li>
+          <li><a class="active" href="#" rel="tooltip" title="People" data-placement="right"><i class="icon-user icon-white"></i></a></li>
+          <li><a href="#" rel="tooltip" title="Administration" data-placement="right"><i class="icon-cog icon-white"></i></a></li>
+        </ul>
+      </nav>
 
-				    <ul>
-				      <li class="active"><a href="#">All People</a></li>
-				      <li><a href="#">Filter</a></li>
-				    </ul>
+      <div class="content">
+        <div class="pages">
+          <header class="navbar people">
+            <h1>People</h1>
+            <form class="navbar-form pull-left">
+              <input type="text" class="span3 search" id="search" placeholder="search&rarr;"/>
+            </form>
 
-				    <ul class="nav pull-right">
-				      <li><button class="btn btn-danger" href="#"><i class="icon-globe icon-white"></i> Register</button></li>
-				    </ul>
-  				</header>
-  				<div class="page">
-  					<div class="sidebar auto-height">
-  						<nav>
-  							<ul>
-				  				<li><a href="#">Johnny Hall<i class="icon-chevron-right"></i></a></li>
-				  				<li><a href="#">Terry Wogan<i class="icon-chevron-right"></i></a></li>
-				  				<li><a href="#">Emma Watson<i class="icon-chevron-right"></i></a></li>
-   							</ul>
-  						</nav>
-  					</div>
+            <ul>
+              <li class="active"><a href="#">All People</a></li>
+              <li><a href="#">Filter</a></li>
+            </ul>
 
+            <ul class="nav pull-right">
+              <li><button class="btn btn-success" href="#"><i class="icon-user icon-white"></i> Register</button></li>
+            </ul>
+          </header>
+          <div class="page">
+            <div class="sidebar auto-height">
+              <nav>
+                <ul>
+                  <li><a href="#">Johnny Hall<i class="icon-chevron-right"></i></a></li>
+                  <li><a href="#">Terry Wogan<i class="icon-chevron-right"></i></a></li>
+                  <li class="active"><a href="#">Emma Watson<i class="icon-chevron-right"></i></a></li>
+                </ul>
+              </nav>
+            </div>
 
-  					<section>
-  					<div>
-							<ul class="nav nav-tabs">
-							  <li class="active">
-							    <a href="#">Info</a>
-							  </li>
-							  <li><a href="#">Photos</a></li>
-							  <li><a href="#">Documents</a></li>
-							</ul>
-  					</div>
+            <section>
 
-  						<aside class="auto-height">
-  							<h4>Johnny Hall</h4>
-  						</aside>
-  					</section>
+              <div class="navbar navbar-static-top">
+                <div class="navbar-inner">
+                  <a class="brand" href="#">Emma</a>
+                  <ul class="nav">
+                    <li class="active"><a href="#">Info</a></li>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Documents</a></li>
+                  </ul>
+                  <ul class="nav pull-right action">
+                    <li><a href="#">Upload Photo</a></li>
+                  </ul>
+                </div>
+              </div>
 
-  				</div>
-  			</div>
-  		</div>
-  	</div>
-  	<div class="bg"></div>
+              <div class="inner">
+                <div class="alert alert-info fade in">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <i class="icon-info-sign"></i><strong> Nice one</strong>, you done good.
+                </div>
 
-		<script src="/vendor/jquery/jquery.js"></script>
-		<script src="/bootstrap/js/bootstrap.js"></script>
+                <div class="alert fade in">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <i class="icon-exclamation-sign"></i><strong> Unfortunately</strong>, there seems to be an issue.
+                </div>
+
+                <div class="alert alert-error fade in">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <i class="icon-ban-circle"></i><strong> Houston</strong>, we have a problem.
+                </div>
+
+                <form class="box">
+                  <fieldset>
+                    <legend>Personal Details</legend>
+                    
+                    <div class="inner-form">
+                      <label>Enter Name</label>
+                      <div class="controls controls-row">
+                        <input type="text" placeholder="First Name" class="span3">
+                        <input type="text" placeholder="Last Name" class="span3">
+                      </div>
+                      
+                      <span class="help-block">Example block-level help text here.</span>
+                      
+                      <label class="checkbox">
+                        <input type="checkbox"> Check me out
+                      </label>
+
+                      <div class="buttons">
+                        <button type="submit" class="btn btn-info"><i class="icon-ok icon-white"></i> Save</button>
+                        <button type="button" class="btn btn-link">Cancel</button>
+                      </div>
+                    </div>
+
+                  </fieldset>
+                </form>
+
+              </div>
+
+              <aside class="auto-height">
+                <h4>Emma Watson <small>demo</small></h4>
+                <div class="image"><img src="/api/people/50f5a573875b66814c4a65e0/photos/small"></img></div>
+                <p>
+                  <div class="info">01896 830894</div>
+                  <a href="mailto:emma@watson.com">emma at watson dot com</a>
+                </p>
+                <button class="btn btn-danger" href="#"><i class="icon-ban-circle icon-white"></i> Delete</button>
+
+              </aside>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg"></div>
+
+    <script src="/vendor/jquery/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
     <script>
-    	$(function() { 
-    		$("*[rel='tooltip']").tooltip({ delay: { show: 500, hide: 100 } }); 
-    		$(".auto-height").innerHeight($(".bg").innerHeight() - $(".pages header").innerHeight() + 20);
-    	});
+      $(function() { 
+        $("*[rel='tooltip']").tooltip({ delay: { show: 500, hide: 100 } }); 
+        $(".auto-height").innerHeight($(".bg").innerHeight() - $(".pages header").innerHeight());
+      });
     </script>
   </body>
 </html>
