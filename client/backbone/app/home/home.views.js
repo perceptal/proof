@@ -1,23 +1,40 @@
 Proof.module("Home.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  Views.SidebarView = Marionette.ItemView.extend({
-    template: "home/sidebar"
+  Views.AsideView = Marionette.ItemView.extend({
+    template: "home/aside"
+
+  });
+
+  Views.NavigationView = Marionette.ItemView.extend({
+    template: "home/navigation"
 
   });
 
   Views.Layout = Marionette.Layout.extend({
-    template: "app/layout/sidebar"
+    template: "home/layout"
 
   , regions: {
-        "sidebar":    "#sidebar"
+        "navigation":     "#top"
+      , "aside":          "#aside"
+      , "list":           "#sidebar nav#selector"
+      , "content":        "#content"
     }
 
   , attachViews: function(views) {
-      if (views.sidebar != null) this.sidebarView = views.sidebar;
+      if (views.aside != null) this.asideView = views.aside;
+      if (views.navigation != null) this.navigationView = views.navigation;
     }
 
   , onRender: function() {
-      this.sidebar.show(this.sidebarView);
+      this.aside.show(this.asideView);
+      this.navigation.show(this.navigationView);
+      this.setHeight();
+    }
+
+  , setHeight: function() {
+      var minimum = $("#bg").innerHeight() - $("#pages header").innerHeight()
+        , content = $("#page section").innerHeight() - 1;
+      $(".auto-height").innerHeight(minimum > content ? minimum : content);    
     }
 
   });

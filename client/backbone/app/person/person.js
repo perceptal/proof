@@ -9,29 +9,36 @@ Proof.module("Person", function(Person, App, Backbone, Marionette, $, _) {
   Person.Controller = Marionette.Controller.extend({
 
     select: function() {
-      App.vent.trigger("section:changed", "people");
+      App.vent.trigger("section:change", "people");
     }
 
+  , reset: function() {
+      this.people = new App.People.Models.People();    
+      App.vent.on("security:signedout", this.reset, this);
+      App.vent.on("security:unauthorised", this.reset, this);
+   }
+
   , initialize: function() {
+      this.reset();
     }
 
   , show: function(id) {
       this.select();
 
       this.person = new App.People.Models.Person({ id: id });
-      var promise = this.person.fetch();
+      this.person.fetch();
+      this.people.fetch();
 
-      this.sidebarView = new Person.Views.SidebarView({ model: this.person });
-      this.selectView = new App.People.Views.SelectView();
-      this.summaryView = new Person.Views.SummaryView({ model: this.person });
-      this.editView = new Person.Views.EditView({ model: this.person });
+      this.asideView = new Person.Views.AsideView({ model: this.person });
+      this.navigationView = new App.People.Views.NavigationView();
+      this.selectorView = new App.People.Views.SelectorView({ collection: this.people, selected: this.person });
 
       this.layout = new Person.Views.Layout();
       this.layout.attachViews({ 
-        sidebar: this.sidebarView
-      , select: this.selectView 
-      , summary: this.summaryView
-      , edit: this.editView
+        aside: this.asideView
+      , navigation: this.navigationView 
+      , selector: this.selectorView
+      , temp: new App.People.Views.TempView()
       });
       this.layout.render();
 

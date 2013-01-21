@@ -1,69 +1,81 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-	Views.SidebarView = Marionette.ItemView.extend({
-	  template: "people/sidebar"
+  Views.TempView = Marionette.ItemView.extend({
+    template: "people/temp"
 
-	});
+  });
 
-	Views.SelectView = Marionette.ItemView.extend({
-	  template: "people/select"
+  Views.AsideView = Marionette.ItemView.extend({
+    template: "people/aside"
+
+  });
+
+	Views.NavigationView = Marionette.ItemView.extend({
+	  template: "people/navigation"
 
 	});
 
 	Views.ItemView = Marionette.ItemView.extend({
-	  template: "people/item"
+    tagName: "li"
+  	
+  , template: "people/item"
 
-  , events: {
-      "click article": "onSelect"
+  , initialize: function(options) {
+      this.selected = options.selected;
     }
 
-  , initialize: function() {
-      // this.model.on("change", this.render, this);
-      // this.model.on("destroy", this.remove, this);
-    }
-
-  , onSelect: function(e) {
-      var id = $(e.currentTarget).data("id");
-      App.Person.router.navigate("people/" + id, true);
+  , onBeforeRender: function() {
+      if (this.selected === this.model.get("id"))
+        this.$el.addClass("active");
     }
 
 	});
 
-	Views.ListView = Marionette.CollectionView.extend({
+	Views.SelectorView = Marionette.CollectionView.extend({
 
-	  itemView: Views.ItemView
+    tagName: "ul"
+
+	, itemView: Views.ItemView
+
+  , itemViewOptions: function(model) {
+      if (this.selected) var id = this.selected.get("id");
+
+      return {
+        selected: id
+      };
+    }
 
   , initialize: function(options) {
   		this.collection = options.collection;
-  		this.collection.on("all", this.render, this);
+      this.selected = options.selected;
+      this.collection.on("all", this.render, this);
   	}
-
-  , onRender: function() {
-      this.$(".photo img").fallback();
-    }
 
 	});
 
 	Views.Layout = Marionette.Layout.extend({
-		template: "app/layout/list"
+		template: "people/layout"
 
 	, regions: {
-		    "sidebar": 		"#sidebar"
-		  , "navigation": "#select"
-		  , "list": 			"#list"
+		    "navigation": 		"#top"
+		  , "aside":          "#aside"
+      , "selector":       "#selector"
+      , "content":        "#content"
 		}
 
   , attachViews: function(views) {
-  		if (views.sidebar != null) this.sidebarView = views.sidebar;
-  		if (views.select != null) this.selectView = views.select;
-  		if (views.list != null) this.listView = views.list;
+  		if (views.aside != null) this.asideView = views.aside;
+      if (views.navigation != null) this.navigationView = views.navigation;
+      if (views.selector != null) this.selectorView = views.selector;
+      if (views.temp != null) this.tempView = views.temp;
   	}
 
   , onRender: function() {
-  		this.sidebar.show(this.sidebarView);
-  		this.navigation.show(this.selectView);
-  		this.list.show(this.listView);
-  	}
+  		this.aside.show(this.asideView);
+  		this.navigation.show(this.navigationView);
+      this.selector.show(this.selectorView);
+      this.content.show(this.tempView);
+    }
 
 	});
 

@@ -11,7 +11,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 	People.Controller = Marionette.Controller.extend({
 
     select: function() {
-      App.vent.trigger("section:changed", "people");
+      App.vent.trigger("section:change", "people");
     }
 
   , reset: function() {
@@ -29,15 +29,16 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
 			var promise = this.people.fetch();
 
-    	this.sidebarView = new People.Views.SidebarView();
-    	this.selectView = new People.Views.SelectView();
-    	this.listView = new People.Views.ListView({ collection: this.people });
+    	this.asideView = new People.Views.AsideView();
+    	this.navigationView = new People.Views.NavigationView();
+    	this.selectorView = new People.Views.SelectorView({ collection: this.people });
 
     	this.layout = new People.Views.Layout();
     	this.layout.attachViews({ 
-  			sidebar: this.sidebarView
-  		, select: this.selectView 
-  		, list: this.listView
+  			aside: this.asideView
+  		, navigation: this.navigationView 
+  		, selector: this.selectorView
+      , temp: new People.Views.TempView()
     	});
     	this.layout.render();
 

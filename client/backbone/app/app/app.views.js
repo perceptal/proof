@@ -52,17 +52,17 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     template: "app/navigation"
 
   , ui: {
-      items: "ul.nav li"
+      items: "ul li a"
     }
 
   , initialize: function() {
-      App.vent.on("section:changed", this.select, this);
+      App.vent.on("section:changed", this.render, this);
     }
 
   , render: function() {
       this.$el.html(Marionette.Renderer.render(this.template, this));
-
       this.bindUIElements();
+      this.select(App.Global.section);
     }
 
   , select: function(section) {
@@ -72,6 +72,41 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
         .removeClass("active")
         .filter("." + section)
           .addClass("active");
+      this.ui.items.tooltip({ delay: { show: 500, hide: 100 } });
+    }
+  });
+
+  Views.LocaleView = Marionette.View.extend({
+    template: "app/locale"
+
+  , ui: {
+      items: "ul li"
+    }
+
+  , events: {
+      "click .locale": "onChangeLocale"
+    }
+
+  , render: function() {
+      this.$el.html(Marionette.Renderer.render(this.template, this));
+
+      this.bindUIElements();
+      this.changeLocale(i18n.lng());
+    }
+
+  , onChangeLocale: function(e) {
+      var locale = $(e.currentTarget).data("locale");
+      App.vent.trigger("locale:change", locale);
+      return false;
+    }
+
+  , changeLocale: function(locale) {
+      if (_.isUndefined(locale)) return;
+
+      this.ui.items
+        .removeClass("active")
+        .filter("." + locale)
+          .addClass("active");
     }
   });
 
@@ -79,9 +114,14 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     template: "app/header"
 
   , initialize: function(options) {
-      this.security = new Marionette.Region({ el: "#security" });
-      this.navigation = new Marionette.Region({ el: "#navigation" });
+      var that = this;
 
+      options = options || {};
+      this.locale = options.locale;
+
+      this.security = new Marionette.Region({ el: "#security" });
+      this.locale = new Marionette.Region({ el: "#locale" });
+      
       App.vent.on("security:signedon", this.reload, this);
       App.vent.on("security:signedout", this.reload, this);
       App.vent.on("locale:changed", this.reload, this);
@@ -96,13 +136,10 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
       if (session && session.isAuthenticated())
         this.showSignedOn(session);
-      else
+      else if (session)
         this.showSignedOut();
-      this.showNavigation(user);
-    }
 
-  , showNavigation: function(user) {
-      this.navigation.show(new Views.NavigationView());
+      this.showLocale();
     }
 
   , showSignedOut: function() {
@@ -112,41 +149,9 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   , showSignedOn: function(session) {
       this.security.show(new App.Security.Views.SignedOnView({ model: session }));
     }
-  });
 
-  Views.FooterView = Marionette.View.extend({
-    template: "app/footer"
-
-  , className: "container"
-
-  , events: {
-      "click .locale": "changeLocale"
-    }
-
-  , initialize: function(options) {
-      var that = this;
-
-      Handlebars.registerHelper("isSelected", function(locale) {
-        return (that.locale || "").indexOf(locale) ? "" : "selected";
-      });
-
-      options = options || {};
-      this.locale = options.locale;
-      
-      App.vent.on("locale:change", function(locale) {
-        that.locale = locale;
-        that.render();
-      });
-   }
-
-  , render: function() {
-      this.$el.html(Marionette.Renderer.render(this.template, this));
-    }
-
-  , changeLocale: function(e) {
-      App.vent.trigger("locale:change", $(e.target).data("locale"));
-
-      return false;
+  , showLocale: function() {
+      this.locale.show(new Views.LocaleView());
     }
   });
 
@@ -156,21 +161,21 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   , el: "body"
 
   , regions: {
-      header  : "#header"
-    , main    : "#content"
-    , footer  : "#footer"
-    , message : "#message"
-    , modal   : Views.ModalRegion
+      header        : "#header"
+    , main          : "#contents"
+    , navigation    : "nav#primary"
+    , message       : "#message"
+    , modal         : Views.ModalRegion
   }
 
   , attachViews: function(views) {
       if (views.header != null) this.headerView = views.header;
-      if (views.footer != null) this.footerView = views.footer;
+      if (views.navigation != null) this.navigationView = views.navigation;
     }
 
   , onRender: function() {
       this.header.show(this.headerView);
-      this.footer.show(this.footerView);
+      this.navigation.show(this.navigationView);
     }
   });
 
@@ -179,7 +184,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
     App.layout.attachViews({
       header: new Views.HeaderView()
-    , footer: new Views.FooterView()
+    , navigation: new Views.NavigationView()
     });
 
     App.layout.render();

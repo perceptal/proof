@@ -41,8 +41,8 @@
       </nav>      
     </header>
 
-    <div class="main">
-      <nav class="primary">
+    <div id="main">
+      <nav id="primary">
         <ul>
           <li><a href="#" rel="tooltip" title="Home" data-placement="right"><i class="icon-globe icon-white"></i></a></li>
           <li><a class="active" href="#" rel="tooltip" title="People" data-placement="right"><i class="icon-user icon-white"></i></a></li>
@@ -50,26 +50,27 @@
         </ul>
       </nav>
 
-      <div class="content">
-        <div class="pages">
-          <header class="navbar people">
+      <div id="contents">
+        <div id="pages">
+          <header class="navbar" id="top">
             <h1>People</h1>
             <form class="navbar-form pull-left">
               <input type="text" class="span3 search" id="search" placeholder="search&rarr;"/>
             </form>
 
-            <ul>
+            <ul class="filter">
               <li class="active"><a href="#">All People</a></li>
               <li><a href="#">Filter</a></li>
             </ul>
 
-            <ul class="nav pull-right">
+            <ul class="pull-right">
               <li><button class="btn btn-success" href="#"><i class="icon-user icon-white"></i> Register</button></li>
             </ul>
           </header>
-          <div class="page">
-            <div class="sidebar auto-height">
-              <nav>
+
+          <div id="page">
+            <div id="sidebar" class="auto-height">
+              <nav id="selector">
                 <ul>
                   <li><a href="#">Johnny Hall<i class="icon-chevron-right"></i></a></li>
                   <li><a href="#">Terry Wogan<i class="icon-chevron-right"></i></a></li>
@@ -136,16 +137,48 @@
                   </fieldset>
                 </form>
 
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <td>#</td>
+                      <td>First Name</td>
+                      <td>Last Name</td>
+                      <td>Age</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Johnny</td>
+                      <td>Hall</td>
+                      <td>41</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Johnny</td>
+                      <td>Hall</td>
+                      <td>41</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Johnn</td>
+                      <td>Hall</td>
+                      <td>41</td>
+                    </tr>
+                  </tbody>
+                </table>
+
               </div>
 
-              <aside class="auto-height">
+              <aside id="aside" class="auto-height">
                 <h4>Emma Watson <small>demo</small></h4>
                 <div class="image"><img src="/api/people/50f5a573875b66814c4a65e0/photos/small"></img></div>
                 <p>
                   <div class="info">01896 830894</div>
                   <a href="mailto:emma@watson.com">emma at watson dot com</a>
                 </p>
-                <button class="btn btn-danger" href="#"><i class="icon-ban-circle icon-white"></i> Delete</button>
+                <button class="btn btn-danger" href="#"><i class="icon-ban-circle icon-white"></i> Archive Emma</button>
 
               </aside>
             </section>
@@ -154,14 +187,17 @@
         </div>
       </div>
     </div>
-    <div class="bg"></div>
+    <div id="bg"></div>
 
     <script src="/vendor/jquery/jquery.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
     <script>
       $(function() { 
-        $("*[rel='tooltip']").tooltip({ delay: { show: 500, hide: 100 } }); 
-        $(".auto-height").innerHeight($(".bg").innerHeight() - $(".pages header").innerHeight());
+        $("*[rel='tooltip']").tooltip({ delay: { show: 500, hide: 100 } });
+
+        var minimum = $("#bg").innerHeight() - $(".pages header").innerHeight()
+          , content = $("#page section").innerHeight() - 1;
+        $(".auto-height").innerHeight(minimum > content ? minimum : content);
       });
     </script>
   </body>

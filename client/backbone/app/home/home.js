@@ -10,17 +10,19 @@ Proof.module("Home", function(Home, App, Backbone, Marionette, $, _) {
   Home.Controller = Marionette.Controller.extend({
 
     select: function() {
-      App.vent.trigger("section:changed", "home");
+      App.vent.trigger("section:change", "home");
     }
 
   , index: function() {
       this.select();
 
-      this.sidebarView = new Home.Views.SidebarView();
+      this.asideView = new Home.Views.AsideView();
+      this.navigationView = new Home.Views.NavigationView();
 
       this.layout = new Home.Views.Layout();
       this.layout.attachViews({ 
-        sidebar: this.sidebarView
+        aside: this.asideView
+      , navigation: this.navigationView
       });
       this.layout.render();
 

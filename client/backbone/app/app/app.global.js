@@ -67,7 +67,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	, showMessage: function(text) {
       // TODO Change this to store model and bind changes to view
-      
+
      	var message = new App.Views.MessageView({ model: new App.Models.Message({ text: text }) }); 
       App.layout.message.show(message);
 		}
@@ -81,13 +81,14 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
   , changeSection: function(section) {
       Global.section = section;   
+      App.vent.trigger("section:changed", Global.section);  
     }
 
 	});
 
 	// Initialize global events
 	Global.addInitializer(function() {
-    App.vent.on("section:changed", App.changeSection, this);
+    App.vent.on("section:change", App.changeSection, this);
     App.vent.on("security:signon", App.signOn, this);
     App.vent.on("security:signout", App.signOut, this);
     App.vent.on("security:signedon", App.refresh, this);
