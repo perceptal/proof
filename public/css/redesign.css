@@ -225,8 +225,8 @@ nav#primary ul li a:hover.active {
 #contents #pages header ul.filter li a:hover {
   color: #900;
 }
-#contents #pages header ul.filter li.active a,
-#contents #pages header ul.filter li.active a:hover {
+#contents #pages header ul.filter li a,
+#contents #pages header ul.filter li a:hover {
   color: #333;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
@@ -281,10 +281,10 @@ nav#primary ul li a:hover.active {
   display: inline;
   color: #900;
 }
-#contents #pages #page #sidebar ul li.active a {
+#contents #pages #page #sidebar ul li a.active {
   background: #fff;
 }
-#contents #pages #page #sidebar ul li.active a i {
+#contents #pages #page #sidebar ul li a.active i {
   display: inline;
 }
 #contents #pages #page section {

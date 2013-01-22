@@ -50,7 +50,8 @@
     "zombie": "~1.4.1",
     "grunt-contrib-handlebars": "~0.3.3",
     "grunt-contrib-clean": "~0.4.0a",
-    "cucumber": "git://github.com/cucumber/cucumber-js.git#colors"
+    "cucumber": "git://github.com/cucumber/cucumber-js.git#colors",
+    "grunt-buildconcat": "~0.1.2"
   },
   "keywords": [
     "proof",

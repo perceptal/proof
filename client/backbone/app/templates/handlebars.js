@@ -76,7 +76,7 @@ this["Templates"]["home/navigation"] = Handlebars.template(function (Handlebars,
   buffer += escapeExpression(stack1) + "</h1>\n";
   return buffer;});
 
-this["Templates"]["people/aside"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["people/help"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
@@ -88,7 +88,15 @@ this["Templates"]["people/item"] = Handlebars.template(function (Handlebars,dept
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<a class=\"active\" href=\"#people/";
+  buffer += "<a data-id=\"";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" class=\"item ";
+  foundHelper = helpers.active;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.active; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -133,14 +141,7 @@ this["Templates"]["people/navigation"] = Handlebars.template(function (Handlebar
   buffer += escapeExpression(stack1) + "</button></li>\n</ul>\n";
   return buffer;});
 
-this["Templates"]["people/temp"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  helpers = helpers || Handlebars.helpers;
-  
-
-
-  return "<div class=\"navbar navbar-static-top\">\n  <div class=\"navbar-inner\">\n    <a class=\"brand\" href=\"#\">Emma</a>\n    <ul class=\"nav\">\n      <li class=\"active\"><a href=\"#\">Info</a></li>\n      <li><a href=\"#\">Photos</a></li>\n      <li><a href=\"#\">Documents</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a href=\"#\">Upload Photo</a></li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"inner\">\n  <div class=\"alert alert-info fade in\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n    <i class=\"icon-info-sign\"></i><strong> Nice one</strong>, you done good.\n  </div>\n\n  <div class=\"alert fade in\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n    <i class=\"icon-exclamation-sign\"></i><strong> Unfortunately</strong>, there seems to be an issue.\n  </div>\n\n  <div class=\"alert alert-error fade in\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n    <i class=\"icon-ban-circle\"></i><strong> Houston</strong>, we have a problem.\n  </div>\n</div>";});
-
-this["Templates"]["person/aside"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["people/summary"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
@@ -172,12 +173,12 @@ this["Templates"]["person/aside"] = Handlebars.template(function (Handlebars,dep
   buffer += escapeExpression(stack1) + "</button>\n";
   return buffer;});
 
-this["Templates"]["person/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["Templates"]["people/temp"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
-  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"top\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\" class=\"auto-height\"></div>\n\n      <aside id=\"aside\" class=\"auto-height\"></aside>\n    </section>\n\n  </div>\n</div>\n";});
+  return "<div class=\"navbar navbar-static-top\">\n  <div class=\"navbar-inner\">\n    <a class=\"brand\" href=\"#\">Emma</a>\n    <ul class=\"nav\">\n      <li class=\"active\"><a href=\"#\">Info</a></li>\n      <li><a href=\"#\">Photos</a></li>\n      <li><a href=\"#\">Documents</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a href=\"#\">Upload Photo</a></li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"inner\">\n  <div class=\"alert alert-info fade in\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n    <i class=\"icon-info-sign\"></i><strong> Nice one</strong>, you done good.\n  </div>\n\n  <div class=\"alert fade in\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n    <i class=\"icon-exclamation-sign\"></i><strong> Unfortunately</strong>, there seems to be an issue.\n  </div>\n\n  <div class=\"alert alert-error fade in\">\n    <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n    <i class=\"icon-ban-circle\"></i><strong> Houston</strong>, we have a problem.\n  </div>\n</div>";});
 
 this["Templates"]["security/register"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

@@ -1,12 +1,26 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  Views.TempView = Marionette.ItemView.extend({
+  Views.EditView = Marionette.ItemView.extend({
     template: "people/temp"
 
   });
 
-  Views.AsideView = Marionette.ItemView.extend({
-    template: "people/aside"
+  Views.HelpView = Marionette.ItemView.extend({
+    template: "people/help"
+
+  });
+
+  Views.SummaryView = Marionette.ItemView.extend({
+    template: "people/summary"
+
+  , initialize: function(options) {
+      this.model = options.model;
+      this.model.on("change", this.render, this);
+    }
+
+  , onRender: function() {
+      this.$(".image img").fallback({ fallback: "/img/noprofile.png" });
+    }
 
   });
 
@@ -20,15 +34,27 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   	
   , template: "people/item"
 
+  , events: {
+      "click .item": "onSelect"
+    }
+
   , initialize: function(options) {
-      this.selected = options.selected;
+      this.collection = options.collection;
+      this.model.on("change", this.render, this);
     }
 
-  , onBeforeRender: function() {
-      if (this.selected === this.model.get("id"))
-        this.$el.addClass("active");
-    }
+  , onSelect: function(e) {
+      e.preventDefault();
 
+      this.collection.each(function(item) { item.set("active", ""); });
+      this.model.set("active", "active");
+
+      var url = $(e.currentTarget).attr("href")
+        , id = $(e.currentTarget).data("id");
+      
+      App.People.router.navigate(url);
+      App.vent.trigger("people:selected", this.collection.get(id));
+    }
 	});
 
 	Views.SelectorView = Marionette.CollectionView.extend({
@@ -38,16 +64,15 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 	, itemView: Views.ItemView
 
   , itemViewOptions: function(model) {
-      if (this.selected) var id = this.selected.get("id");
-
       return {
-        selected: id
+        collection: this.collection
       };
     }
 
   , initialize: function(options) {
   		this.collection = options.collection;
       this.selected = options.selected;
+      
       this.collection.on("all", this.render, this);
   	}
 
@@ -63,18 +88,18 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       , "content":        "#content"
 		}
 
-  , attachViews: function(views) {
+  , initialize: function(views) {
   		if (views.aside != null) this.asideView = views.aside;
       if (views.navigation != null) this.navigationView = views.navigation;
       if (views.selector != null) this.selectorView = views.selector;
-      if (views.temp != null) this.tempView = views.temp;
+      if (views.content != null) this.contentView = views.content;
   	}
 
   , onRender: function() {
   		this.aside.show(this.asideView);
   		this.navigation.show(this.navigationView);
       this.selector.show(this.selectorView);
-      this.content.show(this.tempView);
+      this.content.show(this.contentView);
     }
 
 	});

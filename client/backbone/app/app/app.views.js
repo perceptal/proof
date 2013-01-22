@@ -140,6 +140,8 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
         this.showSignedOut();
 
       this.showLocale();
+      
+      this.$el.find(".logo").text(i18n.translate("main.title"));
     }
 
   , showSignedOut: function() {

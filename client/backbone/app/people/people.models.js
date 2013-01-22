@@ -1,6 +1,6 @@
 Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _) {
 
-	People.Person = Backbone.Model.extend({
+	People.Person = Backbone.ModelFactory({
 		urlRoot: "/api/people"
 	});
 
