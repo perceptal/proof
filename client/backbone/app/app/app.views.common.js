@@ -19,14 +19,10 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     , prev : "a.prev"
     , next : "a.next"
     , last : "a.last"
+    , all  : "li"
     }
 
-  , initialize: function(options) {
-      this.model.on("reset", this.render, this);
-      this.model.on("change", this.render, this);
-    }
-
-  , onRender: function() {
+  , onRender: function() {console.log(this.model.pages())
       var pages = ""
         , model = this.model;
 
@@ -38,6 +34,9 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
       if (this.model.currentPage === 1) this.ui.prev.parent().addClass("disabled");
       if (this.model.currentPage === this.model.lastPage) this.ui.next.parent().addClass("disabled");
+      if (this.model.pages().length === 1) {
+        this.ui.all.addClass("disabled").removeClass("active");
+      }
     }
 
   , gotoFirst: function(e) {

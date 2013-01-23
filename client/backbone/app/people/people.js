@@ -43,7 +43,8 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
 			this.people.fetch()
         .success(function() { 
-          that.people.pager(); 
+          that.people.setSort("firstName", "asc"); 
+          that.people.goTo(1);
         });
 
       this.constructLayout(new People.Views.HelpView(), new People.Views.EditView(), new People.Views.EditView());

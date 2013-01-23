@@ -9,7 +9,7 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
 
 	, initialize: function(attributes, options) {
       options || (options = {});
-      this.bind("error", this.defaultErrorHandler);
+      this.bind("error", this.defaultErrorHandler, this);
       this.init && this.init(attributes, options);
     }
 
@@ -36,14 +36,16 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
 
   , pages: function() {  
 
-      var getClass = function(p) {
-        if (this.currentPage === p) return "active";
+      var getClass = function(current, p) {
+        if (current === p) return "active";
       }
 
       var p = [];
 
-      for (var i=1; i<= this.totalPages; i++) 
-        p.push({ number: i, className: getClass(i) });
+      if (this.information) {
+        for (var i=1; i<= this.information.totalPages; i++) 
+          p.push({ number: i, className: getClass(this.currentPage, i) });
+      }
 
       return p;
     }
