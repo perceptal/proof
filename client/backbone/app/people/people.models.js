@@ -31,7 +31,7 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
     }
 
   , paginator_ui: {
-      perPage       : 10
+      perPage   : 10
     }
 
   , pages: function() {  

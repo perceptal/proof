@@ -108,10 +108,10 @@ this["Templates"]["people/filter"] = Handlebars.template(function (Handlebars,de
   buffer += escapeExpression(stack1) + "&rarr;\"/>\n</form>\n\n<div class=\"btn-toolbar\" style=\"margin: 0\">\n  <div class=\"btn-group\">\n\n    <button class=\"btn\" data-toggle=\"dropdown\" href=\"#\">\n      ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.sort", {hash:{}}) : helperMissing.call(depth0, "t", "people.sort", {hash:{}});
-  buffer += escapeExpression(stack1) + "\n      <span class=\"caret\"></span>\n    </button>\n    <ul class=\"dropdown-menu\">\n      <li><a href=\"#\">";
+  buffer += escapeExpression(stack1) + "\n      <span class=\"caret\"></span>\n    </button>\n    <ul class=\"dropdown-menu\">\n      <li><a class=\"sort\" href=\"#\" data-sort=\"firstName\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.first_name", {hash:{}}) : helperMissing.call(depth0, "t", "people.first_name", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a href=\"#\">";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a class=\"sort\" href=\"#\" data-sort=\"lastName\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.last_name", {hash:{}}) : helperMissing.call(depth0, "t", "people.last_name", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <button class=\"btn refresh\" href=\"#\"><i class=\"icon-refresh\"></i> ";

@@ -222,6 +222,12 @@ nav#primary ul li a:hover.active {
   max-height: 620px;
   overflow-y: scroll;
 }
+#contents #pages #page #sidebar ul.list li.empty {
+  padding-bottom: 1px;
+}
+#contents #pages #page #sidebar ul.list li.empty a:hover {
+  background: transparent;
+}
 #contents #pages #page #sidebar ul.list li {
   position: relative;
   clear: both;

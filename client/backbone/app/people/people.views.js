@@ -26,13 +26,10 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.FilterView = Marionette.ItemView.extend({
     template: "people/filter"
 
-  , events: {
-      "click input#search": "onFilter"
-    }
-
   , ui: {
       filter: "input#search"
     , refresh: "button.refresh"
+    , sort: "a.sort"
     }
 
   , onRender: function() {
@@ -45,6 +42,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
       // Shouldn't be necessary
       this.ui.refresh.bind("click", $.proxy(this.onRefresh, this));
+      this.ui.sort.bind("click", $.proxy(this.onSort, this));
     }
 
   , onFilter: function(e) {
@@ -63,7 +61,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , onSort: function(e) {
       e.preventDefault();
-
+      var sort = $(e.currentTarget).data("sort");
+      this.collection.setSort(sort, "asc");
     }
   });
 
@@ -118,6 +117,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , ui: {
       pagination      : "div.pagination"
+    , list            : "ul.list"
     }
 
   , itemViewOptions: function(model) {
@@ -137,6 +137,11 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       if (this.pagination) this.pagination.reset();
       this.pagination = new Marionette.Region({ el: ".pagination" });
       this.pagination.show(new App.Views.PagingView({ model: this.collection }));
+
+      if (this.collection.length < 10) {
+        for(var i=0; i<(10-this.collection.length); i++)
+          this.ui.list.append("<li class='empty'><a>&nbsp;</a></li>");
+      }
     }
 	});
 

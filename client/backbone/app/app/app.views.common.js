@@ -22,7 +22,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     , all  : "li"
     }
 
-  , onRender: function() {console.log(this.model.pages())
+  , onRender: function() {
       var pages = ""
         , model = this.model;
 

@@ -59,8 +59,13 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
       this.people.fetch()
         .success(function() {
-          that.people.pager();
+          that.people.setSort("firstName", "asc"); 
+          that.people.goTo(1);
           that.person = that.people.get(id);
+          while (that.person == null) {
+            that.people.nextPage();
+            that.person = that.people.get(id);
+          }
           that.person.set("active", "active");
         });
 
