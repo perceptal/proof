@@ -2,16 +2,21 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
 	People.Router = Marionette.AppRouter.extend({
 		appRoutes: {
-    	"people"           	: "index"
-    , "people/search/:q" 	: "search"
-    , "people/new"        : "new"
-    , "people/:id"        : "show"
+    	"people"           	        : "index"
+    , "people/search/:q" 	        : "search"
+    , "people/new"                : "new"
+
+    , "people/:id"                : "show"
+    , "people/:id/photos"         : "show"
+    , "people/:id/photos/new"     : "show"
+    , "people/:id/documents"      : "show"
+    , "people/:id/documents/new"  : "show"
 		}
 	});
 
 	People.Controller = Marionette.Controller.extend({
 
-    select: function() {
+    selectMenu: function() {
       App.vent.trigger("section:change", "people");
     }
 
@@ -30,29 +35,39 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
     }
 
 	,	index: function() {
-      this.select();
+      var that = this;
 
-			this.people.fetch();
+      this.selectMenu();
+
       this.person = null;
 
-      this.constructLayout(new People.Views.HelpView(), new People.Views.EditView());
+			this.people.fetch()
+        .success(function() { 
+          that.people.pager(); 
+        });
+
+      this.constructLayout(new People.Views.HelpView(), new People.Views.EditView(), new People.Views.EditView());
 		} 
 
   , show: function(id) {
       var that = this;
 
-      this.select();
+      this.selectMenu();
 
       this.person = new People.Models.Person({ id: id });
 
       this.people.fetch()
         .success(function() {
+          that.people.pager();
           that.person = that.people.get(id);
           that.person.set("active", "active");
         });
 
-      this.constructLayout(new People.Views.SummaryView({ model: this.person }), new People.Views.EditView());
-    } 
+      this.constructLayout(
+        new People.Views.SummaryView({ model: this.person }), 
+        new People.Views.MenuView({ model: this.person }),
+        new People.Views.EditView({ model: this.person }));
+    }
 
 	, search: function(q) {
 		  // 
@@ -62,15 +77,16 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       this.index();
 	 }
 
-  , constructLayout: function(asideView, contentView) {
-      var navigationView = new People.Views.NavigationView()
-        , selectorView = new People.Views.SelectorView({ collection: this.people, selected: this.person });
+  , constructLayout: function(aside, menu, edit) {
+      var filter = new People.Views.FilterView({ collection: this.people, model: this.person })
+        , selector = new People.Views.SelectorView({ collection: this.people, selected: this.person });
 
       this.layout = new People.Views.Layout({
-        aside:      asideView
-      , navigation: navigationView 
-      , selector:   selectorView
-      , content:    contentView
+        aside:      aside
+      , filter:     filter 
+      , selector:   selector
+      , menu:       menu
+      , inner:      edit
       });
 
       this.layout.render();
@@ -84,7 +100,11 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
  
       this.person = person;
 
+      this.layout.filter.currentView.model = this.person;
+
+      this.layout.menu.show(new People.Views.MenuView({ model: this.person }));
       this.layout.aside.show(new People.Views.SummaryView({ model: this.person }));
+      this.layout.inner.show(new People.Views.EditView({ model: this.person }));
     }
 
 	});

@@ -11,6 +11,10 @@ $(function() {
   , getAsync: false
   });
 
+  i18n.addPostProcessor("capitalize", function(value, key, options) {
+    return value.capitalize();
+  });
+
   i18n.addPostProcessor("titleize", function(value, key, options) {
     return value.titleize();
   });

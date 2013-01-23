@@ -1,7 +1,7 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   Views.EditView = Marionette.ItemView.extend({
-    template: "people/temp"
+    template: "people/edit"
 
   });
 
@@ -14,7 +14,6 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     template: "people/summary"
 
   , initialize: function(options) {
-      this.model = options.model;
       this.model.on("change", this.render, this);
     }
 
@@ -24,10 +23,55 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   });
 
-	Views.NavigationView = Marionette.ItemView.extend({
-	  template: "people/navigation"
+  Views.FilterView = Marionette.ItemView.extend({
+    template: "people/filter"
 
-	});
+  , events: {
+      "click input#search": "onFilter"
+    }
+
+  , ui: {
+      filter: "input#search"
+    , refresh: "button.refresh"
+    }
+
+  , onRender: function() {
+      var that = this;
+      // Shouldn't be necessary
+      this.ui.filter.bind("keyup", function() {
+        if (that.timeout) clearTimeout(that.timeout);
+        that.timeout = setTimeout($.proxy(that.onFilter, that), 100);
+      });
+      this.ui.refresh.bind("click", $.proxy(this.onRefresh, this));
+    }
+
+  , onFilter: function(e) {
+      this.collection.filter(this.ui.filter.val());
+
+      if (this.collection.length === 1 && this.model !== this.collection.first()) {
+        App.vent.trigger("people:selected", this.collection.first());
+      }
+    }
+
+  , onRefresh: function(e) {
+      e.preventDefault();
+      this.ui.filter.val("");
+      this.collection.filter("");
+    }
+
+  , onSort: function(e) {
+      e.preventDefault();
+
+    }
+  });
+
+  Views.MenuView = Marionette.ItemView.extend({
+    template: "people/menu"
+
+  , initialize: function(options) {
+      this.model.on("change", this.render, this);
+    }
+  });
 
 	Views.ItemView = Marionette.ItemView.extend({
     tagName: "li"
@@ -39,7 +83,6 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , initialize: function(options) {
-      this.collection = options.collection;
       this.model.on("change", this.render, this);
     }
 
@@ -57,11 +100,35 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 	});
 
-	Views.SelectorView = Marionette.CollectionView.extend({
+  Views.NoItemsView = Marionette.ItemView.extend({
+    template: "people/empty"
+  });
 
-    tagName: "ul"
+	Views.SelectorView = Marionette.CompositeView.extend({
+
+    template: "people/selector"
+
+  , itemViewContainer: "ul.list"
 
 	, itemView: Views.ItemView
+
+  , emptyView: Views.NoItemsView
+
+  , events: {
+      "click a.page"  : "gotoPage"
+    , "click a.first" : "gotoFirst"
+    , "click a.prev"  : "gotoPrev"
+    , "click a.next"  : "gotoNext"
+    , "click a.last"  : "gotoLast"
+    }
+
+  , ui: {
+      page            : "a.page"
+    , first           : "a.first"
+    , prev            : "a.prev"
+    , next            : "a.next"
+    , last            : "a.last"
+    }
 
   , itemViewOptions: function(model) {
       return {
@@ -70,11 +137,46 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , initialize: function(options) {
-  		this.collection = options.collection;
       this.selected = options.selected;
-      
-      this.collection.on("all", this.render, this);
+
+      this.collection.on("reset", this.render, this);
+      this.collection.on("change", this.render, this);
   	}
+
+  , onRender: function() {
+      // Shouldn't be necessary, events not binding
+      this.ui.first.click($.proxy(this.gotoFirst, this));
+      this.ui.prev.click($.proxy(this.gotoPrev, this));
+      this.ui.page.click($.proxy(this.gotoPage, this));
+      this.ui.next.click($.proxy(this.gotoNext, this));
+      this.ui.last.click($.proxy(this.gotoLast, this));
+    }
+
+  , gotoFirst: function(e) {
+      e.preventDefault();
+      this.collection.goTo(1);
+    }
+
+  , gotoPrev: function(e) {
+      e.preventDefault();
+      this.collection.previousPage();
+    }
+
+  , gotoNext: function(e) {
+      e.preventDefault();
+      this.collection.nextPage();
+    }
+
+  , gotoLast: function(e) {
+      e.preventDefault();
+      this.collection.goTo(this.collection.information.lastPage);
+    }
+
+  , gotoPage: function(e) {
+      e.preventDefault();
+      var page = $(e.currentTarget).text();
+      this.collection.goTo(page);
+    }
 
 	});
 
@@ -82,24 +184,27 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 		template: "people/layout"
 
 	, regions: {
-		    "navigation": 		"#top"
+		    "filter": 		    "#filter"
 		  , "aside":          "#aside"
       , "selector":       "#selector"
-      , "content":        "#content"
+      , "menu":           "#menu"
+      , "inner":          "#inner"
 		}
 
   , initialize: function(views) {
   		if (views.aside != null) this.asideView = views.aside;
-      if (views.navigation != null) this.navigationView = views.navigation;
+      if (views.filter != null) this.filterView = views.filter;
       if (views.selector != null) this.selectorView = views.selector;
-      if (views.content != null) this.contentView = views.content;
+      if (views.menu != null) this.menuView = views.menu;
+      if (views.inner != null) this.innerView = views.inner;
   	}
 
   , onRender: function() {
   		this.aside.show(this.asideView);
-  		this.navigation.show(this.navigationView);
+  		this.filter.show(this.filterView);
       this.selector.show(this.selectorView);
-      this.content.show(this.contentView);
+      this.menu.show(this.menuView);
+      this.inner.show(this.innerView);
     }
 
 	});

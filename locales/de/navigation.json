@@ -2,12 +2,14 @@
   "general": {
     "filter": "Schleusen"
   , "search": "Suche"
+  , "sort": "Art"
   , "cancel": "Kündigen"
   }
 , "main" : { 
     "title": "Beweis"
   , "home": "Zuhause"
   , "people": "Menschen" 
+  , "person": "Person"
   , "administration": "Verwaltung"
   , "about": "Um"
   , "support": "Unterstützen"
@@ -32,6 +34,10 @@
   , "all": "Alle $t(main.people)"
   , "filter": "$t(general.filter)"
   , "search": "$t(general.search)"
+  , "sort": "$t(general.sort)"
   , "register": "$t(security.register)"
+  , "not_found": "Es gibt keine übereinstimmenden $t(main.people) gefunden"
+  , "first_name": "Vorname"
+  , "last_name": "Nachname"
   }
 }

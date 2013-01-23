@@ -140,7 +140,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
         this.showSignedOut();
 
       this.showLocale();
-      
+
       this.$el.find(".logo").text(i18n.translate("main.title"));
     }
 
@@ -170,7 +170,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     , modal         : Views.ModalRegion
   }
 
-  , attachViews: function(views) {
+  , initialize: function(views) {
       if (views.header != null) this.headerView = views.header;
       if (views.navigation != null) this.navigationView = views.navigation;
     }
@@ -182,9 +182,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   });
 
   Views.addInitializer(function() {
-    App.layout = new Views.Layout();
-
-    App.layout.attachViews({
+    App.layout = new Views.Layout({
       header: new Views.HeaderView()
     , navigation: new Views.NavigationView()
     });

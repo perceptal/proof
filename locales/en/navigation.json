@@ -2,12 +2,14 @@
   "general": {
     "filter": "Filter"
   , "search": "Search"
+  , "sort": "Sort"
   , "cancel": "Cancel"
   }
 , "main" : { 
     "title": "Proof"
   , "home": "Home"
   , "people": "People" 
+  , "person": "Person"
   , "administration": "Administration"
   , "about": "About"
   , "support": "Support"
@@ -32,6 +34,10 @@
   , "all": "All $t(main.people)"
   , "filter": "$t(general.filter)"
   , "search": "$t(general.search)"
+  , "sort": "$t(general.sort)"
   , "register": "$t(security.register)"
+  , "not_found": "There are no $t(main.people) found"
+  , "first_name": "First name"
+  , "last_name": "Last name"
   }
 }

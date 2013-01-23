@@ -2,12 +2,14 @@
   "general": {
     "filter": "Filtrer"
   , "search": "Rechercher"
+  , "sort": "Sorte"
   , "cancel": "Annuler"
   }
 , "main" : { 
     "title": "Preuve"
   , "home": "Maison"
   , "people": "Personnes" 
+  , "person": "Personne" 
   , "administration": "Gestion"
   , "about": "Au Sujet De"
   , "support": "Soutenir"
@@ -32,6 +34,10 @@
   , "all": "All $t(main.people)"
   , "filter": "$t(general.filter)"
   , "search": "$t(general.search)"
+  , "sort": "$t(general.sort)"
   , "register": "$t(security.register)"
+  , "not_found": "Il n'y a $t(main.person) trouvés"
+  , "first_name": "Prénom"
+  , "last_name": "Nom de famille"
   }
 }

@@ -16,10 +16,6 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
     , "change   input"          : "onChange"
     }
 
-  , initialize: function(options) {
-      this.model = options.model;
-    }
-
   , onRender: function() {
       App.vent.bindTo(App.vent, "modal:shown", this.setFocus, this);
     }
@@ -51,7 +47,7 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
         that.close();
       });
 
-      promise.fail(function(response) { console.log(response)
+      promise.fail(function(response) {
         if (response.status === 404 || response.status === 403) {
           that.alert("You have entered invalid credentials.");
         } else if (response.status === 500) {
@@ -71,10 +67,6 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
   
   , events: {
       "click .signout": "signOut"
-    }
-
-  , initialize: function(options) {
-      this.model = options.model;
     }
 
   , signOut: function() {

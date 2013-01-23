@@ -191,7 +191,7 @@ nav#primary ul li a:hover.active {
   font-weight: normal;
   font-size: 15px;
   padding: 4px 10px 4px 30px;
-  margin: 4px 10px 4px 0;
+  margin: 5px 10px 3px 0;
 }
 #contents #pages header input.search:focus,
 #contents #pages header input.search:hover {
@@ -202,36 +202,6 @@ nav#primary ul li a:hover.active {
 }
 #contents #pages header input.search.searching {
   background: #fff url("data:image/gif;base64,R0lGODlhEAAQAPYAAP///wAAZtTU5JSUvmBgn0BAjEREjm5up6Kixtzc6aSkyCQkeygofTAwgjY2hj4+i2pqpbq61RwcdnJyquzs8+7u9MLC2oqKuFBQlV5enr6+19DQ4jo6iBYWc4yMuaqqy1xcnXx8sOLi7YaGtg4ObmhopJycw2Zmo7a20kZGjwoKa7Cwz5aWvxgYdAYGaejo8PT0+Hh4rYSEtPb2+YKCs6ioyvr6+/z8/MDA2MrK3vj4+tbW5q6uzvDw9dLS4+Tk7t7e6s7O4cbG3Ly81uDg7NjY5/Ly9tra6Hp6r7S00bKy0ExMk1JSl1pam2JioEJCjTw8icTE23Z2rDIyg+rq8ioqf46OulhYmiwsgB4ed6CgxU5OlBIScIiIt2RkoTQ0hcjI3czM4Obm77i41H5+sZKSvZ6exFZWmZCQvEpKkkhIkSIieqamyRAQbwwMbayszAQEaJqawiYmfBQUcTg4h3R0qy4ugQgIanBwqSAgeVRUmGxspoCAsgAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAAHjYAAgoOEhYUbIykthoUIHCQqLoI2OjeFCgsdJSsvgjcwPTaDAgYSHoY2FBSWAAMLE4wAPT89ggQMEbEzQD+CBQ0UsQA7RYIGDhWxN0E+ggcPFrEUQjuCCAYXsT5DRIIJEBgfhjsrFkaDERkgJhswMwk4CDzdhBohJwcxNB4sPAmMIlCwkOGhRo5gwhIGAgAh+QQJCgAAACwAAAAAEAAQAAAHjIAAgoOEhYU7A1dYDFtdG4YAPBhVC1ktXCRfJoVKT1NIERRUSl4qXIRHBFCbhTKFCgYjkII3g0hLUbMAOjaCBEw9ukZGgidNxLMUFYIXTkGzOmLLAEkQCLNUQMEAPxdSGoYvAkS9gjkyNEkJOjovRWAb04NBJlYsWh9KQ2FUkFQ5SWqsEJIAhq6DAAIBACH5BAkKAAAALAAAAAAQABAAAAeJgACCg4SFhQkKE2kGXiwChgBDB0sGDw4NDGpshTheZ2hRFRVDUmsMCIMiZE48hmgtUBuCYxBmkAAQbV2CLBM+t0puaoIySDC3VC4tgh40M7eFNRdH0IRgZUO3NjqDFB9mv4U6Pc+DRzUfQVQ3NzAULxU2hUBDKENCQTtAL9yGRgkbcvggEq9atUAAIfkECQoAAAAsAAAAABAAEAAAB4+AAIKDhIWFPygeEE4hbEeGADkXBycZZ1tqTkqFQSNIbBtGPUJdD088g1QmMjiGZl9MO4I5ViiQAEgMA4JKLAm3EWtXgmxmOrcUElWCb2zHkFQdcoIWPGK3Sm1LgkcoPrdOKiOCRmA4IpBwDUGDL2A5IjCCN/QAcYUURQIJIlQ9MzZu6aAgRgwFGAFvKRwUCAAh+QQJCgAAACwAAAAAEAAQAAAHjIAAgoOEhYUUYW9lHiYRP4YACStxZRc0SBMyFoVEPAoWQDMzAgolEBqDRjg8O4ZKIBNAgkBjG5AAZVtsgj44VLdCanWCYUI3txUPS7xBx5AVDgazAjC3Q3ZeghUJv5B1cgOCNmI/1YUeWSkCgzNUFDODKydzCwqFNkYwOoIubnQIt244MzDC1q2DggIBACH5BAkKAAAALAAAAAAQABAAAAeJgACCg4SFhTBAOSgrEUEUhgBUQThjSh8IcQo+hRUbYEdUNjoiGlZWQYM2QD4vhkI0ZWKCPQmtkG9SEYJURDOQAD4HaLuyv0ZeB4IVj8ZNJ4IwRje/QkxkgjYz05BdamyDN9uFJg9OR4YEK1RUYzFTT0qGdnduXC1Zchg8kEEjaQsMzpTZ8avgoEAAIfkECQoAAAAsAAAAABAAEAAAB4iAAIKDhIWFNz0/Oz47IjCGADpURAkCQUI4USKFNhUvFTMANxU7KElAhDA9OoZHH0oVgjczrJBRZkGyNpCCRCw8vIUzHmXBhDM0HoIGLsCQAjEmgjIqXrxaBxGCGw5cF4Y8TnybglprLXhjFBUWVnpeOIUIT3lydg4PantDz2UZDwYOIEhgzFggACH5BAkKAAAALAAAAAAQABAAAAeLgACCg4SFhjc6RhUVRjaGgzYzRhRiREQ9hSaGOhRFOxSDQQ0uj1RBPjOCIypOjwAJFkSCSyQrrhRDOYILXFSuNkpjggwtvo86H7YAZ1korkRaEYJlC3WuESxBggJLWHGGFhcIxgBvUHQyUT1GQWwhFxuFKyBPakxNXgceYY9HCDEZTlxA8cOVwUGBAAA7AAAAAAAAAAAA") no-repeat 8px center;
-}
-#contents #pages header ul.filter {
-  padding-left: 20px;
-  position: relative;
-  left: 0;
-  display: block;
-  float: left;
-}
-#contents #pages header ul.filter li {
-  display: inline;
-  margin: 0;
-  padding: 0 0 0 10px;
-}
-#contents #pages header ul.filter li a {
-  border: 1px solid transparent;
-  font-size: 14px;
-  color: #333;
-  padding: 6px 8px 5px 8px;
-  text-decoration: none;
-}
-#contents #pages header ul.filter li a:hover {
-  color: #900;
-}
-#contents #pages header ul.filter li a,
-#contents #pages header ul.filter li a:hover {
-  color: #333;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #fff;
 }
 #contents #pages #page {
   position: relative !important;
@@ -248,16 +218,16 @@ nav#primary ul li a:hover.active {
   color: #8b9095;
   font-size: 14px;
 }
-#contents #pages #page #sidebar ul {
+#contents #pages #page #sidebar ul.list {
   max-height: 620px;
   overflow-y: scroll;
 }
-#contents #pages #page #sidebar ul li {
+#contents #pages #page #sidebar ul.list li {
   position: relative;
   clear: both;
   background: #edefef;
 }
-#contents #pages #page #sidebar ul li a {
+#contents #pages #page #sidebar ul.list li a {
   font-size: 15px;
   display: block;
   position: relative;
@@ -267,24 +237,24 @@ nav#primary ul li a:hover.active {
   border-bottom: 1px solid #d7dbdb;
   color: #666;
 }
-#contents #pages #page #sidebar ul li a i {
+#contents #pages #page #sidebar ul.list li a i {
   display: none;
   float: right;
   font-size: 12px;
   padding-top: 2px;
 }
-#contents #pages #page #sidebar ul li a:hover {
+#contents #pages #page #sidebar ul.list li a:hover {
   background: #fff;
   color: #900;
 }
-#contents #pages #page #sidebar ul li a:hover i {
+#contents #pages #page #sidebar ul.list li a:hover i {
   display: inline;
   color: #900;
 }
-#contents #pages #page #sidebar ul li a.active {
+#contents #pages #page #sidebar ul.list li a.active {
   background: #fff;
 }
-#contents #pages #page #sidebar ul li a.active i {
+#contents #pages #page #sidebar ul.list li a.active i {
   display: inline;
 }
 #contents #pages #page section {
@@ -293,7 +263,7 @@ nav#primary ul li a:hover.active {
   background: #f5f6f6;
   padding: 0;
 }
-#contents #pages #page section .inner {
+#contents #pages #page section #inner {
   padding: 15px;
   min-height: 620px;
 }
