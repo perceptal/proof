@@ -243,6 +243,9 @@ nav#primary ul li a:hover.active {
   font-size: 12px;
   padding-top: 2px;
 }
+#contents #pages #page #sidebar ul.list li a small em {
+  color: #900;
+}
 #contents #pages #page #sidebar ul.list li a:hover {
   background: #fff;
   color: #900;

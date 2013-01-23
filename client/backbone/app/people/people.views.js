@@ -37,11 +37,13 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , onRender: function() {
       var that = this;
-      // Shouldn't be necessary
+
       this.ui.filter.bind("keyup", function() {
         if (that.timeout) clearTimeout(that.timeout);
         that.timeout = setTimeout($.proxy(that.onFilter, that), 100);
       });
+
+      // Shouldn't be necessary
       this.ui.refresh.bind("click", $.proxy(this.onRefresh, this));
     }
 
@@ -114,20 +116,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , emptyView: Views.NoItemsView
 
-  , events: {
-      "click a.page"  : "gotoPage"
-    , "click a.first" : "gotoFirst"
-    , "click a.prev"  : "gotoPrev"
-    , "click a.next"  : "gotoNext"
-    , "click a.last"  : "gotoLast"
-    }
-
   , ui: {
-      page            : "a.page"
-    , first           : "a.first"
-    , prev            : "a.prev"
-    , next            : "a.next"
-    , last            : "a.last"
+      pagination      : "div.pagination"
     }
 
   , itemViewOptions: function(model) {
@@ -144,40 +134,10 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   	}
 
   , onRender: function() {
-      // Shouldn't be necessary, events not binding
-      this.ui.first.click($.proxy(this.gotoFirst, this));
-      this.ui.prev.click($.proxy(this.gotoPrev, this));
-      this.ui.page.click($.proxy(this.gotoPage, this));
-      this.ui.next.click($.proxy(this.gotoNext, this));
-      this.ui.last.click($.proxy(this.gotoLast, this));
+      if (this.pagination) this.pagination.reset();
+      this.pagination = new Marionette.Region({ el: ".pagination" });
+      this.pagination.show(new App.Views.PagingView({ model: this.collection }));
     }
-
-  , gotoFirst: function(e) {
-      e.preventDefault();
-      this.collection.goTo(1);
-    }
-
-  , gotoPrev: function(e) {
-      e.preventDefault();
-      this.collection.previousPage();
-    }
-
-  , gotoNext: function(e) {
-      e.preventDefault();
-      this.collection.nextPage();
-    }
-
-  , gotoLast: function(e) {
-      e.preventDefault();
-      this.collection.goTo(this.collection.information.lastPage);
-    }
-
-  , gotoPage: function(e) {
-      e.preventDefault();
-      var page = $(e.currentTarget).text();
-      this.collection.goTo(page);
-    }
-
 	});
 
 	Views.Layout = Marionette.Layout.extend({

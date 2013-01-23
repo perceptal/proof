@@ -159,7 +159,11 @@ this["Templates"]["people/item"] = Handlebars.template(function (Handlebars,dept
   foundHelper = helpers.lastName;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.lastName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "<i class=\"icon-chevron-right\"></i></a>\n";
+  buffer += escapeExpression(stack1) + "\n	<small><em>";
+  stack1 = depth0.group;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
+  buffer += escapeExpression(stack1) + "</em></small>\n	<i class=\"icon-chevron-right\"></i>\n</a>\n";
   return buffer;});
 
 this["Templates"]["people/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -186,7 +190,7 @@ this["Templates"]["people/selector"] = Handlebars.template(function (Handlebars,
   
 
 
-  return "<ul class=\"list\"></ul>\n\n<div class=\"pagination pagination-centered\">\n  <ul>\n    <li><a href=\"#\" class=\"first\">&laquo;</a></li>\n    <li><a href=\"#\" class=\"prev\">&lsaquo;</a></li>\n    <li><a href=\"#\" class=\"page\">1</a></li>\n    <li><a href=\"#\" class=\"page\">2</a></li>\n    <li><a href=\"#\" class=\"page\">3</a></li>\n    <li><a href=\"#\" class=\"page\">4</a></li>\n    <li><a href=\"#\" class=\"next\">&rsaquo;</i></a></li>\n    <li><a href=\"#\" class=\"last\">&raquo;</i></a></li>\n  </ul>\n</div>";});
+  return "<ul class=\"list\"></ul>\n\n<div class=\"pagination pagination-centered\"></div>";});
 
 this["Templates"]["people/summary"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -313,12 +317,28 @@ this["Templates"]["security/signon"] = Handlebars.template(function (Handlebars,
   buffer += escapeExpression(stack1) + "</button>\n</div>\n";
   return buffer;});
 
+this["Templates"]["app/common/page"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<li class=\"";
+  foundHelper = helpers.className;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.className; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"><a href=\"#\" class=\"page\">";
+  foundHelper = helpers.number;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.number; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a></li>\n";
+  return buffer;});
+
 this["Templates"]["app/common/paging"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
 
 
-  return "<div class=\"pagination pagination-centered\">\n  <ul>\n    <li><a href=\"#\">Prev</a></li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">Next</a></li>\n  </ul>\n</div>";});
+  return "<li><a href=\"#\" class=\"first\">&laquo;</a></li>\n<li><a href=\"#\" class=\"prev\">&lsaquo;</a></li>\n<span class=\"pages\"></span>\n<li><a href=\"#\" class=\"next\">&rsaquo;</a></li>\n<li><a href=\"#\" class=\"last\">&raquo;</a></li>\n";});
 
 this["Templates"]["app/layout/main"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

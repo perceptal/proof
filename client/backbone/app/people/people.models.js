@@ -31,11 +31,21 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
     }
 
   , paginator_ui: {
-      firstPage     : 1
-    , currentPage   : 1
-    , perPage       : 10
-    , totalPages    : 10
-    , pagesInRange  : 4
+      perPage       : 10
+    }
+
+  , pages: function() {  
+
+      var getClass = function(p) {
+        if (this.currentPage === p) return "active";
+      }
+
+      var p = [];
+
+      for (var i=1; i<= this.totalPages; i++) 
+        p.push({ number: i, className: getClass(i) });
+
+      return p;
     }
 	});
 
