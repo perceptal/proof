@@ -2,12 +2,12 @@
   <div class="navbar-inner">
     <a class="brand" href="#">{{ firstName }}</a>
     <ul class="nav">
-      <li class="active"><a href="#">Info</a></li>
-      <li><a href="#">Photos</a></li>
-      <li><a href="#">Documents</a></li>
+      <li class="active"><a href="#people/{{ id }}">{{ t "people.info" }}</a></li>
+      <li><a href="#people/{{ id }}/photos">{{ t "people.photos" }}</a></li>
+      <li><a href="#people/{{ id }}/documents">{{ t "people.documents" }}</a></li>
     </ul>
     <ul class="nav pull-right action">
-      <li><a href="#">Upload Photo</a></li>
+      <li><a href="#people/{{ id }}/photos/new">{{ t "people.upload_photo" }}</a></li>
     </ul>
   </div>
 </div>

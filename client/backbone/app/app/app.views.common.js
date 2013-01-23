@@ -34,9 +34,10 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
       if (this.model.currentPage === 1) this.ui.prev.parent().addClass("disabled");
       if (this.model.currentPage === this.model.lastPage) this.ui.next.parent().addClass("disabled");
-      if (this.model.pages().length === 1) {
-        this.ui.all.addClass("disabled").removeClass("active");
-      }
+      if (this.model.pages().length === 1) this.ui.all.addClass("disabled").removeClass("active");
+      if (this.model.pages().length === 0) this.$el.hide();
+
+      this.ui.all.find("a").tooltip();
     }
 
   , gotoFirst: function(e) {

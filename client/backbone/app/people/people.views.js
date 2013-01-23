@@ -90,7 +90,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , onSelect: function(e) {
       e.preventDefault();
 
-      this.collection.each(function(item) { item.set("active", ""); });
+      this.collection.clearActive();
       this.model.set("active", "active");
 
       var url = $(e.currentTarget).attr("href")
@@ -138,7 +138,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.pagination = new Marionette.Region({ el: ".pagination" });
       this.pagination.show(new App.Views.PagingView({ model: this.collection }));
 
-      if (this.collection.length < 10) {
+      if (this.collection.length > 0 && this.collection.length < 10) {
         for(var i=0; i<(10-this.collection.length); i++)
           this.ui.list.append("<li class='empty'><a>&nbsp;</a></li>");
       }
@@ -168,8 +168,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   		this.aside.show(this.asideView);
   		this.filter.show(this.filterView);
       this.selector.show(this.selectorView);
-      this.menu.show(this.menuView);
-      this.inner.show(this.innerView);
+      if (this.menuView) this.menu.show(this.menuView);
+      if (this.innerView) this.inner.show(this.innerView);
     }
 
 	});

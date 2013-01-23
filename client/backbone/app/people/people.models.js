@@ -19,6 +19,10 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
 	    }
     }
 
+  , clearActive: function() {
+      _.each(this.origModels, function(model) { model.set("active", ""); });
+    }
+
   , filter: function(words) {
       this.setFilter([ "firstName", "lastName" ], words);
       this.pager();

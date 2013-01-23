@@ -4,6 +4,13 @@
   , "search": "Rechercher"
   , "sort": "Sorte"
   , "cancel": "Annuler"
+  , "info": "D'informations"
+  , "upload": "Télécharger"
+  , "archive": "Archives"
+  , "first": "Premier"
+  , "last": "Dernier"
+  , "previous": "Précédent"
+  , "next": "Suivant"
   }
 , "main" : { 
     "title": "Preuve"
@@ -38,6 +45,14 @@
   , "register": "$t(security.register)"
   , "not_found": "Il n'y a $t(main.person) trouvés"
   , "first_name": "Prénom"
-  , "last_name": "Nom de famille"
+  , "last_name": "Nom de Famille"
+  , "info": "$t(general.info)"
+  , "photo": "Photo"
+  , "document": "Document"
+  , "photos": "Les Photos"
+  , "documents": "Documents"
+  , "upload_photo": "$t(general.upload) $t(people.photo)"
+  , "upload_doc": "$t(general.upload) $t(people.document)"
+  , "archive": "$t(general.archive)"
   }
 }

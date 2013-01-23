@@ -4,6 +4,13 @@
   , "search": "Search"
   , "sort": "Sort"
   , "cancel": "Cancel"
+  , "info": "Info"
+  , "upload": "Upload"
+  , "archive": "Archive"
+  , "first": "First"
+  , "last": "Last"
+  , "previous": "Previous"
+  , "next": "Next"
   }
 , "main" : { 
     "title": "Proof"
@@ -37,7 +44,15 @@
   , "sort": "$t(general.sort)"
   , "register": "$t(security.register)"
   , "not_found": "There are no $t(main.people) found"
-  , "first_name": "First name"
-  , "last_name": "Last name"
+  , "first_name": "First Name"
+  , "last_name": "Last Name"
+  , "info": "$t(general.info)"
+  , "photo": "Photo"
+  , "document": "Document"
+  , "photos": "Photos"
+  , "documents": "Documents"
+  , "upload_photo": "$t(general.upload) $t(people.photo)"
+  , "upload_doc": "$t(general.upload) $t(people.document)"
+  , "archive": "$t(general.archive)"
   }
 }

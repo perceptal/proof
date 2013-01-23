@@ -220,7 +220,7 @@ nav#primary ul li a:hover.active {
 }
 #contents #pages #page #sidebar ul.list {
   max-height: 620px;
-  overflow-y: scroll;
+  overflow: none;
 }
 #contents #pages #page #sidebar ul.list li.empty {
   padding-bottom: 1px;

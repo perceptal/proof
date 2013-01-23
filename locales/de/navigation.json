@@ -4,6 +4,13 @@
   , "search": "Suche"
   , "sort": "Art"
   , "cancel": "Kündigen"
+  , "info": "Info"
+  , "upload": "Laden"
+  , "archive": "Archivieren"
+  , "first": "Erste"
+  , "last": "Letzte"
+  , "previous": "Früher"
+  , "next": "Nächste"
   }
 , "main" : { 
     "title": "Beweis"
@@ -39,5 +46,13 @@
   , "not_found": "Es gibt keine übereinstimmenden $t(main.people) gefunden"
   , "first_name": "Vorname"
   , "last_name": "Nachname"
+  , "info": "$t(general.info)"
+  , "photo": "Foto"
+  , "document": "Dokument"
+  , "photos": "Photos"
+  , "documents": "Unterlagen"
+  , "upload_photo": "$t(general.upload) $t(people.photo)"
+  , "upload_doc": "$t(general.upload) $t(people.document)"
+  , "archive": "$t(general.archive)"
   }
 }
