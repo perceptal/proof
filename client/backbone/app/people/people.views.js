@@ -43,6 +43,15 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       // Shouldn't be necessary
       this.ui.refresh.bind("click", $.proxy(this.onRefresh, this));
       this.ui.sort.bind("click", $.proxy(this.onSort, this));
+
+      this.setSort();
+    }
+
+  , setSort: function() {
+      this.ui.sort.find("small").remove();
+      var caret = "icon-caret-" + (this.collection.sortDirection === "asc" ? "up" : "down");
+      this.ui.sort.filter("[data-sort='" + (this.collection.sortColumn || "firstName") + "']")
+        .append($("<small>&nbsp;<i class='icon " + caret + "'></i></small>"));
     }
 
   , onFilter: function(e) {
@@ -61,8 +70,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , onSort: function(e) {
       e.preventDefault();
-      var sort = $(e.currentTarget).data("sort");
-      this.collection.setSort(sort, "asc");
+      this.collection.sort($(e.currentTarget).data("sort"));
+      this.setSort();
     }
   });
 
@@ -134,6 +143,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   	}
 
   , onRender: function() {
+
       if (this.pagination) this.pagination.reset();
       this.pagination = new Marionette.Region({ el: ".pagination" });
       this.pagination.show(new App.Views.PagingView({ model: this.collection }));

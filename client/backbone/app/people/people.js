@@ -7,7 +7,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
     , "people/new"                : "new"
 
     , "people/:id"                : "show"
-    , "people/:id/photos"         : "show"
+    , "people/:id/photos"         : "photos"
     , "people/:id/photos/new"     : "show"
     , "people/:id/documents"      : "show"
     , "people/:id/documents/new"  : "show"
@@ -51,23 +51,8 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 		} 
 
   , show: function(id) {
-      var that = this;
-
       this.selectMenu();
-
-      this.person = new People.Models.Person({ id: id });
-
-      this.people.fetch()
-        .success(function() {
-          that.people.setSort("firstName", "asc"); 
-          that.people.goTo(1);
-          that.person = that.people.get(id);
-          while (that.person == null) {
-            that.people.nextPage();
-            that.person = that.people.get(id);
-          }
-          that.person.set("active", "active");
-        });
+      this.loadPerson(id);
 
       this.constructLayout(
         new People.Views.SummaryView({ model: this.person }), 
@@ -83,7 +68,37 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       this.index();
 	 }
 
-  , constructLayout: function(aside, menu, edit) {
+  , photos: function(id) {
+      this.selectMenu();
+      this.loadPerson(id);
+
+      this.person.photos.fetch();
+
+      this.constructLayout(
+        new People.Views.SummaryView({ model: this.person }), 
+        new People.Views.MenuView({ model: this.person }),
+        new App.Photos.Views.ListView({ collection: this.person.photos }));
+    }
+
+  , loadPerson: function(id) {
+      var that = this;
+
+      this.person = new People.Models.Person({ id: id });
+
+      this.people.fetch()
+        .success(function() {
+          that.people.setSort("firstName", "asc"); 
+          that.people.goTo(1);
+          that.person = that.people.get(id);
+          while (that.person == null) {
+            that.people.nextPage();
+            that.person = that.people.get(id);
+          }
+          that.person.set("active", "active");
+        });
+    }
+
+  , constructLayout: function(aside, menu, inner) {
       var filter = new People.Views.FilterView({ collection: this.people, model: this.person })
         , selector = new People.Views.SelectorView({ collection: this.people, selected: this.person });
 
@@ -92,7 +107,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       , filter:     filter 
       , selector:   selector
       , menu:       menu
-      , inner:      edit
+      , inner:      inner
       });
 
       this.layout.render();

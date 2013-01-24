@@ -1,11 +1,24 @@
-Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, Paginator) {
+Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, Paginator) {
 
-	People.Person = Backbone.ModelFactory({
+	Models.Person = Backbone.ModelFactory({
 		urlRoot: "/api/people"
+
+  , defaults: {
+      photos: []
+    , documents: []
+    }
+
+  , initialize: function(attributes, options) {
+      options || (options = {});
+      this.init && this.init(attributes, options);
+      
+      var parent = { parent: { id: this.get("id"), name: "people" }};
+      this.photos = new App.Photos.Models.Photos(this.get("photos"), parent);
+    }
 	});
 
-	People.People = Paginator.clientPager.extend({
-		model: People.Person
+	Models.People = Paginator.clientPager.extend({
+		model: Models.Person
 
 	, initialize: function(attributes, options) {
       options || (options = {});
@@ -28,6 +41,12 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
       this.pager();
     }
 
+  , sort: function(property) {
+      var direction = "asc";
+      if (property === this.sortColumn) direction = this.sortDirection === "asc" ? "desc" : "asc";
+      this.setSort(property, direction);
+    }
+
   , paginator_core: {
       type      : "GET"
     , dataType  : "json"
@@ -36,6 +55,7 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
 
   , paginator_ui: {
       perPage   : 10
+    , pagesInRange: 1
     }
 
   , pages: function() {  
@@ -44,11 +64,13 @@ Proof.module("People.Models", function(People, App, Backbone, Marionette, $, _, 
         if (current === p) return "active";
       }
 
-      var p = [];
+      var that = this, p = [];
 
       if (this.information) {
-        for (var i=1; i<= this.information.totalPages; i++) 
-          p.push({ number: i, className: getClass(this.currentPage, i) });
+        // _.each(this.information.pageSet, function(i) {
+        _.each(_.range(1, this.information.totalPages+1), function(i) {
+          p.push({ number: i, className: getClass(that.currentPage, i) });
+        });
       }
 
       return p;

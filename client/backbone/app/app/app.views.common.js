@@ -23,6 +23,8 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , onRender: function() {
+      if (this.model.information == null) return;
+
       var pages = ""
         , model = this.model;
 
@@ -33,7 +35,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       this.ui.pages.replaceWith(pages);
 
       if (this.model.currentPage === 1) this.ui.prev.parent().addClass("disabled");
-      if (this.model.currentPage === this.model.lastPage) this.ui.next.parent().addClass("disabled");
+      if (this.model.currentPage === this.model.information.lastPage) this.ui.next.parent().addClass("disabled");
       if (this.model.pages().length === 1) this.ui.all.addClass("disabled").removeClass("active");
       if (this.model.pages().length === 0) this.$el.hide();
 

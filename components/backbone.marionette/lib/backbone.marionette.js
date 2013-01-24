@@ -1386,6 +1386,7 @@ Marionette.CollectionView = Marionette.View.extend({
   showCollection: function(){
     var that = this;
     var ItemView;
+
     this.collection.each(function(item, index){
       ItemView = that.getItemView(item);
       that.addItemView(item, ItemView, index);
