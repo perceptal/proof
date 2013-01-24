@@ -109,6 +109,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
       var page = $(e.currentTarget).data("page");
       this.select(page)
+      App.People.router.navigate($(e.currentTarget).attr("href"), false);
       App.vent.trigger("people:navigate", page);
     }
 
