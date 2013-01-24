@@ -1,5 +1,3 @@
-var Uploader = require("../../service/photo/uploader");
-
 module.exports = function(app, models, authenticate, authorize) {
 
   var Person = models.Person
@@ -23,10 +21,17 @@ module.exports = function(app, models, authenticate, authorize) {
         if (err) return res.send(500);
         if (!photo) return res.send(404);
 
-        new Uploader({ path: photo.name }).get(function(err, image) {
+        photo.download(function(err, image, eTag) {
           if (err) return res.send(404);
 
-          res.set("Content-Type", photo.contentType);
+          var expires = new Date();
+          expires.setMonth(expires.getMonth() + 1);
+
+          res.set({ 
+            "Content-Type": photo.contentType
+          , "Expires": expires.toUTCString()
+          , "ETag": eTag
+          });
           res.write(image, encoding="binary");
           return res.end();
         });

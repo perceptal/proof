@@ -1,6 +1,7 @@
 var _ = require("underscore")
   , fs = require("fs")
   , async = require("async")
+  , crypto = require("crypto")
   , mongoose  = require("mongoose")
   , Schema    = mongoose.Schema
   , Uploader  = require("../service/photo/uploader")
@@ -47,7 +48,9 @@ PhotoSchema.pre("save", function(next) {
 });
 
 PhotoSchema.methods.download = function(callback) {
-  new Uploader({ path: this.name }).get(callback);      // TODO Cache
+  new Uploader({ path: this.name }).get(function(err, image) {
+    callback(err, image, crypto.createHash("md5").update(new Buffer(image)).digest("hex"));
+  });
 };
 
 PhotoSchema.statics.findDefault = function(person, size, callback) {
