@@ -45,17 +45,35 @@ a, button
   .brand:hover
     color #fff !important
 
-.navbar 
-  .navbar-inner
-    font-size 13px
-    box-shadow none
-    
-    li.active
-      a
-        box-shadow none !important
-    li
-      a:hover
-        color #c00
+#menu
+  .navbar 
+    .navbar-inner
+      font-size 13px
+      box-shadow none
+      padding-right 0
+
+      li.active
+        a, a:hover
+          box-shadow none !important
+          border-color #d4d4d4
+          color #900
+      li
+        a:hover
+          color #c00
+
+        a
+          border-left 1px solid transparent
+          border-right 1px solid transparent
+          margin 0 5px
+          text-shadow none !important
+
+      ul.action
+        li.active > a, a
+          color #900 !important
+          border-right none
+          margin-right 0
+        a:hover
+          color #c00 !important
 
 .logo
   background transparent url("img/logo.png") no-repeat 0 0
@@ -80,7 +98,8 @@ ul.dropdown-menu
       margin 0
       border-radius 2px
     a:hover
-      background #c00
+      background #d4d4d4
+      color #000
 
 ul#security
   padding-top 10px
@@ -287,13 +306,6 @@ nav#primary
           h4
             small
               color #900
-
-ul.action
-  a
-    padding-right 0 !important
-    color #900 !important
-  a:hover
-    color #c00 !important
 
 form.box
   legend

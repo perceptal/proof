@@ -58,6 +58,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.collection.filter(this.ui.filter.val());
 
       if (this.collection.length === 1 && this.model !== this.collection.first()) {
+        this.collection.first.set("active", "active");
         App.vent.trigger("people:selected", this.collection.first());
       }
     }
@@ -126,7 +127,6 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function(options) {
       this.model.on("change", this.render, this);
-      // this.model.set("page", "info");
     }
 
   , onSelect: function(e) {
