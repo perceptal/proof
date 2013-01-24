@@ -1,13 +1,13 @@
 <div class="navbar navbar-static-top">
   <div class="navbar-inner">
-    <a class="brand" href="#">{{ firstName }}</a>
+    <a class="brand" data-page="info" href="#people/{{ id }}">{{ firstName }}</a>
     <ul class="nav">
-      <li class="active"><a href="#people/{{ id }}">{{ t "people.info" }}</a></li>
-      <li><a href="#people/{{ id }}/photos">{{ t "people.photos" }}</a></li>
-      <li><a href="#people/{{ id }}/documents">{{ t "people.documents" }}</a></li>
+      <li><a data-page="info" href="#people/{{ id }}">{{ t "people.info" }}</a></li>
+      <li><a data-page="photos" href="#people/{{ id }}/photos">{{ t "people.photos" }}</a></li>
+      <li><a data-page="documents" href="#people/{{ id }}/documents">{{ t "people.documents" }}</a></li>
     </ul>
     <ul class="nav pull-right action">
-      <li><a href="#people/{{ id }}/photos/new">{{ t "people.upload_photo" }}</a></li>
+      <li><a data-page="new" href="#people/{{ id }}/photos/new">{{ t "people.upload_photo" }}</a></li>
     </ul>
   </div>
 </div>

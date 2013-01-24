@@ -1,7 +1,7 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  Views.EditView = Marionette.ItemView.extend({
-    template: "people/edit"
+  Views.InfoView = Marionette.ItemView.extend({
+    template: "people/info"
 
   });
 
@@ -78,9 +78,40 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.MenuView = Marionette.ItemView.extend({
     template: "people/menu"
 
+  , ui: {
+      links: "a"
+    }
+
+  , events: {
+      "click a": "onNavigate"
+    }
+
   , initialize: function(options) {
+      this.page = options.page;
       this.model.on("change", this.render, this);
     }
+
+  , onRender: function() {
+      this.select(this.page);
+
+      // TODO shouldn't be necessary
+      this.ui.links.bind("click", $.proxy(this.onNavigate, this));
+    }
+
+  , select: function(page) {
+      this.page = page;
+      this.ui.links.parent().removeClass("active");
+      this.ui.links.filter("[data-page='" + this.page + "']").parent().addClass("active");
+    }
+
+  , onNavigate: function(e) {
+      e.preventDefault();
+
+      var page = $(e.currentTarget).data("page");
+      this.select(page)
+      App.vent.trigger("people:navigate", page);
+    }
+
   });
 
 	Views.ItemView = Marionette.ItemView.extend({
@@ -94,6 +125,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function(options) {
       this.model.on("change", this.render, this);
+      // this.model.set("page", "info");
     }
 
   , onSelect: function(e) {
@@ -102,11 +134,13 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.collection.clearActive();
       this.model.set("active", "active");
 
-      var url = $(e.currentTarget).attr("href")
-        , id = $(e.currentTarget).data("id");
+      var $link = $(e.currentTarget)
+        , url = $link.attr("href")
+        , id = $link.data("id")
+        , page = $link.data("page");
       
       App.People.router.navigate(url);
-      App.vent.trigger("people:selected", this.collection.get(id));
+      App.vent.trigger("people:selected", this.collection.get(id), page);
     }
 	});
 
@@ -138,12 +172,13 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , initialize: function(options) {
       this.selected = options.selected;
 
+      this.collection.each(function(model) { model.set("page", options.page); });
+
       this.collection.on("reset", this.render, this);
       this.collection.on("change", this.render, this);
   	}
 
   , onRender: function() {
-
       if (this.pagination) this.pagination.reset();
       this.pagination = new Marionette.Region({ el: ".pagination" });
       this.pagination.show(new App.Views.PagingView({ model: this.collection }));

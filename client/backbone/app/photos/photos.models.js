@@ -1,7 +1,6 @@
 Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _, Paginator) {
 
-  Models.Photo = Backbone.ModelFactory({
-  });
+  Models.Photo = Backbone.ModelFactory({ });
 
   Models.Photos = Backbone.Collection.extend({
     model: Models.Photo
