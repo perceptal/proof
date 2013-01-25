@@ -41,7 +41,7 @@ var test = function(photo, dimension) {
     });
 
     it("should have new name", function() {
-      that.name.should.equal(expected);
+      that.name.should.equal(photo);
     });
 
     it("should create file", function() {

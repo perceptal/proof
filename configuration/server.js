@@ -88,6 +88,8 @@ Server.prototype.configure = function(models) {
 }
 
 Server.prototype.start = function(callback) {
+  this.started = true;
+
   this.httpServer = http.createServer(this.app);
   // this.io = require("socket.io").listen(this.httpServer);
   this.httpServer.listen(configuration("port"), callback);

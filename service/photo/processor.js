@@ -42,7 +42,7 @@ Processor.prototype.square = function(dimension, callback) {
 
       resize(temp, sink, config.width, config.width, function(err) {
         require("fs").unlink(temp, function() {
-          callback(err, { path: sink, name: path.basename(sink) });
+          callback(err, { path: sink, name: path.basename(sink).replace(config.name + ".", "") });
         });
       });
     })

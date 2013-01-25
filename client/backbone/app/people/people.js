@@ -121,7 +121,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
       this.layout.filter.currentView.model = this.person;
 
-      this.layout.menu.show(new People.Views.MenuView({ model: this.person, page: page }));
+      this.layout.menu.show(new People.Views.MenuView({ model: this.person, page: page || "info" }));
       this.layout.aside.show(new People.Views.SummaryView({ model: this.person }));
       this.layout.inner.show(this.getPersonView(page));
     }

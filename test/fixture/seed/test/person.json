@@ -2,7 +2,7 @@
   { "name": "john"
     , "roles": [ "manager" ]
     , "photos": [ 
-        { "name": "test/fixture/seed/test/photo/john.jpg", "size": "thumbnail" }
+        { "name": "test/fixture/seed/test/photo/john.jpg" }
       ]
   }
 ]

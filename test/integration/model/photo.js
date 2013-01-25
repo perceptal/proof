@@ -34,7 +34,15 @@ describe("Photo", function() {
       });
 
       it("should have changed name", function() {
-        photo.name.should.equal("thumbnail.test.jpg");
+        photo.name.should.equal("test.jpg");
+      });
+
+      it("should have set all sizes", function() {
+        photo.sizes.length.should.equal(4);
+        photo.sizes[0].should.equal("thumbnail");
+        photo.sizes[1].should.equal("small");
+        photo.sizes[2].should.equal("medium");
+        photo.sizes[3].should.equal("large");
       });
 
       it("should have content type", function() {
@@ -46,7 +54,7 @@ describe("Photo", function() {
         var image;
 
         before(function(done) {
-          photo.download(function(err, data) {
+          photo.download("small", function(err, data) {
             image = new Buffer(data);
             done();
           });
