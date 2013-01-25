@@ -27,7 +27,15 @@ this["Templates"]["app/message"] = Handlebars.template(function (Handlebars,dept
   foundHelper = helpers.type;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.type; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + " fade in\">\n	<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n  ";
+  buffer += escapeExpression(stack1) + " fade in\">\n	<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n  <i class=\"icon ";
+  foundHelper = helpers.icon;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.icon; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"></i>&nbsp;<strong>";
+  foundHelper = helpers.strong;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.strong; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</strong> ";
   foundHelper = helpers.text;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.text; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -139,10 +147,25 @@ this["Templates"]["people/help"] = Handlebars.template(function (Handlebars,dept
 
 this["Templates"]["people/info"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
 
 
-  return "<div class=\"alert alert-info fade in\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n  <i class=\"icon-info-sign\"></i><strong> Nice one</strong>, you done good.\n</div>\n\n<div class=\"alert fade in\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n  <i class=\"icon-exclamation-sign\"></i><strong> Unfortunately</strong>, there seems to be an issue.\n</div>\n\n<div class=\"alert alert-error fade in\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>\n  <i class=\"icon-ban-circle\"></i><strong> Houston</strong>, we have a problem.\n</div>\n";});
+  buffer += "<fieldset>\n  <div class=\"control-group\">\n    <label for=\"firstName\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "people.first_name", {hash:{}}) : helperMissing.call(depth0, "t", "people.first_name", {hash:{}});
+  buffer += escapeExpression(stack1) + "</label>\n    <div class=\"controls\">\n      <input type=\"text\" id=\"firstName\" name=\"firstName\" class=\"span4 required\" value=\"";
+  foundHelper = helpers.firstName;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.firstName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" data-error-style=\"inline\">\n    </div>\n  </div>\n  <div class=\"control-group\">\n    <label for=\"lastName\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "people.last_name", {hash:{}}) : helperMissing.call(depth0, "t", "people.last_name", {hash:{}});
+  buffer += escapeExpression(stack1) + "</label>\n    <div class=\"controls\">\n      <input type=\"text\" id=\"lastName\" name=\"lastName\" class=\"span4 required\" value=\"";
+  foundHelper = helpers.lastName;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.lastName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" data-error-style=\"inline\">\n    </div>\n  </div>\n</fieldset>\n";
+  return buffer;});
 
 this["Templates"]["people/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -189,7 +212,7 @@ this["Templates"]["people/layout"] = Handlebars.template(function (Handlebars,de
   
 
 
-  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"filter\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\" class=\"auto-height\">\n        <div id=\"menu\"></div>\n\n        <div id=\"inner\"></div>\n\n        <aside id=\"aside\" class=\"auto-height\"></aside>\n      </div>\n    </section>\n\n  </div>\n</div>\n";});
+  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"filter\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\" class=\"auto-height\">\n        <div id=\"menu\"></div>\n\n        <div id=\"message\"></div>\n\n        <div id=\"inner\"></div>\n\n        <aside id=\"aside\" class=\"auto-height\"></aside>\n      </div>\n    </section>\n\n  </div>\n</div>\n";});
 
 this["Templates"]["people/menu"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

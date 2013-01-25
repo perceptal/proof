@@ -32,20 +32,6 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.MessageView = Marionette.ItemView.extend({
     template: "app/message"
 
-  , ui: {
-      alert: "div.alert"
-    }
-
-  , initialize: function(options) {
-      this.model = options.model;
-      
-      App.vent.on("section:changed", this.dismiss, this);
-    }
-
-  , dismiss: function() {
-      this.ui.alert.alert("close");
-    }
-
   });
 
   Views.NavigationView = Marionette.View.extend({
@@ -166,7 +152,6 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       header        : "#header"
     , main          : "#contents"
     , navigation    : "nav#primary"
-    , message       : "#message"
     , modal         : Views.ModalRegion
   }
 

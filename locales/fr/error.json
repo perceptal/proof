@@ -1,0 +1,11 @@
+{ 
+  "general": {
+    "try_again": "Application error, please try again."
+  }
+, "security": {
+    "invalid_credentials": "You have entered invalid credentials."
+  }
+, "people": {
+    "info": "Error saving information."
+  }
+}

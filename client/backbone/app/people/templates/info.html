@@ -1,14 +1,14 @@
-<div class="alert alert-info fade in">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  <i class="icon-info-sign"></i><strong> Nice one</strong>, you done good.
-</div>
-
-<div class="alert fade in">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  <i class="icon-exclamation-sign"></i><strong> Unfortunately</strong>, there seems to be an issue.
-</div>
-
-<div class="alert alert-error fade in">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  <i class="icon-ban-circle"></i><strong> Houston</strong>, we have a problem.
-</div>
+<fieldset>
+  <div class="control-group">
+    <label for="firstName">{{ t "people.first_name" }}</label>
+    <div class="controls">
+      <input type="text" id="firstName" name="firstName" class="span4 required" value="{{ firstName }}" data-error-style="inline">
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="lastName">{{ t "people.last_name" }}</label>
+    <div class="controls">
+      <input type="text" id="lastName" name="lastName" class="span4 required" value="{{ lastName }}" data-error-style="inline">
+    </div>
+  </div>
+</fieldset>

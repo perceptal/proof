@@ -1,0 +1,10 @@
+{
+  "people": {
+    "first_name": {
+      "required": "first name cannot be blank"
+    }
+  , "last_name": {
+      "required": "last name cannot be blank"
+    }
+  }
+}

@@ -285,6 +285,13 @@ nav#primary
         background #f5f6f6 
         padding 0
     
+        #message
+          margin 0 15px
+
+          .alert
+            margin-top 15px
+            margin-bottom 0
+          
         #inner
           padding 15px
           min-height 620px
@@ -326,8 +333,17 @@ form.box
   .buttons
     padding-top 15px
 
+  input
+    padding 8px
+    font-size 16px
+
+  input.required
+    background #fff url("img/required.png") no-repeat right 9px
+
+  input.saving
+    background #fff url("img/loading.gif") no-repeat 98% 10px !important
+
 .image
-  box-sizing(border-box)
   border-radius(8px)
   border 1px solid #dadede
   background #fff
@@ -348,7 +364,7 @@ figure.photo
   overflow hidden
 
   .image
-    border-radius(3px)
+    border-radius(4px)
     opacity(0.9)
     position relative
     margin 0
@@ -380,11 +396,11 @@ figure.photo
       text-decoration none
     
     a.delete
-      background transparent url("/img/error.png") no-repeat 0 0
+      background transparent url("img/error.png") no-repeat 0 0
       right 15px
 
     a.default
-      background transparent url("/img/user.png") no-repeat 0 0
+      background transparent url("img/user.png") no-repeat 0 0
       left 15px
   
   .image:hover

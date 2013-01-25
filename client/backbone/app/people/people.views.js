@@ -3,6 +3,61 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.InfoView = Marionette.ItemView.extend({
     template: "people/info"
 
+  , tagName: "form"
+  , className: "box"
+
+  , ui: {
+      "firstName"    : "input#firstName"
+    , "lastName"     : "input#lastName"
+    }
+
+  , initialize: function(options) {
+      this.model.on("change", this.render, this);
+    }
+
+  , events: {
+      "keypress input"          : "onKeypress"
+    , "change   input"          : "onChange"
+    }
+
+  , onRender: function() {
+      this.delegateEvents();
+      Backbone.Validation.bind(this);
+    }
+  
+  , onKeypress: function(e) {
+      if (e.keyCode === 13) this.onChange(e);
+    }
+
+  , onChange: function(e) {
+      var model = this.model
+        , prop = e.currentTarget.id
+        , field = this.ui[prop]
+        , value = field.val()
+        , previous = this.model.get(prop);
+      
+      this.model.off("change", this.render, this);    // Remove change event to ensure focus fires
+
+      this.model.set(prop, value);
+      
+      if (this.model.isValid(true)) {
+        this.model.save()  
+          .success(function() {
+            model.set(prop, value);
+          })
+          
+          .fail(function() {
+            model.set(prop, previous);
+            App.vent.trigger("message:show", i18n.t("error:people.info"));
+          })
+
+          .always(function() {
+            model.on("change", this.render, this);    // Rebind change event
+          });
+      } else {
+        this.model.set(prop, previous);
+      }
+    }
   });
 
   Views.HelpView = Marionette.ItemView.extend({
@@ -32,18 +87,14 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     , sort: "a.sort"
     }
 
+  , events: {
+      "click button.refresh"  : "onRefresh"
+    , "keyup input#search"    : "onFilter"
+    , "click a.sort"          : "onSort"
+    }
+
   , onRender: function() {
-      var that = this;
-
-      this.ui.filter.bind("keyup", function() {
-        if (that.timeout) clearTimeout(that.timeout);
-        that.timeout = setTimeout($.proxy(that.onFilter, that), 100);
-      });
-
-      // Shouldn't be necessary
-      this.ui.refresh.bind("click", $.proxy(this.onRefresh, this));
-      this.ui.sort.bind("click", $.proxy(this.onSort, this));
-
+      this.delegateEvents();
       this.setSort();
     }
 
@@ -93,10 +144,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , onRender: function() {
+      this.delegateEvents();
       this.select(this.page);
-
-      // TODO shouldn't be necessary
-      this.ui.links.bind("click", $.proxy(this.onNavigate, this));
     }
 
   , select: function(page) {
@@ -109,7 +158,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       e.preventDefault();
 
       var page = $(e.currentTarget).data("page");
-      this.select(page)
+      this.select(page);
       App.People.router.navigate($(e.currentTarget).attr("href"), false);
       App.vent.trigger("people:navigate", page);
     }
@@ -173,7 +222,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , initialize: function(options) {
       this.selected = options.selected;
 
-      this.collection.each(function(model) { model.set("page", options.page); });
+      this.collection.setPage(options.page);
+      App.vent.on("people:navigate", this.collection.setPage, this.collection);
 
       this.collection.on("reset", this.render, this);
       this.collection.on("change", this.render, this);

@@ -2,7 +2,7 @@ $(function() {
 
   i18n.init({
     ns: { 
-      namespaces: [ "navigation" ]
+      namespaces: [ "navigation", "error", "validation" ]
     , defaultNs: "navigation" 
     } 
   , cookieName: "locale"

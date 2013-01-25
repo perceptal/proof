@@ -11,18 +11,32 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
   , initialize: function(attributes, options) {
       options || (options = {});
       this.init && this.init(attributes, options);
-      
+
       var parent = { parent: { id: this.get("id"), name: "people" }};
       this.photos = new App.Photos.Models.Photos(this.get("photos"), parent);
     }
+
+  , validation: {
+      firstName: {
+        required: true
+      , msg: i18n.t("validation:people.first_name.required")
+      }
+    , lastName: {
+        required: true
+      , msg: i18n.t("validation:people.last_name.required")
+      }
+    }
 	});
 
-	Models.People = Paginator.clientPager.extend({
+	Models.People = App.Common.Collection.extend({
 		model: Models.Person
 
 	, initialize: function(attributes, options) {
       options || (options = {});
       this.bind("error", this.defaultErrorHandler, this);
+      this.bind("reset", function() {
+        this.setPage(this.page);
+      }, this);
       this.init && this.init(attributes, options);
     }
 
@@ -33,7 +47,16 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
     }
 
   , clearActive: function() {
-      _.each(this.origModels, function(model) { model.set("active", ""); });
+      _.each(this.origModels, function(model) { 
+        model.set("active", ""); 
+      });
+    }
+
+  , setPage: function(page) {
+      this.page = page;
+      _.each(this.origModels, function(model) { 
+        model.set("page", page);
+      });
     }
 
   , filter: function(words) {

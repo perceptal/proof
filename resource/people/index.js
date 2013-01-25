@@ -29,7 +29,10 @@ module.exports = function(app, models, authenticate, authorize) {
 
 		person.save(function(err, person) {
 			if (err) return next(err);
-			return res.send(200, person);
+			Person.findOneAndPopulate({ _id: person.id }, function(err, person) {
+				if (err) return next(err);
+				return res.send(200, person);
+			});
 		});
 
 	});
@@ -44,7 +47,10 @@ module.exports = function(app, models, authenticate, authorize) {
 
 			person.save(function(err) {
 				if (err) return next(err);
-				return res.send(200, person);
+				Person.findOneAndPopulate({ _id: person.id }, function(err, person) {
+					if (err) return next(err);
+					return res.send(200, person);
+				});
 			});
 		});
 	});
