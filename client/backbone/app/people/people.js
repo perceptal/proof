@@ -76,7 +76,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
       this.people.fetch()
         .success(function() {
-          that.people.setSort("firstName", "asc"); 
+          that.people.setSort("firstName", "asc");
           that.people.goTo(1);
           that.person = that.people.get(id);
           while (that.person == null) {
@@ -128,6 +128,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
   , selectPersonPage: function(page) {
       if (this.layout == null) return; 
+
       this.layout.inner.show(this.getPersonView(page));
     }
 

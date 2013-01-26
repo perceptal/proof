@@ -1,6 +1,6 @@
 {
   "people": {
-    "first_name": {
+    "first_name.required": {
       "required": "first name cannot be blank"
     }
   , "last_name": {

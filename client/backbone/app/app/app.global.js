@@ -65,14 +65,18 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       App.vent.trigger("section:changed", Global.section);
 		}
 
-	, showMessage: function(data) {
+  , showMessage: function(data) {
       if (!_.isObject(data)) data = { text: data };
       
       if (this.message) this.message.close();
-
+      
       this.message = new Marionette.Region({ el: "#message" });
       this.message.show(new App.Views.MessageView({ model: new App.Models.Message(data) }));
-		}
+    }
+
+  , hideMessage: function(data) {
+      if (this.message) this.message.close();
+    }
 
   , changeLocale: function(locale) {
       i18n.setLng(locale);
@@ -97,6 +101,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     App.vent.on("locale:change", App.changeLocale, this);
     App.vent.on("locale:changed", App.refresh, this);
     App.vent.on("message:show", App.showMessage, this);
+    App.vent.on("message:hide", App.hideMessage, this);
 
     App.vent.on("security:unauthorised", function() {
     	App.vent.trigger("message:show", "Verboten!");

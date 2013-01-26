@@ -1,0 +1,27 @@
+{
+	"anvil.uglify" : {
+		"exclude" : ["./node/machina.js"]
+	},
+	"anvil.http" : {
+		"paths" : {
+			"/lib"          : "./lib",
+			"/ext"          : "./ext",
+			"/src"          : "./src",
+			"/load"         : "./example/load",
+			"/atm"          : "./example/atm",
+			"/connectivity" : "./example/connectivity",
+			"/spec"         : "./spec",
+			"/"             : "./"
+		}
+	},
+	"anvil.jshint" : {
+		"all" : true
+	},
+	"output" : {
+		"full" : "lib",
+		"partial" : {
+			"/browser/machina.*" : [ "./example/connectivity/js/lib/machina" ]
+		}
+	},
+	"dependencies" : [ "anvil.http", "anvil.uglify" ]
+}

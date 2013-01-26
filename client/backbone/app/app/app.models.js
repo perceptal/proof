@@ -6,7 +6,7 @@ Proof.module("Models", function(Models, App, Backbone, Marionette, $, _) {
 		}
 
   , initialize: function(attributes, options) {
-      this.set("icon", this.icon(attributes.type));
+      this.set("icon", this.icon(attributes.type || this.defaults.type));
       this.init && this.init(attributes, options);
     }
 
