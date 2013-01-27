@@ -46,6 +46,8 @@
   , "not_found": "Es gibt keine übereinstimmenden $t(main.people) gefunden"
   , "first_name": "Vorname"
   , "last_name": "Nachname"
+  , "email": "$t(security.email)"
+  , "telephone": "Telefon"
   , "gender": "Geschlecht"
   , "male": "Männlich"
   , "female": "Weiblich"

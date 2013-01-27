@@ -25,6 +25,11 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
         required: true
       , msg: "validation:required"
       }
+    , email: {
+        required: false
+      , pattern: "email"
+      , msg: "validation:invalid"
+      }
     }
 	});
 

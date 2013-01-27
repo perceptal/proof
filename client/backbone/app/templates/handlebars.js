@@ -1,5 +1,52 @@
 this["Templates"] = this["Templates"] || {};
 
+Handlebars.registerPartial("input", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+
+function program1(depth0,data) {
+  
+  
+  return " required ";}
+
+  buffer += "<div class=\"control-group\">\n  <label for=\"";
+  foundHelper = helpers.field;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.field; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  stack1 = depth0.label;
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "t", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</label>\n  <div class=\"controls\">\n    <input type=\"text\" id=\"";
+  foundHelper = helpers.field;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.field; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" name=\"";
+  foundHelper = helpers.field;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.field; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" class=\"span";
+  foundHelper = helpers.width;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.width; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " ";
+  stack1 = depth0.required;
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\" value=\"";
+  foundHelper = helpers.value;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.value; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" data-error-style=\"tooltip\">\n  </div>\n</div>\n";
+  return buffer;}));
+
+Handlebars.registerPartial("select", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  
+
+
+  return "select.html";}));
+
 this["Templates"]["app/header"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
@@ -147,24 +194,30 @@ this["Templates"]["people/help"] = Handlebars.template(function (Handlebars,dept
 
 this["Templates"]["people/info"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
+  var buffer = "", stack1, stack2, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  buffer += "<fieldset>\n  <div class=\"control-group\">\n    <label for=\"firstName\">";
-  foundHelper = helpers['t'];
-  stack1 = foundHelper ? foundHelper.call(depth0, "people.first_name", {hash:{}}) : helperMissing.call(depth0, "t", "people.first_name", {hash:{}});
-  buffer += escapeExpression(stack1) + "</label>\n    <div class=\"controls\">\n      <input type=\"text\" id=\"firstName\" name=\"firstName\" class=\"span4 required\" value=\"";
-  foundHelper = helpers.firstName;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.firstName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\" data-error-style=\"tooltip\">\n    </div>\n  </div>\n  <div class=\"control-group\">\n    <label for=\"lastName\">";
-  foundHelper = helpers['t'];
-  stack1 = foundHelper ? foundHelper.call(depth0, "people.last_name", {hash:{}}) : helperMissing.call(depth0, "t", "people.last_name", {hash:{}});
-  buffer += escapeExpression(stack1) + "</label>\n    <div class=\"controls\">\n      <input type=\"text\" id=\"lastName\" name=\"lastName\" class=\"span4 required\" value=\"";
-  foundHelper = helpers.lastName;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.lastName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\" data-error-style=\"tooltip\">\n    </div>\n  </div>\n  <div class=\"control-group\">\n    <label for=\"gender\">";
+  buffer += "<fieldset>\n  ";
+  stack1 = {};
+  stack1['field'] = "firstName";
+  stack2 = depth0.firstName;
+  stack1['value'] = stack2;
+  stack1['width'] = 4;
+  stack1['required'] = true;
+  stack1['label'] = "people.first_name";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n  ";
+  stack1 = {};
+  stack1['field'] = "lastName";
+  stack2 = depth0.lastName;
+  stack1['value'] = stack2;
+  stack1['width'] = 4;
+  stack1['required'] = true;
+  stack1['label'] = "people.last_name";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n  <div class=\"control-group\">\n    <label for=\"gender\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.gender", {hash:{}}) : helperMissing.call(depth0, "t", "people.gender", {hash:{}});
   buffer += escapeExpression(stack1) + "</label>\n    <div class=\"controls\">\n      <select id=\"gender\" name=\"gender\" class=\"chzn-select\" style=\"width: 150px\">\n        <option id=\"male\" ";
@@ -219,7 +272,25 @@ this["Templates"]["people/info"] = Handlebars.template(function (Handlebars,dept
   buffer += escapeExpression(stack1) + ">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.dr", {hash:{}}) : helperMissing.call(depth0, "t", "people.dr", {hash:{}});
-  buffer += escapeExpression(stack1) + "</option>\n      </select>\n    </div>\n  </div>\n</fieldset>\n";
+  buffer += escapeExpression(stack1) + "</option>\n      </select>\n    </div>\n  </div>\n\n  ";
+  stack1 = {};
+  stack1['field'] = "email";
+  stack2 = depth0.email;
+  stack1['value'] = stack2;
+  stack1['width'] = 4;
+  stack1['label'] = "people.email";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n  ";
+  stack1 = {};
+  stack1['field'] = "telephone";
+  stack2 = depth0.telephone;
+  stack1['value'] = stack2;
+  stack1['width'] = 2;
+  stack1['label'] = "people.telephone";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n\n</fieldset>\n";
   return buffer;});
 
 this["Templates"]["people/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -313,6 +384,13 @@ this["Templates"]["people/menu"] = Handlebars.template(function (Handlebars,dept
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n  </div>\n</div>\n";
   return buffer;});
 
+this["Templates"]["people/register"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  
+
+
+  return "register.html";});
+
 this["Templates"]["people/selector"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   
@@ -345,13 +423,18 @@ this["Templates"]["people/summary"] = Handlebars.template(function (Handlebars,d
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<p>\n  <div class=\"info\">01896 830894</div>\n  <a href=\"mailto:";
-  stack1 = depth0.user;
-  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
-  stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + "\">";
+  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<p>\n  <div class=\"info\">";
+  foundHelper = helpers.telephone;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.telephone; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</div>\n  <a href=\"mailto:";
   foundHelper = helpers.email;
-  stack1 = foundHelper ? foundHelper.call(depth0, "emma@watson.com", {hash:{}}) : helperMissing.call(depth0, "email", "emma@watson.com", {hash:{}});
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.email; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  stack1 = depth0.email;
+  foundHelper = helpers.formatEmail;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "formatEmail", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</a>\n</p>\n<button class=\"btn btn-danger\" href=\"#\"><i class=\"icon-ban-circle icon-white\"></i> ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.archive", {hash:{}}) : helperMissing.call(depth0, "t", "people.archive", {hash:{}});

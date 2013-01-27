@@ -1,4 +1,4 @@
-module.exports = function(app, models, authenticate, authorize) {
+module.exports = function(app, models, util, authenticate, authorize) {
 
   var Person = models.Person
     , Photo = models.Photo;

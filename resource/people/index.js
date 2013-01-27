@@ -1,4 +1,4 @@
-module.exports = function(app, models, authenticate, authorize) {
+module.exports = function(app, models, util, authenticate, authorize) {
 
 	var Person = models.Person;
 
@@ -29,12 +29,12 @@ module.exports = function(app, models, authenticate, authorize) {
 
 		person.save(function(err, person) {
 			if (err) return next(err);
+			
 			Person.findOneAndPopulate({ _id: person.id }, function(err, person) {
 				if (err) return next(err);
 				return res.send(200, person);
 			});
 		});
-
 	});
 
 	app.put("/api/people/:id", function(req, res, next) {
@@ -42,14 +42,11 @@ module.exports = function(app, models, authenticate, authorize) {
 			if (person == null) return res.send(404);
 			if (err) return next(err);
 
-			// TODO auto
-			person.firstName = req.body.firstName;
-			person.lastName = req.body.lastName;
-			person.gender = req.body.gender;
-			person.title = req.body.title;
+			util.set(person, req.body, [ "firstName", "lastName", "gender", "title", "email", "telephone" ]);
 
 			person.save(function(err) {
 				if (err) return next(err);
+				
 				Person.findOneAndPopulate({ _id: person.id }, function(err, person) {
 					if (err) return next(err);
 					return res.send(200, person);

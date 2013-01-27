@@ -20,7 +20,7 @@ _.extend(Backbone.Validation.callbacks, {
 , invalid: function(view, attr, error, selector) {
     var control = view.$("[" + selector + "=" + attr + "]")
       , group = control.parents(".control-group")
-      , message = i18n.t(error);
+      , message = group.find("label").text().capitalize() + " " + i18n.t(error);
 
     group.addClass("error");
 
@@ -32,7 +32,7 @@ _.extend(Backbone.Validation.callbacks, {
         placement: position
       , trigger: "manual"
       , animation: false
-      , title: group.find("label").text() + " " + message
+      , title: message
       });
 
       control.tooltip("show");
@@ -51,7 +51,7 @@ _.extend(Backbone.Validation.callbacks, {
       }
 
       var target = group.find(".help-block");
-      target.text(group.find("label").text() + " " + message);
+      target.text(message);
     }
   }
 });

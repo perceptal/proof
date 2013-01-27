@@ -32,14 +32,8 @@ module.exports = function(grunt) {
 	    				.replace(".html", "");
 	  			}
 				, processPartialName: function(filename) { // input:  templates/_header.hbs
-						// filename = filename
-	    	// 			.replace("client/backbone/app", "")
-	    	// 			.replace("templates/", "")
-	    	// 			.replace(".html", "")
-	    	// 			.substring(1);
-
     				var pieces = filename.split("/");
-    				return pieces[pieces.length - 1]; // output: _header.hbs
+    				return pieces[pieces.length - 1].substring(1).replace(".html", ""); // output: _header.hbs
   				}
         }
       , files: {

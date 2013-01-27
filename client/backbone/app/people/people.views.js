@@ -6,6 +6,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , ui: {
       firstName     : "input#firstName"
     , lastName      : "input#lastName"
+    , telephone     : "input#telephone"
+    , email         : "input#email"
     , gender        : "select#gender"
     , title         : "select#title"
     , selects       : "select"

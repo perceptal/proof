@@ -46,6 +46,8 @@
   , "not_found": "Il n'y a $t(main.person) trouvés"
   , "first_name": "Prénom"
   , "last_name": "Nom de Famille"
+  , "email": "$t(security.email)"
+  , "telephone": "Téléphone"
   , "gender": "Sexe"
   , "male": "Masculin"
   , "female": "Féminin"

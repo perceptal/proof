@@ -36,9 +36,15 @@ $(function() {
     return option.toLowerCase() === value.toLowerCase() ? "selected" : "";
   });
 
-  Handlebars.registerHelper("email", function(email) {
+  Handlebars.registerHelper("formatEmail", function(email) {
     if (email === undefined) return "";
     return email.replace(".", " dot ").replace("@", " at ");
   });
 
+  Handlebars.registerHelper("include", function(template, options){
+    var partial = Handlebars.partials[template]
+      , context = _.extend({}, this, options.hash);
+     
+    return new Handlebars.SafeString(partial(context));
+  });
 });

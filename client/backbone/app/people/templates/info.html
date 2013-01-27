@@ -1,16 +1,6 @@
 <fieldset>
-  <div class="control-group">
-    <label for="firstName">{{ t "people.first_name" }}</label>
-    <div class="controls">
-      <input type="text" id="firstName" name="firstName" class="span4 required" value="{{ firstName }}" data-error-style="tooltip">
-    </div>
-  </div>
-  <div class="control-group">
-    <label for="lastName">{{ t "people.last_name" }}</label>
-    <div class="controls">
-      <input type="text" id="lastName" name="lastName" class="span4 required" value="{{ lastName }}" data-error-style="tooltip">
-    </div>
-  </div>
+  {{ include "input" field="firstName" value=firstName width=4 required=true label="people.first_name" }}
+  {{ include "input" field="lastName" value=lastName width=4 required=true label="people.last_name" }}
   <div class="control-group">
     <label for="gender">{{ t "people.gender" }}</label>
     <div class="controls">
@@ -32,4 +22,8 @@
       </select>
     </div>
   </div>
+
+  {{ include "input" field="email" value=email width=4 label="people.email" }}
+  {{ include "input" field="telephone" value=telephone width=2 label="people.telephone" }}
+
 </fieldset>
