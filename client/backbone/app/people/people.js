@@ -128,7 +128,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
   , selectPersonPage: function(page) {
       if (this.layout == null) return; 
-
+      
       this.layout.inner.show(this.getPersonView(page));
     }
 

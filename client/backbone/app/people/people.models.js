@@ -19,16 +19,16 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
   , validation: {
       firstName: {
         required: true
-      , msg: i18n.t("validation:people.first_name.required")
+      , msg: "validation:required"
       }
     , lastName: {
         required: true
-      , msg: i18n.t("validation:people.last_name.required")
+      , msg: "validation:required"
       }
     }
 	});
 
-	Models.People = App.Common.Collection.extend({
+	Models.People = App.Common.Models.Collection.extend({
 		model: Models.Person
 
 	, initialize: function(attributes, options) {

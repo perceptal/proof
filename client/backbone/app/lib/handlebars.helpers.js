@@ -2,8 +2,8 @@ $(function() {
 
   i18n.init({
     ns: { 
-      namespaces: [ "navigation", "error", "validation" ]
-    , defaultNs: "navigation" 
+      namespaces: [ "main", "error", "validation" ]
+    , defaultNs: "main" 
     } 
   , cookieName: "locale"
   , preload: [ "en", "fr", "de" ]
@@ -29,6 +29,16 @@ $(function() {
 
   Handlebars.registerHelper("t", function(key, post) {
     return new Handlebars.SafeString(i18n.t(key, post ? { postProcess: post } : {}));
+  });
+
+  Handlebars.registerHelper("selected", function(option, value) {
+    if (value === undefined) return "";
+    return option.toLowerCase() === value.toLowerCase() ? "selected" : "";
+  });
+
+  Handlebars.registerHelper("email", function(email) {
+    if (email === undefined) return "";
+    return email.replace(".", " dot ").replace("@", " at ");
   });
 
 });

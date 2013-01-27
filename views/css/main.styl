@@ -1,7 +1,5 @@
 @import "nib"
 
-*
-  box-sizing border-box
 
 input, .add-on
   box-sizing content-box
@@ -64,8 +62,9 @@ a, button
         a
           border-left 1px solid transparent
           border-right 1px solid transparent
-          margin 0 5px
+          margin 0 4px
           text-shadow none !important
+          font-size 15px
 
       ul.action
         li.active > a, a
@@ -297,6 +296,7 @@ nav#primary
           min-height 620px
 
         aside#aside
+          box-sizing border-box
           border-top 0
           border-right 0
           margin 0
@@ -313,6 +313,15 @@ nav#primary
           h4
             small
               color #900
+
+          h4.person
+            padding-left 22px
+
+          h4.male
+            background transparent url("img/male.png") no-repeat 0 2px
+
+          h4.female
+            background transparent url("img/female.png") no-repeat 0 2px
 
 form.box
   legend
@@ -333,13 +342,37 @@ form.box
   .buttons
     padding-top 15px
 
+  input
+    border-color #aaa
+
   .control-group.error
+    label
+      color #b94a48
+    
     input
       border-color rgba(185, 74, 72, 0.8)
       box-shadow inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(185, 74, 72, .6)
+    
+    .help-inline.error-message
+      display inline
+      padding 0
+      margin 0
+      padding-left 5px
+      margin-bottom 1px
+
+    .tooltip-arrow
+      border-right-color #f2dede
+    .tooltip-inner
+      background-color #f2dede 
+      color #c00
+      font-size 13px
 
   input.required
     background #fff url("img/required.png") no-repeat right 6px
+
+.select2-choice
+  background-image none !important
+  background-color #fff !important
 
 .image
   border-radius(8px)

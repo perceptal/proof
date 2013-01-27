@@ -1,63 +1,18 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  Views.InfoView = Marionette.ItemView.extend({
+  Views.InfoView = App.Common.Views.FormView.extend({
     template: "people/info"
 
-  , tagName: "form"
-  , className: "box"
-
   , ui: {
-      "firstName"    : "input#firstName"
-    , "lastName"     : "input#lastName"
+      firstName     : "input#firstName"
+    , lastName      : "input#lastName"
+    , gender        : "select#gender"
+    , title         : "select#title"
+    , selects       : "select"
     }
 
-  , initialize: function(options) {
-      this.model.on("change", this.render, this);
-    }
-
-  , events: {
-      "keypress input"          : "onKeypress"
-    , "change   input"          : "onChange"
-    }
-
-  , onRender: function() {
-      this.delegateEvents();
-      Backbone.Validation.bind(this);
-    }
-  
-  , onKeypress: function(e) {
-      if (e.keyCode === 13) this.onChange(e);
-    }
-
-  , onChange: function(e) {
-      var model = this.model
-        , prop = e.currentTarget.id
-        , field = this.ui[prop]
-        , value = field.val()
-        , previous = this.model.get(prop);
-      
-      this.model.off("change", this.render, this);    // Remove change event to ensure focus fires
-
-      this.model.set(prop, value);
-      
-      if (this.model.isValid(true)) {
-        this.model.save()  
-          .success(function() {
-            model.set(prop, value);
-            App.vent.trigger("message:hide");
-          })
-          
-          .fail(function() {
-            model.set(prop, previous);
-            App.vent.trigger("message:show", i18n.t("error:people.info"));
-          })
-
-          .always(function() {
-            model.on("change", this.render, this);    // Rebind change event
-          });
-      } else {
-        this.model.set(prop, previous);
-      }
+  , messages: {
+      error: "people.info"
     }
   });
 

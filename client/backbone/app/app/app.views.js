@@ -1,6 +1,6 @@
 Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  Views.ModalRegion = Backbone.Marionette.Region.extend({
+  Views.ModalRegion = Marionette.Region.extend({
     
     el: "#modal"
  

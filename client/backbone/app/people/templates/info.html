@@ -2,13 +2,34 @@
   <div class="control-group">
     <label for="firstName">{{ t "people.first_name" }}</label>
     <div class="controls">
-      <input type="text" id="firstName" name="firstName" class="span4 required" value="{{ firstName }}" data-error-style="inline">
+      <input type="text" id="firstName" name="firstName" class="span4 required" value="{{ firstName }}" data-error-style="tooltip">
     </div>
   </div>
   <div class="control-group">
     <label for="lastName">{{ t "people.last_name" }}</label>
     <div class="controls">
-      <input type="text" id="lastName" name="lastName" class="span4 required" value="{{ lastName }}" data-error-style="inline">
+      <input type="text" id="lastName" name="lastName" class="span4 required" value="{{ lastName }}" data-error-style="tooltip">
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="gender">{{ t "people.gender" }}</label>
+    <div class="controls">
+      <select id="gender" name="gender" class="chzn-select" style="width: 150px">
+        <option id="male" {{ selected "male" gender }}>{{ t "people.male" }}</option>
+        <option id="female" {{ selected "female" gender }}>{{ t "people.female" }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <label for="title">{{ t "people.title" }}</label>
+    <div class="controls">
+      <select id="title" name="title" class="chzn-select" style="width: 150px">
+        <option id="mr" {{ selected "mr" title }}>{{ t "people.mr" }}</option>
+        <option id="mrs" {{ selected "mrs" title }}>{{ t "people.mrs" }}</option>
+        <option id="miss" {{ selected "miss" title }}>{{ t "people.miss" }}</option>
+        <option id="ms" {{ selected "ms" title }}>{{ t "people.ms" }}</option>
+        <option id="dr" {{ selected "dr" title }}>{{ t "people.dr" }}</option>
+      </select>
     </div>
   </div>
 </fieldset>

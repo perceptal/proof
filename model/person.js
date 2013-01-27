@@ -8,6 +8,8 @@ var PersonSchema = new Schema({
   , title             		: { type: String }
   , gender             		: { type: String, enum: [ "male", "female" ] }
   , dob                   : { type: Date }
+  , email                 : { type: String }
+  , telephone             : { type: String }
   , securityKey           : { min: { type: Number }, max: { type: Number }} 
   , code                  : { type: String }
   , group                 : { type: Schema.ObjectId, ref: "group" }

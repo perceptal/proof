@@ -41,9 +41,12 @@ module.exports = function(app, models, authenticate, authorize) {
 		Person.findOne({ _id: req.params.id }, function(err, person) {
 			if (person == null) return res.send(404);
 			if (err) return next(err);
-			
+
+			// TODO auto
 			person.firstName = req.body.firstName;
 			person.lastName = req.body.lastName;
+			person.gender = req.body.gender;
+			person.title = req.body.title;
 
 			person.save(function(err) {
 				if (err) return next(err);
