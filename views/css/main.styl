@@ -68,11 +68,15 @@ a, button
 
       ul.action
         li.active > a, a
-          color #900 !important
+          color #900 
           border-right none
           margin-right 0
         a:hover
-          color #c00 !important
+          color #c00
+
+      li.disabled, ul.action li.disabled
+        a, a:hover
+          color #ccc
 
 .logo
   background transparent url("img/logo.png") no-repeat 0 0

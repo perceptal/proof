@@ -163,7 +163,7 @@ this["Templates"]["home/layout"] = Handlebars.template(function (Handlebars,dept
   
 
 
-  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"top\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\"></div>\n\n      <aside id=\"aside\" class=\"auto-height\"></aside>\n    </section>\n\n  </div>\n</div>\n";});
+  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"top\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\">\n        <div id=\"message\"></div>\n      </div>\n\n      <aside id=\"aside\" class=\"auto-height\"></aside>\n    </section>\n\n  </div>\n</div>\n";});
 
 this["Templates"]["home/navigation"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -224,7 +224,10 @@ this["Templates"]["people/help"] = Handlebars.template(function (Handlebars,dept
   buffer += "<h4>";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "main.people", {hash:{}}) : helperMissing.call(depth0, "t", "main.people", {hash:{}});
-  buffer += escapeExpression(stack1) + "</h4>\n";
+  buffer += escapeExpression(stack1) + "</h4>\n<p>";
+  foundHelper = helpers.markdown;
+  stack1 = foundHelper ? foundHelper.call(depth0, "help:people", {hash:{}}) : helperMissing.call(depth0, "markdown", "help:people", {hash:{}});
+  buffer += escapeExpression(stack1) + "</p>";
   return buffer;});
 
 this["Templates"]["people/info"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

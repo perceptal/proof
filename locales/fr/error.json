@@ -1,11 +1,12 @@
 { 
   "general": {
-    "try_again": "Application error, please try again."
+    "try_again": "Erreur d'application, s'il vous plaît essayer à nouveau."
   }
 , "security": {
-    "invalid_credentials": "You have entered invalid credentials."
+    "invalid_credentials": "Vous avez entré les informations d'identification non valides."
+  , "unauthorised": "Vous n'avez pas la permission d'accéder à cette information."
   }
 , "people": {
-    "info": "Error saving information."
+    "info": "Informations économies d'erreur."
   }
 }

@@ -1,11 +1,12 @@
 { 
   "general": {
-    "try_again": "Application error, please try again."
+    "try_again": "Fehler in der anwendung, bitte versuchen sie es erneut."
   }
 , "security": {
-    "invalid_credentials": "You have entered invalid credentials."
+    "invalid_credentials": "Sie haben ungültige anmeldeinformationen eingegeben."
+  , "unauthorised": "Sie haben keine berechtigung, auf diese informationen zuzugreifen."
   }
 , "people": {
-    "info": "Error saving information."
+    "info": "Fehler beim speichern der informationen."
   }
 }

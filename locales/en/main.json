@@ -58,6 +58,7 @@
   , "upload_photo": "$t(general.upload) $t(people.photo)"
   , "upload_doc": "$t(general.upload) $t(people.document)"
   , "archive": "$t(general.archive)"
+  , "not_selected": "Please select someone from the list"
   }
 , "male": "Male"
 , "female": "Female"

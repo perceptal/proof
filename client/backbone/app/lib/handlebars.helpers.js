@@ -2,7 +2,7 @@ $(function() {
 
   i18n.init({
     ns: { 
-      namespaces: [ "main", "error", "validation" ]
+      namespaces: [ "main", "error", "validation", "help" ]
     , defaultNs: "main" 
     } 
   , cookieName: "locale"
@@ -41,6 +41,13 @@ $(function() {
       , context = _.extend({}, this, options.hash);
      
     return new Handlebars.SafeString(partial(context));
+  });
+
+  Handlebars.registerHelper("markdown", function(text) {
+    var converter = new Showdown.converter();
+    console.log(i18n.t(text));
+
+    return new Handlebars.SafeString(converter.makeHtml(i18n.t(text)));
   });
 
   Handlebars.registerHelper("options", function(data, value, options) {

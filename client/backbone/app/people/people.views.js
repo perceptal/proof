@@ -90,6 +90,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , ui: {
       links: "a"
+    , name: "a.brand"
     }
 
   , events: {
@@ -98,7 +99,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function(options) {
       this.page = options.page;
-      this.model.on("change", this.render, this);
+      if (this.model) this.model.on("change", this.render, this);
     }
 
   , onRender: function() {
@@ -108,15 +109,29 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , select: function(page) {
       this.page = page;
-      this.ui.links.parent().removeClass("active");
-      this.ui.links.filter("[data-page='" + this.page + "']").parent().addClass("active");
+
+      if (this.model) {
+        this.ui.links.parent().removeClass("active");
+        this.ui.links.filter("[data-page='" + this.page + "']").parent().addClass("active");
+      } else {
+
+        this.ui.links
+          .attr("href", "")
+          .parent()
+            .removeClass("active")
+            .addClass("disabled");
+        this.ui.name.hide();
+      }
     }
 
   , onNavigate: function(e) {
       e.preventDefault();
 
+      if (this.model == null) return false;
+
       var page = $(e.currentTarget).data("page");
       this.select(page);
+
       App.People.router.navigate($(e.currentTarget).attr("href"), false);
       App.vent.trigger("people:navigate", page);
     }

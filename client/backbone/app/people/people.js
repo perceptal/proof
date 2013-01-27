@@ -50,7 +50,9 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
           that.people.goTo(1);
         });
 
-      this.constructLayout(new People.Views.HelpView());
+      this.constructLayout(new People.Views.HelpView(), new People.Views.MenuView({ model: this.person, page: "" }));
+
+      App.vent.trigger("message:show", { type: "info", text: i18n.t("people.not_selected") });
 		} 
 
   , show: function(id) {
@@ -117,6 +119,8 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , selectPerson: function(person, page) {
       if (this.layout == null) return;
  
+      App.vent.trigger("message:hide");
+
       this.person = person;
 
       this.layout.filter.currentView.model = this.person;
@@ -128,7 +132,9 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
   , selectPersonPage: function(page) {
       if (this.layout == null) return; 
-      
+
+      App.vent.trigger("message:hide");
+
       this.layout.inner.show(this.getPersonView(page));
     }
 

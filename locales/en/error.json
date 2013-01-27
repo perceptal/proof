@@ -4,6 +4,7 @@
   }
 , "security": {
     "invalid_credentials": "You have entered invalid credentials."
+    "unauthorised": "You do not have permission to access this information."
   }
 , "people": {
     "info": "Error saving information."
