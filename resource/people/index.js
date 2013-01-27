@@ -3,7 +3,7 @@ module.exports = function(app, models, util, authenticate, authorize) {
 	var Person = models.Person;
 
 	app.get("/api/people"
-	// , authenticate.basic(), authorize.can()
+	, authenticate.basic(), authorize.can()
   , function(req, res, next) {
 
 			Person.findAndPopulate({}, function(err, people) {
@@ -12,7 +12,9 @@ module.exports = function(app, models, util, authenticate, authorize) {
 			});
 	});
 
-	app.get("/api/people/:id"/* , authenticate.basic() */
+	app.get("/api/people/:id"
+	, authenticate.basic()
+	, authorize.can()
 	, function(req, res, next) {
 
 			Person.findOneAndPopulate({ _id: req.params.id }, function(err, person) {			

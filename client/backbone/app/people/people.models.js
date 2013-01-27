@@ -33,7 +33,7 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
     }
 	});
 
-	Models.People = App.Common.Models.Collection.extend({
+	Models.People = App.Common.Models.SecuredCollection.extend({
 		model: Models.Person
 
 	, initialize: function(attributes, options) {
@@ -43,12 +43,6 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
         this.setPage(this.page);
       }, this);
       this.init && this.init(attributes, options);
-    }
-
-  , defaultErrorHandler: function(model, error) {
-	    if (error.status === 403) {
-	    	App.vent.trigger("security:unauthorised", this);
-	    }
     }
 
   , clearActive: function() {
@@ -69,40 +63,12 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       this.pager();
     }
 
-  , sort: function(property) {
-      var direction = "asc";
-      if (property === this.sortColumn) direction = this.sortDirection === "asc" ? "desc" : "asc";
-      this.setSort(property, direction);
-    }
-
   , paginator_core: {
       type      : "GET"
     , dataType  : "json"
     , url       : "/api/people"
     }
 
-  , paginator_ui: {
-      perPage   : 10
-    , pagesInRange: 1
-    }
-
-  , pages: function() {  
-
-      var getClass = function(current, p) {
-        if (current === p) return "active";
-      }
-
-      var that = this, p = [];
-
-      if (this.information) {
-        // _.each(this.information.pageSet, function(i) {
-        _.each(_.range(1, this.information.totalPages+1), function(i) {
-          p.push({ number: i, className: getClass(that.currentPage, i) });
-        });
-      }
-
-      return p;
-    }
 	});
 
 }, Backbone.Paginator);

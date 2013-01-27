@@ -45,8 +45,6 @@ $(function() {
 
   Handlebars.registerHelper("markdown", function(text) {
     var converter = new Showdown.converter();
-    console.log(i18n.t(text));
-
     return new Handlebars.SafeString(converter.makeHtml(i18n.t(text)));
   });
 
