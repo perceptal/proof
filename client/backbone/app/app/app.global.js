@@ -34,7 +34,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       
       if (authCookie != null) {
         var session = new App.Security.Models.SignOn({ id: authCookie })
-          , promise = session.fetch();
+          , promise = session.fetch({ async: false });                      // TODO add to Q
 
         promise.done(function() {
           that.signOn(session);
