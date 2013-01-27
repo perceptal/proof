@@ -1,29 +1,10 @@
 <fieldset>
   {{ include "input" field="firstName" value=firstName width=4 required=true label="people.first_name" }}
   {{ include "input" field="lastName" value=lastName width=4 required=true label="people.last_name" }}
-  <div class="control-group">
-    <label for="gender">{{ t "people.gender" }}</label>
-    <div class="controls">
-      <select id="gender" name="gender" class="chzn-select" style="width: 150px">
-        <option id="male" {{ selected "male" gender }}>{{ t "people.male" }}</option>
-        <option id="female" {{ selected "female" gender }}>{{ t "people.female" }}</option>
-      </select>
-    </div>
-  </div>
-  <div class="control-group">
-    <label for="title">{{ t "people.title" }}</label>
-    <div class="controls">
-      <select id="title" name="title" class="chzn-select" style="width: 150px">
-        <option id="mr" {{ selected "mr" title }}>{{ t "people.mr" }}</option>
-        <option id="mrs" {{ selected "mrs" title }}>{{ t "people.mrs" }}</option>
-        <option id="miss" {{ selected "miss" title }}>{{ t "people.miss" }}</option>
-        <option id="ms" {{ selected "ms" title }}>{{ t "people.ms" }}</option>
-        <option id="dr" {{ selected "dr" title }}>{{ t "people.dr" }}</option>
-      </select>
-    </div>
-  </div>
+  
+  {{ include "select" field="gender" value=gender width="150px" options="male female" label="people.gender" }}
+  {{ include "select" field="title" value=title width="150px" options="mr mrs miss ms dr" label="people.title" }}
 
   {{ include "input" field="email" value=email width=4 label="people.email" }}
   {{ include "input" field="telephone" value=telephone width=2 label="people.telephone" }}
-
 </fieldset>

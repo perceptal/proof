@@ -1,1 +1,11 @@
-select.html
+<div class="control-group">
+  <label for="{{ field }}">{{ t label }}</label>
+  <div class="controls">
+    <select id="{{ field }}" name="{{ field }}" style="width: {{ width }}">
+
+      {{#options options value}}
+        {{option this}}
+      {{/options}}
+    </select>
+  </div>
+</div>
