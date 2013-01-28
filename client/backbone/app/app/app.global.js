@@ -94,8 +94,6 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
 	// Initialize global events
 	Global.addInitializer(function() {
-    App.determineAuthenticationStatus();
-
     App.vent.on("section:change", App.changeSection, this);
     App.vent.on("security:signon", App.signOn, this);
     App.vent.on("security:signout", App.signOut, this);
@@ -108,6 +106,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     App.vent.on("security:unauthorised", function() {
     	App.vent.trigger("message:show", i18n.t("error:security.unauthorised"));
     }, this);
+
+    App.determineAuthenticationStatus();
 
     App.vent.trigger("locale:change", i18n.lng());
 	});
