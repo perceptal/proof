@@ -1,13 +1,3 @@
 {
     "CLIENT": "backbone"
-  , "AUTHENTICATION": {
-      "FACEBOOK": {
-        "APP_ID": "227016747396574"
-      , "APP_SECRET": "5725506f3dbc3f348b6b21f6c3df89d0"
-    }
-    , "TWITTER": {
-        "CONSUMER_KEY": "7S7qmMxVBVlv2nf4MUxKCQ"
-      , "CONSUMER_SECRET": "7ibNttfgSJfFNmMAdJ9fdiB5blboF7shvo9pYa5cw"
-    }
-  }
 }
