@@ -66,16 +66,24 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 		}
 
   , showMessage: function(data) {
+      if (this.messages == null) {
+        this.messages = new App.Models.Messages();
+      } else {
+        this.messageRegion.close();
+      }
+
       if (!_.isObject(data)) data = { text: data };
-      
-      if (this.message) this.message.close();
-      
-      this.message = new Marionette.Region({ el: "#message" });
-      this.message.show(new App.Views.MessageView({ model: new App.Models.Message(data) }));
+      var message = new App.Models.Message(data);
+
+      if (message.isError()) this.messages.clearNonErrors();
+      if ((!message.isError() && !this.messages.hasErrors()) || message.isError()) this.messages.add(message);
+
+      this.messageRegion = new Marionette.Region({ el: "#message" });
+      this.messageRegion.show(new App.Views.MessageListView({ collection: this.messages }));
     }
 
-  , hideMessage: function(data) {
-      if (this.message) this.message.close();
+  , clearMessages: function() {
+      if (this.messages) this.messages.reset([]);
     }
 
   , changeLocale: function(locale) {
@@ -101,7 +109,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     App.vent.on("locale:change", App.changeLocale, this);
     App.vent.on("locale:changed", App.refresh, this);
     App.vent.on("message:show", App.showMessage, this);
-    App.vent.on("message:hide", App.hideMessage, this);
+    App.vent.on("message:clear", App.clearMessages, this);
 
     App.vent.on("security:unauthorised", function() {
     	App.vent.trigger("message:show", i18n.t("error:security.unauthorised"));

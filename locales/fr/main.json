@@ -57,6 +57,7 @@
   , "documents": "Documents"
   , "upload_photo": "$t(general.upload) $t(people.photo)"
   , "upload_doc": "$t(general.upload) $t(people.document)"
+  , "permissions": "Autorisations"
   , "archive": "$t(general.archive)"
   , "not_selected": "S'il vous plaît choisir quelqu'un de la liste"
   }

@@ -8,7 +8,7 @@ Proof.module("Common.Models", function(Models, App, Backbone, Marionette, $, _, 
         headers: { "Authorization": "Basic " + App.Global.session.authenticationToken() }
       }, opts);
     }
-    
+
     return options;    
   }
 

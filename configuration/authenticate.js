@@ -1,3 +1,5 @@
+var ANON = "anonymous";
+
 var Authenticate = function(models) {
   if (!this instanceof Authenticate) return new Authenticate(models);
 
@@ -14,6 +16,8 @@ var populate = function(name, session, callback) {
 
   var User = this.models.User
     , Person = this.models.Person;
+
+  if (name === ANON) return callback(error(403));
 
   User.findOne({ name: name }, function(err, user) {
 

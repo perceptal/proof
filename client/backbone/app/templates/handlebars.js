@@ -377,6 +377,13 @@ this["Templates"]["people/menu"] = Handlebars.template(function (Handlebars,dept
   buffer += escapeExpression(stack1) + "/documents\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.documents", {hash:{}}) : helperMissing.call(depth0, "t", "people.documents", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"permissions\" href=\"#people/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/permissions\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "people.permissions", {hash:{}}) : helperMissing.call(depth0, "t", "people.permissions", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a data-page=\"new\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }

@@ -32,6 +32,19 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.MessageView = Marionette.ItemView.extend({
     template: "app/message"
 
+  , initialize: function() {
+      this.model.on("change", this.render, this);
+    }
+
+  });
+
+  Views.MessageListView = Marionette.CollectionView.extend({
+    itemView: Views.MessageView
+
+  , initialize: function() {
+      this.collection.on("change", this.render, this);
+    }
+
   });
 
   Views.NavigationView = Marionette.View.extend({

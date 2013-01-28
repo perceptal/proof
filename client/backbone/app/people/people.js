@@ -13,6 +13,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
     , "people/:id/photos/new"     : "show"
     , "people/:id/documents"      : "show"
     , "people/:id/documents/new"  : "show"
+    , "people/:id/permissions"    : "show"
 		}
 	});
 
@@ -103,6 +104,8 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       var filter = new People.Views.FilterView({ collection: this.people, model: this.person })
         , selector = new People.Views.SelectorView({ collection: this.people, selected: this.person, page: page });
 
+      App.vent.trigger("message:clear");
+
       this.layout = new People.Views.Layout({
         aside:      aside
       , filter:     filter 
@@ -119,7 +122,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , selectPerson: function(person, page) {
       if (this.layout == null) return;
  
-      App.vent.trigger("message:hide");
+      App.vent.trigger("message:clear");
 
       this.person = person;
 
@@ -133,7 +136,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , selectPersonPage: function(page) {
       if (this.layout == null) return; 
 
-      App.vent.trigger("message:hide");
+      App.vent.trigger("message:clear");
 
       this.layout.inner.show(this.getPersonView(page));
     }

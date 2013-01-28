@@ -18,6 +18,23 @@ Proof.module("Models", function(Models, App, Backbone, Marionette, $, _) {
       }
       return "icon-" + icons[type];
     }
+
+  , isError: function() {
+      return this.get("type") === "error";
+    }
 	});
+
+  Models.Messages = Backbone.Collection.extend({
+    model: Models.Message
+
+  , hasErrors: function() {
+      return _(this.models).filter(function(model) { return model.isError(); }).length > 0;
+    }
+
+  , clearNonErrors: function() {
+      this.models = _(this.models).reject(function(model) { return !model.isError(); });
+    }
+
+  });
 
 });
