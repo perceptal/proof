@@ -29,6 +29,19 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
   });
 
+  Views.HelpView = Marionette.ItemView.extend({
+    template: "app/common/help"
+
+  , initialize: function(options) {
+      var section = options.section;
+
+      this.model = new App.Models.Help({
+        title: "main." + section
+      , content: "help:" + section
+      });
+    }
+  });
+
   Views.MessageView = Marionette.ItemView.extend({
     template: "app/message"
 

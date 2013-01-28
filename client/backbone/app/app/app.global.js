@@ -69,7 +69,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       if (this.messages == null) {
         this.messages = new App.Models.Messages();
       } else {
-        this.messageRegion.close();
+        if (this.messageRegion) this.messageRegion.close();
       }
 
       if (!_.isObject(data)) data = { text: data };

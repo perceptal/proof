@@ -51,7 +51,9 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
           that.people.goTo(1);
         });
 
-      this.constructLayout(new People.Views.HelpView(), new People.Views.MenuView({ model: this.person, page: "" }));
+      this.constructLayout(
+        new App.Views.HelpView({ section: "people" })
+      , new People.Views.MenuView({ model: this.person, page: "" }));
 
       App.vent.trigger("message:show", { type: "info", text: i18n.t("people.not_selected") });
 		} 

@@ -18,11 +18,6 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
   });
 
-  Views.HelpView = Marionette.ItemView.extend({
-    template: "people/help"
-
-  });
-
   Views.SummaryView = Marionette.ItemView.extend({
     template: "people/summary"
 

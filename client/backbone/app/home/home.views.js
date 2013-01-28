@@ -20,7 +20,7 @@ Proof.module("Home.Views", function(Views, App, Backbone, Marionette, $, _) {
       , "content":        "#content"
     }
 
-  , attachViews: function(views) {
+  , initialize: function(views) {
       if (views.aside != null) this.asideView = views.aside;
       if (views.navigation != null) this.navigationView = views.navigation;
     }
@@ -28,13 +28,6 @@ Proof.module("Home.Views", function(Views, App, Backbone, Marionette, $, _) {
   , onRender: function() {
       this.aside.show(this.asideView);
       this.navigation.show(this.navigationView);
-      this.setHeight();
-    }
-
-  , setHeight: function() {
-      var minimum = $("#bg").innerHeight() - $("#pages header").innerHeight()
-        , content = $("#page section").innerHeight() - 1;
-      $(".auto-height").innerHeight(minimum > content ? minimum : content);    
     }
 
   });

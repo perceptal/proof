@@ -43,7 +43,7 @@
   , "search": "$t(general.search)"
   , "sort": "$t(general.sort)"
   , "register": "$t(security.register)"
-  , "not_found": "Il n'y a $t(main.person) trouvés"
+  , "not_found": "Il n'y a $t(main.person) trouvés."
   , "first_name": "Prénom"
   , "last_name": "Nom de Famille"
   , "email": "$t(security.email)"
@@ -59,7 +59,7 @@
   , "upload_doc": "$t(general.upload) $t(people.document)"
   , "permissions": "Autorisations"
   , "archive": "$t(general.archive)"
-  , "not_selected": "S'il vous plaît choisir quelqu'un de la liste"
+  , "not_selected": "S'il vous plaît choisir quelqu'un de la liste."
   }
 , "male": "Masculin"
 , "female": "Féminin"
