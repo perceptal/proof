@@ -62,11 +62,16 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
           that.people.goTo(1);
         });
 
-      this.constructLayout(
-        new HelpView({ section: "people" })
-      , new MenuView({ model: this.person, page: "" }));
+      var active = this.people.active();
+      if (active) {
+        People.router.navigate("people/" + active.get("id"), true);
+      } else {
+        this.constructLayout(
+          new HelpView({ section: "people" })
+        , new MenuView({ model: this.person, page: "" }));
 
-      App.vent.trigger("message:show", { type: "info", text: i18n.t("people.not_selected") });
+        App.vent.trigger("message:show", { type: "info", text: i18n.t("people.not_selected") });
+      }
 		} 
 
   , show: function(id) {
@@ -99,7 +104,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
             that.people.nextPage();
             that.person = that.people.get(id);
           }
-          that.person.set("active", "active");
+          that.person.markActive();
         });
     }
 

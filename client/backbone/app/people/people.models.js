@@ -19,6 +19,14 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       this.photos = new Photos(this.get("photos"), parent);
     }
 
+  , markActive: function() {
+      this.set("active", "active")
+    }
+
+  , isActive: function() {
+      return this.get("active") === "active";
+    }
+
   , validation: {
       firstName: {
         required: true
@@ -52,6 +60,13 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       _.each(this.origModels, function(model) { 
         model.set("active", ""); 
       });
+    }
+
+  , active: function() {
+      var active = _.filter(this.origModels, function(model) {
+        return model.isActive(); 
+      });
+      if (active.length > 0) return _(active).first();
     }
 
   , setPage: function(page) {

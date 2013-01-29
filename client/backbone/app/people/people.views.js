@@ -66,10 +66,12 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.collection.filter(this.ui.filter.val());
 
       if (this.collection.length === 1 && this.model !== this.collection.first()) {
-        this.collection.clearActive();
-        this.collection.first().set("active", "active");
+        var first = this.collection.first();
 
-        App.vent.trigger("people:selected", this.collection.first());
+        this.collection.clearActive();
+        first.markActive();
+
+        App.vent.trigger("people:selected", first);
       }
     }
 
@@ -157,7 +159,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       e.preventDefault();
 
       this.collection.clearActive();
-      this.model.set("active", "active");
+      this.model.markActive();
 
       var $link = $(e.currentTarget)
         , url = $link.attr("href")
