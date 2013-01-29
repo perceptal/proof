@@ -51,14 +51,33 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   Views.MessageView = Marionette.ItemView.extend({
     template: "app/message"
 
+  , ui: {
+      "alert": ".alert"
+    }
+
   , initialize: function() {
       this.model.on("change", this.render, this);
     }
 
+  , onRender: function() {
+      var collection = this.collection
+        , model = this.model;
+
+      this.ui.alert.bind("closed", function() {
+        collection.off("change");
+        collection.remove(model);
+      });
+    }
   });
 
   Views.MessageListView = Marionette.CollectionView.extend({
     itemView: Views.MessageView
+
+  , itemViewOptions: function() {
+      return {
+        collection: this.collection
+      };
+    }
 
   , initialize: function() {
       this.collection.on("change", this.render, this);

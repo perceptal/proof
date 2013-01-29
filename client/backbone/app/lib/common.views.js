@@ -53,7 +53,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
         this.model.save()  
           .success(function() {
             model.set(prop, value);
-            App.vent.trigger("message:hide");
+            App.vent.trigger("message:clear");
           })
           
           .fail(function() {

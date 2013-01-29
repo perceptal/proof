@@ -49,6 +49,7 @@ Server.prototype.configure = function(models) {
       , compile:  compile
     }));
 
+    app.use(express.compress());
     app.use("/vendor", express.static(root + "components"));
     app.use("/locales", express.static(root + "locales"));
     app.use(express.static(root + "public"));

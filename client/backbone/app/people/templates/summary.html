@@ -1,7 +1,9 @@
 <h4 class="person {{ gender }}">{{ firstName }} {{ lastName }} <small>{{ group.name }}</small></h4>
 <div class="image"><img src="/api/people/{{ id }}/photos/view/small"></img></div>
 <p>
-  <div class="info">{{ telephone }}</div>
+  <a href="tel:{{ telephone }}">{{ telephone }}</a>
+</p>
+<p>
   <a href="mailto:{{ email }}">{{ formatEmail email }}</a>
 </p>
 <button class="btn btn-danger" href="#"><i class="icon-ban-circle icon-white"></i> {{ t "people.archive" }} {{ firstName }}</button>

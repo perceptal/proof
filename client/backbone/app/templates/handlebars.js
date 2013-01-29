@@ -412,11 +412,15 @@ this["Templates"]["people/summary"] = Handlebars.template(function (Handlebars,d
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<p>\n  <div class=\"info\">";
+  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<p>\n  <a href=\"tel:";
   foundHelper = helpers.telephone;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.telephone; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</div>\n  <a href=\"mailto:";
+  buffer += escapeExpression(stack1) + "\">";
+  foundHelper = helpers.telephone;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.telephone; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a>\n</p>\n<p>\n  <a href=\"mailto:";
   foundHelper = helpers.email;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.email; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
