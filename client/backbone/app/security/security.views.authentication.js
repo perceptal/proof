@@ -1,5 +1,9 @@
 Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) {
 
+  var SignOn = App.Security.Models.SignOn
+    , User = App.Security.Models.User
+    , RegisterView = App.Security.Views.RegisterView;
+
   Views.SignOnView = Marionette.ItemView.extend({
     template: "security/signon"
   
@@ -43,7 +47,7 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
         , promise = this.model.save();
 
       promise.done(function(data) {
-        App.vent.trigger("security:signon", new App.Security.Models.SignOn(data));
+        App.vent.trigger("security:signon", new SignOn(data));
         that.close();
       });
 
@@ -85,23 +89,16 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
     }
 
   , showRegister: function(e) {
-      var view = new App.Security.Views.RegisterView({ 
-        model: new App.Security.Models.User() 
-      });
-
-      return this.modal(view);
+      return this.modal(new RegisterView({ model: new User() }));
     }
 
   , showSignOn: function(e) {
-      var view = new App.Security.Views.SignOnView({ 
-        model: new App.Security.Models.SignOn() 
-      });
-
-      return this.modal(view);
+      return this.modal(new Views.SignOnView({ model: new SignOn() }));
     }
 
   , modal: function(view) {
       App.layout.modal.show(view);
+
       return false;
     }
 

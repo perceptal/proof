@@ -1,5 +1,9 @@
 Proof.module("Home", function(Home, App, Backbone, Marionette, $, _) {
 
+  var HelpView = App.Views.HelpView
+    , Layout = Home.Views.Layout
+    , NavigationView = Home.Views.NavigationView;
+
   Home.Router = Marionette.AppRouter.extend({
     appRoutes: {
       ""              : "index"
@@ -16,9 +20,9 @@ Proof.module("Home", function(Home, App, Backbone, Marionette, $, _) {
   , index: function() {
       this.selectMenu();
 
-      this.layout = new Home.Views.Layout({
-        aside: new App.Views.HelpView({ section: "home" })
-      , navigation: new Home.Views.NavigationView()
+      this.layout = new Layout({
+        aside: new HelpView({ section: "home" })
+      , navigation: new NavigationView()
       });
       this.layout.render();
 

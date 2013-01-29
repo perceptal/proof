@@ -1,5 +1,8 @@
 Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, Paginator) {
 
+  var SecuredCollection = App.Common.Models.SecuredCollection
+    , Photos = App.Photos.Models.Photos;
+
 	Models.Person = Backbone.ModelFactory({
 		urlRoot: "/api/people"
 
@@ -13,7 +16,7 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       this.init && this.init(attributes, options);
 
       var parent = { parent: { id: this.get("id"), name: "people" }};
-      this.photos = new App.Photos.Models.Photos(this.get("photos"), parent);
+      this.photos = new Photos(this.get("photos"), parent);
     }
 
   , validation: {
@@ -33,7 +36,7 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
     }
 	});
 
-	Models.People = App.Common.Models.SecuredCollection.extend({
+	Models.People = SecuredCollection.extend({
 		model: Models.Person
 
 	, initialize: function(attributes, options) {

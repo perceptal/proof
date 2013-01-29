@@ -15,7 +15,7 @@ var PhotoSchema = new Schema({
   , isDefault         : { type: Boolean, default: false }
   , sizes             : [ { type: String, enum: _.pluck(config, "name") } ]
   , contentType       : { type: String, enum: [ "image/jpeg", "image/png" ] }
-  , person            : { type: Schema.ObjectId, ref: "person" }
+  , owner             : { type: Schema.ObjectId }
 });
 
 PhotoSchema.pre("save", function(next) {
@@ -56,8 +56,8 @@ PhotoSchema.methods.download = function(size, callback) {
   });
 };
 
-PhotoSchema.statics.findDefault = function(person, callback) {
-  this.findOne({ person: person, isDefault: true }).exec(callback);
+PhotoSchema.statics.findDefault = function(owner, callback) {
+  this.findOne({ owner: owner, isDefault: true }).exec(callback);
 };
 
 module.exports = PhotoSchema;

@@ -1,5 +1,16 @@
 Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
+  var Peoples = People.Models.People
+    , Person = People.Models.Person
+    , HelpView = App.Views.HelpView
+    , MenuView = People.Views.MenuView
+    , SelectorView = People.Views.SelectorView
+    , FilterView = People.Views.FilterView
+    , SummaryView = People.Views.SummaryView
+    , InfoView = People.Views.InfoView
+    , PhotoListView = App.Photos.Views.ListView
+    , Layout = People.Views.Layout;
+
 	People.Router = Marionette.AppRouter.extend({
 		appRoutes: {
     	"people"           	        : "index"
@@ -24,7 +35,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
     }
 
   , reset: function() {
-      this.people = new People.Models.People();
+      this.people = new Peoples();
       this.person = null;
 
       App.vent.on("security:signedout", this.reset, this);
@@ -52,8 +63,8 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
         });
 
       this.constructLayout(
-        new App.Views.HelpView({ section: "people" })
-      , new People.Views.MenuView({ model: this.person, page: "" }));
+        new HelpView({ section: "people" })
+      , new MenuView({ model: this.person, page: "" }));
 
       App.vent.trigger("message:show", { type: "info", text: i18n.t("people.not_selected") });
 		} 
@@ -77,7 +88,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , loadPerson: function(id) {
       var that = this;
 
-      this.person = new People.Models.Person({ id: id });
+      this.person = new Person({ id: id });
 
       this.people.fetch()
         .success(function() {
@@ -96,19 +107,19 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       this.selectMenu();
       this.loadPerson(id);
       this.constructLayout(
-        new People.Views.SummaryView({ model: this.person })
-      , new People.Views.MenuView({ model: this.person, page: page })
+        new SummaryView({ model: this.person })
+      , new MenuView({ model: this.person, page: page })
       , this.getPersonView(page)
       , page);
     }
 
   , constructLayout: function(aside, menu, inner, page) {
-      var filter = new People.Views.FilterView({ collection: this.people, model: this.person })
-        , selector = new People.Views.SelectorView({ collection: this.people, selected: this.person, page: page });
+      var filter = new FilterView({ collection: this.people, model: this.person })
+        , selector = new SelectorView({ collection: this.people, selected: this.person, page: page });
 
       App.vent.trigger("message:clear");
 
-      this.layout = new People.Views.Layout({
+      this.layout = new Layout({
         aside:      aside
       , filter:     filter 
       , selector:   selector
@@ -121,8 +132,10 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
       App.layout.main.show(this.layout);
     }
 
-  , selectPerson: function(person, page) {
+  , selectPerson: function(person, page, url) {
       if (this.layout == null) return;
+
+      People.router.navigate(url, false);
  
       App.vent.trigger("message:clear");
 
@@ -130,13 +143,15 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
       this.layout.filter.currentView.model = this.person;
 
-      this.layout.menu.show(new People.Views.MenuView({ model: this.person, page: page || "info" }));
-      this.layout.aside.show(new People.Views.SummaryView({ model: this.person }));
+      this.layout.menu.show(new MenuView({ model: this.person, page: page || "info" }));
+      this.layout.aside.show(new SummaryView({ model: this.person }));
       this.layout.inner.show(this.getPersonView(page));
     }
 
-  , selectPersonPage: function(page) {
+  , selectPersonPage: function(page, url) {
       if (this.layout == null) return; 
+
+      People.router.navigate(url, false);
 
       App.vent.trigger("message:clear");
 
@@ -145,13 +160,22 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
   , getPersonView: function(page) {
       switch(page) {
+
+        case "permissions":
+          break;
+
+        case "documents":
+          break;
+
         case "photos":
           this.person.photos.fetch();
-          return new App.Photos.Views.ListView({ collection: this.person.photos });
+          return new PhotoListView({ collection: this.person.photos });
 
         case "info":
         default:
-          return new People.Views.InfoView({ model: this.person });
+          var view = new InfoView({ model: this.person });
+          Backbone.Validation.bind(view); // TODO Move this
+          return view;
       }
     }
 	});

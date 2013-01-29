@@ -1,6 +1,12 @@
 Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
-  var PROOF_AUTH_COOKIE = "proof_auth";
+  var PROOF_AUTH_COOKIE = "proof_auth"
+    , Region = Marionette.Region
+    , User = App.Security.Models.User
+    , SignOn = App.Security.Models.SignOn
+    , Messages = App.Models.Messages
+    , Message = App.Models.Message
+    , MessageListView = App.Views.MessageListView;
 
 	_.extend(App, {
 
@@ -18,7 +24,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       $.cookie(PROOF_AUTH_COOKIE, id);
 
       // Now load user from session
-      Global.currentUser = new App.Security.Models.User({ id: id });
+      Global.currentUser = new User({ id: id });
       
       Global.currentUser.fetch()
         .done(function() {
@@ -33,7 +39,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       var authCookie = $.cookie(PROOF_AUTH_COOKIE);
       
       if (authCookie != null) {
-        var session = new App.Security.Models.SignOn({ id: authCookie })
+        var session = new SignOn({ id: authCookie })
           , promise = session.fetch({ async: false });                      // TODO add to Q
 
         promise.done(function() {
@@ -52,8 +58,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	,	signOut: function() {
       if (this.session) this.session.destroy();
 
-      Global.session = new App.Security.Models.SignOn();
-      Global.currentUser = new App.Security.Models.User();
+      Global.session = new SignOn();
+      Global.currentUser = new User();
 
       // Clear auth cookie
       $.removeCookie(PROOF_AUTH_COOKIE);
@@ -67,19 +73,19 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 
   , showMessage: function(data) {
       if (this.messages == null) {
-        this.messages = new App.Models.Messages();
+        this.messages = new Messages();
       } else {
         if (this.messageRegion) this.messageRegion.close();
       }
 
       if (!_.isObject(data)) data = { text: data };
-      var message = new App.Models.Message(data);
+      var message = new Message(data);
 
       if (message.isError()) this.messages.clearNonErrors();
       if ((!message.isError() && !this.messages.hasErrors()) || message.isError()) this.messages.add(message);
 
-      this.messageRegion = new Marionette.Region({ el: "#message" });
-      this.messageRegion.show(new App.Views.MessageListView({ collection: this.messages }));
+      this.messageRegion = new Region({ el: "#message" });
+      this.messageRegion.show(new MessageListView({ collection: this.messages }));
     }
 
   , clearMessages: function() {

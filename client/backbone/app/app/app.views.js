@@ -1,5 +1,11 @@
 Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
+  var Renderer = Marionette.Renderer
+    , Region = Marionette.Region
+    , Help = App.Models.Help
+    , SignedOnView = App.Security.Views.SignedOnView
+    , SignedOutView = App.Security.Views.SignedOutView;
+
   Views.ModalRegion = Marionette.Region.extend({
     
     el: "#modal"
@@ -35,7 +41,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   , initialize: function(options) {
       var section = options.section;
 
-      this.model = new App.Models.Help({
+      this.model = new Help({
         title: "main." + section
       , content: "help:" + section
       });
@@ -72,7 +78,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , render: function() {
-      this.$el.html(Marionette.Renderer.render(this.template, this));
+      this.$el.html(Renderer.render(this.template, this));
       this.bindUIElements();
       this.select(App.Global.section);
     }
@@ -100,7 +106,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , render: function() {
-      this.$el.html(Marionette.Renderer.render(this.template, this));
+      this.$el.html(Renderer.render(this.template, this));
 
       this.bindUIElements();
       this.changeLocale(i18n.lng());
@@ -131,8 +137,8 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
       options = options || {};
       this.locale = options.locale;
 
-      this.security = new Marionette.Region({ el: "#security" });
-      this.locale = new Marionette.Region({ el: "#locale" });
+      this.security = new Region({ el: "#security" });
+      this.locale = new Region({ el: "#locale" });
       
       App.vent.on("security:signedon", this.reload, this);
       App.vent.on("security:signedout", this.reload, this);
@@ -140,7 +146,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , render: function() {
-      this.$el.html(Marionette.Renderer.render(this.template, this));
+      this.$el.html(Renderer.render(this.template, this));
     }
 
   , reload: function(session, user) {
@@ -157,11 +163,11 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , showSignedOut: function() {
-      this.security.show(new App.Security.Views.SignedOutView());
+      this.security.show(new SignedOutView());
     }
 
   , showSignedOn: function(session) {
-      this.security.show(new App.Security.Views.SignedOnView({ model: session }));
+      this.security.show(new SignedOnView({ model: session }));
     }
 
   , showLocale: function() {

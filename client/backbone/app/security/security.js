@@ -1,5 +1,8 @@
 Proof.module("Security", function(Security, App, Backbone, Marionette, $, _) {
   
+  var Layout = Security.Views.Layout
+    , SidebarView = Security.Views.SidebarView;
+
   Security.Router = Marionette.AppRouter.extend({
     appRoutes: {
       "profile"           : "profile"
@@ -12,11 +15,8 @@ Proof.module("Security", function(Security, App, Backbone, Marionette, $, _) {
     }
 
   , profile: function() {
-      this.sidebarView = new Security.Views.SidebarView();
-
-      this.layout = new Security.Views.Layout();
-      this.layout.attachViews({ 
-        sidebar: this.sidebarView
+      this.layout = new Layout({
+        sidebar: new SidebarView()
       });
       this.layout.render();
 

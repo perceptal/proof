@@ -16,12 +16,10 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , onRender: function() {
       this.delegateEvents();
-
+      
       if (this.ui.selects) this.ui.selects.select2({ minimumResultsForSearch: 9999 });
-
-      Backbone.Validation.bind(this);
     }
-  
+
   , onKeypress: function(e) {
       if (e.keyCode === 13) this.onChange(e);
     }

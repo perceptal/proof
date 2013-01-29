@@ -44,22 +44,6 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
 		}
 
 	, register: function(e) {
-			// var that = this
-			//   , promise = this.model.save();
-
-			// promise.done(function(data) {
-			// 	App.vent.trigger("security:signon", new App.Security.Models.SignOn(data));
-			// 	that.close();
-			// });
-
-			// promise.fail(function(response) {	
-			// 	if (response.status === 404) {
-			// 		that.alert("You have entered invalid credentials.");
-			// 	} else if (response.status === 500) {
-			// 		that.alert("Application error, please try again.");
-			// 	}
-			// 	that.setFocus();
-			// });
 		}
 
 	, alert: function(message) {

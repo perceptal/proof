@@ -26,7 +26,7 @@ module.exports = function(app, models, util, authenticate, authorize) {
   app.get("/api/people/:person/photos"
   // , authenticate.basic()
   , function(req, res, next) {
-      Photo.find({ person: req.params.person }, function(err, photos) {
+      Photo.find({ owner: req.params.person }, function(err, photos) {
         if (err) return next(err);
         return res.send(200, photos);
       });

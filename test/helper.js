@@ -61,7 +61,8 @@ Helper.prototype.seed = function(seed, callback) {
       , model = item.model
       , link = item.link
       , prop = item.property
-      , bidirectional = item.bidirectional;
+      , bidirectional = item.bidirectional
+      , fk = item.fk;
 
     var build = function(item, options) {
       var o = {};
@@ -70,7 +71,10 @@ Helper.prototype.seed = function(seed, callback) {
       });
 
       // Link back
-      if (options && options.bidirectional) o[model.toLowerCase()] = options.model;
+      if (options && options.bidirectional) {
+        if (options.fk == null) options.fk = model.toLowerCase();
+        o[options.fk] = options.model._id;
+      }
 
       return o;
     }
@@ -98,7 +102,7 @@ Helper.prototype.seed = function(seed, callback) {
           _.each(item[prop], function(p) {
             var thing = _.isObject(p) ? p : { name: p }
             
-            Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m }), { upsert: true }, function(err, l) {
+            Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m, fk: fk }), { upsert: true }, function(err, l) {
               m[prop].push(l);
 
               l.save(function(err, l) {   // Not necessary but HACK to force middleware save on photo  

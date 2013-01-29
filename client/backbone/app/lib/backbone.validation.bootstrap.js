@@ -39,7 +39,7 @@ _.extend(Backbone.Validation.callbacks, {
     }
     else if (control.data("error-style") === "inline") {
       if (group.find(".help-inline").length === 0) {
-        group.find("label").append("<span class=\"help-inline error-message\"></span>");
+        group.find("label").append("<span class='help-inline error-message'></span>");
       }
 
       var target = group.find(".help-inline");
@@ -47,7 +47,7 @@ _.extend(Backbone.Validation.callbacks, {
     }
     else {
       if (group.find(".help-block").length === 0) {
-        group.find(".controls").append("<p class=\"help-block error-message\"></p>");
+        group.find(".controls").append("<p class='help-block error-message'></p>");
       }
 
       var target = group.find(".help-block");

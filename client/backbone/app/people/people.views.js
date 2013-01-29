@@ -1,6 +1,10 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  Views.InfoView = App.Common.Views.FormView.extend({
+  var PagingView = App.Views.PagingView
+    , Region = Marionette.Region
+    , FormView = App.Common.Views.FormView;
+
+  Views.InfoView = FormView.extend({
     template: "people/info"
 
   , ui: {
@@ -64,6 +68,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       if (this.collection.length === 1 && this.model !== this.collection.first()) {
         this.collection.clearActive();
         this.collection.first().set("active", "active");
+
         App.vent.trigger("people:selected", this.collection.first());
       }
     }
@@ -125,11 +130,12 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
       if (this.model == null) return false;
 
-      var page = $(e.currentTarget).data("page");
+      var page = $(e.currentTarget).data("page")
+        , url = $(e.currentTarget).attr("href");
+
       this.select(page);
 
-      App.People.router.navigate($(e.currentTarget).attr("href"), false);
-      App.vent.trigger("people:navigate", page);
+      App.vent.trigger("people:navigate", page, url);
     }
 
   });
@@ -158,13 +164,13 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
         , id = $link.data("id")
         , page = $link.data("page");
       
-      App.People.router.navigate(url);
-      App.vent.trigger("people:selected", this.collection.get(id), page);
+      App.vent.trigger("people:selected", this.collection.get(id), page, url);
     }
 	});
 
   Views.NoItemsView = Marionette.ItemView.extend({
     template: "people/empty"
+
   });
 
 	Views.SelectorView = Marionette.CompositeView.extend({
@@ -200,8 +206,8 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , onRender: function() {
       if (this.pagination) this.pagination.reset();
-      this.pagination = new Marionette.Region({ el: ".pagination" });
-      this.pagination.show(new App.Views.PagingView({ model: this.collection }));
+      this.pagination = new Region({ el: ".pagination" });
+      this.pagination.show(new PagingView({ model: this.collection }));
 
       if (this.collection.length > 0 && this.collection.length < 10) {
         for(var i=0; i<(10-this.collection.length); i++)
