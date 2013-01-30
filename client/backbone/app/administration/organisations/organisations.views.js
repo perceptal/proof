@@ -1,12 +1,12 @@
-Proof.module("Home.Views", function(Views, App, Backbone, Marionette, $, _) {
+Proof.module("Administration.Organisations.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   Views.NavigationView = Marionette.ItemView.extend({
-    template: "home/navigation"
+    template: "administration/organisations/navigation"
 
   });
 
   Views.Layout = Marionette.Layout.extend({
-    template: "home/layout"
+    template: "administration/organisations/layout"
 
   , regions: {
         "navigation":     "#top"

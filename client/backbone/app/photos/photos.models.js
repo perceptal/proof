@@ -1,6 +1,9 @@
 Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _, Paginator) {
 
-  Models.Photo = Backbone.ModelFactory({ });
+  Models.Photo = Backbone.ModelFactory({ 
+    urlRoot: "/api/photos"
+
+  });
 
   Models.Photos = Backbone.Collection.extend({
     model: Models.Photo

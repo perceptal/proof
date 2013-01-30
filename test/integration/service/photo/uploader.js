@@ -9,7 +9,7 @@ var _ = require("underscore")
 var test = function(photo) {
 
   var cleanup = function(done) {
-    this.sut.delete(done);
+    this.sut.delete(this.sut.name, done);
   }
 
   describe("when uploading #" + photo, function() {

@@ -11,6 +11,9 @@
   , "last": "Dernier"
   , "previous": "Précédent"
   , "next": "Suivant"
+  , "yes": "Oui"
+  , "no": "Non"
+  , "are_you_sure": "Etes-vous sûr?"
   }
 , "main" : { 
     "title": "Preuve"
@@ -18,6 +21,7 @@
   , "people": "Personnes" 
   , "person": "Personne" 
   , "administration": "Gestion"
+  , "organisations": "Organisations"
   , "about": "Au Sujet De"
   , "support": "Soutenir"
   }
@@ -51,15 +55,25 @@
   , "gender": "Sexe"
   , "title": "Titre"
   , "info": "$t(general.info)"
-  , "photo": "Photo"
-  , "document": "Document"
-  , "photos": "Les Photos"
-  , "documents": "Documents"
-  , "upload_photo": "$t(general.upload) $t(people.photo)"
-  , "upload_doc": "$t(general.upload) $t(people.document)"
   , "permissions": "Autorisations"
   , "archive": "$t(general.archive)"
   , "not_selected": "S'il vous plaît choisir quelqu'un de la liste."
+  }
+, "photos": {
+    "photo": "Photo"
+  , "photos": "Les Photos"
+  , "delete": "Êtes-vous sûr de vouloir supprimer cette $t(photos.photo)?"
+  , "deleted": "La $t(photos.photo) a été supprimée."
+  , "upload": "$t(general.upload) $t(photos.photo)"
+  , "not_found": "Il n'y a $t(photos.photo) trouvés."
+  }
+, "documents": {
+    "photo": "Document"
+  , "photos": "Documents"
+  , "delete": "Êtes-vous sûr de vouloir supprimer cette $t(documents.document)?"
+  , "deleted": "Le $t(documents.document) a été supprimée."
+  , "upload": "$t(general.upload) $t(documents.document)"
+  , "not_found": "Il n'y a $t(documents.document) trouvés."
   }
 , "male": "Masculin"
 , "female": "Féminin"

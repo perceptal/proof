@@ -9,6 +9,7 @@ module.exports.init = function(app, models) {
 	[
       { name: "people"           , thing: "person" }
     , { name: "people/photos"    , thing: "person" }
+    , { name: "photos" }
     , { name: "sessions" }
     , { name: "sessions/config" }
 	  , { name: "users"            , thing: "user" }

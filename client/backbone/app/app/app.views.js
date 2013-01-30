@@ -53,10 +53,13 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , ui: {
       "alert": ".alert"
+    , "yes": "button.yes"
+    , "no": "button.no"
     }
 
   , initialize: function() {
       this.model.on("change", this.render, this);
+      if (this.model.isQuestion()) this.template = "app/question";
     }
 
   , onRender: function() {
@@ -67,7 +70,20 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
         collection.off("change");
         collection.remove(model);
       });
+
+      if (this.model.isQuestion()) this.setupQuestion();
     }
+
+  , setupQuestion: function() {
+      var alert = this.ui.alert
+        , confirm = this.model.get("confirm");
+
+      this.ui.yes.bind("click", this.model.get("confirm"));
+      this.ui.no.bind("click", function() {
+        alert.alert("close");
+      });
+    }
+  
   });
 
   Views.MessageListView = Marionette.CollectionView.extend({

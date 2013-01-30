@@ -384,6 +384,8 @@ form.box .buttons {
 }
 form.box input {
   border-color: #aaa;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
 }
 form.box .control-group.error label {
   color: #b94a48;
@@ -414,9 +416,21 @@ form.box input.required {
 .select2-container {
   margin-bottom: 10px;
 }
+.select2-container a {
+  -webkit-border-radius: 1px !important;
+  border-radius: 1px !important;
+}
 .select2-choice {
   background-image: none !important;
   background-color: #fff !important;
+}
+.select2-results .select2-highlighted {
+  -webkit-border-radius: 1px !important;
+  border-radius: 1px !important;
+}
+.select2-drop {
+  -webkit-border-radius: 0 0 1px 1px !important;
+  border-radius: 0 0 1px 1px !important;
 }
 .image {
   -webkit-border-radius: 8px;

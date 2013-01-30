@@ -7,10 +7,13 @@ var fs = require("fs")
 var Uploader = function(options) {
   if (!(this instanceof Uploader)) return new Uploader(options);
 
-  this.path = path.resolve(options.path);
-  this.directory = path.dirname(options.path);
-  this.extension = path.extname(options.path);
-  this.name = path.basename(options.path);
+  if (options) {
+    this.path = path.resolve(options.path);
+    this.directory = path.dirname(options.path);
+    this.extension = path.extname(options.path);
+    this.name = path.basename(options.path);
+  }
+
   this.client = knox.createClient({
     key: configuration("S3:KEY")
   , secret: configuration("S3:SECRET")
@@ -49,8 +52,8 @@ Uploader.prototype.put = function(callback) {
   });
 }
 
-Uploader.prototype.delete = function(callback) {
-  this.client.deleteFile(this.name, function(err, res) {
+Uploader.prototype.delete = function(name, callback) {
+  this.client.deleteFile(name, function(err, res) {
     callback(err);
   });
 }

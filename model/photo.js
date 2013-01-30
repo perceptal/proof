@@ -50,6 +50,14 @@ PhotoSchema.pre("save", function(next) {
   }, next);
 });
 
+PhotoSchema.post("remove", function(photo) {
+  async.forEach(photo.sizes, function(size, callback) {
+    new Uploader().delete(size + "." + photo.name, callback);
+  }, function() {
+    // noop
+  });
+});
+
 PhotoSchema.methods.download = function(size, callback) {
   new Uploader({ path: [ size, this.name ].join(".") }).get(function(err, image) {
     callback(err, image, crypto.createHash("md5").update(new Buffer(image)).digest("hex"));

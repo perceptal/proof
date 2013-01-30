@@ -11,6 +11,9 @@
   , "last": "Last"
   , "previous": "Previous"
   , "next": "Next"
+  , "yes": "Yes"
+  , "no": "No"
+  , "are_you_sure": "Are you sure?"
   }
 , "main" : { 
     "title": "Proof"
@@ -18,6 +21,7 @@
   , "people": "People" 
   , "person": "Person"
   , "administration": "Administration"
+  , "organisations": "Organisations"
   , "about": "About"
   , "support": "Support"
   }
@@ -51,15 +55,24 @@
   , "telephone": "Telephone"
   , "title": "Title"
   , "info": "$t(general.info)"
-  , "photo": "Photo"
-  , "document": "Document"
-  , "photos": "Photos"
-  , "documents": "Documents"
-  , "upload_photo": "$t(general.upload) $t(people.photo)"
-  , "upload_doc": "$t(general.upload) $t(people.document)"
   , "permissions": "Permissions"
   , "archive": "$t(general.archive)"
   , "not_selected": "Please select someone from the list."
+  }
+, "photos": {
+    "photo": "Photo"
+  , "photos": "Photos"
+  , "delete": "Are you sure you want to delete this $t(photos.photo)?"
+  , "deleted": "The $t(photos.photo) has been deleted."
+  , "upload": "$t(general.upload) $t(photos.photo)"
+  , "not_found": "There are no $t(photos.photos) found."
+  }
+, "documents": {
+    "photo": "Document"
+  , "photos": "Documents"
+  , "delete": "Are you sure you want to delete this $t(documents.document)?"
+  , "deleted": "The $t(documents.document) has been deleted."
+  , "upload": "$t(general.upload) $t(documents.document)"
   }
 , "male": "Male"
 , "female": "Female"

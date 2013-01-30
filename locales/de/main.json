@@ -11,6 +11,9 @@
   , "last": "Letzte"
   , "previous": "Früher"
   , "next": "Nächste"
+  , "yes": "Ja"
+  , "no": "Nein"
+  , "are_you_sure": "Sind sie sicher?"
   }
 , "main" : { 
     "title": "Beweis"
@@ -18,6 +21,7 @@
   , "people": "Menschen" 
   , "person": "Person"
   , "administration": "Verwaltung"
+  , "organisations": "Organisationen"
   , "about": "Um"
   , "support": "Unterstützen"
   }
@@ -51,15 +55,25 @@
   , "gender": "Geschlecht"
   , "title": "Name"
   , "info": "$t(general.info)"
-  , "photo": "Foto"
-  , "document": "Dokument"
-  , "photos": "Photos"
-  , "documents": "Unterlagen"
-  , "upload_photo": "$t(general.upload) $t(people.photo)"
-  , "upload_doc": "$t(general.upload) $t(people.document)"
   , "permissions": "Berechtigungen"
   , "archive": "$t(general.archive)"
   , "not_selected": "Bitte wählen sie jemanden aus der liste."
+  }
+, "photos": {
+    "photo": "Foto"
+  , "photos": "Photos"
+  , "delete": "Sind sie sicher, dass sie diese $t(photos.photo) löschen?"
+  , "deleted": "Das $t(photos.photo) wurde gelöscht."
+  , "upload": "$t(general.upload) $t(photos.photo)"
+  , "not_found": "Es gibt keine übereinstimmenden $t(photos.photos) gefunden."
+  }
+, "documents": {
+    "photo": "Dokument"
+  , "photos": "Unterlagen"
+  , "delete": "Sind sie sicher, dass sie dieses $t(documents.document) löschen?"
+  , "deleted": "Das $t(documents.document) wurde gelöscht."
+  , "upload": "$t(general.upload) $t(documents.document)"
+  , "not_found": "Es gibt keine übereinstimmenden $t(documents.documents) gefunden."
   }
 , "male": "Männlich"
 , "female": "Weiblich"

@@ -4,11 +4,17 @@ Proof.module("Models", function(Models, App, Backbone, Marionette, $, _) {
 
 	Models.Message = Backbone.Model.extend({
 		defaults: {
-			type: "error"
+			type  : "error"
+    , yes   : "general.yes"
+    , no    : "general.no"
 		}
 
   , initialize: function(attributes, options) {
-      this.set("icon", this.icon(attributes.type || this.defaults.type));
+      var type = attributes.type || this.defaults.type;
+      this.set("icon", this.icon(type));
+      this.set("color", this.color(type));
+      this.set("heading", this.heading(type, attributes.heading));
+
       this.init && this.init(attributes, options);
     }
 
@@ -17,12 +23,31 @@ Proof.module("Models", function(Models, App, Backbone, Marionette, $, _) {
         error: "ban-circle"
       , exclamation: "exclamation-sign"
       , info: "info-sign"
+      , question: "info-question-sign"
       }
       return "icon-" + icons[type];
     }
 
   , isError: function() {
       return this.get("type") === "error";
+    }
+
+  , isQuestion: function() {
+      return this.get("type") === "question";
+    }
+
+  , color: function(type) {
+      return type === "question" ? "error" : type;
+    }
+
+  , heading: function(type, heading) {
+      if (heading) {
+        return heading;
+      } else {
+        if (type === "question") {
+          return i18n.t("general.are_you_sure");
+        }
+      };
     }
 	});
 
