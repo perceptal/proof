@@ -68,8 +68,8 @@
   , "not_found": "There are no $t(photos.photos) found."
   }
 , "documents": {
-    "photo": "Document"
-  , "photos": "Documents"
+    "document": "Document"
+  , "documents": "Documents"
   , "delete": "Are you sure you want to delete this $t(documents.document)?"
   , "deleted": "The $t(documents.document) has been deleted."
   , "upload": "$t(general.upload) $t(documents.document)"

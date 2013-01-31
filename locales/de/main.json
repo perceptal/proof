@@ -68,8 +68,8 @@
   , "not_found": "Es gibt keine übereinstimmenden $t(photos.photos) gefunden."
   }
 , "documents": {
-    "photo": "Dokument"
-  , "photos": "Unterlagen"
+    "document": "Dokument"
+  , "documents": "Unterlagen"
   , "delete": "Sind sie sicher, dass sie dieses $t(documents.document) löschen?"
   , "deleted": "Das $t(documents.document) wurde gelöscht."
   , "upload": "$t(general.upload) $t(documents.document)"
