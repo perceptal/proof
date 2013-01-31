@@ -3,7 +3,7 @@ var mongoose = require("mongoose")
   ;
 
 module.exports = function(name, connection) {
-  var Schema = require("./" + name);
+  var Schema = require("./" + name)(connection);
 
   common(Schema);
 

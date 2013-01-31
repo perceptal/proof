@@ -5,8 +5,7 @@ module.exports.init = function(connection) {
 	var models = {};
 
 	[
-			{ name: "Claim" }
-    , { name: "Account" }
+      { name: "Account" }
     , { name: "Group" }
     , { name: "Person" }
     , { name: "Role" }

@@ -1,12 +1,13 @@
 [
-  { "name": "system", "code": "380800", "isParent": true, "level": 1
+  { "name": "system", "code": "380800", "securityKey": { "low": 0, "high": 99999999999 }
   , "roles": [ "system" ] 
+  , "children": [ "demo" ]
   , "people": [
       { "name": "sys", "firstName": "System", "lastName": "Administrator", "code": "380800" }
     , { "name": "johnny", "firstName": "Johnny", "lastName": "Hall", "code": "380800", "gender": "male", "title": "Mr", "dob": "1971-05-14" }
     ]
   }
-, { "name": "demo", "code": "999999", "isParent": true, "level": 2
+, { "name": "demo", "code": "999999"
   , "roles": [ "administrator", "manager", "staff", "customer" ] 
   , "people": [
       { "name": "angelina", "firstName": "Angelina", "lastName": "Jolie", "gender": "female", "title": "Mrs", "dob": "1975-06-04" }

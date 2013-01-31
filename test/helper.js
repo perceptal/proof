@@ -62,6 +62,7 @@ Helper.prototype.seed = function(seed, callback) {
       , link = item.link
       , prop = item.property
       , bidirectional = item.bidirectional
+      , embedded = item.embedded
       , fk = item.fk;
 
     var build = function(item, options) {
@@ -102,15 +103,20 @@ Helper.prototype.seed = function(seed, callback) {
           _.each(item[prop], function(p) {
             var thing = _.isObject(p) ? p : { name: p }
             
-            Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m, fk: fk }), { upsert: true }, function(err, l) {
-              m[prop].push(l);
+            if (embedded) { // Embedded item
+              m[prop].push(build(thing, { bidirectional: false, model: m, fk: fk }));
+              save(m, data, item, callback);
+            } else {        // Separate collection
+              Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m, fk: fk }), { upsert: true }, function(err, l) {
+                m[prop].push(l);
 
-              l.save(function(err, l) {   // Not necessary but HACK to force middleware save on photo  
-                if (_.last(item[prop]) === p) {
-                  save(m, data, item, callback);
-                }
+                l.save(function(err, l) {   // Not necessary but HACK to force middleware save on photo  
+                  if (_.last(item[prop]) === p) {
+                    save(m, data, item, callback);
+                  }
+                });
               });
-            });
+            }
           });
         }
       });
