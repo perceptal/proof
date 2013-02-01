@@ -1,5 +1,5 @@
 [
-  { "name": "test", "code": "123456"
+  { "name": "test", "code": "123456", "securityKey": { "low": 0, "high": 999999 }
     , "roles": [ "manager", "administrator" ] 
     , "people": [
         { "name": "john", "firstName": "John", "lastName": "Doe", "code": "123456", "gender": "male", "title": "Mr" }

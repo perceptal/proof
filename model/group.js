@@ -34,12 +34,13 @@ module.exports = function(connection) {
     var QUOTAS = [ 1, 100000, 1000 ]
       , group = this
       , Group = connection.model("group", GroupSchema);
-    
+
     Group.findOne({ _id: group.parent }).populate("children", "id", { _id: { $ne: group.id }}).exec(function(err, parent) {
       if (err) return next(err);
       if (!parent) return next();
 
       group.level = parent.level + 1;
+
       var key = parent.securityKey
         , range = (key.high / QUOTAS[group.level])
         , count = parent.children.length;
@@ -49,7 +50,9 @@ module.exports = function(connection) {
       , high : parseInt((((count + 1) * range) + key.low - 1), 10)
       };
 
-      next();
+      // Link back
+      parent.children.push(group);
+      parent.save(next)
     });
   });
 

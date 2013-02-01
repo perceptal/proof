@@ -1,16 +1,11 @@
-var ANON = "anonymous";
+var ANON = "anonymous"
+  , error = require("../resource/util").error;
 
 var Authenticate = function(models) {
   if (!this instanceof Authenticate) return new Authenticate(models);
 
   this.models = models;
 }
-
-var error = function(code, msg) {
-  var err = new Error(msg || require("http").STATUS_CODES[code]);
-  err.status = code;
-  return err;
-};
 
 var populate = function(name, session, callback) {
 

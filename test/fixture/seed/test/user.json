@@ -1,15 +1,15 @@
 [
   { "name": "john", "password": "secret"
-    , "people": [ "john" ]
-    , "accounts": [ 
-        { "name": "john", "network": "facebook", "networkId": "123456" } 
-      , { "name": "john", "network": "twitter", "networkId": "123456" } 
-      ] 
+  , "people": [ "john" ]
+  , "accounts": [ 
+      { "name": "john", "network": "facebook", "networkId": "123456" } 
+    , { "name": "john", "network": "twitter", "networkId": "123456" } 
+    ] 
   }
 , { "name": "jane", "password": "secret"
-    , "accounts": [ 
-        { "name": "jane", "network": "facebook", "networkId": "654321" } 
-      , { "name": "jane", "network": "twitter", "networkId": "654321" } 
-      ] 
+  , "accounts": [ 
+      { "name": "jane", "network": "facebook", "networkId": "654321" } 
+    , { "name": "jane", "network": "twitter", "networkId": "654321" } 
+    ] 
   }
 ]

@@ -7,7 +7,9 @@
     , { "name": "johnny", "firstName": "Johnny", "lastName": "Hall", "code": "380800", "gender": "male", "title": "Mr", "dob": "1971-05-14" }
     ]
   }
+, { "name": "demo:archive", "code": "999999" }
 , { "name": "demo", "code": "999999"
+  , "children": [ "demo:archive" ]
   , "roles": [ "administrator", "manager", "staff", "customer" ] 
   , "people": [
       { "name": "angelina", "firstName": "Angelina", "lastName": "Jolie", "gender": "female", "title": "Mrs", "dob": "1975-06-04" }

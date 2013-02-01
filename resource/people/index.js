@@ -3,7 +3,8 @@ module.exports = function(app, models, util, authenticate, authorize) {
 	var Person = models.Person;
 
 	app.get("/api/people"
-	, authenticate.basic(), authorize.can()
+	, authenticate.basic()
+	, authorize.can()
   , function(req, res, next) {
 
 			Person.findAndPopulate({}, function(err, people) {

@@ -1,5 +1,9 @@
 [
-  { "name": "angelina", "code": "999999"
+  { "name": "system", "roles": [ "system" ]
+  }
+, { "name": "johnny", "roles": [ "system" ]
+  }
+, { "name": "angelina", "code": "999999"
   , "roles": [ "administrator" ]
   , "photos": [ 
       { "name": "test/fixture/seed/demo/photo/angelina.jpg", "isDefault": true, "caption": "Angelina Jolie" }
