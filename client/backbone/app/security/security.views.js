@@ -1,5 +1,24 @@
 Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) {
 
+  var FormView = App.Common.Views.FormView;
+
+  Views.RoleView = FormView.extend({
+    template: "security/role"
+
+  , ui: {
+      name : "input#name"
+    }
+
+  , messages: {
+      error: "security.role"
+    }
+
+  , initialize: function() {
+      this.autoSave = false;
+      this.focus = "name";
+    }
+  });
+
 	Views.RegisterView = Marionette.ItemView.extend({
 	  template: "security/register"
   

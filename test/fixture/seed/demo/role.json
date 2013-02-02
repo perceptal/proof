@@ -5,6 +5,10 @@
     , { "name": "person:read", "thing": "person", "right": "read" } 
     , { "name": "person:update", "thing": "person", "right": "update" } 
     , { "name": "person:delete", "thing": "person", "right": "delete" } 
+    , { "name": "group:create", "thing": "group", "right": "create" } 
+    , { "name": "group:read", "thing": "group", "right": "read" } 
+    , { "name": "group:update", "thing": "group", "right": "update" } 
+    , { "name": "group:delete", "thing": "group", "right": "delete" } 
     ] 
   }
 , { "name": "administrator"

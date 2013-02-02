@@ -3,6 +3,9 @@ Proof.module("Security.Models", function(Models, App, Backbone, Marionette, $, _
   var ANONYMOUS = "anonymous"
     , NO_SESSION = "|";
 
+  var SecuredModel = App.Common.Models.SecuredModel
+    , SecuredCollection = App.Common.Models.SecuredCollection;
+
 	Models.SignOn = Backbone.Model.extend({
 		defaults: {
 			name: ANONYMOUS
@@ -23,14 +26,41 @@ Proof.module("Security.Models", function(Models, App, Backbone, Marionette, $, _
     }
 	});
 
-	Models.User = Backbone.Model.extend({
+	Models.User = SecuredModel.extend({
 		urlRoot: "/api/users"
 
 	});
 
-	Models.Users = Backbone.Collection.extend({
+	Models.Users = SecuredCollection.extend({
 		url: "/api/users"
 	
   });
 
+  Models.Role = SecuredModel.extend({ 
+    urlRoot: "/api/roles"
+
+  , validation: {
+      name: {
+        required: true
+      , msg: "validation:required"
+      }
+    }
+
+  });
+
+  Models.Roles = SecuredCollection.extend({
+    model: Models.Role
+
+  , initialize: function(attributes, options) {
+      options || (options = {});
+      this.bind("error", this.defaultErrorHandler, this);
+      this.init && this.init(attributes, options);
+
+      this.parent = options.parent;
+    }
+
+  , url: function() {
+      return "/api/" + this.parent.name + "/" + this.parent.id + "/roles";
+    }
+  });
 });

@@ -12,6 +12,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       "keypress input"          : "onKeypress"
     , "change   input"          : "onChangeInput"
     , "change   select"         : "onChangeSelect"
+    , "click    button#save"    : "onSave"
     }
 
   , onRender: function() {
@@ -41,8 +42,8 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , onChange: function(prop, field, value) {
-      var model = this.model
-        , previous = this.model.get(prop)
+      var model = this.model;
+          previous = this.model.get(prop)
         , messages = this.messages;
       
       this.model.off("change", this.render, this);    // Remove change event to ensure focus fires
@@ -50,24 +51,42 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.model.set(prop, value);
       
       if (this.model.isValid(true)) {
+        if (this.autoSave) {
+          this.save(function() { model.set(prop, value); }, function() { model.set(prop, previous); })
+        }
+      } else {
+        this.model.set(prop, previous);
+      }
+    }
+
+    , onSave: function(e) {
+        e.preventDefault();
+
+        if (this.model.isValid(true)) {
+          this.save();
+        };
+      }
+
+    , save: function(success, fail) {
+        var model = this.model;
+        
         this.model.save()  
           .success(function() {
-            model.set(prop, value);
+            if (success) success(); 
             App.vent.trigger("message:clear");
           })
           
           .fail(function() {
-            model.set(prop, previous);
+            if (fail) fail();
             App.vent.trigger("message:show", i18n.t("error:" + messages.error));
           })
 
           .always(function() {
             model.on("change", this.render, this);    // Rebind change event
           });
-      } else {
-        this.model.set(prop, previous);
+
+        return false;
       }
-    }
   });
 
 });

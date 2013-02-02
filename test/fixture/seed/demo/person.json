@@ -1,5 +1,5 @@
 [
-  { "name": "system", "roles": [ "system" ]
+  { "name": "sys", "roles": [ "system" ]
   }
 , { "name": "johnny", "roles": [ "system" ]
   }

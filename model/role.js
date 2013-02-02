@@ -11,6 +11,7 @@ module.exports = function(connection) {
 
   var RoleSchema = new Schema({
       name              : { type: String, required: true, lowercase: true, index: true }
+    , group             : { type: Schema.ObjectId, ref: "group" }
     , claims            : [ ClaimSchema ]
   });
 

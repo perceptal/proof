@@ -54,7 +54,7 @@ Proof.module("Common.Models", function(Models, App, Backbone, Marionette, $, _, 
     }
   });
 
-  Models.Model = Backbone.Model.extend({
+  Models.SecuredModel = Backbone.Model.extend({
 
     sync: function(method, model, options) {
       return this._super(method, model, setAuthorizationHeader(options));

@@ -1,17 +1,17 @@
-Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
+Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 
-  var Peoples = People.Models.People
-    , Person = People.Models.Person
+  var People = Manager.Models.People
+    , Person = Manager.Models.Person
     , HelpView = App.Views.HelpView
-    , MenuView = People.Views.MenuView
-    , SelectorView = People.Views.SelectorView
-    , FilterView = People.Views.FilterView
-    , SummaryView = People.Views.SummaryView
-    , InfoView = People.Views.InfoView
+    , MenuView = Manager.Views.MenuView
+    , SelectorView = Manager.Views.SelectorView
+    , FilterView = Manager.Views.FilterView
+    , SummaryView = Manager.Views.SummaryView
+    , InfoView = Manager.Views.InfoView
     , PhotoListView = App.Photos.Views.ListView
-    , Layout = People.Views.Layout;
+    , Layout = Manager.Views.Layout;
 
-	People.Router = Marionette.AppRouter.extend({
+	Manager.Router = Marionette.AppRouter.extend({
 		appRoutes: {
     	"people"           	        : "index"
     , "people/search/:q" 	        : "search"
@@ -28,14 +28,14 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 		}
 	});
 
-	People.Controller = Marionette.Controller.extend({
+	Manager.Controller = Marionette.Controller.extend({
 
     selectMenu: function() {
       App.vent.trigger("section:change", "people");
     }
 
   , reset: function() {
-      this.people = new Peoples();
+      this.people = new People();
       this.person = null;
 
       App.vent.on("security:signedout", this.reset, this);
@@ -64,7 +64,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
 
       var active = this.people.active();
       if (active) {
-        People.router.navigate("people/" + active.get("id"), true);
+        Manager.router.navigate("people/" + active.get("id"), true);
       } else {
         this.constructLayout(
           new HelpView({ section: "people" })
@@ -140,7 +140,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , selectPerson: function(person, page, url) {
       if (this.layout == null) return;
 
-      People.router.navigate(url, false);
+      Manager.router.navigate(url, false);
  
       App.vent.trigger("message:clear");
 
@@ -156,7 +156,7 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
   , selectPersonPage: function(page, url) {
       if (this.layout == null) return; 
 
-      People.router.navigate(url, false);
+      Manager.router.navigate(url, false);
 
       App.vent.trigger("message:clear");
 
@@ -185,8 +185,8 @@ Proof.module("People", function(People, App, Backbone, Marionette, $, _) {
     }
 	});
 
-	People.addInitializer(function() {
-		People.router = new People.Router({ controller: new People.Controller() });
+	Manager.addInitializer(function() {
+		Manager.router = new Manager.Router({ controller: new Manager.Controller() });
 	});
 
 });

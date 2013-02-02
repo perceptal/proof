@@ -20,6 +20,10 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , messages: {
       error: "people.info"
     }
+
+  , initialize: function() {
+      this.autoSave = true;
+    }
   });
 
   Views.SummaryView = Marionette.ItemView.extend({

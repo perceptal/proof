@@ -42,7 +42,7 @@
   }
 , "people": {
     "people": "$t(main.people)"
-  , "all": "All $t(main.people)"
+  , "all": "Tous $t(main.people)"
   , "filter": "$t(general.filter)"
   , "search": "$t(general.search)"
   , "sort": "$t(general.sort)"
@@ -59,6 +59,22 @@
   , "archive": "$t(general.archive)"
   , "not_selected": "S'il vous plaît choisir quelqu'un de la liste."
   }
+, "organisations": {
+    "organisations": "$t(main.organisations)"
+  , "all": "Tous $t(main.organisations)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "sort": "$t(general.sort)"
+  , "register": "$t(security.register) $t(main.organisation)"
+  , "not_found": "Il n'existe aucun organisme trouvés."
+  , "description": "Nom"
+  , "code": "$t(main.organisation) Code"
+  , "info": "$t(general.info)"
+  , "security": "Sécurité"
+  , "archive": "$t(general.archive)"
+  , "not_selected": "s'il vous plaît choisir une $t(main.organisation) dans la liste."
+  , "new_role": "Ajouter un rôle"
+}
 , "photos": {
     "photo": "Photo"
   , "photos": "Les Photos"

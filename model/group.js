@@ -6,6 +6,7 @@ module.exports = function(connection) {
 
   var GroupSchema = new Schema({
       name              : { type: String, required: true, lowercase: true, index: true }
+    , description       : { type: String }
     , code              : { type: String, required: true, lowercase: true, index: true }
     , securityKey       : { low: { type: Number }, high: { type: Number }}
     , level             : { type: Number, default: 0 }

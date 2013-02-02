@@ -21,6 +21,7 @@
   , "people": "People" 
   , "person": "Person"
   , "administration": "Administration"
+  , "organisation": "Organisation"
   , "organisations": "Organisations"
   , "about": "About"
   , "support": "Support"
@@ -39,6 +40,7 @@
   , "user_or_email": "$t(security.email) or $t(security.username)"
   , "profile": "Profile"
   , "organisation_code": "Organisation Code"
+  , "role_name": "Role Name"
   }
 , "people": {
     "people": "$t(main.people)"
@@ -59,6 +61,22 @@
   , "archive": "$t(general.archive)"
   , "not_selected": "Please select someone from the list."
   }
+, "organisations": {
+    "organisations": "$t(main.organisations)"
+  , "all": "All $t(main.organisations)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "sort": "$t(general.sort)"
+  , "register": "$t(security.register) $t(main.organisation)"
+  , "not_found": "There are no $t(main.organisations) found."
+  , "description": "Name"
+  , "code": "$t(main.organisation) Code"
+  , "info": "$t(general.info)"
+  , "security": "Security"
+  , "archive": "$t(general.archive)"
+  , "not_selected": "Please select an $t(main.organisation) from the list."
+  , "new_role": "Add Role"
+}
 , "photos": {
     "photo": "Photo"
   , "photos": "Photos"

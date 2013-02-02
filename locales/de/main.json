@@ -59,6 +59,22 @@
   , "archive": "$t(general.archive)"
   , "not_selected": "Bitte wählen sie jemanden aus der liste."
   }
+, "organisations": {
+    "organisations": "$t(main.organisations)"
+  , "all": "Alle $t(main.organisations)"
+  , "filter": "$t(general.filter)"
+  , "search": "$t(general.search)"
+  , "sort": "$t(general.sort)"
+  , "register": "$t(security.register) $t(main.organisation)"
+  , "not_found": "Es gibt keine $t(main.organisations) gefunden."
+  , "description": "Name"
+  , "code": "$t(main.organisation) Code"
+  , "info": "$t(general.info)"
+  , "security": "Sicherheit"
+  , "archive": "$t(general.archive)"
+  , "not_selected": "Bitte wählen sie eine $t(main.organisation) aus der liste."
+  , "new_role": "Rolle Hinzufügen"
+}
 , "photos": {
     "photo": "Foto"
   , "photos": "Photos"

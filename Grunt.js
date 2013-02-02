@@ -1,7 +1,12 @@
 module.exports = function(grunt) {
 
 	var root = "client/backbone/app/"
-		, templates = [ root + "**/templates/*.html", root + "**/templates/**/*.html" ]
+		, templates = [ 
+				root + "**/templates/*.html"
+			, root + "**/templates/**/*.html"
+			, root + "**/**/templates/*.html"
+			, root + "**/**/templates/**/*.html" 
+			]
 		, compiled = root + "templates/handlebars.js";
 		;
 
