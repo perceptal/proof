@@ -5,6 +5,8 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
   Views.RoleItemView = Marionette.ItemView.extend({
     template: "administration/organisations/roles/item"
 
+  , className: "accordion-group"
+
   , events: {
     }
 
@@ -15,9 +17,12 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
 
   });
 
-  Views.SecurityView = Marionette.CollectionView.extend({
+  Views.SecurityView = Marionette.CompositeView.extend({
+    template: "administration/organisations/roles/roles"
 
-    itemView: Views.RoleItemView
+  , itemViewContainer: "div.accordian"
+
+  , itemView: Views.RoleItemView
 
   , emptyView: Views.EmptyRolesView
 

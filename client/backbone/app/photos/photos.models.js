@@ -3,7 +3,9 @@ Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _) 
   var SecuredCollection = App.Common.Models.SecuredCollection;
 
   Models.Photo = Backbone.ModelFactory({ 
-    urlRoot: "/api/photos"
+    urlRoot: function() {
+      return "/api/" + this.parent.name + "/" + this.parent.id + "/photos";
+    }
 
   });
 
@@ -18,8 +20,18 @@ Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _) 
       this.parent = options.parent;
     }
 
-  , url: function() {
-      return "/api/" + this.parent.name + "/" + this.parent.id + "/photos";
+  , addPhoto: function(organisation) {
+      var photo = new Models.Photo({}, { parent: this.parent });
+      this.add(photo);
+      return photo;
+    }
+
+  , paginator_core: {
+      type      : "GET"
+    , dataType  : "json"
+    , url       : function() {
+        return "/api/" + this.parent.name + "/" + this.parent.id + "/photos"
+      }
     }
   });
 

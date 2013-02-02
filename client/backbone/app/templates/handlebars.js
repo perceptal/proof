@@ -815,13 +815,34 @@ this["Templates"]["administration/organisations/roles/empty"] = Handlebars.templ
 
 this["Templates"]["administration/organisations/roles/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
 
+  buffer += "<div class=\"accordion-heading\">\n  <a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#roles\" href=\"#";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">\n    ";
   foundHelper = helpers.name;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  return escapeExpression(stack1);});
+  buffer += escapeExpression(stack1) + "\n  </a>\n</div>\n<div id=\"";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" class=\"accordion-body collapse\">\n  <div class=\"accordion-inner\">\n    ";
+  foundHelper = helpers.name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\n  </div>\n</div>\n";
+  return buffer;});
+
+this["Templates"]["administration/organisations/roles/roles"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  
+
+
+  return "<div class=\"accordian\" id=\"roles\"></div>";});
 
 this["Templates"]["app/common/help"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
