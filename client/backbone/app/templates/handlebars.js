@@ -231,16 +231,16 @@ this["Templates"]["administration/organisations/menu"] = Handlebars.template(fun
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/permissions\">";
+  buffer += escapeExpression(stack1) + "/security\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.security", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.security", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a data-page=\"role\" href=\"#administration/organisations/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/role/new\">";
+  buffer += escapeExpression(stack1) + "/role/add\">";
   foundHelper = helpers['t'];
-  stack1 = foundHelper ? foundHelper.call(depth0, "organisations.new_role", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.new_role", {hash:{}});
+  stack1 = foundHelper ? foundHelper.call(depth0, "organisations.add_role", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.add_role", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n  </div>\n</div>\n";
   return buffer;});
 
@@ -714,27 +714,6 @@ this["Templates"]["security/register"] = Handlebars.template(function (Handlebar
   buffer += escapeExpression(stack1) + "</button>\n</div>\n";
   return buffer;});
 
-this["Templates"]["security/role"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, stack2, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-
-
-  buffer += "<fieldset>\n  ";
-  stack1 = {};
-  stack1['field'] = "name";
-  stack2 = depth0.name;
-  stack1['value'] = stack2;
-  stack1['width'] = 4;
-  stack1['required'] = true;
-  stack1['label'] = "security.role_name";
-  foundHelper = helpers.include;
-  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
-  buffer += escapeExpression(stack1) + "\n  <button class=\"btn btn-success\" id=\"save\"><i class=\"icon-user icon-white\"></i>&nbsp;&nbsp;";
-  foundHelper = helpers['t'];
-  stack1 = foundHelper ? foundHelper.call(depth0, "security.add_role", {hash:{}}) : helperMissing.call(depth0, "t", "security.add_role", {hash:{}});
-  buffer += escapeExpression(stack1) + " &rarr;</button>\n</fieldset>\n";
-  return buffer;});
-
 this["Templates"]["security/signedon"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
@@ -801,6 +780,48 @@ this["Templates"]["security/signon"] = Handlebars.template(function (Handlebars,
   stack1 = foundHelper ? foundHelper.call(depth0, "general.cancel", "lower", {hash:{}}) : helperMissing.call(depth0, "t", "general.cancel", "lower", {hash:{}});
   buffer += escapeExpression(stack1) + "</button>\n</div>\n";
   return buffer;});
+
+this["Templates"]["administration/organisations/roles/add"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, stack2, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  buffer += "<fieldset>\n  ";
+  stack1 = {};
+  stack1['field'] = "name";
+  stack2 = depth0.name;
+  stack1['value'] = stack2;
+  stack1['width'] = 4;
+  stack1['required'] = true;
+  stack1['label'] = "organisations.role_name";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n  <button class=\"btn btn-success\" id=\"save\"><i class=\"icon-user icon-white\"></i>&nbsp;&nbsp;";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "organisations.add_role", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.add_role", {hash:{}});
+  buffer += escapeExpression(stack1) + " &rarr;</button>\n</fieldset>\n";
+  return buffer;});
+
+this["Templates"]["administration/organisations/roles/empty"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"alert fade in\">\n  <i class=\"icon-exclamation-sign\"></i> ";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "organisations.no_roles", "capitalize", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.no_roles", "capitalize", {hash:{}});
+  buffer += escapeExpression(stack1) + "\n</div>\n";
+  return buffer;});
+
+this["Templates"]["administration/organisations/roles/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  foundHelper = helpers.name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  return escapeExpression(stack1);});
 
 this["Templates"]["app/common/help"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

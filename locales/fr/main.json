@@ -73,7 +73,9 @@
   , "security": "Sécurité"
   , "archive": "$t(general.archive)"
   , "not_selected": "s'il vous plaît choisir une $t(main.organisation) dans la liste."
-  , "new_role": "Ajouter un rôle"
+  , "add_role": "Ajouter un Rôle"
+  , "role_name": "Rôle"
+  , "no_roles": "Aucun rôles sont définis."
 }
 , "photos": {
     "photo": "Photo"

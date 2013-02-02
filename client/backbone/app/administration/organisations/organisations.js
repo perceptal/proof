@@ -10,7 +10,8 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
     , FilterView = Manager.Views.FilterView
     , SummaryView = Manager.Views.SummaryView
     , InfoView = Manager.Views.InfoView
-    , RoleView = App.Security.Views.RoleView
+    , AddRoleView = Manager.Views.AddRoleView
+    , SecurityView = Manager.Views.SecurityView
     , PhotoListView = App.Photos.Views.ListView
     , Layout = Manager.Views.Layout;
 
@@ -29,7 +30,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
     , "administration/organisations/:id/documents"      : "show"
     , "administration/organisations/:id/documents/new"  : "show"
     , "administration/organisations/:id/security"       : "security"
-    , "administration/organisations/:id/role/new"       : "role"
+    , "administration/organisations/:id/role/add"       : "role"
     }
   });
 
@@ -180,18 +181,19 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
       switch(page) {
 
         case "security":
-          break;
+          this.organisation.roles.fetch();
+          return new SecurityView({ collection: this.organisation.roles });
 
         case "documents":
           break;
 
         case "role":
-          var view = new RoleView({ model: this.organisation.addRole() });
+          var view = new AddRoleView({ model: this.organisation.addRole() });
           Backbone.Validation.bind(view); // TODO Move this
           return view;
 
         case "photos":
-          this.organisations.photos.fetch();
+          this.organisation.photos.fetch();
           return new PhotoListView({ collection: this.organisations.photos });
 
         case "info":

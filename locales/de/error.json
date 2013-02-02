@@ -1,12 +1,17 @@
 { 
   "general": {
     "try_again": "Fehler in der anwendung, bitte versuchen sie es erneut."
+  , "save": "Fehler beim speichern der informationen."
   }
 , "security": {
     "invalid_credentials": "Sie haben ungültige anmeldeinformationen eingegeben."
   , "unauthorised": "Sie haben keine berechtigung, auf diese informationen zuzugreifen."
   }
 , "people": {
-    "info": "Fehler beim speichern der informationen."
+    "info": "$t(error:general.save)"
+  }
+, "organisations": {
+    "info": "$t(error:general.save)"
+  , "role": "$t(error:general.save)"
   }
 }

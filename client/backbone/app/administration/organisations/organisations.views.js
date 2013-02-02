@@ -13,7 +13,7 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
     }
 
   , messages: {
-      error: "organisations.info"
+      error           : "organisations.info"
     }
 
   , initialize: function() {
@@ -107,6 +107,10 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
   , onRender: function() {
       this.delegateEvents();
       this.select(this.page);
+
+      App.vent.on("organisations:navigate", function(page) {
+        this.select(page);
+      }, this);
     }
 
   , select: function(page) {

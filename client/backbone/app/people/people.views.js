@@ -112,6 +112,10 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , onRender: function() {
       this.delegateEvents();
       this.select(this.page);
+
+      App.vent.on("people:navigate", function(page) {
+        this.select(page);
+      }, this);
     }
 
   , select: function(page) {

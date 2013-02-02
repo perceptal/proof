@@ -36,31 +36,4 @@ Proof.module("Security.Models", function(Models, App, Backbone, Marionette, $, _
 	
   });
 
-  Models.Role = SecuredModel.extend({ 
-    urlRoot: "/api/roles"
-
-  , validation: {
-      name: {
-        required: true
-      , msg: "validation:required"
-      }
-    }
-
-  });
-
-  Models.Roles = SecuredCollection.extend({
-    model: Models.Role
-
-  , initialize: function(attributes, options) {
-      options || (options = {});
-      this.bind("error", this.defaultErrorHandler, this);
-      this.init && this.init(attributes, options);
-
-      this.parent = options.parent;
-    }
-
-  , url: function() {
-      return "/api/" + this.parent.name + "/" + this.parent.id + "/roles";
-    }
-  });
 });

@@ -1,9 +1,8 @@
 Proof.module("Administration.Organisations.Models", function(Models, App, Backbone, Marionette, $, _, Paginator) {
 
   var SecuredCollection = App.Common.Models.SecuredCollection
+    , SecuredModel = App.Common.Models.SecuredModel
     , Photos = App.Photos.Models.Photos
-    , Roles = App.Security.Models.Roles
-    , Role = App.Security.Models.Role;
 
   Models.Organisation = Backbone.ModelFactory({
     urlRoot: "/api/organisations"
@@ -20,7 +19,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       var parent = { parent: { id: this.get("id"), name: "organisations" }};
       // this.photos = new Photos(this.get("photos"), parent);
       
-      this.roles = new Roles(this.get("roles"), parent);
+      this.roles = new Models.Roles(this.get("roles"), parent);
     }
 
   , markActive: function() {
@@ -32,9 +31,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     }
 
   , addRole: function() {
-      var role = new Role({ organisation: this.get("id") });
-      this.roles.add(role);
-      return role;
+      return this.roles.addRole(this);
     }
 
   });
@@ -80,6 +77,55 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       type      : "GET"
     , dataType  : "json"
     , url       : "/api/organisations"
+    }
+
+  });
+
+  Models.Role = SecuredModel.extend({ 
+
+    urlRoot: function() {
+      return "/api/" + this.parent.name + "/" + this.parent.id + "/roles";
+    }
+
+  , initialize: function(attributes, options) {
+      options || (options = {});
+      this.init && this.init(attributes, options);
+
+      this.parent = options.parent;
+    }
+
+  , validation: {
+      name: {
+        required: true
+      , msg: "validation:required"
+      }
+    }
+
+  });
+
+  Models.Roles = SecuredCollection.extend({
+    model: Models.Role
+
+  , initialize: function(attributes, options) {
+      options || (options = {});
+      this.bind("error", this.defaultErrorHandler, this);
+      this.init && this.init(attributes, options);
+
+      this.parent = options.parent;
+    }
+
+  , addRole: function(organisation) {
+      var role = new Models.Role({ organisation: organisation.get("id") }, { parent: this.parent });
+      this.add(role);
+      return role;
+    }
+
+  , paginator_core: {
+      type      : "GET"
+    , dataType  : "json"
+    , url       : function() {
+        return "/api/" + this.parent.name + "/" + this.parent.id + "/roles"
+      }
     }
 
   });

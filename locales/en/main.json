@@ -40,7 +40,6 @@
   , "user_or_email": "$t(security.email) or $t(security.username)"
   , "profile": "Profile"
   , "organisation_code": "Organisation Code"
-  , "role_name": "Role Name"
   }
 , "people": {
     "people": "$t(main.people)"
@@ -75,7 +74,9 @@
   , "security": "Security"
   , "archive": "$t(general.archive)"
   , "not_selected": "Please select an $t(main.organisation) from the list."
-  , "new_role": "Add Role"
+  , "add_role": "Add Role"
+  , "role_name": "Role Name"
+  , "no_roles": "No roles are defined."
 }
 , "photos": {
     "photo": "Photo"

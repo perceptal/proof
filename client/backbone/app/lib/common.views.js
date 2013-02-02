@@ -42,9 +42,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , onChange: function(prop, field, value) {
-      var model = this.model;
-          previous = this.model.get(prop)
-        , messages = this.messages;
+      var previous = this.model.get(prop);
       
       this.model.off("change", this.render, this);    // Remove change event to ensure focus fires
 
@@ -52,7 +50,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       
       if (this.model.isValid(true)) {
         if (this.autoSave) {
-          this.save(function() { model.set(prop, value); }, function() { model.set(prop, previous); })
+          this.save(function(model) { model.set(prop, value); }, function(model) { model.set(prop, previous); })
         }
       } else {
         this.model.set(prop, previous);
@@ -63,21 +61,22 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
         e.preventDefault();
 
         if (this.model.isValid(true)) {
-          this.save();
+          this.save(this.afterSave);
         };
       }
 
     , save: function(success, fail) {
-        var model = this.model;
+        var model = this.model
+          , messages = this.messages;
         
         this.model.save()  
           .success(function() {
-            if (success) success(); 
+            if (success) success(model); 
             App.vent.trigger("message:clear");
           })
           
           .fail(function() {
-            if (fail) fail();
+            if (fail) fail(model);
             App.vent.trigger("message:show", i18n.t("error:" + messages.error));
           })
 

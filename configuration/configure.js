@@ -1,7 +1,7 @@
 var nconf = require("nconf");
 
 module.exports = function() {
-  nconf.env("_").argv();
+  nconf.argv().env("_");
 
   var environment = nconf.get("NODE:ENV") || "development";
 

@@ -6,6 +6,7 @@ module.exports = function(app, models, util, authenticate, authorize) {
     Organisation.findOneAndPopulate({ _id: id }, function(err, organisation) {     
       if (err) return next(err);
       if (organisation == null) return res.send(404);
+
       return res.send(200, organisation);
     });
   }
@@ -16,7 +17,7 @@ module.exports = function(app, models, util, authenticate, authorize) {
   , function(req, res, next) {
 
       Organisation.findAndPopulate({}, function(err, organisations) {   // PARAMS
-        if (err) return next(err);console.log(organisations)
+        if (err) return next(err);
         return res.send(200, organisations);
       });
   });
