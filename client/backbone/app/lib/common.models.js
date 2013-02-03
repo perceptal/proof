@@ -56,7 +56,20 @@ Proof.module("Common.Models", function(Models, App, Backbone, Marionette, $, _, 
 
   Models.SecuredModel = Backbone.Model.extend({
 
-    sync: function(method, model, options) {
+    noIoBind: false
+
+  , socket: App.socket
+
+  , setupIoBind: function() {
+      _.bindAll(this, "serverChange", "serverDelete", "modelCleanup");
+
+      if (!this.noIoBind) {
+        this.ioBind("update", this.serverChange, this);
+        this.ioBind("delete", this.serverDelete, this);
+      }
+    }
+
+  , sync: function(method, model, options) {
       return this._super(method, model, setAuthorizationHeader(options));
     }
 
@@ -65,6 +78,19 @@ Proof.module("Common.Models", function(Models, App, Backbone, Marionette, $, _, 
         App.vent.trigger("security:unauthorised", this);
       }
     }
-  });
+
+  , serverChange: function(data) {
+      data.fromServer = true;
+      this.set(data);
+    }
+
+  , serverDelete: function(data) {
+      this.modelCleanup();
+    }
+  
+  , modelCleanup: function() {
+      this.ioUnbindAll();
+      return this;
+    }  });
 
 }, Backbone.Paginator);

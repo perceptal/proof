@@ -179,7 +179,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 	});
 
-  Views.EmptyView = Marionette.ItemView.extend({
+  Views.NoItemsView = Marionette.ItemView.extend({
     template: "people/empty"
 
   });

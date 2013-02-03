@@ -1,5 +1,5 @@
 [
-  { "name": "system", "description": "System", "code": "380800", "securityKey": { "low": 0, "high": 99999999999 }
+  { "name": "system", "description": "System", "code": "380800", "classifier": "organisation", "securityKey": { "low": 0, "high": 99999999999 }
   , "roles": [ "system" ] 
   , "children": [ "demo" ]
   , "people": [
@@ -7,8 +7,8 @@
     , { "name": "johnny", "firstName": "Johnny", "lastName": "Hall", "code": "380800", "gender": "male", "title": "Mr", "dob": "1971-05-14" }
     ]
   }
-, { "name": "demo:archive", "description": "Demo Archive", "code": "999999" }
-, { "name": "demo", "description": "Demonstration Organisation", "code": "999999"
+, { "name": "demo:archive", "description": "Demo Archive", "code": "999999", "classifier": "archive" }
+, { "name": "demo", "description": "Demonstration", "code": "999999", "classifier": "organisation"
   , "children": [ "demo:archive" ]
   , "roles": [ "administrator", "manager", "staff", "customer" ] 
   , "people": [

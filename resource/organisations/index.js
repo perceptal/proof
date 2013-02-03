@@ -16,7 +16,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
   , authorize.can()
   , function(req, res, next) {
 
-      Organisation.findAndPopulate({}, function(err, organisations) {   // PARAMS
+      Organisation.findAndPopulate({ classifier: "organisation" }, function(err, organisations) {   // PARAMS
         if (err) return next(err);
         return res.send(200, organisations);
       });
@@ -34,6 +34,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
     var organisation = new Organisation({
         description: req.body.description
       , code: req.body.code
+      , classifier: "organisation"
     });
 
     organisation.save(function(err, organisation) {

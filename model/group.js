@@ -10,6 +10,7 @@ module.exports = function(connection) {
     , code              : { type: String, required: true, lowercase: true, index: true }
     , securityKey       : { low: { type: Number }, high: { type: Number }}
     , level             : { type: Number, default: 0 }
+    , classifier        : { type: String }
     , parent            : { type: Schema.ObjectId, ref: "group" }
     , children          : [ { type: Schema.ObjectId, ref: "group" }]
     , people            : [ { type: Schema.ObjectId, ref: "user" } ]
