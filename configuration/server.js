@@ -100,7 +100,7 @@ Server.prototype.start = function(callback) {
   this.io = io.listen(this.httpServer);
 
   // Heroku rules
-  if ("production" == app.get("env")) {
+  if ("production" == this.app.get("env")) {
     io.configure(function() { 
       io.set("transports", [ "xhr-polling" ]); 
       io.set("polling duration", 12); 
