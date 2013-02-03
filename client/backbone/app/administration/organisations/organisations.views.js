@@ -18,6 +18,7 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
 
   , initialize: function() {
       this.autoSave = true;
+      this.model.on("change", this.render, this);
     }
   });
 

@@ -18,17 +18,19 @@ Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _) 
       this.init && this.init(attributes, options);
 
       this.parent = options.parent;
+
+      this.on("add", this.setParent, this);
+      this.on("reset", function() { 
+        _(this.models).each(_.bind(this.setParent, this));
+      }, this);
     }
 
-  , addPhoto: function(organisation) {
-      var photo = new Models.Photo({}, { parent: this.parent });
-      this.add(photo);
-      return photo;
+  , setParent: function(model) {
+      model.parent = this.parent;
     }
 
   , paginator_core: {
-      type      : "GET"
-    , dataType  : "json"
+      dataType  : "json"
     , url       : function() {
         return "/api/" + this.parent.name + "/" + this.parent.id + "/photos"
       }

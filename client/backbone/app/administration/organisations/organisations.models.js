@@ -17,8 +17,8 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       this.init && this.init(attributes, options);
 
       var parent = { parent: { id: this.get("id"), name: "organisations" }};
-      // this.photos = new Photos(this.get("photos"), parent);
       
+      this.photos = new Photos(this.get("photos"), parent);
       this.roles = new Models.Roles(this.get("roles"), parent);
     }
 
@@ -31,9 +31,25 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     }
 
   , addRole: function() {
-      return this.roles.addRole(this);
+      var role = new Models.Role({ organisation: this.get("id") });
+      this.roles.add(role);
+      return role;
     }
 
+  , validation: {
+      description: {
+        required: true
+      , msg: "validation:required"
+      }
+    , code: {
+        required: true
+      , msg: "validation:required"
+      }
+    , code: {
+        pattern: "number"
+      , msg: "validation:invalid"
+      }
+    }
   });
 
   Models.Organisations = SecuredCollection.extend({
@@ -74,8 +90,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     }
 
   , paginator_core: {
-      type      : "GET"
-    , dataType  : "json"
+      dataType  : "json"
     , url       : "/api/organisations"
     }
 
@@ -85,13 +100,6 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
 
     urlRoot: function() {
       return "/api/" + this.parent.name + "/" + this.parent.id + "/roles";
-    }
-
-  , initialize: function(attributes, options) {
-      options || (options = {});
-      this.init && this.init(attributes, options);
-
-      this.parent = options.parent;
     }
 
   , validation: {
@@ -112,17 +120,19 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       this.init && this.init(attributes, options);
 
       this.parent = options.parent;
+
+      this.on("add", this.setParent, this);
+      this.on("reset", function() { 
+        _(this.models).each(_.bind(this.setParent, this));
+      }, this);
     }
 
-  , addRole: function(organisation) {
-      var role = new Models.Role({ organisation: organisation.get("id") }, { parent: this.parent });
-      this.add(role);
-      return role;
+  , setParent: function(model) {
+      model.parent = this.parent;
     }
 
   , paginator_core: {
-      type      : "GET"
-    , dataType  : "json"
+      dataType  : "json"
     , url       : function() {
         return "/api/" + this.parent.name + "/" + this.parent.id + "/roles"
       }

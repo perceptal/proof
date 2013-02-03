@@ -6,6 +6,9 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
 	Models.Person = Backbone.ModelFactory({
 		urlRoot: "/api/people"
 
+  , noIoBind: false
+  , socket: App.socket
+
   , defaults: {
       photos: []
     , documents: []
@@ -17,6 +20,13 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
 
       var parent = { parent: { id: this.get("id"), name: "people" }};
       this.photos = new Photos(this.get("photos"), parent);
+
+      _.bindAll(this, "serverChange", "serverDelete", "modelCleanup");
+
+      if (!this.noIoBind) {
+        this.ioBind("update", this.serverChange, this);
+        this.ioBind("delete", this.serverDelete, this);
+      }
     }
 
   , markActive: function() {
@@ -41,6 +51,20 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       , pattern: "email"
       , msg: "validation:invalid"
       }
+    }
+
+  , serverChange: function(data) {
+      data.fromServer = true;
+      this.set(data);
+    }
+
+  , serverDelete: function(data) {
+      this.modelCleanup();
+    }
+  
+  , modelCleanup: function() {
+      this.ioUnbindAll();
+      return this;
     }
 	});
 

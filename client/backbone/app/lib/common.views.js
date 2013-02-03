@@ -36,7 +36,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
   , onChangeSelect: function(e) {
       var prop = e.currentTarget.id
         , field = this.ui[prop]
-        , value = field.get(0).selectedOptions[0].id;
+        , value = field.find(":selected").attr("id");
 
       this.onChange(prop, field, value);
     }
@@ -55,6 +55,8 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       } else {
         this.model.set(prop, previous);
       }
+      
+      this.model.on("change", this.render, this);   // Rebind change event
     }
 
     , onSave: function(e) {
@@ -78,12 +80,8 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
           .fail(function() {
             if (fail) fail(model);
             App.vent.trigger("message:show", i18n.t("error:" + messages.error));
-          })
-
-          .always(function() {
-            model.on("change", this.render, this);    // Rebind change event
           });
-
+        
         return false;
       }
   });

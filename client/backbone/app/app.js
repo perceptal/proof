@@ -10,6 +10,8 @@ Proof = (function(Backbone, Marionette, i18n, _) {
 	  });
 	});
 
+  app.socket = io.connect("http://localhost:3000");
+
 	return app;
 
 })(Backbone, Backbone.Marionette, _);

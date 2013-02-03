@@ -1,4 +1,4 @@
-module.exports = function(app, models, util) {
+module.exports = function(app, models, util, messaging, cache, authenticate, authorize) {
 
 	var User = models.User;
 
@@ -6,7 +6,7 @@ module.exports = function(app, models, util) {
     User.findOne({ _id: req.params.id }, function(err, user) {
       if (err) return res.send(500);
       if (user == null) return res.send(404);
-      return res.send(200, user.toJSON({ hide: "hashedPassword salt" }));
+      return res.send(200, user.toJSON({ hide: "password salt" }));
     });
 	});
 }

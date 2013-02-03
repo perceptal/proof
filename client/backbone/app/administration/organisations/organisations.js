@@ -194,7 +194,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
 
         case "photos":
           this.organisation.photos.fetch();
-          return new PhotoListView({ collection: this.organisations.photos });
+          return new PhotoListView({ collection: this.organisation.photos });
 
         case "info":
         default:

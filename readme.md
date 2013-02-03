@@ -8,7 +8,13 @@ An effort to build a end-to-end proof of concept application in Javascript, demo
 
 * HTTP API
 
-* Backbone
+* Backbone ( / Flight / Ember )
+
+* Pub/Sub
+
+* HTTP Authentication
+
+* OAuth
 
 
 

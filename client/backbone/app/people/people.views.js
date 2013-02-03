@@ -23,6 +23,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function() {
       this.autoSave = true;
+      this.model.on("change", this.render, this);
     }
   });
 

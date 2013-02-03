@@ -1,12 +1,13 @@
-module.exports = function(app, models, util, authenticate, authorize) {
+module.exports = function(app, models, util, messaging, cache, authenticate, authorize) {
 
 	var Person = models.Person;
 
-	var findOne = function(id, res, next) {
+	var findOne = function(id, res, next, callback) {
 		Person.findOneAndPopulate({ _id: id }, function(err, person) {			
 			if (person == null) return res.send(404);
 			if (err) return next(err);
-			return res.send(200, person);
+			res.send(200, person);
+			if (callback) callback(person);
 		});
 	}
 
@@ -26,7 +27,7 @@ module.exports = function(app, models, util, authenticate, authorize) {
 	, authorize.can()
 	, function(req, res, next) {
 
-		return findOne(req.params.id, res, next);
+		findOne(req.params.id, res, next);
 	});
 
 	app.post("/api/people", function(req, res, next) {
@@ -38,7 +39,9 @@ module.exports = function(app, models, util, authenticate, authorize) {
 		person.save(function(err, person) {
 			if (err) return next(err);
 			
-			return findOne(person.id, res, next);
+			findOne(person.id, res, next, function(person) {
+				messaging.publish("/api/people:create", person);
+			});
 		});
 	});
 
@@ -52,7 +55,9 @@ module.exports = function(app, models, util, authenticate, authorize) {
 			person.save(function(err) {
 				if (err) return next(err);
 				
-				return findOne(person.id, res, next);
+				findOne(person.id, res, next, function(person) {
+					messaging.publish("/api/people:update", person);
+				});
 			});
 		});
 	});
@@ -64,7 +69,8 @@ module.exports = function(app, models, util, authenticate, authorize) {
 
 			person.remove(function(err) {
 				if (err) return next(err);
-				return res.send(204);
+				messaging.publish("people:delete", person);
+				res.send(204);
 			});
 		});
 	});

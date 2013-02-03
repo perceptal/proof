@@ -831,9 +831,9 @@ this["Templates"]["administration/organisations/roles/item"] = Handlebars.templa
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\" class=\"accordion-body collapse\">\n  <div class=\"accordion-inner\">\n    ";
-  foundHelper = helpers.name;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  stack1 = depth0.claims;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.length;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\n  </div>\n</div>\n";
   return buffer;});
 

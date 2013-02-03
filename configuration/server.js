@@ -3,6 +3,7 @@ var http = require("http")
   , express = require("express")
   , stylus = require("stylus")
   , i18n = require("i18next")
+  , io = require("socket.io")
   , configuration = require("./")
   ;
 
@@ -56,7 +57,7 @@ Server.prototype.configure = function(models) {
     app.use(express.static(root + "client/" + configuration("client") + "/app"));
 
     app.use(function(err, req, res, next) {
-      console.error(err, err.status, err.stack);
+      console.error(err, err.status);
       res.send(err.status || 500, err.message);
     });
 
@@ -71,7 +72,7 @@ Server.prototype.configure = function(models) {
   app.configure("development", function() {
     app.use("/test", express.static(root + "client/" + configuration("client") + "/test"));
     app.use(express.errorHandler({
-        showStack: true
+        showStack: false
       , dumpExceptions: true
     }));
     app.use(express.logger({ format: "\u001b[1m:method\u001b[0m \u001b[33m:url\u001b[0m :response-time ms" }));
@@ -95,6 +96,8 @@ Server.prototype.start = function(callback) {
   // this.io = require("socket.io").listen(this.httpServer);
   this.httpServer.listen(configuration("port"), callback);
   // this.httpsServer = https.createServer(options, app).listen(443);
+
+  this.io = io.listen(this.httpServer);
 }
 
 Server.prototype.stop = function(callback) {

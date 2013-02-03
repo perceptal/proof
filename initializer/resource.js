@@ -3,7 +3,7 @@ var resource = require("../resource")
   , Authorize = require("../configuration/authorize")
   ;
 
-module.exports.init = function(app, models) {
+module.exports.init = function(app, models, messaging, cache) {
 
 	// Define resources
 	[
@@ -19,6 +19,6 @@ module.exports.init = function(app, models) {
 	  , { name: "users"                   , thing: "user" }
 
 	].map(function(defn) {
-		resource.define(app, defn.name, models, new Authenticate(models), new Authorize(defn.thing, models));
+		resource.define(app, defn.name, models, messaging, cache, new Authenticate(models), new Authorize(defn.thing, models));
 	});
 }

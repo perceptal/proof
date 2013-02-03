@@ -1,4 +1,4 @@
-module.exports = function(app, models, util, authenticate, authorize) {
+module.exports = function(app, models, util, messaging, cache, authenticate, authorize) {
 
   var Organisation = models.Group;
 

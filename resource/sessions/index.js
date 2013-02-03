@@ -1,4 +1,4 @@
-module.exports = function(app, models, util) {
+module.exports = function(app, models, util, messaging, cache, authenticate, authorize) {
 
 	var User = models.User;
 
