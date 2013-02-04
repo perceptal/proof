@@ -3,6 +3,7 @@
   , "PORT": 3001
   , "PROVIDER": {
       "CACHE": "null"
+    , "MESSAGING": "null"
   }
   , "MONGODB": {
       "HOST": "localhost"

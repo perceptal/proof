@@ -9,6 +9,9 @@
   }
 , { "name": "demo:archive", "description": "Demo Archive", "code": "999999", "classifier": "archive" }
 , { "name": "demo", "description": "Demonstration", "code": "999999", "classifier": "organisation"
+  , "photos": [ 
+      { "name": "test/fixture/seed/demo/photo/polycom.gif", "isDefault": true }
+  ]
   , "children": [ "demo:archive" ]
   , "roles": [ "administrator", "manager", "staff", "customer" ] 
   , "people": [

@@ -55,6 +55,7 @@
   , "gender": "Geschlecht"
   , "title": "Name"
   , "info": "$t(general.info)"
+  , "account": "Rechnung"
   , "permissions": "Berechtigungen"
   , "archive": "$t(general.archive)"
   , "not_selected": "Bitte wählen sie jemanden aus der liste."

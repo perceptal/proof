@@ -174,7 +174,7 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
     }
   });
 
-  Views.EmptyView = Marionette.ItemView.extend({
+  Views.NoItemsView = Marionette.ItemView.extend({
     template: "administration/organisations/empty"
 
   });

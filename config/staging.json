@@ -3,6 +3,7 @@
   , "PORT": 29135
   , "PROVIDER": {
       "CACHE": "null"
+    , "MESSAGING": "postal"
   }
   , "S3": {
       "BUCKET": "staging.proof.perceptal.co.uk"

@@ -2,6 +2,7 @@
   { "fixture": "group", "model": "Group", "link": "Role", "property": "roles", "bidirectional": true }
 , { "fixture": "group", "model": "Group", "link": "Group", "property": "children", "bidirectional": true, "fk": "parent" }
 , { "fixture": "group", "model": "Group", "link": "Person", "property": "people", "bidirectional": true }
+, { "fixture": "group", "model": "Group", "link": "Photo", "property": "photos", "bidirectional": true, "fk": "owner" }
 , { "fixture": "person", "model": "Person", "link": "Photo", "property": "photos", "bidirectional": true, "fk": "owner" }
 , { "fixture": "person", "model": "Person", "link": "Role", "property": "roles" }
 , { "fixture": "role", "model": "Role", "link": "Claim", "property": "claims", "embedded": true }

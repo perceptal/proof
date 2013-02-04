@@ -264,7 +264,11 @@ this["Templates"]["administration/organisations/summary"] = Handlebars.template(
   foundHelper = helpers.code;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.code; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</small></h4>\n<button class=\"btn btn-danger\" href=\"#\"><i class=\"icon-ban-circle icon-white\"></i> ";
+  buffer += escapeExpression(stack1) + "</small></h4>\n<div class=\"image\"><img src=\"/api/organisation/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<button class=\"btn btn-danger\" href=\"#\"><i class=\"icon-ban-circle icon-white\"></i> ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.archive", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.archive", {hash:{}});
   buffer += escapeExpression(stack1) + " ";
@@ -579,6 +583,13 @@ this["Templates"]["people/menu"] = Handlebars.template(function (Handlebars,dept
   buffer += escapeExpression(stack1) + "/documents\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "documents.documents", {hash:{}}) : helperMissing.call(depth0, "t", "documents.documents", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"account\" href=\"#people/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/account\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "people.account", {hash:{}}) : helperMissing.call(depth0, "t", "people.account", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"permissions\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }

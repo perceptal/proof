@@ -8,7 +8,6 @@ module.exports.init = function(app, models, messaging, cache) {
 	// Define resources
 	[
       { name: "people"                  , thing: "person" }
-    , { name: "people/photos"           , thing: "person" }
     , { name: "organisations"           , thing: "group" }
     , { name: "organisations/roles"     , thing: "group" }
     // , { name: "organisations/photos"    , thing: "organisation" }
