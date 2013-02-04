@@ -201,8 +201,6 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
     }
 
   , initialize: function(options) {
-      this.selected = options.selected;
-
       this.collection.setPage(options.page);
       App.vent.on("organisations:navigate", this.collection.setPage, this.collection);
 
@@ -211,10 +209,17 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
     }
 
   , onRender: function() {
+      this.showPagination();
+      this.padList();
+    }
+
+  , showPagination: function() {
       if (this.pagination) this.pagination.reset();
       this.pagination = new Region({ el: ".pagination" });
       this.pagination.show(new PagingView({ model: this.collection }));
+    }
 
+  , padList: function() {
       if (this.collection.length > 0 && this.collection.length < 10) {
         for(var i=0; i<(10-this.collection.length); i++)
           this.ui.list.append("<li class='empty'><a>&nbsp;</a></li>");

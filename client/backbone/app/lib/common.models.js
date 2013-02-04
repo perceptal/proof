@@ -79,6 +79,15 @@ Proof.module("Common.Models", function(Models, App, Backbone, Marionette, $, _, 
       }
     }
 
+  , copyFrom: function(model) {
+      if (model == null) {
+        return false;
+      } else {
+        this.set(model.attributes);
+        return true;
+      }
+    }
+
   , serverChange: function(data) {
       data.fromServer = true;
       this.set(data);

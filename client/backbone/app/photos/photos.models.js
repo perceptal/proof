@@ -1,8 +1,9 @@
 Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _) {
 
-  var SecuredCollection = App.Common.Models.SecuredCollection;
+  var SecuredCollection = App.Common.Models.SecuredCollection
+      , SecuredModel = App.Common.Models.SecuredModel;
 
-  Models.Photo = Backbone.ModelFactory({ 
+  Models.Photo = SecuredModel.extend({ 
     urlRoot: function() {
       return "/api/" + this.parent.name + "/" + this.parent.id + "/photos";
     }

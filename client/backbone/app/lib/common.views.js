@@ -19,6 +19,12 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.delegateEvents();
       
       if (this.ui.selects) this.ui.selects.select2({ minimumResultsForSearch: 9999 });
+
+      this.setFocus();
+    }
+
+  , setFocus: function() {
+      if (this.focus) this.ui[this.focus].focus();
     }
 
   , onKeypress: function(e) {

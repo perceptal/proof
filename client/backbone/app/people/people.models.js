@@ -65,6 +65,13 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       });
     }
 
+  , markActive: function(id) {
+      _.invoke(
+        _.filter(this.origModels, function(model) { return model.get("id") === id; })
+      , "markActive"
+      );
+    }
+
   , active: function() {
       var active = _.filter(this.origModels, function(model) {
         return model.isActive(); 

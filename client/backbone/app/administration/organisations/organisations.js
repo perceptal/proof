@@ -30,7 +30,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
     , "administration/organisations/:id/documents"      : "show"
     , "administration/organisations/:id/documents/new"  : "show"
     , "administration/organisations/:id/security"       : "security"
-    , "administration/organisations/:id/role/add"       : "role"
+    , "administration/organisations/:id/role"           : "role"
     }
   });
 
@@ -105,7 +105,8 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
     }
 
   , loadOrganisation: function(id) {
-      var that = this;
+      var that = this
+        , found = false;
 
       this.organisation = new Organisation({ id: id });
 
@@ -113,12 +114,14 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
         .success(function() {
           that.organisations.setSort("description", "asc");
           that.organisations.goTo(1);
-          that.organisation = that.organisation.get(id);
-          while (that.organisation == null) {
+
+          found = that.organisation.copyFrom(that.organisations.get(id));
+          while (!found) {
             that.organisations.nextPage();
-            that.organisation = that.organisations.get(id);
+            found = that.organisation.copyFrom(that.organisations.get(id));
           }
           that.organisation.markActive();
+          that.organisations.markActive(that.organisation.get("id"));
         });
     }
 
@@ -134,7 +137,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
 
   , constructLayout: function(aside, menu, inner, page) {
       var filter = new FilterView({ collection: this.organisations, model: this.organisation })
-        , selector = new SelectorView({ collection: this.organisations, selected: this.organisation, page: page });
+        , selector = new SelectorView({ collection: this.organisations, page: page });
 
       App.vent.trigger("message:clear");
 

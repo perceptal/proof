@@ -116,7 +116,7 @@ this["Templates"]["administration/organisations/filter"] = Handlebars.template(f
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <button class=\"btn refresh\" href=\"#\"><i class=\"icon-refresh\"></i> ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.all", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.all", {hash:{}});
-  buffer += escapeExpression(stack1) + "</button>\n  </div>    \n  <div class=\"btn-group pull-right\">\n    <button class=\"btn btn-success\" href=\"#\"><i class=\"icon-user icon-white\"></i> ";
+  buffer += escapeExpression(stack1) + "</button>\n  </div>    \n  <div class=\"btn-group pull-right\">\n    <button class=\"btn btn-success\" href=\"#\"><i class=\"icon-cog icon-white\"></i> ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.register", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.register", {hash:{}});
   buffer += escapeExpression(stack1) + "</button>\n  </div>\n</div>\n\n\n";
@@ -238,7 +238,7 @@ this["Templates"]["administration/organisations/menu"] = Handlebars.template(fun
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/role/add\">";
+  buffer += escapeExpression(stack1) + "/role\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.add_role", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.add_role", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n  </div>\n</div>\n";

@@ -91,7 +91,8 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
     }
 
   , loadPerson: function(id) {
-      var that = this;
+      var that = this
+        , found = false;
 
       this.person = new Person({ id: id });
 
@@ -99,12 +100,15 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
         .success(function() {
           that.people.setSort("firstName", "asc");
           that.people.goTo(1);
-          that.person = that.people.get(id);
-          while (that.person == null) {
+          
+          found = that.person.copyFrom(that.people.get(id));
+          
+          while (!found) {
             that.people.nextPage();
-            that.person = that.people.get(id);
+            found = that.person.copyFrom(that.people.get(id));
           }
           that.person.markActive();
+          that.people.markActive(that.person.get("id"));
         });
     }
 
@@ -120,7 +124,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 
   , constructLayout: function(aside, menu, inner, page) {
       var filter = new FilterView({ collection: this.people, model: this.person })
-        , selector = new SelectorView({ collection: this.people, selected: this.person, page: page });
+        , selector = new SelectorView({ collection: this.people, page: page });
 
       App.vent.trigger("message:clear");
 
@@ -167,6 +171,9 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
       switch(page) {
 
         case "permissions":
+          break;
+
+        case "accounts":
           break;
 
         case "documents":

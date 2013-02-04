@@ -4,7 +4,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     , SecuredModel = App.Common.Models.SecuredModel
     , Photos = App.Photos.Models.Photos
 
-  Models.Organisation = Backbone.ModelFactory({
+  Models.Organisation = SecuredModel.extend({
     urlRoot: "/api/organisations"
 
   , defaults: {
@@ -68,6 +68,13 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       _.each(this.origModels, function(model) { 
         model.set("active", ""); 
       });
+    }
+
+  , markActive: function(id) {
+      _.invoke(
+        _.filter(this.origModels, function(model) { return model.get("id") === id; })
+      , "markActive"
+      );
     }
 
   , active: function() {
