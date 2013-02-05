@@ -21,5 +21,5 @@ $(function() {
     $("#loading").hide();
 
     Proof.start();
-  }, 0);   
+  }, 0);
 });

@@ -42,6 +42,8 @@ Server.prototype.configure = function(models) {
     app.use(express.methodOverride());
     app.use(i18n.handle);
 
+    app.engine("html", require("ejs").renderFile);
+
     app.use(stylus.middleware({
         debug:    true
       , src:      root + "views"
@@ -67,6 +69,10 @@ Server.prototype.configure = function(models) {
     i18n.serveClientScript(app)
       .serveDynamicResources(app)
       .serveMissingKeyRoute(app);
+
+    app.get("/", function(req, res) {
+      res.render(root + "client/" + configuration("client") + "/app/" + app.get("env") + ".html");
+    });
   });
 
   app.configure("development", function() {

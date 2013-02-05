@@ -1,7 +1,7 @@
 {
   "name": "proof",
   "description": "Proof of Concept",
-  "version": "0.1.0-6",
+  "version": "0.1.0-8",
   "homepage": "http://www.perceptal.co.uk/",
   "author": {
     "name": "Johnny Hall",
@@ -38,7 +38,8 @@
     "s3": "~0.0.4",
     "gm": "~1.8.1",
     "nconf": "~0.6.7",
-    "postal": "~0.8.2"
+    "postal": "~0.8.2",
+    "ejs": "~0.8.3"
   },
   "devDependencies": {
     "grunt": "~0.3.17",
