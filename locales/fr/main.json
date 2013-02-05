@@ -21,6 +21,7 @@
   , "people": "Personnes" 
   , "person": "Personne" 
   , "administration": "Gestion"
+  , "organisation": "Organisation"
   , "organisations": "Organisations"
   , "about": "Au Sujet De"
   , "support": "Soutenir"
@@ -93,6 +94,27 @@
   , "deleted": "Le $t(documents.document) a été supprimée."
   , "upload": "$t(general.upload) $t(documents.document)"
   , "not_found": "Il n'y a $t(documents.document) trouvés."
+  }
+, "error": { 
+    "general": {
+      "try_again": "Erreur d'application, s'il vous plaît essayer à nouveau."
+    , "save": "Informations économies d'erreur."
+    }
+  , "security": {
+      "invalid_credentials": "Vous avez entré les informations d'identification non valides."
+    , "unauthorised": "Vous n'avez pas la permission d'accéder à cette information."
+    }
+  , "people": {
+      "info": "$t(error:general.save)"
+    }
+  , "organisations": {
+      "info": "$t(error:general.save)"
+    , "role": "$t(error:general.save)"
+    }
+  }
+, "validation": {
+    "required": "ne peut pas être vide"
+  , "invalid": "n'est pas valide"
   }
 , "male": "Masculin"
 , "female": "Féminin"

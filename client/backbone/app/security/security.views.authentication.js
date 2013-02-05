@@ -53,9 +53,9 @@ Proof.module("Security.Views", function(Views, App, Backbone, Marionette, $, _) 
 
       promise.fail(function(response) {
         if (response.status === 404 || response.status === 403) {
-          that.alert(i18n.t("error:security.invalid_credentials"));
+          that.alert(i18n.t("error.security.invalid_credentials"));
         } else if (response.status === 500) {
-          that.alert(i18n.t("error:general.try_again"));
+          that.alert(i18n.t("error.general.try_again"));
         }
         that.setFocus();
       });

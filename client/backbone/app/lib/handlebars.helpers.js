@@ -2,11 +2,11 @@ $(function() {
 
   i18n.init({
     ns: { 
-      namespaces: [ "main", "error", "validation", "help" ]
+      namespaces: [ "main", "help" ]
     , defaultNs: "main" 
     } 
   , cookieName: "locale"
-  , preload: [ "en", "fr", "de" ]
+  , preload: [ "en" ]
   , fallbackLng: "en"
   , getAsync: false
   });

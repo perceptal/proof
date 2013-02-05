@@ -118,7 +118,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
     App.vent.on("message:clear", App.clearMessages, this);
 
     App.vent.on("security:unauthorised", function() {
-    	App.vent.trigger("message:show", i18n.t("error:security.unauthorised"));
+    	App.vent.trigger("message:show", i18n.t("error.security.unauthorised"));
     }, this);
 
     App.determineAuthenticationStatus();

@@ -85,7 +85,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
           
           .fail(function() {
             if (fail) fail(model);
-            App.vent.trigger("message:show", i18n.t("error:" + messages.error));
+            App.vent.trigger("message:show", i18n.t("error." + messages.error));
           });
         
         return false;

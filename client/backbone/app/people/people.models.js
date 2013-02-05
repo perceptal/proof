@@ -33,16 +33,16 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
   , validation: {
       firstName: {
         required: true
-      , msg: "validation:required"
+      , msg: "validation.required"
       }
     , lastName: {
         required: true
-      , msg: "validation:required"
+      , msg: "validation.required"
       }
     , email: {
         required: false
       , pattern: "email"
-      , msg: "validation:invalid"
+      , msg: "validation.invalid"
       }
     }
 	});

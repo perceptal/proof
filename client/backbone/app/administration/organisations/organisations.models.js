@@ -39,15 +39,15 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
   , validation: {
       description: {
         required: true
-      , msg: "validation:required"
+      , msg: "validation.required"
       }
     , code: {
         required: true
-      , msg: "validation:required"
+      , msg: "validation.required"
       }
     , code: {
         pattern: "number"
-      , msg: "validation:invalid"
+      , msg: "validation.invalid"
       }
     }
   });
@@ -112,7 +112,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
   , validation: {
       name: {
         required: true
-      , msg: "validation:required"
+      , msg: "validation.required"
       }
     }
 

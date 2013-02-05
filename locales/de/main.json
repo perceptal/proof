@@ -21,6 +21,7 @@
   , "people": "Menschen" 
   , "person": "Person"
   , "administration": "Verwaltung"
+  , "organisation": "Organisation"
   , "organisations": "Organisationen"
   , "about": "Um"
   , "support": "Unterstützen"
@@ -93,6 +94,27 @@
   , "deleted": "Das $t(documents.document) wurde gelöscht."
   , "upload": "$t(general.upload) $t(documents.document)"
   , "not_found": "Es gibt keine übereinstimmenden $t(documents.documents) gefunden."
+  }
+, "error": {
+    "general": {
+      "try_again": "Fehler in der anwendung, bitte versuchen sie es erneut."
+    , "save": "Fehler beim speichern der informationen."
+    }
+  , "security": {
+      "invalid_credentials": "Sie haben ungültige anmeldeinformationen eingegeben."
+    , "unauthorised": "Sie haben keine berechtigung, auf diese informationen zuzugreifen."
+    }
+  , "people": {
+      "info": "$t(error.general.save)"
+    }
+  , "organisations": {
+      "info": "$t(error.general.save)"
+    , "role": "$t(error.general.save)"
+    }
+  }
+, "validation": {
+    "required": "darf nicht leer sein"
+  , "invalid": "ungültig"
   }
 , "male": "Männlich"
 , "female": "Weiblich"
