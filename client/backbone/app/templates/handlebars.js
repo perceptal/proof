@@ -286,7 +286,7 @@ this["Templates"]["app/header"] = Handlebars.template(function (Handlebars,depth
   buffer += "<nav class=\"navbar navbar-inverse\">\n  <div class=\"navbar-inner\">\n    <div class=\"container-fluid\">\n      <a class=\"brand\" href=\"#\"><span class=\"logo\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "main.title", {hash:{}}) : helperMissing.call(depth0, "t", "main.title", {hash:{}});
-  buffer += escapeExpression(stack1) + "</span></a>\n\n      <div id=\"security\"></div>\n      <div id=\"locale\"></div>\n      \n    </div>\n  </div>\n</nav>";
+  buffer += escapeExpression(stack1) + "</span></a>\n\n      <div id=\"security\"></div>\n      <div id=\"locale\"></div>\n      \n    </div>\n  </div>\n</nav> ";
   return buffer;});
 
 this["Templates"]["app/locale"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

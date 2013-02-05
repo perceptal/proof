@@ -1,7 +1,7 @@
 {
   "name": "proof",
   "description": "Proof of Concept",
-  "version": "0.1.0-8",
+  "version": "0.1.0-9",
   "homepage": "http://www.perceptal.co.uk/",
   "author": {
     "name": "Johnny Hall",
@@ -51,9 +51,10 @@
     "front-tests": "git://github.com/Backbonist/front-tests.git#master",
     "zombie": "~1.4.1",
     "grunt-contrib-handlebars": "~0.3.3",
-    "grunt-contrib-clean": "~0.4.0a",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-css": "~0.5.3",
     "cucumber": "git://github.com/cucumber/cucumber-js.git#colors",
-    "grunt-buildconcat": "~0.1.2"
+    "grunt-contrib-mincss": "~0.3.2"
   },
   "keywords": [
     "proof",
