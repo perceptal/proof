@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       ]
     , css = [ 
         "public/bootstrap/css/bootstrap.css"
-      , "public/vendor/select2/select2.css"
+      , "components/select2/select2.css"
       , "public/css/main.css"
       , "public/bootstrap/css/bootstrap-responsive.css"
       ]
