@@ -18,6 +18,8 @@ Proof = (function(Backbone, Marionette, i18n, _) {
 
 $(function() {
   window.setTimeout(function() {
+    $("#loading").hide();
+
     Proof.start();
   }, 0);   
 });

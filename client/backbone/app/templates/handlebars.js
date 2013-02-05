@@ -792,6 +792,24 @@ this["Templates"]["security/signon"] = Handlebars.template(function (Handlebars,
   buffer += escapeExpression(stack1) + "</button>\n</div>\n";
   return buffer;});
 
+this["Templates"]["support/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  
+
+
+  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"top\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\">\n        <div id=\"message\"></div>\n      </div>\n\n      <aside id=\"aside\" class=\"auto-height\"></aside>\n    </section>\n\n  </div>\n</div>\n";});
+
+this["Templates"]["support/navigation"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  buffer += "<h1>";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "main.support", {hash:{}}) : helperMissing.call(depth0, "t", "main.support", {hash:{}});
+  buffer += escapeExpression(stack1) + "</h1>\n";
+  return buffer;});
+
 this["Templates"]["administration/organisations/roles/add"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, stack2, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;

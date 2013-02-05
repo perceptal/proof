@@ -1,4 +1,4 @@
-Proof.module("Home", function(Manager, App, Backbone, Marionette, $, _) {
+Proof.module("Support", function(Manager, App, Backbone, Marionette, $, _) {
 
   var HelpView = App.Views.HelpView
     , Layout = Manager.Views.Layout
@@ -6,22 +6,21 @@ Proof.module("Home", function(Manager, App, Backbone, Marionette, $, _) {
 
   Manager.Router = Marionette.AppRouter.extend({
     appRoutes: {
-      ""              : "index"
-    , "home"          : "index"
+      "support" : "index"
     }
   });
 
   Manager.Controller = Marionette.Controller.extend({
 
     selectMenu: function() {
-      App.vent.trigger("section:change", "home");
+      App.vent.trigger("section:change", "support");
     }
 
   , index: function() {
       this.selectMenu();
 
       this.layout = new Layout({
-        aside: new HelpView({ section: "home" })
+        aside: new HelpView({ section: "support" })
       , navigation: new NavigationView()
       });
       this.layout.render();

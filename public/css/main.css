@@ -26,6 +26,16 @@ button {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   filter: alpha(opacity=60);
 }
+#loading {
+  position: absolute;
+  font-size: 2em;
+  color: #fff;
+  width: 100px;
+  height: 50px;
+  margin: -50px 0 0 -50px;
+  left: 50%;
+  top: 50%;
+}
 .navbar {
   margin-bottom: 0;
   border: none;
