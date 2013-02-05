@@ -11,16 +11,17 @@ var Connection = function() {
 		, database: configuration("mongodb:database")
 		, port: 27017 
 	};
-  this.productionConnectionString = configuration("MONGOHQ:URL");
+  this.connectionString = configuration("mongodb:url");
 }
 
 Connection.prototype.open = function(callback) {
   if (this.connection == null) {
     var options = { server: { auto_reconnect: false }};
-    if (this.productionConnectionString === undefined)
+    
+    if (this.connectionString === undefined)
       this.connection = mongoose.createConnection(this.config.host, this.config.database, this.config.port, options);
     else
-      this.connection = mongoose.createConnection(this.productionConnectionString, options);
+      this.connection = mongoose.createConnection(this.connectionString, options);
   };
 
   callback(this.connection);

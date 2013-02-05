@@ -1,6 +1,6 @@
 {
-    "HOSTNAME": "proof.herokuapp.com"
-  , "PORT": 29135
+    "HOSTNAME": "perceptal.proof.jit.su"
+  , "PORT": 80
   , "PROVIDER": {
       "CACHE": "null"
     , "MESSAGING": "postal"

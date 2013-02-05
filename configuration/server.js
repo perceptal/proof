@@ -98,14 +98,6 @@ Server.prototype.start = function(callback) {
   // this.httpsServer = https.createServer(options, app).listen(443);
 
   this.io = io.listen(this.httpServer);
-
-  // Heroku rules
-  if ("production" == this.app.get("env")) {
-    io.configure(function() { 
-      io.set("transports", [ "xhr-polling" ]); 
-      io.set("polling duration", 12); 
-    });
-  }
 }
 
 Server.prototype.stop = function(callback) {
