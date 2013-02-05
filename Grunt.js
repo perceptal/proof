@@ -9,21 +9,21 @@ module.exports = function(grunt) {
 			]
 		, compiled = app + "templates/handlebars.js"
     , vendor = [ 
-        "components/vendor/jquery/jquery.js"
-      , "components/vendor/jquery.cookie/jquery.cookie.js"
-      , "components/vendor/inflection/inflection.js"
+        "components/jquery/jquery.js"
+      , "components/jquery.cookie/jquery.cookie.js"
+      , "components/inflection/inflection.js"
       , "public/bootstrap/js/bootstrap.js"
-      , "components/vendor/underscore/underscore.js"
-      , "components/vendor/backbone/backbone.js"
-      , "components/vendor/backbone.super/backbone.super.js"
-      , "components/vendor/backbone.marionette/lib/backbone.marionette.js"
-      , "components/vendor/backbone.iosync/backbone.iobind.js"
-      , "components/vendor/backbone.paginator/lib/backbone.paginator.js"
-      , "components/vendor/backbone.paginator/plugins/diacritic.js"
-      , "components/vendor/backbone-validation/dist/backbone-validation.js"
-      , "components/vendor/handlebars/handlebars-1.0.0-rc.1.js"
-      , "components/vendor/select2/select2.js"
-      , "components/vendor/showdown/showdown.js"
+      , "components/underscore/underscore.js"
+      , "components/backbone/backbone.js"
+      , "components/backbone.super/backbone.super.js"
+      , "components/backbone.marionette/lib/backbone.marionette.js"
+      , "components/backbone.iosync/backbone.iobind.js"
+      , "components/backbone.paginator/lib/backbone.paginator.js"
+      , "components/backbone.paginator/plugins/diacritic.js"
+      , "components/backbone-validation/dist/backbone-validation.js"
+      , "components/handlebars/handlebars-1.0.0-rc.1.js"
+      , "components/select2/select2.js"
+      , "components/showdown/showdown.js"
       ]
     , application = [
         app + "lib/plugin/jquery.image.fallback.js"
@@ -59,7 +59,6 @@ module.exports = function(grunt) {
       ]
     , css = [ 
         "public/bootstrap/css/bootstrap.css"
-      , "public/bootstrap/css/font-awesome.css"
       , "public/vendor/select2/select2.css"
       , "public/css/main.css"
       , "public/bootstrap/css/bootstrap-responsive.css"

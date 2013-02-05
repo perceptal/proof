@@ -52,7 +52,7 @@
     "zombie": "~1.4.1",
     "grunt-contrib-handlebars": "~0.3.3",
     "grunt-contrib-clean": "~0.4.0",
-    "grunt-css": "~0.5.3",
+    "grunt-contrib-mincss": "~0.3.2",
     "cucumber": "git://github.com/cucumber/cucumber-js.git#colors",
     "grunt-contrib-mincss": "~0.3.2"
   },
