@@ -11,8 +11,7 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
 	_.extend(App, {
 
     refresh: function() {
-      if (Backbone.history && Backbone.history.fragment)
-        Backbone.history.loadUrl(Backbone.history.fragment);
+      if (Backbone.history) Backbone.history.loadUrl(Backbone.history.fragment || "home");
     }
 
   ,	signOn: function(session) {
@@ -28,6 +27,8 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       
       Global.currentUser.fetch()
         .done(function() {
+          console.log(Global.currentUser)
+
           App.vent.trigger("security:signedon", Global.session, Global.currentUser);
           App.vent.trigger("section:changed", Global.section);
         });

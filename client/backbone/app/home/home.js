@@ -2,7 +2,8 @@ Proof.module("Home", function(Manager, App, Backbone, Marionette, $, _) {
 
   var HelpView = App.Views.HelpView
     , Layout = Manager.Views.Layout
-    , NavigationView = Manager.Views.NavigationView;
+    , NavigationView = Manager.Views.NavigationView
+    , SummaryView = Manager.Views.SummaryView;
 
   Manager.Router = Marionette.AppRouter.extend({
     appRoutes: {
@@ -23,6 +24,7 @@ Proof.module("Home", function(Manager, App, Backbone, Marionette, $, _) {
       this.layout = new Layout({
         aside: new HelpView({ section: "home" })
       , navigation: new NavigationView()
+      , summary: new SummaryView({ model: App.Global.currentUser })
       });
       this.layout.render();
 

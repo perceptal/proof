@@ -32,6 +32,29 @@ a, button
   left 50%
   top 50%
 
+#top
+  margin-bottom 0
+  border none
+
+  .nav
+    margin-bottom 0
+    font-size 0.8em
+
+    li
+      padding 2px 5px 0 0
+
+      a
+        color #600
+        border 1px solid transparent
+      a:hover
+        color #c00
+        background-color transparent
+
+    li.active
+      a
+        background-color #fff
+        border-color #eee
+
 .navbar
   margin-bottom 0
   border none
@@ -178,11 +201,6 @@ nav#primary
   top 40px 
   right 0
 
-#pages > header::after
-  content "" 
-  display table 
-  clear both
-
 #contents
   position relative
   box-sizing border-box 
@@ -245,6 +263,9 @@ nav#primary
         left 0 
         color #8b9095 
         font-size 14px 
+
+        #summary
+          margin 10px
 
         ul.list
           max-height 620px

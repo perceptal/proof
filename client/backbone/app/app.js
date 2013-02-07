@@ -1,4 +1,4 @@
-Proof = (function(Backbone, Marionette, i18n, _) {
+Proof = (function(Backbone, Marionette, _) {
 	"use strict"
 
   var app = new Marionette.Application();

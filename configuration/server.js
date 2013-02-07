@@ -59,7 +59,6 @@ Server.prototype.configure = function(models) {
     app.use(express.static(root + "client/" + configuration("client") + "/app"));
 
     app.use(function(err, req, res, next) {
-      console.error(err, err.status);
       res.send(err.status || 500, err.message);
     });
 
@@ -99,7 +98,6 @@ Server.prototype.start = function(callback) {
   this.started = true;
 
   this.httpServer = http.createServer(this.app);
-  // this.io = require("socket.io").listen(this.httpServer);
   this.httpServer.listen(configuration("port"), callback);
   // this.httpsServer = https.createServer(options, app).listen(443);
 

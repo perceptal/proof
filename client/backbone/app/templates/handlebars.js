@@ -383,7 +383,7 @@ this["Templates"]["home/layout"] = Handlebars.template(function (Handlebars,dept
   
 
 
-  return "<div id=\"pages\">\n  <header class=\"navbar\" id=\"top\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <nav id=\"selector\"></nav>\n    </div>\n\n    <section>\n      <div id=\"content\">\n        <div id=\"message\"></div>\n      </div>\n\n      <aside id=\"aside\" class=\"auto-height\"></aside>\n    </section>\n\n  </div>\n</div>\n";});
+  return "<div id=\"pages\">\n  <header id=\"top\"></header>\n\n  <div id=\"page\">\n    <div id=\"sidebar\" class=\"auto-height\">\n      <div id=\"summary\"></div>\n    </div>\n\n    <section>\n      <div id=\"content\" class=\"auto-height\">\n        <div id=\"menu\"></div>\n\n        <div id=\"message\"></div>\n\n        <div id=\"inner\"></div>\n\n        <aside id=\"aside\" class=\"auto-height\"></aside>\n      </div>\n    </section>\n\n  </div>\n</div>\n";});
 
 this["Templates"]["home/navigation"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -393,7 +393,61 @@ this["Templates"]["home/navigation"] = Handlebars.template(function (Handlebars,
   buffer += "<h1>";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "main.home", {hash:{}}) : helperMissing.call(depth0, "t", "main.home", {hash:{}});
-  buffer += escapeExpression(stack1) + "</h1>\n";
+  buffer += escapeExpression(stack1) + "</h1>\n\n<ul class=\"nav nav-pills\">\n  <li class=\"active\"><a data-page=\"info\" href=\"#profile\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "main.profile", {hash:{}}) : helperMissing.call(depth0, "t", "main.profile", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n  <li><a data-page=\"photos\" href=\"#notifications\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "main.notifications", {hash:{}}) : helperMissing.call(depth0, "t", "main.notifications", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n</ul>\n";
+  return buffer;});
+
+this["Templates"]["home/summary"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+
+
+  buffer += "<h4 class=\"person ";
+  foundHelper = helpers.gender;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.gender; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  foundHelper = helpers.firstName;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.firstName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " ";
+  foundHelper = helpers.lastName;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.lastName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " <small>";
+  stack1 = depth0.group;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
+  buffer += escapeExpression(stack1) + "</small></h4>\n<p>\n  <a href=\"tel:";
+  foundHelper = helpers.telephone;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.telephone; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  foundHelper = helpers.telephone;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.telephone; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a>\n</p>\n<p>\n  <a href=\"mailto:";
+  foundHelper = helpers.email;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.email; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  stack1 = depth0.email;
+  foundHelper = helpers.formatEmail;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "formatEmail", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</a>\n</p>\n<p>\n  <a href=\"mailto:";
+  foundHelper = helpers.name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  stack1 = depth0.name;
+  foundHelper = helpers.formatEmail;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "formatEmail", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</a>\n</p>\n\n";
   return buffer;});
 
 this["Templates"]["people/empty"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

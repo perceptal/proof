@@ -36,6 +36,29 @@ button {
   left: 50%;
   top: 50%;
 }
+#top {
+  margin-bottom: 0;
+  border: none;
+}
+#top .nav {
+  margin-bottom: 0;
+  font-size: 0.8em;
+}
+#top .nav li {
+  padding: 2px 5px 0 0;
+}
+#top .nav li a {
+  color: #600;
+  border: 1px solid transparent;
+}
+#top .nav li a:hover {
+  color: #c00;
+  background-color: transparent;
+}
+#top .nav li.active a {
+  background-color: #fff;
+  border-color: #eee;
+}
 .navbar {
   margin-bottom: 0;
   border: none;
@@ -197,11 +220,6 @@ nav#primary ul li a:hover.active {
   top: 40px;
   right: 0;
 }
-#pages > header::after {
-  content: "";
-  display: table;
-  clear: both;
-}
 #contents {
   position: relative;
   -webkit-box-sizing: border-box;
@@ -278,6 +296,9 @@ nav#primary ul li a:hover.active {
   left: 0;
   color: #8b9095;
   font-size: 14px;
+}
+#contents #pages #page #sidebar #summary {
+  margin: 10px;
 }
 #contents #pages #page #sidebar ul.list {
   max-height: 620px;

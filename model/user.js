@@ -74,12 +74,17 @@ module.exports = function(connection) {
     
     user.save(function(err, user) {
       if (err) return callback(err);
-      return callback(null, user);
+
+      callback(null, user);
     });
   }
 
   UserSchema.virtual("token").get(function() {
     return "Basic " + new Buffer([ this.name, this.sessionId ].join(":"), "binary").toString("base64");
+  });
+
+  UserSchema.virtual("code").get(function() {
+    return this.sessionId ? _(this.sessionId.split("|")).first() : "";
   });
 
   return UserSchema;

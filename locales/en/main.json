@@ -18,6 +18,8 @@
 , "main" : { 
     "title": "Proof"
   , "home": "Home"
+  , "profile": "Profile"
+  , "notifications": "Notifications"
   , "people": "People" 
   , "person": "Person"
   , "administration": "Administration"
