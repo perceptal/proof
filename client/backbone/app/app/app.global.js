@@ -27,8 +27,6 @@ Proof.module("Global", function(Global, App, Backbone, Marionette, $, _) {
       
       Global.currentUser.fetch()
         .done(function() {
-          console.log(Global.currentUser)
-
           App.vent.trigger("security:signedon", Global.session, Global.currentUser);
           App.vent.trigger("section:changed", Global.section);
         });

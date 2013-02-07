@@ -1,7 +1,7 @@
 [
-  { "name": "sys", "roles": [ "system" ]
+  { "name": "sys", "email": "engineer@perceptal.co.uk", "roles": [ "system" ]
   }
-, { "name": "johnny", "roles": [ "system" ]
+, { "name": "johnny", "email": "johnny@recipher.co.uk", "roles": [ "system" ]
   }
 , { "name": "angelina", "code": "999999"
   , "roles": [ "administrator" ]

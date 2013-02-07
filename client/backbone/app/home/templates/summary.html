@@ -1,11 +1,9 @@
-<h4 class="person {{ gender }}">{{ firstName }} {{ lastName }} <small>{{ group.name }}</small></h4>
+<h4 class="person">{{ person.firstName }} {{ person.lastName }}</h4>
 <p>
-  <a href="tel:{{ telephone }}">{{ telephone }}</a>
+  <a href="tel:{{ person.telephone }}">{{ person.telephone }}</a>
 </p>
 <p>
-  <a href="mailto:{{ email }}">{{ formatEmail email }}</a>
+  <a href="mailto:{{ person.email }}">{{ formatEmail person.email }}</a>
 </p>
-<p>
-  <a href="mailto:{{ name }}">{{ formatEmail name }}</a>
-</p>
+
 

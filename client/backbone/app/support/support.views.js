@@ -11,8 +11,9 @@ Proof.module("Support.Views", function(Views, App, Backbone, Marionette, $, _) {
   , regions: {
         "navigation":     "#top"
       , "aside":          "#aside"
-      , "list":           "#sidebar nav#selector"
-      , "content":        "#content"
+      , "summary":        "#summary"
+      , "menu":           "#menu"
+      , "inner":          "#inner"
     }
 
   , initialize: function(views) {

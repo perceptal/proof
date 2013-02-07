@@ -10,9 +10,8 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
 			if (err) return res.send(500);
 			if (user == null) return res.send(404);
 
-			Person.findOne({ _id: { $in: user.people }, code: user.code }, function(err, person) {
-        user.people.length = 0;
-        user.people.push(person);
+			User.findOne({ _id: user.id }).populate("people", null, { code: user.code }).exec(function(err, user) {
+				if (err) return res.send(500);
 				return res.send(200, user.toJSON({ hide: "password salt" }));
 			});
 		});
