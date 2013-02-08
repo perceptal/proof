@@ -11,6 +11,7 @@ module.exports = function(grunt) {
     , vendor = [ 
         "components/jquery/jquery.js"
       , "components/jquery.cookie/jquery.cookie.js"
+      , "components/jquery.iframe.transport/jquery.iframe.transport.js"
       , "components/inflection/inflection.js"
       , "public/bootstrap/js/bootstrap.js"
       , "components/underscore/underscore.js"
@@ -27,6 +28,7 @@ module.exports = function(grunt) {
       ]
     , application = [
         app + "lib/plugin/jquery.image.fallback.js"
+      , app + "lib/plugin/jquery.file.upload.js"
       , app + "lib/handlebars.helpers.js"
       , app + "templates/handlebars.js"
       , app + "lib/backbone.validation.bootstrap.js"

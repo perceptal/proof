@@ -8,6 +8,21 @@ Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _) 
       return "/api/" + this.parent.name + "/" + this.parent.id + "/photos";
     }
 
+  , sync: function(method, model, options) {
+      var that = this;
+
+      if (method === "create") {
+        options.iframe = true;
+        options.files = this.file;
+        options.data = { owner: this.get("owner"), caption: this.get("caption") };
+      }
+
+      return this._super(method, model, options);
+    }
+
+  , setFile: function(file) {
+      this.file = file;
+    }
   });
 
   Models.Photos = SecuredCollection.extend({

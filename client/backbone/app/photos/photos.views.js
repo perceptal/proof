@@ -1,5 +1,8 @@
 Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
 
+  var FormView = App.Common.Views.FormView
+    , UploadView = App.Common.Views.UploadView;
+
   Views.ItemView = Marionette.ItemView.extend({
     template: "photos/item"
 
@@ -45,6 +48,38 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
   , initialize: function() {
       this.collection.bind("change", this.render, this.collection);
       this.collection.bind("reset", this.render, this.collection);
+    }
+  });
+
+
+  Views.UploadView = UploadView.extend({
+    template: "photos/upload"
+
+  , ui: {
+      caption         : "input#caption"
+    , file            : "input#file"
+    , save            : "button#save"
+    }
+
+  , messages: {
+      error           : "photos.upload"
+    }
+
+  , initialize: function(options) {
+      this.autoSave = false;
+      this.focus = "caption";
+      this.section = options.section;
+      console.log(this.section, options)
+    }
+
+  , onRender: function() {
+      this.ui.file.customiseFileInput();
+      
+      return this._super();
+    }
+
+  , afterSave: function(photo) {
+      App.vent.trigger(this.section + ":navigate", "photos", this.section + "/" + photo.get("owner") + "/photos");
     }
   });
 

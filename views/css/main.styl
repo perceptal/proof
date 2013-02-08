@@ -268,7 +268,7 @@ nav#primary
         font-size 14px 
 
         #summary
-          margin 10px
+          margin 15px
 
         ul.list
           max-height 620px
@@ -372,7 +372,7 @@ form.box
   label
     padding-left 6px
     color #666
-    font-size 13px
+    font-size 14px
 
   label.checkbox
     padding-left 20px
@@ -428,6 +428,101 @@ form.box
 
 .select2-drop
   border-radius 0 0 1px 1px !important
+
+input#file
+  border-radius(3px)
+  background-color #aaa
+  padding .4em 1.2em
+  border 1px solid #aaa
+  color #222
+  font-size 1.2em
+  cursor pointer
+
+input#file:hover
+  background #fff
+  color #111
+  border-color #777
+
+.customfile-input
+  opacity(0)
+  position absolute
+  height 100px
+  cursor pointer
+  background transparent
+  border 0
+
+.customfile
+  border-radius(1px)
+  font 14px
+  width 364px
+  color #555
+  cursor pointer
+  overflow hidden
+  padding 3px
+  height 29px
+  margin 0 0 25px 0
+  border 1px solid #aaa
+  position relative
+  background #fff
+  
+.customfile-disabled
+  opacity(0.5)
+  cursor default
+  
+.customfile-feedback
+  display block
+  margin 0px 1px 2px 5px
+  padding 6px 0
+  
+.customfile-feedback-populated
+  color #555
+  padding-left 26px
+  
+.customfile-button
+  border-radius(2px)
+  color #fff
+  float right
+  text-align center
+  text-decoration none
+  color #333
+  text-shadow 0 1px 1px rgba(255, 255, 255, 0.75)
+  background-color #f5f5f5
+  background-image -moz-linear-gradient(top, #ffffff, #e6e6e6)
+  background-image -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6))
+  background-image -webkit-linear-gradient(top, #ffffff, #e6e6e6)
+  background-image -o-linear-gradient(top, #ffffff, #e6e6e6)
+  background-image linear-gradient(top bottom, #ffffff, #e6e6e6)
+  background-repeat repeat-x
+  border-color #e6e6e6 #e6e6e6 #bfbfbf
+  border-color rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+  border 1px solid #bbb
+  color #444
+  padding 3px 5px
+  display inline-block
+  font-size 14px
+  font-weight normal
+  cursor pointer
+  line-height 21px
+  
+.customfile-hover .customfile-button, .customfile-focus .customfile-button
+  color #333
+  background-color #e6e6e6
+  *background-color #d9d9d9
+  background-position 0 -15px
+  -webkit-transition background-position 0.1s linear
+  -moz-transition background-position 0.1s linear
+  -o-transition background-position 0.1s linear
+  transition background-position 0.1s linear
+  
+.customfile-focus .customfile-button 
+  outline 1px dotted #ccc
+
+.customfile-ext-jpg, .customfile-ext-gif, .customfile-ext-png, .customfile-ext-jpeg, .customfile-ext-bmp
+  background transparent url("img/image.png") no-repeat left 2px
+.customfile-ext-mp3, .customfile-ext-mp4, .customfile-ext-mov, .customfile-ext-swf, .customfile-ext-wav, .customfile-ext-m4v
+  background transparent url("img/media.png") no-repeat left 2px
+.customfile-ext-zip, .customfile-ext-tar, .customfile-ext-sit
+  background transparent url("img/zip.png") no-repeat left 2px
 
 .image
   border-radius(8px)

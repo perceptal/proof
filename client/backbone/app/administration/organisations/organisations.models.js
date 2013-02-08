@@ -8,7 +8,8 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     urlRoot: "/api/organisations"
 
   , defaults: {
-      photos: []
+      code: "..."
+    , photos: []
     , roles: []
     }
 

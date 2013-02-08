@@ -2,13 +2,15 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
 
   var SecuredCollection = App.Common.Models.SecuredCollection
     , SecuredModel = App.Common.Models.SecuredModel
+    , Photo = App.Photos.Models.Photo
     , Photos = App.Photos.Models.Photos;
 
 	Models.Person = SecuredModel.extend({
 		urlRoot: "/api/people"
 
   , defaults: {
-      photos: []
+      firstName: "..."
+    , photos: []
     , documents: []
     }
 
@@ -20,6 +22,12 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       this.photos = new Photos(this.get("photos"), parent);
 
       this.setupIoBind();
+    }
+
+  , addPhoto: function() {
+      var photo = new Photo({ owner: this.get("id") });
+      this.photos.add(photo);
+      return photo;
     }
 
   , markActive: function() {

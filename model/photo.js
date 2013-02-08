@@ -27,16 +27,17 @@ module.exports = function(connection) {
     if (photo.sizes.length === 0) photo.sizes = _.pluck(config, "name");
 
     async.forEach(photo.sizes, function(size, callback) {
+
       processor.square(size, function(err, result) {
         if (err) callback(err);
-
+      
         photo.name = result.name;
 
         processor.format(function(err, type) {
           if (err) callback(err);
 
           photo.contentType = "image/" + type.toLowerCase();
-      
+
           var uploader = new Uploader({ path: result.path });
 
           uploader.put(function(err) {

@@ -29,7 +29,6 @@ Processor.prototype.square = function(dimension, callback) {
     , config = _.find(require("./config"), function(item) { return item.name === dimension });
 
   im(this.path).size(function(err, size) {
-
     if (err) callback(err);
 
     var h = size.height

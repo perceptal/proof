@@ -13,6 +13,9 @@
   , "next": "Nächste"
   , "yes": "Ja"
   , "no": "Nein"
+  , "loading": "Einschiffung"
+  , "saving": "Sparend..."
+  , "uploading": "Uploading..."
   , "are_you_sure": "Sind sie sicher?"
   }
 , "main" : { 
@@ -93,6 +96,8 @@
   , "delete": "Sind sie sicher, dass sie dieses $t(documents.document) löschen?"
   , "deleted": "Das $t(documents.document) wurde gelöscht."
   , "upload": "$t(general.upload) $t(documents.document)"
+  , "caption": "$t(photos.photo) Beschriftung"
+  , "image": "Wählen Sie Image File"
   , "not_found": "Es gibt keine übereinstimmenden $t(documents.documents) gefunden."
   }
 , "error": {
@@ -110,6 +115,9 @@
   , "organisations": {
       "info": "$t(error.general.save)"
     , "role": "$t(error.general.save)"
+    }
+  , "photos": {
+      "upload": "Fehler beim Hochladen des Fotos."
     }
   }
 , "validation": {

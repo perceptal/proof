@@ -36,6 +36,8 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
         , field = this.ui[prop]
         , value = field.val();
 
+      if (field.attr("type") === "file") return;
+
       this.onChange(prop, field, value);
     }
 
@@ -56,7 +58,10 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       
       if (this.model.isValid(true)) {
         if (this.autoSave) {
-          this.save(function(model) { model.set(prop, value); }, function(model) { model.set(prop, previous); })
+          this.save(
+            function(model) { model.set(prop, value); }
+          , function(model) { model.set(prop, previous); }
+          );
         }
       } else {
         this.model.set(prop, previous);
@@ -67,13 +72,18 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
 
     , onSave: function(e) {
         e.preventDefault();
+        
+        var save = this.ui.save;
 
         if (this.model.isValid(true)) {
-          this.save(this.afterSave);
+          console.log(save.html())
+
+          save.button("loading");
+          this.save(_(this.afterSave).bind(this), function() { save.button("reset"); });
         };
       }
 
-    , save: function(success, fail) {
+    , save: function(success, fail, always) {
         var model = this.model
           , messages = this.messages;
         
@@ -86,10 +96,23 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
           .fail(function() {
             if (fail) fail(model);
             App.vent.trigger("message:show", i18n.t("error." + messages.error));
+          })
+          
+          .always(function() {
+            if (always) always(model);
           });
         
         return false;
       }
+  });
+
+  Views.UploadView = Views.FormView.extend({
+    save: function(success, fail) {
+
+      this.model.setFile(this.ui.file);
+
+      return this._super(success, fail);
+    }
   });
 
 });

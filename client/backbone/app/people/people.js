@@ -9,6 +9,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
     , SummaryView = Manager.Views.SummaryView
     , InfoView = Manager.Views.InfoView
     , PhotoListView = App.Photos.Views.ListView
+    , UploadPhotoView = App.Photos.Views.UploadView
     , Layout = Manager.Views.Layout;
 
 	Manager.Router = Marionette.AppRouter.extend({
@@ -21,9 +22,9 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
     , "people/:id/"               : "show"
     , "people/:id/info"           : "show"
     , "people/:id/photos"         : "photos"
-    , "people/:id/photos/new"     : "show"
+    , "people/:id/photo"          : "photo"
     , "people/:id/documents"      : "show"
-    , "people/:id/documents/new"  : "show"
+    , "people/:id/document"       : "document"
     , "people/:id/permissions"    : "show"
 		}
 	});
@@ -88,6 +89,18 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 
   , photos: function(id) {
       this.constructPersonLayout(id, "photos");
+    }
+
+  , photo: function(id) {
+      this.constructPersonLayout(id, "photo");
+    }
+
+  , documents: function(id) {
+      this.constructPersonLayout(id, "documents");
+    }
+
+  , document: function(id) {
+      this.constructPersonLayout(id, "document");
     }
 
   , loadPerson: function(id) {
@@ -179,9 +192,17 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
         case "documents":
           break;
 
+        case "document":
+          break;
+
         case "photos":
           this.person.photos.fetch();
           return new PhotoListView({ collection: this.person.photos });
+
+        case "photo":
+          var view = new UploadPhotoView({ model: this.person.addPhoto(), section: "people" });
+          Backbone.Validation.bind(view); // TODO Move this
+          return view;
 
         case "info":
         default:

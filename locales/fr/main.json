@@ -13,6 +13,9 @@
   , "next": "Suivant"
   , "yes": "Oui"
   , "no": "Non"
+  , "loading": "Chargement"
+  , "saving": "Salvateur..."
+  , "uploading": "Téléchargement..."
   , "are_you_sure": "Etes-vous sûr?"
   }
 , "main" : { 
@@ -85,6 +88,8 @@
   , "delete": "Êtes-vous sûr de vouloir supprimer cette $t(photos.photo)?"
   , "deleted": "La $t(photos.photo) a été supprimée."
   , "upload": "$t(general.upload) $t(photos.photo)"
+  , "caption": "$t(photos.photo) Légende"
+  , "image": "Sélectionnez un Fichier Image"
   , "not_found": "Il n'y a $t(photos.photo) trouvés."
   }
 , "documents": {
@@ -105,11 +110,14 @@
     , "unauthorised": "Vous n'avez pas la permission d'accéder à cette information."
     }
   , "people": {
-      "info": "$t(error:general.save)"
+      "info": "$t(error.general.save)"
     }
   , "organisations": {
-      "info": "$t(error:general.save)"
-    , "role": "$t(error:general.save)"
+      "info": "$t(error.general.save)"
+    , "role": "$t(error.general.save)"
+    }
+  , "photos": {
+      "upload": "Problème lors du chargement de la $t(photos.photo)."
     }
   }
 , "validation": {

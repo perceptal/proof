@@ -37,6 +37,7 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
 
   , ui: {
       name            : "input#name"
+    , save            : "button#save"
     }
 
   , messages: {
