@@ -3,13 +3,14 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
   var SecuredCollection = App.Common.Models.SecuredCollection
     , SecuredModel = App.Common.Models.SecuredModel
     , Photos = App.Photos.Models.Photos
+    , Photo = App.Photos.Models.Photo
+    ;
 
   Models.Organisation = SecuredModel.extend({
     urlRoot: "/api/organisations"
 
   , defaults: {
-      code: "..."
-    , photos: []
+      photos: []
     , roles: []
     }
 
@@ -21,6 +22,12 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       
       this.photos = new Photos(this.get("photos"), parent);
       this.roles = new Models.Roles(this.get("roles"), parent);
+    }
+
+  , addPhoto: function() {
+      var photo = new Photo({ owner: this.get("id") });
+      this.photos.add(photo);
+      return photo;
     }
 
   , markActive: function() {

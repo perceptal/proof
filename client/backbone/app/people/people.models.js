@@ -9,8 +9,7 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
 		urlRoot: "/api/people"
 
   , defaults: {
-      firstName: "..."
-    , photos: []
+      photos: []
     , documents: []
     }
 
