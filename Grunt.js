@@ -14,6 +14,7 @@ module.exports = function(grunt) {
       , "components/jquery.iframe.transport/jquery.iframe.transport.js"
       , "components/inflection/inflection.js"
       , "public/bootstrap/js/bootstrap.js"
+      , "public/bootstrap/js/bootstrap.lightbox.js"
       , "components/underscore/underscore.js"
       , "components/backbone/backbone.js"
       , "components/backbone.super/backbone.super.js"
@@ -49,6 +50,8 @@ module.exports = function(grunt) {
       , app + "support/support.js"
       , app + "photos/photos.models.js"
       , app + "photos/photos.views.js"
+      , app + "documents/documents.models.js"
+      , app + "documents/documents.views.js"
       , app + "administration/administration.js"
       , app + "administration/organisations/organisations.models.js"
       , app + "administration/organisations/organisations.views.js"
@@ -61,6 +64,7 @@ module.exports = function(grunt) {
       ]
     , css = [ 
         "public/bootstrap/css/bootstrap.css"
+      , "public/bootstrap/css/bootstrap.lightbox.css"
       , "components/select2/select2.css"
       , "public/css/main.css"
       , "public/bootstrap/css/bootstrap-responsive.css"

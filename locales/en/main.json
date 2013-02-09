@@ -99,6 +99,8 @@
   , "delete": "Are you sure you want to delete this $t(documents.document)?"
   , "deleted": "The $t(documents.document) has been deleted."
   , "upload": "$t(general.upload) $t(documents.document)"
+  , "title": "$t(documents.document) Title"
+  , "file": "Select $t(documents.document) File"
   }
 , "error": { 
     "general": {
@@ -118,6 +120,9 @@
     }
   , "photos": {
       "upload": "Error uploading the $t(photos.photo)."
+    }
+  , "documents": {
+      "upload": "Error uploading the $t(documents.document)."
     }
   }
 , "validation": {

@@ -9,7 +9,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
     , SummaryView = Manager.Views.SummaryView
     , InfoView = Manager.Views.InfoView
     , PhotoListView = App.Photos.Views.ListView
-    , UploadPhotoView = App.Photos.Views.UploadView
+    , PhotoUploadView = App.Photos.Views.UploadView
     , Layout = Manager.Views.Layout;
 
 	Manager.Router = Marionette.AppRouter.extend({
@@ -20,12 +20,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 
     , "people/:id"                : "show"
     , "people/:id/"               : "show"
-    , "people/:id/info"           : "show"
-    , "people/:id/photos"         : "photos"
-    , "people/:id/photo"          : "photo"
-    , "people/:id/documents"      : "show"
-    , "people/:id/document"       : "document"
-    , "people/:id/permissions"    : "show"
+    , "people/:id/:page"          : "page"
 		}
 	});
 
@@ -79,6 +74,10 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
       this.constructPersonLayout(id, "info");
     }
 
+  , page: function(id, page) {
+      this.constructPersonLayout(id, page);
+    }
+
 	, search: function(q) {
 		  // 
 		} 
@@ -86,22 +85,6 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 	, "new": function() {
       this.index();
 	 }
-
-  , photos: function(id) {
-      this.constructPersonLayout(id, "photos");
-    }
-
-  , photo: function(id) {
-      this.constructPersonLayout(id, "photo");
-    }
-
-  , documents: function(id) {
-      this.constructPersonLayout(id, "documents");
-    }
-
-  , document: function(id) {
-      this.constructPersonLayout(id, "document");
-    }
 
   , loadPerson: function(id) {
       var that = this
@@ -190,17 +173,20 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
           break;
 
         case "documents":
-          break;
+          this.person.documents.fetch();
+          return new DocumentListView({ collection: this.person.documents });
 
         case "document":
-          break;
+          var view = new DocumentUploadView({ model: this.person.addDocument(), section: "people" });
+          Backbone.Validation.bind(view); // TODO Move this
+          return view;
 
         case "photos":
           this.person.photos.fetch();
           return new PhotoListView({ collection: this.person.photos });
 
         case "photo":
-          var view = new UploadPhotoView({ model: this.person.addPhoto(), section: "people" });
+          var view = new PhotoUploadView({ model: this.person.addPhoto(), section: "people" });
           Backbone.Validation.bind(view); // TODO Move this
           return view;
 

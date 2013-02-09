@@ -13,7 +13,9 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
     , AddRoleView = Manager.Views.AddRoleView
     , SecurityView = Manager.Views.SecurityView
     , PhotoListView = App.Photos.Views.ListView
-    , UploadPhotoView = App.Photos.Views.UploadView
+    , PhotoUploadView = App.Photos.Views.UploadView
+    , DocumentListView = App.Documents.Views.ListView
+    , DocumentUploadView = App.Documents.Views.UploadView
     , Layout = Manager.Views.Layout;
 
   Manager.Router = Marionette.AppRouter.extend({
@@ -25,13 +27,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
 
     , "administration/organisations/:id"                : "show"
     , "administration/organisations/:id/"               : "show"
-    , "administration/organisations/:id/info"           : "show"
-    , "administration/organisations/:id/photos"         : "photos"
-    , "administration/organisations/:id/photo"          : "photo"
-    , "administration/organisations/:id/documents"      : "show"
-    , "administration/organisations/:id/document"       : "document"
-    , "administration/organisations/:id/security"       : "security"
-    , "administration/organisations/:id/role"           : "role"
+    , "administration/organisations/:id/:page"          : "page"
     }
   });
 
@@ -85,6 +81,10 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
       this.constructOrganisationLayout(id, "info");
     }
 
+  , page: function(id, page) {
+      this.constructOrganisationLayout(id, page);
+    }
+
   , search: function(q) {
       // 
     } 
@@ -92,30 +92,6 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
   , "new": function() {
       this.index();
    }
-
-  , documents: function(id) {
-      this.constructOrganisationLayout(id, "documents");
-    }
-
-  , document: function(id) {
-      this.constructOrganisationLayout(id, "document");
-    }
-
-  , photos: function(id) {
-      this.constructOrganisationLayout(id, "photos");
-    }
-
-  , photo: function(id) {
-      this.constructOrganisationLayout(id, "photo");
-    }
-
-  , security: function(id) {
-      this.constructOrganisationLayout(id, "security");
-    }
-
-  , role: function(id) {
-      this.constructOrganisationLayout(id, "role");
-    }
 
   , loadOrganisation: function(id) {
       var that = this
@@ -201,10 +177,13 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
           return new SecurityView({ collection: this.organisation.roles });
 
         case "documents":
-          break;
+          this.organisation.documents.fetch();
+          return new DocumentListView({ collection: this.organisation.documents });
 
         case "document":
-          break;
+          var view = new DocumentUploadView({ model: this.organisation.addDocument(), section: "organisations" });
+          Backbone.Validation.bind(view); // TODO Move this
+          return view;
 
         case "role":
           var view = new AddRoleView({ model: this.organisation.addRole() });
@@ -216,7 +195,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
           return new PhotoListView({ collection: this.organisation.photos });
 
         case "photo":
-          var view = new UploadPhotoView({ model: this.organisation.addPhoto(), section: "organisations" });
+          var view = new PhotoUploadView({ model: this.organisation.addPhoto(), section: "organisations" });
           Backbone.Validation.bind(view); // TODO Move this
           return view;
 

@@ -1,6 +1,9 @@
 <div class="image caption-bottom">
-  <img src="/api/photos/{{ id }}/view/small"></img>
+  <a href="#{{ id }}" data-toggle="lightbox" data-backdrop="false">
+    <img src="/api/photos/{{ id }}/view/small"></img>
+  </a>
   <a class="default" href="#">&nbsp;</a>
   <a class="delete" href="#">&nbsp;</a>
   <figcaption>{{ caption }}</figcaption>
 </div>
+{{ include "lightbox" caption=caption id=id }}

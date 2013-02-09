@@ -69,7 +69,6 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.autoSave = false;
       this.focus = "caption";
       this.section = options.section;
-      console.log(this.section, options)
     }
 
   , onRender: function() {

@@ -3,7 +3,9 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
   var SecuredCollection = App.Common.Models.SecuredCollection
     , SecuredModel = App.Common.Models.SecuredModel
     , Photo = App.Photos.Models.Photo
-    , Photos = App.Photos.Models.Photos;
+    , Photos = App.Photos.Models.Photos
+    , Documents = App.Documents.Models.Documents
+    , Document = App.Documents.Models.Document
 
 	Models.Person = SecuredModel.extend({
 		urlRoot: "/api/people"
@@ -18,7 +20,9 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       this.init && this.init(attributes, options);
 
       var parent = { parent: { id: this.get("id"), name: "people" }};
+
       this.photos = new Photos(this.get("photos"), parent);
+      this.documents = new Documents(this.get("documents"), parent);
 
       this.setupIoBind();
     }
@@ -27,6 +31,12 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
       var photo = new Photo({ owner: this.get("id") });
       this.photos.add(photo);
       return photo;
+    }
+
+  , addDocument: function() {
+      var doc = new Document({ owner: this.get("id") });
+      this.documents.add(doc);
+      return doc;
     }
 
   , markActive: function() {

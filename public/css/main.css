@@ -335,7 +335,7 @@ nav#primary ul li a:hover.active {
   display: none;
   float: right;
   font-size: 12px;
-  padding-top: 2px;
+  padding-top: 7px;
 }
 #contents #pages #page #sidebar ul.list li a small {
   color: #900;
@@ -608,6 +608,10 @@ input#file:hover {
   border-radius: 6px;
   border: 1px solid #eee;
 }
+.lightbox img {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
 figure.photo {
   display: inline-block;
   margin: 0 10px 10px 0;
@@ -654,7 +658,8 @@ figure.photo .image img {
   border-radius: 3px;
   border: 1px solid #eee;
 }
-figure.photo .image a {
+figure.photo .image a.delete,
+figure.photo .image a.default {
   opacity: 0;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   filter: alpha(opacity=0);

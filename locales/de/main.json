@@ -88,6 +88,8 @@
   , "delete": "Sind sie sicher, dass sie diese $t(photos.photo) löschen?"
   , "deleted": "Das $t(photos.photo) wurde gelöscht."
   , "upload": "$t(general.upload) $t(photos.photo)"
+  , "caption": "$t(photos.photo) Beschriftung"
+  , "image": "Wählen Sie Image File"
   , "not_found": "Es gibt keine übereinstimmenden $t(photos.photos) gefunden."
   }
 , "documents": {
@@ -96,8 +98,8 @@
   , "delete": "Sind sie sicher, dass sie dieses $t(documents.document) löschen?"
   , "deleted": "Das $t(documents.document) wurde gelöscht."
   , "upload": "$t(general.upload) $t(documents.document)"
-  , "caption": "$t(photos.photo) Beschriftung"
-  , "image": "Wählen Sie Image File"
+  , "title": "$t(documents.document) Titel"
+  , "file": "Wählen $t(documents.document) Akte"
   , "not_found": "Es gibt keine übereinstimmenden $t(documents.documents) gefunden."
   }
 , "error": {
@@ -118,6 +120,9 @@
     }
   , "photos": {
       "upload": "Fehler beim Hochladen des Fotos."
+    }
+  , "documents": {
+      "upload": "Fehler beim Hochladen des $t(documents.document)."
     }
   }
 , "validation": {

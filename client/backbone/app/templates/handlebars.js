@@ -1,15 +1,31 @@
 this["Templates"] = this["Templates"] || {};
 
+Handlebars.registerPartial("lightbox", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div id=\"";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" class=\"lightbox hide fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n  <div class=\"lightbox-content\">\n    <a href=\"#\" data-dismiss=\"lightbox\"><img src=\"/api/photos/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/view/large\"></img></a>\n    <div class=\"lightbox-caption\"><p>";
+  foundHelper = helpers.caption;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.caption; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</p></div>\n  </div>\n</div>";
+  return buffer;}));
+
 Handlebars.registerPartial("button", Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
 
 
-  buffer += "  <button autocomplete=\"off\" data-loading-text=\"<i class='icon-";
-  foundHelper = helpers.icon;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.icon; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + " icon-white'></i>&nbsp;&nbsp;";
+  buffer += "  <button autocomplete=\"off\" data-loading-text=\"<i class='icon-spin icon-spinner icon-white'></i>&nbsp;&nbsp;";
   stack1 = depth0.loading;
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "t", stack1, {hash:{}});
@@ -420,6 +436,17 @@ this["Templates"]["app/question"] = Handlebars.template(function (Handlebars,dep
   buffer += escapeExpression(stack1) + "</button>\n  </p>\n</div>\n";
   return buffer;});
 
+this["Templates"]["documents/empty"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"alert fade in\">\n  <i class=\"icon-exclamation-sign\"></i> ";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "documents.not_found", "capitalize", {hash:{}}) : helperMissing.call(depth0, "t", "documents.not_found", "capitalize", {hash:{}});
+  buffer += escapeExpression(stack1) + "\n</div>\n";
+  return buffer;});
+
 this["Templates"]["documents/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
@@ -429,6 +456,37 @@ this["Templates"]["documents/item"] = Handlebars.template(function (Handlebars,d
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   return escapeExpression(stack1);});
+
+this["Templates"]["documents/upload"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, stack2, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+
+
+  buffer += "<fieldset>\n  ";
+  stack1 = {};
+  stack1['field'] = "caption";
+  stack2 = depth0.caption;
+  stack1['value'] = stack2;
+  stack1['width'] = 4;
+  stack1['label'] = "documents.caption";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n  ";
+  stack1 = {};
+  stack1['field'] = "file";
+  stack1['width'] = 4;
+  stack1['label'] = "documents.file";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "file", {hash:stack1}) : helperMissing.call(depth0, "include", "file", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n  ";
+  stack1 = {};
+  stack1['icon'] = "upload";
+  stack1['loading'] = "general.uploading";
+  stack1['text'] = "documents.upload";
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "button", {hash:stack1}) : helperMissing.call(depth0, "include", "button", {hash:stack1});
+  buffer += escapeExpression(stack1) + "\n</fieldset>\n";
+  return buffer;});
 
 this["Templates"]["home/layout"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -776,18 +834,30 @@ this["Templates"]["photos/empty"] = Handlebars.template(function (Handlebars,dep
 
 this["Templates"]["photos/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, stack2, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
-  buffer += "<div class=\"image caption-bottom\">\n  <img src=\"/api/photos/";
+  buffer += "<div class=\"image caption-bottom\">\n  <a href=\"#";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/view/small\"></img>\n  <a class=\"default\" href=\"#\">&nbsp;</a>\n  <a class=\"delete\" href=\"#\">&nbsp;</a>\n  <figcaption>";
+  buffer += escapeExpression(stack1) + "\" data-toggle=\"lightbox\" data-backdrop=\"false\">\n    <img src=\"/api/photos/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/view/small\"></img>\n  </a>\n  <a class=\"default\" href=\"#\">&nbsp;</a>\n  <a class=\"delete\" href=\"#\">&nbsp;</a>\n  <figcaption>";
   foundHelper = helpers.caption;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.caption; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "</figcaption>\n</div>\n";
+  stack1 = {};
+  stack2 = depth0.caption;
+  stack1['caption'] = stack2;
+  stack2 = depth0.id;
+  stack1['id'] = stack2;
+  foundHelper = helpers.include;
+  stack1 = foundHelper ? foundHelper.call(depth0, "lightbox", {hash:stack1}) : helperMissing.call(depth0, "include", "lightbox", {hash:stack1});
+  buffer += escapeExpression(stack1);
   return buffer;});
 
 this["Templates"]["photos/upload"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

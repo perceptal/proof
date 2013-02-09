@@ -4,6 +4,8 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     , SecuredModel = App.Common.Models.SecuredModel
     , Photos = App.Photos.Models.Photos
     , Photo = App.Photos.Models.Photo
+    , Documents = App.Documents.Models.Documents
+    , Document = App.Documents.Models.Document
     ;
 
   Models.Organisation = SecuredModel.extend({
@@ -11,6 +13,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
 
   , defaults: {
       photos: []
+    , documents: []
     , roles: []
     }
 
@@ -21,6 +24,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       var parent = { parent: { id: this.get("id"), name: "organisations" }};
       
       this.photos = new Photos(this.get("photos"), parent);
+      this.documents = new Documents(this.get("documents"), parent);
       this.roles = new Models.Roles(this.get("roles"), parent);
     }
 
@@ -30,18 +34,24 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       return photo;
     }
 
-  , markActive: function() {
-      this.set("active", "active")
-    }
-
-  , isActive: function() {
-      return this.get("active") === "active";
+  , addDocument: function() {
+      var doc = new Document({ owner: this.get("id") });
+      this.documents.add(doc);
+      return doc;
     }
 
   , addRole: function() {
       var role = new Models.Role({ organisation: this.get("id") });
       this.roles.add(role);
       return role;
+    }
+
+  , markActive: function() {
+      this.set("active", "active")
+    }
+
+  , isActive: function() {
+      return this.get("active") === "active";
     }
 
   , validation: {

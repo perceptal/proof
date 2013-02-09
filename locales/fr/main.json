@@ -89,7 +89,7 @@
   , "deleted": "La $t(photos.photo) a été supprimée."
   , "upload": "$t(general.upload) $t(photos.photo)"
   , "caption": "$t(photos.photo) Légende"
-  , "image": "Sélectionnez un Fichier Image"
+  , "image": "Choisir un Fichier Image"
   , "not_found": "Il n'y a $t(photos.photo) trouvés."
   }
 , "documents": {
@@ -99,6 +99,8 @@
   , "deleted": "Le $t(documents.document) a été supprimée."
   , "upload": "$t(general.upload) $t(documents.document)"
   , "not_found": "Il n'y a $t(documents.document) trouvés."
+  , "title": "$t(documents.document) Titre"
+  , "file": "Choisir $t(documents.document) Dossier"
   }
 , "error": { 
     "general": {
@@ -118,6 +120,9 @@
     }
   , "photos": {
       "upload": "Problème lors du chargement de la $t(photos.photo)."
+    }
+  , "documents": {
+      "upload": "Problème lors du chargement de la $t(documents.document)."
     }
   }
 , "validation": {

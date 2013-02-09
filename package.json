@@ -1,7 +1,7 @@
 {
-  "name": "proof",
+  "name": "proven",
   "description": "Proof of Concept",
-  "version": "0.1.0-19",
+  "version": "0.1.0-1",
   "homepage": "http://www.perceptal.co.uk/",
   "author": {
     "name": "Johnny Hall",
@@ -64,5 +64,5 @@
     "express",
     "api"
   ],
-  "subdomain": "proof.perceptal"
+  "subdomain": "proven.perceptal"
 }
