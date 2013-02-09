@@ -1,11 +1,13 @@
 module.exports = function(app, models, util, messaging, cache, authenticate, authorize) {
 
-	var Person = models.Person;
+	var Person = models.Person
+	  , Photo = models.Photo;
 
 	var findOne = function(id, res, next, callback) {
 		Person.findOneAndPopulate({ _id: id }, function(err, person) {			
 			if (person == null) return res.send(404);
 			if (err) return next(err);
+
 			res.send(200, person);
 			if (callback) callback(person);
 		});
@@ -54,9 +56,11 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
 
 			person.save(function(err) {
 				if (err) return next(err);
-				
-				findOne(person.id, res, next, function(person) {
-					messaging.publish("/api/people:update", person);
+
+				Photo.setDefault(person.id, req.body.defaultPhoto, function(err, photo) {
+					findOne(person.id, res, next, function(person) {
+						messaging.publish("/api/people:update", person);
+					});
 				});
 			});
 		});
@@ -69,7 +73,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
 
 			person.remove(function(err) {
 				if (err) return next(err);
-				messaging.publish("people:delete", person);
+				messaging.publish("/api/people:delete", person);
 				res.send(204);
 			});
 		});

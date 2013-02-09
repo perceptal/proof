@@ -3,6 +3,16 @@ Proof.module("Photos.Models", function(Models, App, Backbone, Marionette, $, _) 
   var SecuredCollection = App.Common.Models.SecuredCollection
       , SecuredModel = App.Common.Models.SecuredModel;
 
+  Models.DefaultPhoto = SecuredModel.extend({ 
+    urlRoot: function() {
+      return "/api/" + this.parent.name + "/" + this.parent.id + "/photos/default";
+    }
+
+  , initialize: function(attributes, options) {
+      this.parent = options.parent;
+    }
+  });
+
   Models.Photo = SecuredModel.extend({ 
     urlRoot: function() {
       return "/api/" + this.parent.name + "/" + this.parent.id + "/photos";

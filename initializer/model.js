@@ -6,12 +6,12 @@ module.exports.init = function(connection) {
 
 	[
       { name: "Account" }
+    , { name: "Photo" }
+    , { name: "Document" }
     , { name: "Group" }
     , { name: "Person" }
     , { name: "Role" }
     , { name: "User" }
-    , { name: "Photo" }
-    , { name: "Document" }
 
 	].map(function(defn) {
 		models[defn.name] = model(defn.path || defn.name.toLowerCase(), connection);

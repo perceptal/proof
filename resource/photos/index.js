@@ -42,6 +42,15 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
       });
   });
 
+  app.get("/api/:owner/:ownerid/photos/default"
+  // , authenticate.basic()
+  , function(req, res, next) {
+      Photo.findOne({ owner: req.params.ownerid, isDefault: 1 }, function(err, photo) {
+        if (err) res.send(500);
+        res.send(200, photo);
+      });
+  });
+
   app.get("/api/:owner/:ownerid/photos/view/:size"
   // , authenticate.basic()
   , function(req, res, next) {

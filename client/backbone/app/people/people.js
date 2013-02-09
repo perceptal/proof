@@ -104,6 +104,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
             found = that.person.copyFrom(that.people.get(id));
           }
           that.person.markActive();
+          that.person.setupDefaultPhoto();
           that.people.markActive(that.person.get("id"));
         });
     }
@@ -145,6 +146,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
       App.vent.trigger("message:clear");
 
       this.person = person;
+      this.person.setupDefaultPhoto();
 
       this.layout.filter.currentView.model = this.person;
 

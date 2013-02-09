@@ -30,7 +30,7 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
     }
 
   , onRender: function() {
-      this.$(".image img").fallback({ fallback: "/img/noprofile.png" });
+      this.$(".image img").fallback({ fallback: "/img/group.png" });
     }
 
   });

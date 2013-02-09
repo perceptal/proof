@@ -38,6 +38,8 @@ module.exports = function(connection) {
       , group = this
       , Group = connection.model("group", GroupSchema);
 
+    // TODO check isModified
+
     Group.findOne({ _id: group.parent }).populate("children", "id", { _id: { $ne: group.id }}).exec(function(err, parent) {
       if (err) return next(err);
       if (!parent) return next();

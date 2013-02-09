@@ -110,6 +110,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
             found = that.organisation.copyFrom(that.organisations.get(id));
           }
           that.organisation.markActive();
+          that.organisation.setupDefaultPhoto();
           that.organisations.markActive(that.organisation.get("id"));
         });
     }
@@ -151,6 +152,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
       App.vent.trigger("message:clear");
 
       this.organisation = organisation;
+      this.organisation.setupDefaultPhoto();
 
       this.layout.filter.currentView.model = this.organisation;
 

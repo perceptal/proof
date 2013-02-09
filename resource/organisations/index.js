@@ -16,10 +16,10 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
   , authorize.can()
   , function(req, res, next) {
 
-      Organisation.findAndPopulate({ classifier: "organisation" }, function(err, organisations) {   // PARAMS
-        if (err) return next(err);
-        return res.send(200, organisations);
-      });
+    Organisation.findAndPopulate({ classifier: "organisation" }, function(err, organisations) {   // PARAMS
+      if (err) return next(err);
+      return res.send(200, organisations);
+    });
   });
 
   app.get("/api/organisations/:id"
@@ -27,7 +27,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
   , authorize.can()
   , function(req, res, next) {
 
-      return findOne(req.params.id, res, next);
+    return findOne(req.params.id, res, next);
   });
 
   app.post("/api/organisations", function(req, res, next) {
@@ -39,6 +39,8 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
 
     organisation.save(function(err, organisation) {
       if (err) return next(err);
+
+      messaging.publish("/api/organisation:create", organisation);
       
       return findOne(organisation.id, res, next);
     });
@@ -55,7 +57,11 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
       organisation.save(function(err) {
         if (err) return next(err);
         
-        return findOne(organisation.id, res, next);
+        Photo.setDefault(organisation.id, req.body.defaultPhoto, function(err, photo) {
+          findOne(organisation.id, res, next, function(organisation) {
+            messaging.publish("/api/organisation:update", organisation);
+          });
+        });
       });
     });
   });
@@ -67,6 +73,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
 
       organisation.remove(function(err) {
         if (err) return next(err);
+        messaging.publish("/api/organisation:delete", organisation);
         return res.send(204);
       });
     });

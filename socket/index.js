@@ -11,14 +11,11 @@ Socket.prototype.broadcast = function() {
   this.io.sockets.on("connection", function(socket) {
 
     messaging.subscribe("/api/*:update", function(topic, data) {
-      console.log(topic, data);
       topic = topic.replace(":", "/" + data.id + ":");
 
       socket.emit(topic, data);
       socket.broadcast.emit(topic, data);
-
     });
-
   });
 }
 

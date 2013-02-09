@@ -76,8 +76,6 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
         var save = this.ui.save;
 
         if (this.model.isValid(true)) {
-          console.log(save.html())
-
           save.button("loading");
           this.save(_(this.afterSave).bind(this), function() { save.button("reset"); });
         };

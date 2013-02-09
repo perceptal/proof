@@ -9,11 +9,11 @@ Handlebars.registerPartial("lightbox", Handlebars.template(function (Handlebars,
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\" class=\"lightbox hide fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n  <div class=\"lightbox-content\">\n    <a href=\"#\" data-dismiss=\"lightbox\"><img src=\"/api/photos/";
+  buffer += escapeExpression(stack1) + "\" class=\"lightbox hide fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n  <div class=\"lightbox-content\">\n    <a href=\"#\" data-dismiss=\"lightbox\">\n      <img src=\"/api/photos/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/view/large\"></img></a>\n    <div class=\"lightbox-caption\"><p>";
+  buffer += escapeExpression(stack1) + "/view/large\"></img>\n    </a>\n    <div class=\"lightbox-caption\"><p>";
   foundHelper = helpers.caption;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.caption; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -332,11 +332,11 @@ this["Templates"]["administration/organisations/summary"] = Handlebars.template(
   foundHelper = helpers.code;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.code; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</small></h4>\n<div class=\"image\"><img src=\"/api/organisation/";
-  foundHelper = helpers.id;
+  buffer += escapeExpression(stack1) + "</small></h4>\n<div class=\"image\"><img src=\"/api/photos/";
+  foundHelper = helpers.defaultPhoto;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<button class=\"btn btn-danger\" href=\"#\"><i class=\"icon-ban-circle icon-white\"></i> ";
+  else { stack1 = depth0.defaultPhoto; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/view/small\"></img></div>\n<button class=\"btn btn-danger\" href=\"#\"><i class=\"icon-ban-circle icon-white\"></i> ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.archive", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.archive", {hash:{}});
   buffer += escapeExpression(stack1) + " ";
@@ -791,11 +791,11 @@ this["Templates"]["people/summary"] = Handlebars.template(function (Handlebars,d
   stack1 = depth0.group;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + "</small></h4>\n<div class=\"image\"><img src=\"/api/people/";
-  foundHelper = helpers.id;
+  buffer += escapeExpression(stack1) + "</small></h4>\n<div class=\"image\"><img src=\"/api/photos/";
+  foundHelper = helpers.defaultPhoto;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "/photos/view/small\"></img></div>\n<p>\n  <a href=\"tel:";
+  else { stack1 = depth0.defaultPhoto; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/view/small\"></img></div>\n<p>\n  <a href=\"tel:";
   foundHelper = helpers.telephone;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.telephone; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

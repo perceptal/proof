@@ -21,11 +21,23 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
       options || (options = {});
       this.init && this.init(attributes, options);
 
-      var parent = { parent: { id: this.get("id"), name: "organisations" }};
+      var parent = { parent: { id: this.get("id"), name: "organisations", model: this }};
       
-      this.photos = new Photos(this.get("photos"), parent);
-      this.documents = new Documents(this.get("documents"), parent);
       this.roles = new Models.Roles(this.get("roles"), parent);
+      this.documents = new Documents(this.get("documents"), parent);
+      this.photos = new Photos(this.get("photos"), parent);
+      this.defaultPhoto = new DefaultPhoto(this.get("defaultPhoto"), parent);
+
+      this.setupIoBind();
+    }
+
+  , setupDefaultPhoto: function() {
+      if (!this.get("defaultPhoto")) {
+        var organisation = this;
+        organisation.defaultPhoto.fetch().success(function() {
+          organisation.set("defaultPhoto", organisation.defaultPhoto.get("id"));
+        });
+      }
     }
 
   , addPhoto: function() {

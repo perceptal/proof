@@ -3,6 +3,7 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
   var SecuredCollection = App.Common.Models.SecuredCollection
     , SecuredModel = App.Common.Models.SecuredModel
     , Photo = App.Photos.Models.Photo
+    , DefaultPhoto = App.Photos.Models.DefaultPhoto
     , Photos = App.Photos.Models.Photos
     , Documents = App.Documents.Models.Documents
     , Document = App.Documents.Models.Document
@@ -16,15 +17,27 @@ Proof.module("People.Models", function(Models, App, Backbone, Marionette, $, _, 
     }
 
   , initialize: function(attributes, options) {
+      var person = this;
+
       options || (options = {});
       this.init && this.init(attributes, options);
 
-      var parent = { parent: { id: this.get("id"), name: "people" }};
+      var parent = { parent: { id: this.get("id"), name: "people", model: this }};
 
-      this.photos = new Photos(this.get("photos"), parent);
       this.documents = new Documents(this.get("documents"), parent);
+      this.photos = new Photos(this.get("photos"), parent);
+      this.defaultPhoto = new DefaultPhoto(this.get("defaultPhoto"), parent);
 
       this.setupIoBind();
+    }
+
+  , setupDefaultPhoto: function() {
+      if (!this.get("defaultPhoto")) {
+        var person = this;
+        person.defaultPhoto.fetch().success(function() {
+          person.set("defaultPhoto", person.defaultPhoto.get("id"));
+        });
+      }
     }
 
   , addPhoto: function() {

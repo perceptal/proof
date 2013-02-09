@@ -23,6 +23,8 @@ module.exports = function(connection) {
     var photo = this
       , path = photo.name
       , processor = new Processor({ path: path });
+
+    if (!photo.isModified("name")) return next();
     
     if (photo.sizes.length === 0) photo.sizes = _.pluck(config, "name");
 
@@ -66,8 +68,25 @@ module.exports = function(connection) {
     });
   };
 
+  PhotoSchema.methods.setDefault = function(value, callback) {
+    this.isDefault = value;
+    this.save(callback);
+  };
+
   PhotoSchema.statics.findDefault = function(owner, callback) {
     this.findOne({ owner: owner, isDefault: true }).exec(callback);
+  };
+
+  PhotoSchema.statics.setDefault = function(owner, id, callback) {
+    var Photo = this;
+
+    Photo.findDefault(owner, function(err, photo) {
+      photo.setDefault(false, function(err, photo) {
+        Photo.findOne({ _id: id }, function(err, photo) {
+          photo.setDefault(true, callback);
+        });
+      });
+    });
   };
 
   return PhotoSchema;

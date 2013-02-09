@@ -20,6 +20,7 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
 
       var destroy = _.bind(function() {
         this.model.destroy();
+
         App.vent.trigger("message:clear");
         App.vent.trigger("message:show", { type: "info", text: i18n.t("photos.deleted") });
       }, this);
@@ -30,6 +31,10 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , onDefault: function(e) {
       e.preventDefault();
+
+      var owner = this.model.parent.model
+      owner.set("defaultPhoto", this.model.get("id"));
+      owner.save();
     }
 
   });
@@ -50,7 +55,6 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.collection.bind("reset", this.render, this.collection);
     }
   });
-
 
   Views.UploadView = UploadView.extend({
     template: "photos/upload"
