@@ -80,10 +80,15 @@ module.exports = function(connection) {
   PhotoSchema.statics.setDefault = function(owner, id, callback) {
     var Photo = this;
 
-    Photo.findDefault(owner, function(err, photo) {
-      photo.setDefault(false, function(err, photo) {
-        Photo.findOne({ _id: id }, function(err, photo) {
-          photo.setDefault(true, callback);
+    Photo.findOne({ _id: id }, function(err, photo) {
+
+      Photo.findDefault(owner, function(err, previous) {
+  
+        photo.setDefault(true, function(err) {
+          if (previous) 
+            previous.setDefault(false, callback);
+          else
+            callback();
         });
       });
     });

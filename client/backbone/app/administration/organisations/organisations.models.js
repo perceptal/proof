@@ -4,6 +4,7 @@ Proof.module("Administration.Organisations.Models", function(Models, App, Backbo
     , SecuredModel = App.Common.Models.SecuredModel
     , Photos = App.Photos.Models.Photos
     , Photo = App.Photos.Models.Photo
+    , DefaultPhoto = App.Photos.Models.DefaultPhoto
     , Documents = App.Documents.Models.Documents
     , Document = App.Documents.Models.Document
     ;

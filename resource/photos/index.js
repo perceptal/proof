@@ -70,7 +70,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
     , name: req.files.file.path 
     });
 
-    photo.save(function(err, photo) {
+    photo.setDefault(true, function(err, photo) {
       if (err) return res.send(500);  
       res.send(200, photo);
     });

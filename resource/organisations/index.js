@@ -1,6 +1,7 @@
 module.exports = function(app, models, util, messaging, cache, authenticate, authorize) {
 
-  var Organisation = models.Group;
+  var Organisation = models.Group
+    , Photo = models.Photo;
 
   var findOne = function(id, res, next) {
     Organisation.findOneAndPopulate({ _id: id }, function(err, organisation) {     

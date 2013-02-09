@@ -60,7 +60,7 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
       this.organisation = null;
 
       this.organisations.fetch()
-        .success(function() { 
+        .success(function(data) {
           that.organisations.setSort("description", "asc"); 
           that.organisations.goTo(1);
         });
