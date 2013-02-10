@@ -11,7 +11,8 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
   , className: "photo"
 
   , events: {
-      "click a.delete": "onDelete"
+      "click img": "onShow"
+    , "click a.delete": "onDelete"
     , "click a.default": "onDefault"
     }
 
@@ -37,6 +38,11 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
       owner.save();
     }
 
+  , onShow: function(e) {
+      if (e === undefined) return;
+      this.trigger("show", $(e.currentTarget).data("image"));
+    }
+
   });
 
   Views.EmptyView = Marionette.ItemView.extend({
@@ -44,15 +50,37 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   });
 
-  Views.ListView = Marionette.CollectionView.extend({
+  Views.ListView = Marionette.CompositeView.extend({
 
-    itemView: Views.ItemView
+    template: "photos/container"
+
+  , itemViewContainer: "#photos"
+
+  , itemView: Views.ItemView
 
   , emptyView: Views.EmptyView
+
+  , ui: {
+      dialog: "#photo-modal"
+    , image: "#photo-modal img"
+    }
 
   , initialize: function() {
       this.collection.bind("change", this.render, this.collection);
       this.collection.bind("reset", this.render, this.collection);
+
+      this.on("itemview:show", this.showDialog);
+    }
+
+  , showDialog: function(child, url) {
+      console.log(url);
+
+      this.ui.image.attr("src", url);
+      this.ui.dialog.reveal({
+        animation: "fade"
+      , animationspeed: 300
+      , closeonbackgroundclick: true
+      });
     }
   });
 

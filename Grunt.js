@@ -11,10 +11,10 @@ module.exports = function(grunt) {
     , vendor = [ 
         "components/jquery/jquery.js"
       , "components/jquery.cookie/jquery.cookie.js"
+      , "components/jquery.reveal/jquery.reveal.js"
       , "components/jquery.iframe.transport/jquery.iframe.transport.js"
       , "components/inflection/inflection.js"
       , "public/bootstrap/js/bootstrap.js"
-      , "public/bootstrap/js/bootstrap.lightbox.js"
       , "components/underscore/underscore.js"
       , "components/backbone/backbone.js"
       , "components/backbone.super/backbone.super.js"
@@ -64,7 +64,6 @@ module.exports = function(grunt) {
       ]
     , css = [ 
         "public/bootstrap/css/bootstrap.css"
-      , "public/bootstrap/css/bootstrap.lightbox.css"
       , "components/select2/select2.css"
       , "public/css/main.css"
       , "public/bootstrap/css/bootstrap-responsive.css"
