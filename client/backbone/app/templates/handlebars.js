@@ -444,11 +444,11 @@ this["Templates"]["documents/upload"] = Handlebars.template(function (Handlebars
 
   buffer += "<fieldset>\n  ";
   stack1 = {};
-  stack1['field'] = "caption";
-  stack2 = depth0.caption;
+  stack1['field'] = "title";
+  stack2 = depth0.title;
   stack1['value'] = stack2;
   stack1['width'] = 4;
-  stack1['label'] = "documents.caption";
+  stack1['label'] = "documents.title";
   foundHelper = helpers.include;
   stack1 = foundHelper ? foundHelper.call(depth0, "input", {hash:stack1}) : helperMissing.call(depth0, "include", "input", {hash:stack1});
   buffer += escapeExpression(stack1) + "\n  ";

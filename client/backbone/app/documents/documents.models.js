@@ -14,7 +14,7 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
       if (method === "create") {
         options.iframe = true;
         options.files = this.file;
-        options.data = { owner: this.get("owner"), caption: this.get("caption") };
+        options.data = { owner: this.get("owner"), title: this.get("title") };
       }
 
       return this._super(method, model, options);

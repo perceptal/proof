@@ -2,7 +2,7 @@ var model = require("../model");
 
 module.exports.init = function(connection) {
 
-	var models = { length: 0 };
+	var models = {};
 
 	[
       { name: "Account" }
@@ -15,7 +15,6 @@ module.exports.init = function(connection) {
 
 	].map(function(defn) {
 		models[defn.name] = model(defn.path || defn.name.toLowerCase(), connection);
-    models.length++;
 	});
 
 	return models;

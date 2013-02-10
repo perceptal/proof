@@ -2,6 +2,9 @@
   { "name": "sys", "email": "engineer@perceptal.co.uk", "roles": [ "system" ]
   }
 , { "name": "johnny", "email": "johnny@recipher.co.uk", "roles": [ "system" ]
+  , "documents": [ 
+      { "name": "test/fixture/seed/demo/document/passport.pdf", "title": "Passport" }
+    ]
   }
 , { "name": "angelina", "code": "999999"
   , "roles": [ "administrator" ]

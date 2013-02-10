@@ -98,9 +98,9 @@
   , "delete": "Êtes-vous sûr de vouloir supprimer cette $t(documents.document)?"
   , "deleted": "Le $t(documents.document) a été supprimée."
   , "upload": "$t(general.upload) $t(documents.document)"
-  , "not_found": "Il n'y a $t(documents.document) trouvés."
   , "title": "$t(documents.document) Titre"
   , "file": "Choisir $t(documents.document) Dossier"
+  , "not_found": "Il n'y a $t(documents.document) trouvés."
   }
 , "error": { 
     "general": {

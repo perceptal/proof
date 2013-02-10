@@ -101,6 +101,7 @@
   , "upload": "$t(general.upload) $t(documents.document)"
   , "title": "$t(documents.document) Title"
   , "file": "Select $t(documents.document) File"
+  , "not_found": "There are no $t(documents.documents) found."
   }
 , "error": { 
     "general": {

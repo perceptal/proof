@@ -15,7 +15,8 @@ module.exports = function(connection) {
     , children          : [ { type: Schema.ObjectId, ref: "group" }]
     , people            : [ { type: Schema.ObjectId, ref: "user" } ]
     , roles             : [ { type: Schema.ObjectId, ref: "role" } ]
-    , photos             : [ { type: Schema.ObjectId } ]
+    , photos            : [ { type: Schema.ObjectId } ]
+    , documents         : [ { type: Schema.ObjectId } ]
   });
 
   var find = function(query, find, callback) {

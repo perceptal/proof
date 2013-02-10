@@ -1,5 +1,6 @@
 var _ = require("underscore")
   , fs = require("fs")
+  , path = require("path")
   , crypto = require("crypto")
   , mongoose  = require("mongoose")
   , Schema    = mongoose.Schema
@@ -9,26 +10,25 @@ var _ = require("underscore")
 module.exports = function(connection) {
   var DocumentSchema = new Schema({
       name              : { type: String, required: true, lowercase: true, index: true }
-    , caption           : { type: String }
+    , title             : { type: String }
     , tags              : [ { type: String } ]
-    // , contentType       : { type: String, enum: [ "image/jpeg", "image/png" ] }
+    , contentType       : { type: String }
     , owner             : { type: Schema.ObjectId }
   });
 
   DocumentSchema.pre("save", function(next) {
-    var doc = this
-      , path = doc.name;
-    
-    doc.contentType = "application/" + type.toLowerCase();  // ?
+    var doc = this;
 
-    var uploader = new Uploader({ path: result.path });
+    if (!doc.isModified("name")) return next();
+
+    var uploader = new Uploader({ path: doc.name });
 
     uploader.put(function(err) {
-      if (err) callback(err);
+      if (err) next(err);
 
-      fs.unlink(result.path, function(err) {
-        next;
-      });
+      doc.name = uploader.name;
+
+      next();
     });
   });
 
@@ -40,9 +40,9 @@ module.exports = function(connection) {
     });
   });
 
-  DocumentSchema.methods.download = function(size, callback) {
-    new Uploader({ path: [ size, this.name ].join(".") }).get(function(err, image) {
-      callback(err, image, crypto.createHash("md5").update(new Buffer(image)).digest("hex"));
+  DocumentSchema.methods.download = function(callback) {
+    new Uploader({ path: this.name }).get(function(err, file) {
+      callback(err, file, crypto.createHash("md5").update(new Buffer(file)).digest("hex"));
     });
   };
 

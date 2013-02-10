@@ -109,6 +109,8 @@ Helper.prototype.seed = function(seed, callback) {
             } else {        // Separate collection
               Link.findOneAndUpdate(thing, build(thing, { bidirectional: bidirectional, model: m, fk: fk }), { upsert: true }, function(err, l) {
                 m[prop].push(l);
+        
+                if (link === "Photo" || link === "Document") l.markModified("name"); // HACK to force save middleware on photo
 
                 l.save(function(err, l) {   // Not necessary but HACK to force middleware save on photo  
                   if (_.last(item[prop]) === p) {

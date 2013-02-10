@@ -10,6 +10,8 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
     , InfoView = Manager.Views.InfoView
     , PhotoListView = App.Photos.Views.ListView
     , PhotoUploadView = App.Photos.Views.UploadView
+    , DocumentListView = App.Documents.Views.ListView
+    , DocumentUploadView = App.Documents.Views.UploadView
     , Layout = Manager.Views.Layout;
 
 	Manager.Router = Marionette.AppRouter.extend({
