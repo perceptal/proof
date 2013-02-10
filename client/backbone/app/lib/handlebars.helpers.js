@@ -49,14 +49,16 @@ $(function() {
   });
 
   Handlebars.registerHelper("formattags", function(tags) {
-    var index = tags.length
-      , output = "";
+    if (tags) {
+      var index = tags.length
+        , output = "";
 
-    while(index--) {
-      output += ("<span class='label label-info'>" + tags[index] + "</span>&nbsp;");
+      while(index--) {
+        output += ("<span class='label label-info'>" + tags[index] + "</span>&nbsp;");
+      }
+
+      return new Handlebars.SafeString(output);
     }
-
-    return new Handlebars.SafeString(output);
   });
 
   Handlebars.registerHelper("options", function(data, value, options) {
