@@ -48,7 +48,7 @@ $(function() {
     return new Handlebars.SafeString(converter.makeHtml(i18n.t(text)));
   });
 
-  Handlebars.registerHelper("tags", function(tags) {
+  Handlebars.registerHelper("formattags", function(tags) {
     var index = tags.length
       , output = "";
 

@@ -508,8 +508,8 @@ this["Templates"]["documents/item"] = Handlebars.template(function (Handlebars,d
   else { stack1 = depth0.title; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "</td>\n<td>";
   stack1 = depth0.tags;
-  foundHelper = helpers.tags;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "tags", stack1, {hash:{}});
+  foundHelper = helpers.formattags;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "formattags", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</td>\n<td class=\"actions\"><a href=\"#\" class=\"delete\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "general.delete", "lower", {hash:{}}) : helperMissing.call(depth0, "t", "general.delete", "lower", {hash:{}});
