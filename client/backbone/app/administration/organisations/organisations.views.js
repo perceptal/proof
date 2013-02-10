@@ -94,6 +94,7 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
   , ui: {
       links: "a"
     , name: "a.brand"
+    , actions: "ul.action a"
     }
 
   , events: {
@@ -117,9 +118,14 @@ Proof.module("Administration.Organisations.Views", function(Views, App, Backbone
   , select: function(page) {
       this.page = page;
 
-      if (this.model) {
-        this.ui.links.parent().removeClass("active");
-        this.ui.links.filter("[data-page='" + this.page + "']").parent().addClass("active");
+      this.ui.actions.parent().hide();
+      this.ui.links.parent().removeClass("active");
+
+      if (this.model) {  
+        var link = this.ui.links.filter("[data-page='" + this.page + "']");
+
+        link.parent().addClass("active");
+        this.ui.actions.filter("[data-page='" + (link.data("action") || "role") + "']").parent().show();
       } else {
 
         this.ui.links

@@ -99,6 +99,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
   , ui: {
       links: "a"
     , name: "a.brand"
+    , actions: "ul.action a"
     }
 
   , events: {
@@ -107,6 +108,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   , initialize: function(options) {
       this.page = options.page;
+
       if (this.model) this.model.on("change", this.render, this);
     }
 
@@ -114,17 +116,23 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.delegateEvents();
       this.select(this.page);
 
-      App.vent.on("people:navigate", function(page) {
-        this.select(page);
+      App.vent.on("people:navigate", function(page, action) {
+        this.select(page, action);
       }, this);
-    }
+   }
 
-  , select: function(page) {
+  , select: function(page, action) {
       this.page = page;
 
-      if (this.model) {
-        this.ui.links.parent().removeClass("active");
-        this.ui.links.filter("[data-page='" + this.page + "']").parent().addClass("active");
+      this.ui.actions.parent().hide();
+      this.ui.links.parent().removeClass("active");
+
+      if (this.model) {  
+        var link = this.ui.links.filter("[data-page='" + this.page + "']");
+
+        link.parent().addClass("active");
+
+        this.ui.actions.filter("[data-page='" + (link.data("action") || "photo") + "']").parent().show();
       } else {
 
         this.ui.links
@@ -134,7 +142,7 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
             .addClass("disabled");
         this.ui.name.hide();
       }
-    }
+     }
 
   , onNavigate: function(e) {
       e.preventDefault();

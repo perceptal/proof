@@ -2,14 +2,15 @@
   <div class="navbar-inner">
     <a class="brand" data-page="info" href="#people/{{ id }}">{{ firstName }}</a>
     <ul class="nav">
-      <li><a data-page="info" href="#people/{{ id }}">{{ t "people.info" }}</a></li>
-      <li><a data-page="photos" href="#people/{{ id }}/photos">{{ t "photos.photos" }}</a></li>
-      <li><a data-page="documents" href="#people/{{ id }}/documents">{{ t "documents.documents" }}</a></li>
-      <li><a data-page="account" href="#people/{{ id }}/account">{{ t "people.account" }}</a></li>
-      <li><a data-page="permissions" href="#people/{{ id }}/permissions">{{ t "people.permissions" }}</a></li>
+      <li><a data-page="info" data-action="photo" href="#people/{{ id }}">{{ t "people.info" }}</a></li>
+      <li><a data-page="photos" data-action="photo" href="#people/{{ id }}/photos">{{ t "photos.photos" }}</a></li>
+      <li><a data-page="documents" data-action="document" href="#people/{{ id }}/documents">{{ t "documents.documents" }}</a></li>
+      <li><a data-page="account" data-action="photo" href="#people/{{ id }}/account">{{ t "people.account" }}</a></li>
+      <li><a data-page="permissions" data-action="photo" href="#people/{{ id }}/permissions">{{ t "people.permissions" }}</a></li>
     </ul>
     <ul class="nav pull-right action">
-      <li><a data-page="photo" href="#people/{{ id }}/photo">{{ t "photos.upload" }}</a></li>
+      <li><a data-page="photo" data-action="photo" href="#people/{{ id }}/photo">{{ t "photos.upload" }}</a></li>
+      <li><a data-page="document" data-action="document" href="#people/{{ id }}/document">{{ t "documents.upload" }}</a></li>
     </ul>
   </div>
 </div>

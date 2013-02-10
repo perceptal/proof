@@ -64,6 +64,8 @@ module.exports = function(grunt) {
       ]
     , css = [ 
         "public/bootstrap/css/bootstrap.css"
+      , "public/bootstrap/css/font-awesome.css"
+      , "public/bootstrap/css/font-awesome-ext.css"
       , "components/select2/select2.css"
       , "public/css/main.css"
       , "public/bootstrap/css/bootstrap-responsive.css"

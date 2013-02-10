@@ -178,6 +178,11 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
           this.organisation.roles.fetch();
           return new SecurityView({ collection: this.organisation.roles });
 
+        case "role":
+          var view = new AddRoleView({ model: this.organisation.addRole() });
+          Backbone.Validation.bind(view); // TODO Move this
+          return view;
+
         case "documents":
           this.organisation.documents.fetch();
           return new DocumentListView({ collection: this.organisation.documents });
@@ -187,10 +192,11 @@ Proof.module("Administration.Organisations", function(Manager, App, Backbone, Ma
           Backbone.Validation.bind(view); // TODO Move this
           return view;
 
-        case "role":
-          var view = new AddRoleView({ model: this.organisation.addRole() });
-          Backbone.Validation.bind(view); // TODO Move this
-          return view;
+        case "locations":
+          break;
+
+        case "location":
+          break;
 
         case "photos":
           this.organisation.photos.fetch();

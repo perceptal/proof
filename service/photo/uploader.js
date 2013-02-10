@@ -54,9 +54,9 @@ Uploader.prototype.put = function(callback) {
 }
 
 Uploader.prototype.delete = function(options, callback) {
-  var path = options.directory ? path.join(options.directory, options.name) : options.name;
+  var name = options.directory ? path.join(options.directory, options.name) : options.name;
 
-  this.client.deleteFile(path, function(err, res) {
+  this.client.deleteFile(name, function(err, res) {
     callback(err);
   });
 }

@@ -6,8 +6,8 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
   Models.Document = SecuredModel.extend({ 
     
     initialize: function(attributes, options) {
-      var type = attributes.type;
-      this.set("icon", this.icon(type));
+      var extension = attributes.extension;
+      this.set("icon", this.icon(extension));
 
       this.init && this.init(attributes, options);
     }
@@ -28,10 +28,11 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
       return this._super(method, model, options);
     }
 
-  , icon: function(type) {
+  , icon: function(extension) {
       var icons = {
         pdf: "adobe-pdf"
       , doc: "ms-word"
+      , csv: "ms-excel"
       , xls: "ms-excel"
       , docx: "ms-word"
       , xlsx: "ms-excel"
@@ -42,11 +43,18 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
       , html: "html5"
       , undefined: "file"
       }
-      return "icon-" + icons[type];
+      return "icon-" + (icons[extension] || "file");
     }
 
   , setFile: function(file) {
       this.file = file;
+    }
+
+  , validation: {
+      title: {
+        required: true
+      , msg: "validation.required"
+      }
     }
   });
 

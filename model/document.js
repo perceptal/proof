@@ -33,8 +33,8 @@ module.exports = function(connection) {
     });
   });
 
-  DocumentSchema.post("remove", function(document) {
-    new Uploader().delete({ name: document.name, directory: "documents" }, callback);
+  DocumentSchema.post("remove", function(doc) {
+    new Uploader().delete({ name: doc.name, directory: "documents" }, function() {});
   });
 
   DocumentSchema.methods.download = function(callback) {

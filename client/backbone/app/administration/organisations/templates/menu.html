@@ -2,13 +2,17 @@
   <div class="navbar-inner">
     <a class="brand" data-page="info" href="#people/{{ id }}">{{ code }}</a>
     <ul class="nav">
-      <li><a data-page="info" href="#administration/organisations/{{ id }}">{{ t "organisations.info" }}</a></li>
-      <li><a data-page="photos" href="#administration/organisations/{{ id }}/photos">{{ t "photos.photos" }}</a></li>
-      <li><a data-page="documents" href="#administration/organisations/{{ id }}/documents">{{ t "documents.documents" }}</a></li>
-      <li><a data-page="security" href="#administration/organisations/{{ id }}/security">{{ t "organisations.security" }}</a></li>
+      <li><a data-page="info" data-action="role" href="#administration/organisations/{{ id }}">{{ t "organisations.info" }}</a></li>
+      <li><a data-page="photos" data-action="photo" href="#administration/organisations/{{ id }}/photos">{{ t "photos.photos" }}</a></li>
+      <li><a data-page="documents" data-action="document" href="#administration/organisations/{{ id }}/documents">{{ t "documents.documents" }}</a></li>
+      <li><a data-page="locations" data-action="location" href="#administration/organisations/{{ id }}/locations">{{ t "organisations.locations" }}</a></li>
+      <li><a data-page="security" data-action="role" href="#administration/organisations/{{ id }}/security">{{ t "organisations.security" }}</a></li>
     </ul>
     <ul class="nav pull-right action">
-      <li><a data-page="role" href="#administration/organisations/{{ id }}/role">{{ t "organisations.add_role" }}</a></li>
+      <li><a data-page="photo" data-action="photo" href="#administration/organisations/{{ id }}/photo">{{ t "photos.upload" }}</a></li>
+      <li><a data-page="document" data-action="document" href="#administration/organisations/{{ id }}/document">{{ t "documents.upload" }}</a></li>
+      <li><a data-page="role" data-action="role" href="#administration/organisations/{{ id }}/role">{{ t "organisations.add_role" }}</a></li>
+      <li><a data-page="location" data-action="location" href="#administration/organisations/{{ id }}/location">{{ t "organisations.add_location" }}</a></li>
     </ul>
   </div>
 </div>

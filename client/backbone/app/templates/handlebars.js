@@ -37,7 +37,7 @@ Handlebars.registerPartial("file", Handlebars.template(function (Handlebars,dept
   foundHelper = helpers.field;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.field; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\" name=\"";
+  buffer += escapeExpression(stack1) + "\" tabindex=\"-1\" name=\"";
   foundHelper = helpers.field;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.field; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -254,41 +254,69 @@ this["Templates"]["administration/organisations/menu"] = Handlebars.template(fun
   foundHelper = helpers.code;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.code; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</a>\n    <ul class=\"nav\">\n      <li><a data-page=\"info\" href=\"#administration/organisations/";
+  buffer += escapeExpression(stack1) + "</a>\n    <ul class=\"nav\">\n      <li><a data-page=\"info\" data-action=\"role\" href=\"#administration/organisations/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.info", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.info", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"photos\" href=\"#administration/organisations/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"photos\" data-action=\"photo\" href=\"#administration/organisations/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/photos\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "photos.photos", {hash:{}}) : helperMissing.call(depth0, "t", "photos.photos", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"documents\" href=\"#administration/organisations/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"documents\" data-action=\"document\" href=\"#administration/organisations/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/documents\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "documents.documents", {hash:{}}) : helperMissing.call(depth0, "t", "documents.documents", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"security\" href=\"#administration/organisations/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"locations\" data-action=\"location\" href=\"#administration/organisations/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/locations\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "organisations.locations", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.locations", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"security\" data-action=\"role\" href=\"#administration/organisations/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/security\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.security", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.security", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a data-page=\"role\" href=\"#administration/organisations/";
+  buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a data-page=\"photo\" data-action=\"photo\" href=\"#administration/organisations/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/photo\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "photos.upload", {hash:{}}) : helperMissing.call(depth0, "t", "photos.upload", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"document\" data-action=\"document\" href=\"#administration/organisations/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/document\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "documents.upload", {hash:{}}) : helperMissing.call(depth0, "t", "documents.upload", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"role\" data-action=\"role\" href=\"#administration/organisations/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/role\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "organisations.add_role", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.add_role", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"location\" data-action=\"location\" href=\"#administration/organisations/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/location\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "organisations.add_location", {hash:{}}) : helperMissing.call(depth0, "t", "organisations.add_location", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n  </div>\n</div>\n";
   return buffer;});
 
@@ -418,25 +446,32 @@ this["Templates"]["app/question"] = Handlebars.template(function (Handlebars,dep
 
 this["Templates"]["documents/container"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  return "<thead>\n  <tr>\n    <th>&nbsp;</th>\n    <th>Title</th>\n    <th>Tags</th>\n    <th>&nbsp;</th>\n  </tr>\n</thead>\n\n<tbody></tbody>\n";});
+  buffer += "<thead>\n  <tr>\n    <th>&nbsp;</th>\n    <th>";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "documents.title", {hash:{}}) : helperMissing.call(depth0, "t", "documents.title", {hash:{}});
+  buffer += escapeExpression(stack1) + "</th>\n    <th>";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "documents.tags", {hash:{}}) : helperMissing.call(depth0, "t", "documents.tags", {hash:{}});
+  buffer += escapeExpression(stack1) + "</th>\n    <th>&nbsp;</th>\n  </tr>\n</thead>\n\n<tbody></tbody>\n";
+  return buffer;});
 
 this["Templates"]["documents/empty"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"alert fade in\">\n  <i class=\"icon-exclamation-sign\"></i> ";
+  buffer += "<td colspan=\"4\">\n  <div class=\"alert\">\n    <i class=\"icon-exclamation-sign\"></i> ";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "documents.not_found", "capitalize", {hash:{}}) : helperMissing.call(depth0, "t", "documents.not_found", "capitalize", {hash:{}});
-  buffer += escapeExpression(stack1) + "\n</div>\n";
+  buffer += escapeExpression(stack1) + "\n  </div>\n</td>\n";
   return buffer;});
 
 this["Templates"]["documents/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
   buffer += "<td><i class=\"icon ";
@@ -447,7 +482,14 @@ this["Templates"]["documents/item"] = Handlebars.template(function (Handlebars,d
   foundHelper = helpers.title;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.title; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</td>\n<td>&nbsp;</td>\n";
+  buffer += escapeExpression(stack1) + "</td>\n<td>";
+  foundHelper = helpers.tags;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.tags; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</td>\n<td class=\"actions\"><a href=\"#\" class=\"delete\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "general.delete", "lower", {hash:{}}) : helperMissing.call(depth0, "t", "general.delete", "lower", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></td>\n";
   return buffer;});
 
 this["Templates"]["documents/upload"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -460,6 +502,7 @@ this["Templates"]["documents/upload"] = Handlebars.template(function (Handlebars
   stack1['field'] = "title";
   stack2 = depth0.title;
   stack1['value'] = stack2;
+  stack1['required'] = true;
   stack1['width'] = 4;
   stack1['label'] = "documents.title";
   foundHelper = helpers.include;
@@ -704,48 +747,55 @@ this["Templates"]["people/menu"] = Handlebars.template(function (Handlebars,dept
   foundHelper = helpers.firstName;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.firstName; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</a>\n    <ul class=\"nav\">\n      <li><a data-page=\"info\" href=\"#people/";
+  buffer += escapeExpression(stack1) + "</a>\n    <ul class=\"nav\">\n      <li><a data-page=\"info\" data-action=\"photo\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.info", {hash:{}}) : helperMissing.call(depth0, "t", "people.info", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"photos\" href=\"#people/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"photos\" data-action=\"photo\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/photos\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "photos.photos", {hash:{}}) : helperMissing.call(depth0, "t", "photos.photos", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"documents\" href=\"#people/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"documents\" data-action=\"document\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/documents\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "documents.documents", {hash:{}}) : helperMissing.call(depth0, "t", "documents.documents", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"account\" href=\"#people/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"account\" data-action=\"photo\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/account\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.account", {hash:{}}) : helperMissing.call(depth0, "t", "people.account", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"permissions\" href=\"#people/";
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"permissions\" data-action=\"photo\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/permissions\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "people.permissions", {hash:{}}) : helperMissing.call(depth0, "t", "people.permissions", {hash:{}});
-  buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a data-page=\"photo\" href=\"#people/";
+  buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n    <ul class=\"nav pull-right action\">\n      <li><a data-page=\"photo\" data-action=\"photo\" href=\"#people/";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "/photo\">";
   foundHelper = helpers['t'];
   stack1 = foundHelper ? foundHelper.call(depth0, "photos.upload", {hash:{}}) : helperMissing.call(depth0, "t", "photos.upload", {hash:{}});
+  buffer += escapeExpression(stack1) + "</a></li>\n      <li><a data-page=\"document\" data-action=\"document\" href=\"#people/";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "/document\">";
+  foundHelper = helpers['t'];
+  stack1 = foundHelper ? foundHelper.call(depth0, "documents.upload", {hash:{}}) : helperMissing.call(depth0, "t", "documents.upload", {hash:{}});
   buffer += escapeExpression(stack1) + "</a></li>\n    </ul>\n  </div>\n</div>\n";
   return buffer;});
 

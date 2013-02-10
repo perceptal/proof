@@ -78,6 +78,9 @@ a, button
           font-size 14px
 
       ul.action
+        li
+          display none
+
         li.active > a, a
           color #900 
           border-right none
@@ -454,7 +457,7 @@ input#file:hover
 .customfile
   border-radius(1px)
   font 14px
-  width 364px
+  width 363px
   color #555
   cursor pointer
   overflow hidden
@@ -536,9 +539,28 @@ input#file:hover
     border-radius(6px)
     border 1px solid #eee
 
-.lightbox
-  img
-    border-radius(4px)
+table.table-hover
+  tr
+    td
+      a
+        opacity(0)
+        text-decoration none
+
+    td.actions
+      text-align right
+
+  tr:hover
+    td
+      background-color #fff
+      cursor pointer
+
+      a
+        opacity(1)
+
+  tr.no-hover:hover
+    td
+      background-color transparent
+      cursor default
 
 figure.photo
   display inline-block

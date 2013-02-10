@@ -1,5 +1,7 @@
 Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 
+  var SECTION = "people";
+
   var People = Manager.Models.People
     , Person = Manager.Models.Person
     , HelpView = App.Views.HelpView
@@ -29,7 +31,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 	Manager.Controller = Marionette.Controller.extend({
 
     selectMenu: function() {
-      App.vent.trigger("section:change", "people");
+      App.vent.trigger("section:change", SECTION);
     }
 
   , reset: function() {
@@ -62,10 +64,10 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
 
       var active = this.people.active();
       if (active) {
-        Manager.router.navigate("people/" + active.get("id"), true);
+        Manager.router.navigate(SECTION + "/" + active.get("id"), true);
       } else {
         this.constructLayout(
-          new HelpView({ section: "people" })
+          new HelpView({ section: SECTION })
         , new MenuView({ model: this.person, page: "" }));
 
         App.vent.trigger("message:show", { type: "info", text: i18n.t("people.not_selected") });
@@ -181,7 +183,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
           return new DocumentListView({ collection: this.person.documents });
 
         case "document":
-          var view = new DocumentUploadView({ model: this.person.addDocument(), section: "people" });
+          var view = new DocumentUploadView({ model: this.person.addDocument(), section: SECTION });
           Backbone.Validation.bind(view); // TODO Move this
           return view;
 
@@ -190,7 +192,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
           return new PhotoListView({ collection: this.person.photos });
 
         case "photo":
-          var view = new PhotoUploadView({ model: this.person.addPhoto(), section: "people" });
+          var view = new PhotoUploadView({ model: this.person.addPhoto(), section: SECTION });
           Backbone.Validation.bind(view); // TODO Move this
           return view;
 

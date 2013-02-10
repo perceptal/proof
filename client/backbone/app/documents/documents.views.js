@@ -9,11 +9,13 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
   , tagName: "tr"
 
   , events: {
-      "click a.delete": "onDelete"
+      "click"           : "onDownload"
+    , "click a.delete"  : "onDelete"
     }
 
   , onDelete: function(e) {
       e.preventDefault();
+      e.stopPropagation();
 
       var destroy = _.bind(function() {
         this.model.destroy();
@@ -25,11 +27,20 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
       App.vent.trigger("message:show", { type: "question", text: i18n.t("documents.delete"), confirm: destroy });
     }
 
+  , onDownload: function(e) {
+      e.preventDefault();
+
+      window.open("/api/documents/" + this.model.get("id") + "/download", "_blank");
+    }
+
   });
 
   Views.EmptyView = Marionette.ItemView.extend({
     template: "documents/empty"
 
+  , tagName: "tr"
+
+  , className: "no-hover"
   });
 
   Views.ListView = Marionette.CompositeView.extend({
@@ -47,8 +58,8 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
   , emptyView: Views.EmptyView
 
   , initialize: function() {
-      this.collection.bind("change", this.render, this.collection);
-      this.collection.bind("reset", this.render, this.collection);
+      this.collection.bind("change", this.render, this);
+      this.collection.bind("reset", this.render, this);
     }
   });
 
@@ -57,7 +68,7 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
     template: "documents/upload"
 
   , ui: {
-      caption         : "input#caption"
+      title           : "input#title"
     , file            : "input#file"
     , save            : "button#save"
     }
@@ -68,7 +79,7 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
 
   , initialize: function(options) {
       this.autoSave = false;
-      this.focus = "caption";
+      this.focus = "title";
       this.section = options.section;
     }
 

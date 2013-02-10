@@ -53,7 +53,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
     , owner: req.body.owner
     , name: req.files.file.path
     , contentType: req.files.file.type
-    , extension: path.extname(req.files.file.name)
+    , extension: path.extname(req.files.file.name).substring(1)
     });
 
     doc.save(function(err, doc) {
