@@ -6,6 +6,8 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
   Views.ItemView = Marionette.ItemView.extend({
     template: "documents/item"
 
+  , tagName: "tr"
+
   , events: {
       "click a.delete": "onDelete"
     }
@@ -30,9 +32,17 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
 
   });
 
-  Views.ListView = Marionette.CollectionView.extend({
+  Views.ListView = Marionette.CompositeView.extend({
 
-    itemView: Views.ItemView
+    template: "documents/container"
+
+  , tagName: "table"
+
+  , className: "table table-hover"
+
+  , itemViewContainer: "tbody"
+
+  , itemView: Views.ItemView
 
   , emptyView: Views.EmptyView
 

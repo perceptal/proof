@@ -9,9 +9,10 @@ var Uploader = function(options) {
 
   if (options) {
     this.path = path.resolve(options.path);
-    this.directory = path.dirname(options.path);
+    this.directory = options.directory || "";
     this.extension = path.extname(options.path);
     this.name = path.basename(options.path);
+    this.remote = options.directory ? path.join(this.directory, this.name) : this.name;
   }
 
   this.client = knox.createClient({
@@ -24,7 +25,7 @@ var Uploader = function(options) {
 Uploader.prototype.get = function(callback) {
   var data = "";
 
-  this.client.get(this.name)
+  this.client.get(this.remote)
     .on("response", function(response) {
       response.setEncoding("binary");
 
@@ -41,7 +42,7 @@ Uploader.prototype.get = function(callback) {
 }
 
 Uploader.prototype.put = function(callback) {
-  var uploader = s3.fromKnox(this.client).upload(this.path, this.name);
+  var uploader = s3.fromKnox(this.client).upload(this.path, this.remote);
 
   uploader.on("error", function(err) {
     return callback(err);
@@ -52,8 +53,10 @@ Uploader.prototype.put = function(callback) {
   });
 }
 
-Uploader.prototype.delete = function(name, callback) {
-  this.client.deleteFile(name, function(err, res) {
+Uploader.prototype.delete = function(options, callback) {
+  var path = options.directory ? path.join(options.directory, options.name) : options.name;
+
+  this.client.deleteFile(path, function(err, res) {
     callback(err);
   });
 }

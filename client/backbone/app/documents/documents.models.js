@@ -4,7 +4,15 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
     , SecuredModel = App.Common.Models.SecuredModel;
 
   Models.Document = SecuredModel.extend({ 
-    urlRoot: function() {
+    
+    initialize: function(attributes, options) {
+      var type = attributes.type;
+      this.set("icon", this.icon(type));
+
+      this.init && this.init(attributes, options);
+    }
+
+  , urlRoot: function() {
       return "/api/" + this.parent.name + "/" + this.parent.id + "/documents";
     }
 
@@ -18,6 +26,23 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
       }
 
       return this._super(method, model, options);
+    }
+
+  , icon: function(type) {
+      var icons = {
+        pdf: "adobe-pdf"
+      , doc: "ms-word"
+      , xls: "ms-excel"
+      , docx: "ms-word"
+      , xlsx: "ms-excel"
+      , txt: "file"
+      , zip: "zip-file"
+      , tar: "zip-file"
+      , htm: "html5"
+      , html: "html5"
+      , undefined: "file"
+      }
+      return "icon-" + icons[type];
     }
 
   , setFile: function(file) {

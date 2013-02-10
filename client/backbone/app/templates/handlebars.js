@@ -416,6 +416,13 @@ this["Templates"]["app/question"] = Handlebars.template(function (Handlebars,dep
   buffer += escapeExpression(stack1) + "</button>\n  </p>\n</div>\n";
   return buffer;});
 
+this["Templates"]["documents/container"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  
+
+
+  return "<thead>\n  <tr>\n    <th>&nbsp;</th>\n    <th>Title</th>\n    <th>Tags</th>\n    <th>&nbsp;</th>\n  </tr>\n</thead>\n\n<tbody></tbody>\n";});
+
 this["Templates"]["documents/empty"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
@@ -429,13 +436,19 @@ this["Templates"]["documents/empty"] = Handlebars.template(function (Handlebars,
 
 this["Templates"]["documents/item"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  foundHelper = helpers.id;
+  buffer += "<td><i class=\"icon ";
+  foundHelper = helpers.icon;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  return escapeExpression(stack1);});
+  else { stack1 = depth0.icon; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"></i></td>\n<td>";
+  foundHelper = helpers.title;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.title; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</td>\n<td>&nbsp;</td>\n";
+  return buffer;});
 
 this["Templates"]["documents/upload"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

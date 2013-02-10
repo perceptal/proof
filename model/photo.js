@@ -15,7 +15,7 @@ module.exports = function(connection) {
     , caption           : { type: String }
     , isDefault         : { type: Boolean, default: false }
     , sizes             : [ { type: String, enum: _.pluck(config, "name") } ]
-    , contentType       : { type: String, enum: [ "image/jpeg", "image/png" ] }
+    , contentType       : { type: String, enum: [ "image/jpeg", "image/gif", "image/png" ] }
     , owner             : { type: Schema.ObjectId }
   });
 
@@ -40,7 +40,7 @@ module.exports = function(connection) {
 
           photo.contentType = "image/" + type.toLowerCase();
 
-          var uploader = new Uploader({ path: result.path });
+          var uploader = new Uploader({ path: result.path, directory: "photos" });
 
           uploader.put(function(err) {
             if (err) callback(err);
@@ -56,14 +56,14 @@ module.exports = function(connection) {
 
   PhotoSchema.post("remove", function(photo) {
     async.forEach(photo.sizes, function(size, callback) {
-      new Uploader().delete(size + "." + photo.name, callback);
+      new Uploader().delete({ name: size + "." + photo.name, directory: "photos" }, callback);
     }, function() {
       // noop
     });
   });
 
   PhotoSchema.methods.download = function(size, callback) {
-    new Uploader({ path: [ size, this.name ].join(".") }).get(function(err, image) {
+    new Uploader({ path: [ size, this.name ].join("."), directory: "photos" }).get(function(err, image) {
       callback(err, image, crypto.createHash("md5").update(new Buffer(image)).digest("hex"));
     });
   };
@@ -81,7 +81,6 @@ module.exports = function(connection) {
     var Photo = this;
 
     Photo.findOne({ _id: id }, function(err, photo) {
-
       Photo.findDefault(owner, function(err, previous) {
   
         photo.setDefault(true, function(err) {

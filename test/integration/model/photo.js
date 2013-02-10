@@ -26,7 +26,7 @@ describe("Photo", function() {
 
     after(function(done) {
       var uploader = new Uploader({ path: photo.name });
-      uploader.delete(uploader.name, done);
+      uploader.delete({ directory: "photos", name: uploader.name }, done);
     });
 
     describe("after saving", function() {

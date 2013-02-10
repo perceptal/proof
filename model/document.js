@@ -13,6 +13,7 @@ module.exports = function(connection) {
     , title             : { type: String }
     , tags              : [ { type: String } ]
     , contentType       : { type: String }
+    , extension         : { type: String }
     , owner             : { type: Schema.ObjectId }
   });
 
@@ -21,7 +22,7 @@ module.exports = function(connection) {
 
     if (!doc.isModified("name")) return next();
 
-    var uploader = new Uploader({ path: doc.name });
+    var uploader = new Uploader({ path: doc.name, directory: "documents" });
 
     uploader.put(function(err) {
       if (err) next(err);
@@ -32,16 +33,12 @@ module.exports = function(connection) {
     });
   });
 
-  DocumentSchema.post("remove", function(photo) {
-    async.forEach(photo.sizes, function(size, callback) {
-      new Uploader().delete(size + "." + photo.name, callback);
-    }, function() {
-      // noop
-    });
+  DocumentSchema.post("remove", function(document) {
+    new Uploader().delete({ name: document.name, directory: "documents" }, callback);
   });
 
   DocumentSchema.methods.download = function(callback) {
-    new Uploader({ path: this.name }).get(function(err, file) {
+    new Uploader({ path: this.name, directory: "documents" }).get(function(err, file) {
       callback(err, file, crypto.createHash("md5").update(new Buffer(file)).digest("hex"));
     });
   };
