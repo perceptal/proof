@@ -617,6 +617,8 @@ input#file:hover {
   background: #fff;
   padding: 4px;
   margin: 10px 0 10px 0;
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0 0 1px;
+  box-shadow: rgba(0,0,0,0.2) 0 0 1px;
 }
 .image img {
   -webkit-box-sizing: border-box;
@@ -655,6 +657,9 @@ figure.photo {
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0 0 1px;
+  box-shadow: rgba(0,0,0,0.2) 0 0 1px;
+  width: 276px;
 }
 figure.photo .image {
   -webkit-border-radius: 4px;
