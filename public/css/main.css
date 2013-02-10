@@ -462,6 +462,16 @@ form.box input.required {
   background-image: none !important;
   background-color: #fff !important;
 }
+.select2-container-multi {
+  margin-left: 0 !important;
+}
+.select2-container-multi .select2-choices {
+  background-image: none !important;
+  -webkit-border-radius: 1px !important;
+  border-radius: 1px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
 .select2-results .select2-highlighted {
   -webkit-border-radius: 1px !important;
   border-radius: 1px !important;
@@ -469,6 +479,11 @@ form.box input.required {
 .select2-drop {
   -webkit-border-radius: 0 0 1px 1px !important;
   border-radius: 0 0 1px 1px !important;
+}
+.label {
+  font-weight: normal;
+  font-size: 14px;
+  padding: 4px 6px;
 }
 input#file {
   -webkit-border-radius: 3px;

@@ -63,13 +63,13 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
     }
   });
 
-
   Views.UploadView = UploadView.extend({
     template: "documents/upload"
 
   , ui: {
       title           : "input#title"
     , file            : "input#file"
+    , tags            : "input#tags"
     , save            : "button#save"
     }
 

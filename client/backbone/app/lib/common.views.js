@@ -19,6 +19,7 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.delegateEvents();
       
       if (this.ui.selects) this.ui.selects.select2({ minimumResultsForSearch: 9999 });
+      if (this.ui.tags) this.ui.tags.select2({ tags: [ "a", "b", "c" ], tokenSeparators: [ "," ] });
 
       this.setFocus();
     }
@@ -37,6 +38,8 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
         , value = field.val();
 
       if (field.attr("type") === "file") return;
+
+      if (prop === "tags") value = value.split(",");
 
       this.onChange(prop, field, value);
     }

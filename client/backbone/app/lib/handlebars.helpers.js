@@ -48,6 +48,17 @@ $(function() {
     return new Handlebars.SafeString(converter.makeHtml(i18n.t(text)));
   });
 
+  Handlebars.registerHelper("tags", function(tags) {
+    var index = tags.length
+      , output = "";
+
+    while(index--) {
+      output += ("<span class='label label-info'>" + tags[index] + "</span>&nbsp;");
+    }
+
+    return new Handlebars.SafeString(output);
+  });
+
   Handlebars.registerHelper("options", function(data, value, options) {
     var items = data.split(" ")
       , buffer = "";

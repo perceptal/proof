@@ -22,7 +22,11 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
       if (method === "create") {
         options.iframe = true;
         options.files = this.file;
-        options.data = { owner: this.get("owner"), title: this.get("title") };
+        options.data = { 
+          owner : this.get("owner")
+        , title : this.get("title")
+        , tags  : this.get("tags") 
+        };
       }
 
       return this._super(method, model, options);
