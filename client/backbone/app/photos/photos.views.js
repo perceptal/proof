@@ -73,9 +73,8 @@ Proof.module("Photos.Views", function(Views, App, Backbone, Marionette, $, _) {
     }
 
   , showDialog: function(child, url) {
-      console.log(url);
-
       this.ui.image.attr("src", url);
+
       this.ui.dialog.reveal({
         animation: "fade"
       , animationspeed: 300
