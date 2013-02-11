@@ -51,7 +51,7 @@ module.exports = function(app, models, util, messaging, cache, authenticate, aut
     var doc = new Document({ 
       title: req.body.title
     , owner: req.body.owner
-    , tags: req.body.tags.split(",")
+    , tags: req.body.tags ? req.body.tags.split(",") : []
     , name: req.files.file.path
     , contentType: req.files.file.type
     , extension: path.extname(req.files.file.name).substring(1)

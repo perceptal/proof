@@ -90,4 +90,14 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
     }
   });
 
+  Models.Tags = {
+    fetch: function() {
+      var promise = $.ajax({
+        url: "/api/documents/tags"
+      , dataType: "json"
+      });
+
+      return promise;
+    }
+  }
 });

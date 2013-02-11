@@ -12,6 +12,7 @@ module.exports.init = function(app, models, messaging, cache) {
     , { name: "organisations/roles"     , thing: "group" }
     , { name: "photos" }
     , { name: "documents" }
+    , { name: "documents/tags" }
     , { name: "sessions" }
     , { name: "sessions/config" }
 	  , { name: "users"                   , thing: "user" }

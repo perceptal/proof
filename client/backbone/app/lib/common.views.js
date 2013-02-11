@@ -19,7 +19,10 @@ Proof.module("Common.Views", function(Views, App, Backbone, Marionette, $, _) {
       this.delegateEvents();
       
       if (this.ui.selects) this.ui.selects.select2({ minimumResultsForSearch: 9999 });
-      if (this.ui.tags) this.ui.tags.select2({ tags: [ "a", "b", "c" ], tokenSeparators: [ "," ] });
+      if (this.ui.tags) {
+        console.log(this.allTags)
+        this.ui.tags.select2({ tags: this.allTags, tokenSeparators: [ "," ] });
+      }
 
       this.setFocus();
     }

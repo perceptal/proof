@@ -1,7 +1,8 @@
 Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   var FormView = App.Common.Views.FormView
-    , UploadView = App.Common.Views.UploadView;
+    , UploadView = App.Common.Views.UploadView
+    , Tags = App.Documents.Models.Tags;
 
   Views.ItemView = Marionette.ItemView.extend({
     template: "documents/item"
@@ -78,9 +79,17 @@ Proof.module("Documents.Views", function(Views, App, Backbone, Marionette, $, _)
     }
 
   , initialize: function(options) {
+      var view = this;
+
       this.autoSave = false;
       this.focus = "title";
-      this.section = options.section;
+      this.section = options.section;      
+      this.allTags = [];
+
+      Tags.fetch().done(function(data) {
+        view.allTags = data;
+        view.render();
+      });
     }
 
   , onRender: function() {

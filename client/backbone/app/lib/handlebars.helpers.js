@@ -54,7 +54,7 @@ $(function() {
         , output = "";
 
       while(index--) {
-        output += ("<span class='label label-info'>" + tags[index] + "</span>&nbsp;");
+        output = ("<span class='label label-info'>" + tags[index] + "</span>&nbsp;") + output;
       }
 
       return new Handlebars.SafeString(output);
