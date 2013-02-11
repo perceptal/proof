@@ -634,6 +634,10 @@ table.table-hover tr td a {
   filter: alpha(opacity=0);
   text-decoration: none;
 }
+table.table-hover tr td.icon i {
+  color: #555;
+  font-size: 17px;
+}
 table.table-hover tr td.actions {
   text-align: right;
 }
@@ -645,6 +649,9 @@ table.table-hover tr:hover td a {
   opacity: 1;
   -ms-filter: none;
   filter: none;
+}
+table.table-hover tr:hover td.icon i {
+  color: #000;
 }
 table.table-hover tr.no-hover:hover td {
   background-color: transparent;

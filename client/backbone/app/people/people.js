@@ -175,7 +175,7 @@ Proof.module("People", function(Manager, App, Backbone, Marionette, $, _) {
         case "permissions":
           break;
 
-        case "accounts":
+        case "account":
           break;
 
         case "documents":

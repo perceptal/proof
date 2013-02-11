@@ -36,17 +36,29 @@ Proof.module("Documents.Models", function(Models, App, Backbone, Marionette, $, 
       var icons = {
         pdf: "adobe-pdf"
       , doc: "ms-word"
+      , docx: "ms-word"
+      , txt: "ms-word"
+      , rtf: "ms-word"
       , csv: "ms-excel"
       , xls: "ms-excel"
-      , docx: "ms-word"
       , xlsx: "ms-excel"
-      , txt: "file"
       , zip: "zip-file"
       , tar: "zip-file"
       , htm: "html5"
       , html: "html5"
+      , gif: "picture"
+      , jpeg: "picture"
+      , jpg: "picture"
+      , png: "picture"
+      , mp4: "video"
+      , mov: "video"
+      , swf: "video"
+      , m4v: "video"
+      , mp3: "music"
+      , wav: "music"
       , undefined: "file"
       }
+
       return "icon-" + (icons[extension] || "file");
     }
 

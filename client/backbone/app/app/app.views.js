@@ -36,7 +36,7 @@ Proof.module("Views", function(Views, App, Backbone, Marionette, $, _) {
   });
 
   Views.HelpView = Marionette.ItemView.extend({
-    template: "app/common/help"
+    template: "app/help"
 
   , initialize: function(options) {
       var section = options.section;

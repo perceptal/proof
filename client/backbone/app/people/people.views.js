@@ -1,8 +1,9 @@
 Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-  var PagingView = App.Views.PagingView
-    , Region = Marionette.Region
-    , FormView = App.Common.Views.FormView;
+  var FormView = App.Common.Views.FormView
+    , FilterView = App.Common.Views.FilterView
+    , MenuView = App.Common.Views.MenuView
+    , SelectorView = App.Common.Views.SelectorView;
 
   Views.InfoView = FormView.extend({
     template: "people/info"
@@ -40,123 +41,23 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   });
 
-  Views.FilterView = Marionette.ItemView.extend({
+  Views.FilterView = FilterView.extend({
     template: "people/filter"
 
-  , ui: {
-      filter: "input#search"
-    , refresh: "button.refresh"
-    , sort: "a.sort"
-    }
+  , section: "people"
 
-  , events: {
-      "click button.refresh"  : "onRefresh"
-    , "keyup input#search"    : "onFilter"
-    , "click a.sort"          : "onSort"
-    }
+  , defaultSortField: "firstName"
 
-  , onRender: function() {
-      this.delegateEvents();
-      this.setSort("asc");
-    }
-
-  , setSort: function(direction) {
-      this.ui.sort.find("small").remove();
-      var icon = "icon-caret-" + (direction === "asc" ? "up" : "down");
-      this.ui.sort.filter("[data-sort='" + (this.collection.sortColumn || "firstName") + "']")
-        .append($("<small>&nbsp;<i class='icon " + icon + "'></i></small>"));
-    }
-
-  , onFilter: function(e) {
-      this.collection.filter(this.ui.filter.val());
-
-      if (this.collection.length === 1 && this.model !== this.collection.first()) {
-        var first = this.collection.first();
-
-        this.collection.clearActive();
-        first.markActive();
-
-        App.vent.trigger("people:selected", first);
-      }
-    }
-
-  , onRefresh: function(e) {
-      e.preventDefault();
-      this.ui.filter.val("");
-      this.collection.filter("");
-    }
-
-  , onSort: function(e) {
-      e.preventDefault();
-      this.collection.sort($(e.currentTarget).data("sort"));
-      this.setSort(this.collection.sortDirection);
-    }
   });
 
-  Views.MenuView = Marionette.ItemView.extend({
+
+  Views.MenuView = MenuView.extend({
     template: "people/menu"
 
-  , ui: {
-      links: "a"
-    , name: "a.brand"
-    , actions: "ul.action a"
-    }
+  , section: "people"
 
-  , events: {
-      "click a": "onNavigate"
-    }
-
-  , initialize: function(options) {
-      this.page = options.page;
-
-      if (this.model) this.model.on("change", this.render, this);
-    }
-
-  , onRender: function() {
-      this.delegateEvents();
-      this.select(this.page);
-
-      App.vent.on("people:navigate", function(page, action) {
-        this.select(page, action);
-      }, this);
-   }
-
-  , select: function(page, action) {
-      this.page = page;
-
-      this.ui.actions.parent().hide();
-      this.ui.links.parent().removeClass("active");
-
-      if (this.model) {  
-        var link = this.ui.links.filter("[data-page='" + this.page + "']");
-
-        link.parent().addClass("active");
-
-        this.ui.actions.filter("[data-page='" + (link.data("action") || "photo") + "']").parent().show();
-      } else {
-
-        this.ui.links
-          .attr("href", "")
-          .parent()
-            .removeClass("active")
-            .addClass("disabled");
-        this.ui.name.hide();
-      }
-     }
-
-  , onNavigate: function(e) {
-      e.preventDefault();
-
-      if (this.model == null) return false;
-
-      var page = $(e.currentTarget).data("page")
-        , url = $(e.currentTarget).attr("href");
-
-      this.select(page);
-
-      App.vent.trigger("people:navigate", page, url);
-    }
-
+  , defaultAction: "photo"
+  
   });
 
 	Views.ItemView = Marionette.ItemView.extend({
@@ -192,52 +93,16 @@ Proof.module("People.Views", function(Views, App, Backbone, Marionette, $, _) {
 
   });
 
-	Views.SelectorView = Marionette.CompositeView.extend({
+	Views.SelectorView = SelectorView.extend({
 
     template: "people/selector"
-
-  , itemViewContainer: "ul.list"
 
 	, itemView: Views.ItemView
 
   , emptyView: Views.NoItemsView
 
-  , ui: {
-      pagination      : "div.pagination"
-    , list            : "ul.list"
-    }
+  , section: "people"
 
-  , itemViewOptions: function(model) {
-      return {
-        collection: this.collection
-      };
-    }
-
-  , initialize: function(options) {
-      this.collection.setPage(options.page);
-      App.vent.on("people:navigate", this.collection.setPage, this.collection);
-
-      this.collection.on("reset", this.render, this);
-      this.collection.on("change", this.render, this);
-  	}
-
-  , onRender: function() {
-      this.showPagination();
-      this.padList();
-    }
-
-  , showPagination: function() {
-      if (this.pagination) this.pagination.reset();
-      this.pagination = new Region({ el: ".pagination" });
-      this.pagination.show(new PagingView({ model: this.collection }));
-    }
-
-  , padList: function() {
-      if (this.collection.length > 0 && this.collection.length < 10) {
-        for(var i=0; i<(10-this.collection.length); i++)
-          this.ui.list.append("<li class='empty'><a>&nbsp;</a></li>");
-      }
-    }
 	});
 
 	Views.Layout = Marionette.Layout.extend({
